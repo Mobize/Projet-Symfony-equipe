@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog symfony{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+        <a href="{{ path('app_admin_category_index') }}" class="navbar-brand">Menu Admin</a>
+        </div>
+    </nav>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <a class="navbar-brand" href="{{ path('app_index_index') }}">
+                Blog
+            </a>    
+        </div>    
+    </nav>
+    <div class="container">
+    {% block content %}{% endblock %}
+    </div>    
+{% endblock %}
