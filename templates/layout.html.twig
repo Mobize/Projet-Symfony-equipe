@@ -13,17 +13,33 @@
 {% block body %}
     <nav class="navbar navbar-inverse">
         <div class="container">
-        <a href="{{ path('app_admin_category_index') }}" class="navbar-brand">Menu Admin</a>
+            <a class="navbar-brand">Menu Admin</a>
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('app_admin_category_index') }}" class="navbar-brand">Gestion Categorie</a></li>
+            </ul>
         </div>
     </nav>
     <nav class="navbar navbar-default">
         <div class="container">
-            <a class="navbar-brand" href="{{ path('app_index_index') }}">
-                Blog
-            </a>    
+            <a class="navbar-brand" href="{{ path('app_index_index') }}">Blog</a>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path('app_security_register') }}">Inscription</a></li>                   
+                </ul>
         </div>    
     </nav>
     <div class="container">
-    {% block content %}{% endblock %}
+        {% for type,messages in app.session.flashbag.all %}
+            {% for message in messages %}
+                {# pour la classe alert-danger du bootstrap #}
+                {% if type == 'error' %}
+                    {% set type = 'danger' %}
+                {% endif %}    
+                <div class="alert alert-{{ type }}">
+                    {{ message|raw }}                
+                </div>
+            {% endfor %}    
+        {% endfor %}
+        {% block content %}{% endblock %}
+        
     </div>    
 {% endblock %}
