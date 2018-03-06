@@ -3,3 +3,11 @@
 {% block content %}
     <h1>Accueil</h1>
 {% endblock %}
+
+{% block javascripts %}
+    {# reprend le contenu du bloc javascript du layout #}
+   {{ parent() }}
+   <script>
+      
+   </script>
+{% endblock %}
