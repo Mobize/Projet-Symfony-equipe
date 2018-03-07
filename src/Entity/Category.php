@@ -40,5 +40,16 @@ class Category
         $this->name = $name;
         return $this;
     }
+    
+    /**
+     * Méthode magique appelée quand on essaie
+     * d'accéder à l'objet comme chaine de caractère
+     * par exemple avec un echo
+     */
+    public function __toString() 
+    {
+        return $this->name;
+    }
+
 
 }

@@ -1,17 +1,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Accueil</h1>
+    <h1>{{ category }}</h1>
     
     {% for article in articles %}
         {% include 'article/preview.html.twig' with {"article": article} only%}
-    {% endfor %}  
-{% endblock %}
-
-{% block javascripts %}
-    {# reprend le contenu du bloc javascript du layout #}
-   {{ parent() }}
-   <script>
-      
-   </script>
+    {% endfor %}    
 {% endblock %}

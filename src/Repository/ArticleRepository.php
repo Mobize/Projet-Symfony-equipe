@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Article;
+use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,6 +20,23 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function findLatest($limit, Category $category = null)
+    {
+        $qb = $this->createQueryBuilder('a');
+        
+        $qb
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults($limit); 
+        
+        if (!is_null($category)){
+            //$qb->andWhere('IDENTITY(a.category) = ' . $category->getId());
+            $qb
+                ->andWhere('IDENTITY(a.category) = :category')
+                ->setParameter('category', $category->getId());    
+        }
+        
+        return $qb->getQuery()->getResult();
+    }
     /*
     public function findBySomething($value)
     {

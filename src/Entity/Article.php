@@ -39,7 +39,9 @@ class Article
     private $description;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Category")
+     * fetch="EAGER" pour eviter le LAZY LOADING
+     * 
+     * @ORM\ManyToOne(targetEntity="Category", fetch="EAGER")
      * @Assert\NotBlank()
      * @ORM\JoinColumn(nullable=false)
      * @var Category 
@@ -53,6 +55,13 @@ class Article
      */
     private $author;
     
+    /**
+     * @ORM\Column(nullable=true)
+     * @Assert\Image()
+     * @var string 
+     */
+    private $image;
+            
     function getId() {
         return $this->id;
     }
@@ -97,5 +106,13 @@ class Article
         $this->author = $author;
     }
 
-    
+    function getImage() {
+        return $this->image;
+    }
+
+    function setImage($image) {
+        $this->image = $image;
+    }
+
+
 }
