@@ -20,36 +20,52 @@ class UserType extends AbstractType
                     'lastname',
                     TextType::class,
                     [
-                        'label' => 'Nom'
+                        'label' => 'Nom',
+                        'attr' => [
+                            'class' => 'perso'
+                        ]
                     ]
                 )
                 ->add(
                     'firstname',
                     TextType::class,
                     [
-                        'label' => 'Prénom'
+                        'label' => 'Prénom',
+                        'attr' => [
+                            'class' => 'perso'
+                        ]
                     ]
                 )
                 ->add(
                     'email',
                      EmailType::class,
                     [
-                        'label' => 'Email'
+                        'label' => 'Email',
+                        'attr' => [
+                            'class' => 'perso'
+                        ]
                     ]
                 )
                 //le mdp en clair que l'on ne va pas stocker en bdd
                 ->add(
                      'plainPassword',
+                        
                         //2 champs qui doivent etre identiques
                      RepeatedType::class,
                     [
                         //... de type password
                         'type' => PasswordType::class,
                         'first_options' => [
-                            'label' => 'Mot de passe'
+                            'label' => 'Mot de passe',
+                            'attr' => [
+                            'class' => 'perso'
+                        ]
                         ],
                         'second_options' => [
-                            'label' => 'Confirmation du mot de passe'
+                            'label' => 'Confirmation du mot de passe',
+                            'attr' => [
+                            'class' => 'perso'
+                        ]
                         ]
                     ]
                 )

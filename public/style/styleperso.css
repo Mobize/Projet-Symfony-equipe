@@ -7,6 +7,13 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
+
+.layout_fluid{
+    
+}
+.layout{
+    margin-top:15px;
+}
 .navbar{
     margin-bottom: 0px;
 }

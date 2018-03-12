@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %} 
+    <div class="col-md-6 col-md-offset-3">
     <h1>Inscription</h1>
     {{ form_start(form) }}{# ouvre la balise form #}
     {{ form_row(form.lastname) }}
@@ -13,4 +14,5 @@
         </button>
     </div>
     {{ form_end(form) }}{# ferme la balise form #}
+    </div>
 {% endblock %}
