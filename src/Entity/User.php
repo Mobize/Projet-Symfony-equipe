@@ -82,7 +82,7 @@ class User implements UserInterface
         return $this->password;
     }
 
-    function getRole(): type {
+    function getRole() {
         return $this->role;
     }
 
@@ -102,7 +102,7 @@ class User implements UserInterface
         $this->password = $password;
     }
 
-    function setRole(type $role) {
+    function setRole($role) {
         $this->role = $role;
     }
 
