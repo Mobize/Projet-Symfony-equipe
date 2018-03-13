@@ -1,18 +1,10 @@
 {% extends 'layout.html.twig' %}
+
+{# une modif #}
 {% block body %}
-    {% block menu_admin %}
-    {% if is_granted('ROLE_ADMIN') %}
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-            <a class="navbar-brand">Menu Admin</a>
-            <ul class="nav navbar-nav">
-                <li><a href="{{ path('app_admin_category_index') }}" class="navbar-brand">Gestion Categories</a></li>
-                <li><a href="{{ path('app_admin_article_index') }}" class="navbar-brand">Gestion Articles</a></li>
-            </ul>
-        </div>
-    </nav>
-    {% endif %}
-    {% endblock %}
+{% block menu_admin %}   
+    {{parent()}}
+{% endblock %}
 {% block header %}{# pour ne pas afficher le block header#}{% endblock %}
 {% block content %}
         
