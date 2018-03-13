@@ -11,7 +11,19 @@
 <link rel="stylesheet" href="{{ asset('style/styleperso.css') }}"/>
 {% endblock %}
 
+<<<<<<< HEAD
 
+=======
+{% block javascripts %}
+    <script src="{{ asset('js/SmoothScroll.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/easing.js') }}"></script>
+    <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+    <script src="{{ asset('js/lightbox-plus-jquery.min.js') }}"></script>
+    <script src="{{ asset('js/move-top.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.js') }}"></script>
+{% endblock %}
+>>>>>>> ari
 
 {% block body %}
     {% block menu_admin %}
@@ -25,6 +37,7 @@
                 <li><a href="{{ path('app_admin_rencontre_index') }}" class="navbar-brand">Gestion Joueurs</a></li>
                 <li><a href="{{ path('app_admin_rencontre_index') }}" class="navbar-brand">Gestion Rencontres</a></li>               
                 <li><a href="{{ path('app_admin_article_index') }}" class="navbar-brand">Gestion Articles</a></li>
+<<<<<<< HEAD
                 </ul>
             </div>
         </nav>
@@ -113,4 +126,38 @@
     <script src="{{ asset('js/lightbox-plus-jquery.min.js') }}"></script>
     <script src="{{ asset('js/move-top.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.js') }}"></script>
+=======
+            </ul>
+        </div>
+    </nav>
+    {% endif %}
+    
+    
+{% block content %}
+    {% block menu %}
+    {# ancienne navbar normale #}
+    <nav class="navbar navbar-default">
+    <div class="container">
+        <a class="navbar-brand" href="{{ path('app_index_index') }}">Blog</a>
+        {{ render(controller('App\\Controller\\CategoryController::menu')) }}
+            <ul class="nav navbar-nav navbar-right">
+                {% if app.user is null %}
+                <li><a href="{{ path('app_security_register') }}">Inscription</a></li>         
+                <li><a href="{{ path('app_security_login') }}">Connexion</a></li>    
+                
+                {% else %}
+                <li>
+                    <a>{{ app.user.fullname }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_security_logout') }}">Deconnexion</a>
+                </li>
+                {% endif %}
+            </ul>
+    </div>    
+</nav>
+    {# ancien container #}
+{% endblock %}
+{% endblock %}
+>>>>>>> ari
 {% endblock %}
