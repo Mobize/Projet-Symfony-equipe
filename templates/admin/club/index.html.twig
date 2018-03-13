@@ -32,7 +32,7 @@
                 <td>
                 {% if club.logo is not null %}
         <div class="thumbnail">
-            <img src="{{ club.logo }}">
+            <img src="{{ asset('upload/' ~ club.logo) }}" width="100px">
         </div>
                 {% endif %}
                 </td>
