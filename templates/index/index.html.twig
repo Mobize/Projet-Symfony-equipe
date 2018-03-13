@@ -1,5 +1,19 @@
 {% extends 'layout.html.twig' %}
- 
+{% block body %}
+    {% block menu_admin %}
+    {% if is_granted('ROLE_ADMIN') %}
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <a class="navbar-brand">Menu Admin</a>
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('app_admin_category_index') }}" class="navbar-brand">Gestion Categories</a></li>
+                <li><a href="{{ path('app_admin_article_index') }}" class="navbar-brand">Gestion Articles</a></li>
+            </ul>
+        </div>
+    </nav>
+    {% endif %}
+    {% endblock %}
+{% block header %}{# pour ne pas afficher le block header#}{% endblock %}
 {% block content %}
         
     	<div class="w3ls-banner">
@@ -8,7 +22,7 @@
 			<div class="header">
 				<div class="container">  
 					<div class="header-mdl agileits-logo"><!-- header-two --> 
-						<h1><a href="{{ path('app_index_index') }}">Football Club</a></h1> 
+						<h1><a href="{{ path('app_index_index') }}">Nom du site</a></h1> 
 					</div>
 					<div class="header-nav"><!-- header-three --> 	
 						<nav class="navbar navbar-default">
@@ -23,30 +37,31 @@
 							<!-- top-nav -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav cl-effect-16">
-                                                                    {% block menu %}
-                                                                        {% if app.user is null %}
-                                                                                    <li><a href="{{ path('app_security_register') }}">Inscription</a></li>         
-                                                                                    <li><a href="{{ path('app_security_login') }}">Connexion</a></li>    
+                                                                       
+									<li><a href="{{ path('app_index_index') }}" class="active" data-hover="Accueil">Accueil</a></li>                                                                      
+                                                                        {% block menu %}
+                                                                            {% if app.user is null %}
+                                                                                        <li><a href="{{ path('app_security_register') }}" data-hover="Inscription">Inscription</a></li>         
+                                                                                        <li><a href="{{ path('app_security_login') }}" data-hover="Connexion">Connexion</a></li>    
 
-                                                                                    {% else %}
-                                                                                    <li>
-                                                                                        <a>{{ app.user.fullname }}</a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a href="{{ path('app_security_logout') }}">Deconnexion</a>
-                                                                                    </li>
-                                                                        {% endif %}
-                                                                    {% endblock %}   
-									<li><a href="{{ path('app_index_index') }}" class="active" data-hover="Accueil">Accueil</a></li>
-									<li><a href="about.html" data-hover="About">About</a></li> 
-									<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+                                                                                        {% else %}
+                                                                                        <li>
+                                                                                            <a>{{ app.user.fullname }}</a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a href="{{ path('app_security_logout') }}">Deconnexion</a>
+                                                                                        </li>
+                                                                            {% endif %}
+                                                                        {% endblock %}{# fin du block menu #}
+									{#<li><a href="about.html" data-hover="About">About</a></li> #}
+									{#<li><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
 										<ul class="dropdown-menu">
 											<li><a href="icons.html" data-hover="Web Icons">Web Icons</a></li>
 											<li><a href="codes.html" data-hover="Short Codes">Short Codes</a></li>
 										</ul>
-									</li> 
-									<li><a href="gallery.html" data-hover="Gallery">Gallery</a></li>
-									<li><a href="contact.html" data-hover="Contact">Contact</a></li>
+									</li> #}
+									<li><a href="#" data-hover="Lien">Lien</a></li>
+									<li><a href="#" data-hover="Lien">Lien</a></li>
 								</ul>  
 								<div class="clearfix"> </div>	
 							</div>
@@ -68,8 +83,8 @@
 				</div>
 			</div>
 			<!-- //banner-text -->  
-		</div>	
-	</div>	
+		</div>
+	</div>
 	<!-- //banner -->
 		<!--about-->
 	<div class="about">
@@ -397,14 +412,11 @@
 			</div>
 			<p class="copyright">© 2018 Football Club. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
 	</div>
-	<!-- //footer -->
   
-	<!-- js --> 
-	<script src="js/jquery-2.2.3.min.js"></script> 
-	<script src="js/SmoothScroll.min.js"></script>
-	<!-- //js --> 
-	<!-- owl carousel -->
-	<script src="js/owl.carousel.js"></script>
+{% endblock %}{# fin block content #}
+{% endblock %}{# fin block body #}
+{% block javascripts %}
+    {{parent()}}
 	<script>
 		$(document).ready(function () {
 			$("#owl-demo").owlCarousel({
@@ -448,18 +460,5 @@
 			
 		});
 	</script>
-	<!-- //smooth-scrolling-of-move-up -->  
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.js"></script>
-    
-{% endblock %}
+    {% endblock %}{# fin block javascripts #}
 
-{% block javascripts %}
-    {# reprend le contenu du bloc javascript du layout #}
-   {{ parent() }}
-   <script>
-      
-   </script>
-{% endblock %}

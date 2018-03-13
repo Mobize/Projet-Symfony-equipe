@@ -11,54 +11,103 @@
 <link rel="stylesheet" href="{{ asset('style/styleperso.css') }}"/>
 {% endblock %}
 
+
+
+{% block body %}
+    {% block menu_admin %}
+        {% if is_granted('ROLE_ADMIN') %}
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <a class="navbar-brand">Menu Admin</a>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('app_admin_category_index') }}" class="navbar-brand">Gestion Categories</a></li>
+                    <li><a href="{{ path('app_admin_article_index') }}" class="navbar-brand">Gestion Articles</a></li>
+                </ul>
+            </div>
+        </nav>
+        {% endif %}
+    {% endblock %}
+   
+    {% block header %}
+	<div class="w3ls-banner">
+            
+		<div class="w3lsbanner-info">
+			<!-- header -->
+			<div class="header">
+				<div class="container">  
+					<div class="header-mdl agileits-logo"><!-- header-two --> 
+						<h1><a href="{{ path('app_index_index') }}">Nom du site</a></h1>  
+					</div>
+					<div class="header-nav"><!-- header-three --> 	
+						<nav class="navbar navbar-default">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button> 
+							</div>
+							<!-- top-nav -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav cl-effect-16">
+                                                                    <li><a href="{{ path('app_index_index') }}" data-hover="Accueil">Accueil</a></li>                                                                      
+                                                                        {% block menu %}
+                                                                            {% if app.user is null %}
+                                                                                        <li><a href="{{ path('app_security_register') }}" data-hover="Inscription">Inscription</a></li>         
+                                                                                        <li><a href="{{ path('app_security_login') }}" data-hover="Connexion">Connexion</a></li>    
+
+                                                                                        {% else %}
+                                                                                        <li>
+                                                                                            <a>{{ app.user.fullname }}</a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a href="{{ path('app_security_logout') }}">Deconnexion</a>
+                                                                                        </li>
+                                                                            {% endif %}
+                                                                        {% endblock %}{# fin du block menu #}
+									
+									{#<li><a href="about.html" data-hover="About">About</a></li> 
+									<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="icons.html" data-hover="Web Icons">Web Icons</a></li>
+											<li><a href="codes.html" data-hover="Short Codes">Short Codes</a></li>
+										</ul>
+									</li> #}
+									<li><a href="#" data-hover="Lien">Lien</a></li>
+									<li><a href="#" data-hover="Lien">Lien</a></li>
+                                                                        {# class="active" #}
+								</ul>  
+								<div class="clearfix"> </div>	
+							</div>
+						</nav>    
+					</div>	
+				</div>	
+			</div>	
+			
+			
+		</div>	
+	</div>
+                                                                        
+    {% endblock %}{# fin du block header #} 
+    <div class="container-fluid layout_fluid">
+        <div class="container layout">
+
+        {% block content %} 
+
+            {# CONTENU ICI #}
+
+        {% endblock %}{# fin block content#}
+
+        </div>{# fin du container layout #}
+    </div>{# fin du container layout_fluid #}
+{% endblock %}{# fin block body#}
 {% block javascripts %}
-    <script src="{{ asset('js/SmoothScroll.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-2.2.3.min.js') }} "></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/SmoothScroll.min.js') }}"></script>
     <script src="{{ asset('js/easing.js') }}"></script>
-    <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
     <script src="{{ asset('js/lightbox-plus-jquery.min.js') }}"></script>
     <script src="{{ asset('js/move-top.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.js') }}"></script>
-{% endblock %}
-
-{% block body %}
-    {% if is_granted('ROLE_ADMIN') %}
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-            <a class="navbar-brand">Menu Admin</a>
-            <ul class="nav navbar-nav">
-                <li><a href="{{ path('app_admin_category_index') }}" class="navbar-brand">Gestion Categories</a></li>
-                <li><a href="{{ path('app_admin_article_index') }}" class="navbar-brand">Gestion Articles</a></li>
-            </ul>
-        </div>
-    </nav>
-    {% endif %}
-    
-    
-{% block content %}
-    {% block menu %}
-    {# ancienne navbar normale #}
-    <nav class="navbar navbar-default">
-    <div class="container">
-        <a class="navbar-brand" href="{{ path('app_index_index') }}">Blog</a>
-        {{ render(controller('App\\Controller\\CategoryController::menu')) }}
-            <ul class="nav navbar-nav navbar-right">
-                {% if app.user is null %}
-                <li><a href="{{ path('app_security_register') }}">Inscription</a></li>         
-                <li><a href="{{ path('app_security_login') }}">Connexion</a></li>    
-                
-                {% else %}
-                <li>
-                    <a>{{ app.user.fullname }}</a>
-                </li>
-                <li>
-                    <a href="{{ path('app_security_logout') }}">Deconnexion</a>
-                </li>
-                {% endif %}
-            </ul>
-    </div>    
-</nav>
-    {# ancien container #}
-{% endblock %}
-{% endblock %}
 {% endblock %}
