@@ -5,10 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
  * @UniqueEntity(fields="name", message="il existe déjà une catégorie de ce nom")
  */
+
 class Category
 {
     /**
