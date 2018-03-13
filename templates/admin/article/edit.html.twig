@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Edition article</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.content) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.category) }}
+    {{ form_row(form.image) }}
+    {# form.vars.value = l'entité liée au formulaire (l'entité Article)#}
+    {% if form.vars.value.image is not null %}
+        <p>Actuellement : <img src="{{ asset('upload/' ~ form.vars.value.image.filename) }}" width="100px"></p>
+        {{ form_row(form.remove_image) }}
+    {% endif %}    
+     <div class="form-btn-group pull-right">
+        <button type="submit" class="btn btn-primary">
+            Enregistrer
+        </button>
+        <a href="{{ path('app_admin_article_index') }}" class="btn btn-default">Retour</a>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

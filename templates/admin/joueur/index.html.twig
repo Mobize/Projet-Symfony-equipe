@@ -1,0 +1,56 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Gestion des joueurs</h1>
+        <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Rue</th>
+            <th>Code postal</th>
+            <th>Ville</th>
+            <th>N° de tél.</th>
+            <th>N° de tél. autre contact</th>
+            <th>Courriel</th>
+            <th>genre</th>
+            <th>Photo d'identité</th>
+            <th>Certificat de santé</th>
+            <th width="200px"></th>
+        </tr>
+     {%for joueur in joueurs %}
+        <tr>
+             
+                <td>{{ joueur.id }}</td>
+                <td>{{ joueur.prenom }}</td>
+                <td>{{ joueur.nom }}</td>
+                <td>{{ joueur.rue }}</td>
+                <td>{{ joueur.cp }}</td>
+                <td>{{ joueur.ville}}</td>
+                <td>{{ joueur.tel1}}</td>
+                <td>{{ joueur.tel2}}</td>
+                <td>{{ joueur.mel}}</td>
+                <td>{{ joueur.genre}}</td>
+                <td>
+                    {% if joueur.image is not null %}
+                    <img src="{{ asset('upload/'~joueur.image) }}" width="100px">
+                    {% endif %}
+                 </td>
+                <td>
+                    {% if joueur.certificat is not null %}
+                    <img src="{{ asset('upload/'~joueur.certificat) }}" width="100px">
+                    {% endif %}
+                 </td>
+                  <td> 
+                    <a href="{{ path('app_admin_joueur_edit', {id: joueur.id}) }}"
+                       class="btn btn-primary">
+                     Modifier   
+                    </a>
+                    <a href="{{ path('app_admin_joueur_delete', {id:joueur.id}) }}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>    
+       
+        {%endfor%}
+      </table>  
+{% endblock %}
+
