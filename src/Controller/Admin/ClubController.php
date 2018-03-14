@@ -43,13 +43,13 @@ class ClubController extends Controller
         $originalImage = null;
         // fin tentative--1
         
-        if(is_null($id)) {
+        if(is_null($id) ) {
             $club = new Club();
         } else {
             $club = $em->getRepository(Club::class)->find($id);
             
             //tentative gestion image --2
-            if (!is_null($club->getLogo())) {
+            if (!is_null($club->getLogo()) ) {
                 $originalImage = $club->getLogo();
                 $imagePath = $this->getParameter('upload_dir') . '/' . $originalImage;
                 // objet File pour éviter une erreur du formulaire
