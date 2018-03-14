@@ -47,6 +47,16 @@ class UserType extends AbstractType
                      ]   
                 )
                 ->add(
+                     'assoc',
+                     TextType::class,
+                     [
+                         'label' => 'Numéro d association',
+                         'attr' => [
+                             'class' => 'perso'
+                         ]
+                     ]   
+                )
+                ->add(
                     'email',
                      EmailType::class,
                     [

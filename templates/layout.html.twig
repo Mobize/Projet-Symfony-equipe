@@ -427,16 +427,21 @@
 			<p class="copyright">© 2018 Football Club. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
 	</div>
   
-{% endblock %}
+{% endblock %}{# fin du content #}
 
   
 
       
 {% endblock %}{# fin block body#}
 {% block javascripts %}
-    
-    
-	<script>
+    <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+    <script src="{{ asset('js/SmoothScroll.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/easing.js') }}"></script>
+    <script src="{{ asset('js/lightbox-plus-jquery.min.js') }}"></script>
+    <script src="{{ asset('js/move-top.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.js') }}"></script>
+    <script>
 		$(document).ready(function () {
 			$("#owl-demo").owlCarousel({
 				autoPlay: 3000, //Set AutoPlay to 3 seconds
@@ -446,7 +451,7 @@
 				itemsDesktopSmall: [414, 4]
 			});
 		}); 
-	</script>
+    </script>
 	<!-- //owl carousel -->
 	<!-- start-smooth-scrolling -->
 	<script type="text/javascript" src="js/move-top.js"></script>
@@ -477,12 +482,4 @@
 			
 		});
 	</script>
-    
-    <script src="{{ asset('js/SmoothScroll.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <script src="{{ asset('js/easing.js') }}"></script>
-    <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
-    <script src="{{ asset('js/lightbox-plus-jquery.min.js') }}"></script>
-    <script src="{{ asset('js/move-top.js') }}"></script>
-    <script src="{{ asset('js/owl.carousel.js') }}"></script>
 {% endblock %}
