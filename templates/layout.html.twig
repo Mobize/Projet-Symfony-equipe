@@ -32,6 +32,21 @@
     {% block header %}{# Affichage du menu et image d'accueil #}
     	<div class="w3ls-banner">
 		<div class="w3lsbanner-info">
+                    <div class="container">
+        {% for type,messages in app.session.flashbag.all %}
+            {% for message in messages %}
+                {# pour la classe alert-danger du bootstrap #}
+                {% if type == 'error' %}
+                    {% set type = 'danger' %}
+                {% endif %}    
+                <div class="alert alert-{{ type }}">
+                    {{ message|raw }}                
+                </div>
+            {% endfor %}    
+        {% endfor %}
+        
+        
+    </div> 
 			<!-- header -->
 			<div class="header">
 				<div class="container">  
@@ -428,10 +443,57 @@
 	</div>
   
 {% endblock %}{# fin du content #}
+{% block footer %}
+    		<!-- footer -->
+	<div class="footer">
+	<div class="container">
+		<div class="f-bg-w3l">
+		<div class="col-md-4 w3layouts_footer_grid">
+					<h2>Contact <span>Information</span></h2>
+					    <ul class="con_inner_text">
+							<li><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, 4th block, <label> New York City.</label></li>
+							<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
+							<li><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
+						</ul>
 
-  
-
-      
+					<ul class="social_agileinfo">
+						<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-4 w3layouts_footer_grid">
+					<h2>Subscribe <span>Newsletter</span></h2>
+					<p>By subscribing to our mailing list you will always get latest news from us.</p>
+					<form action="#" method="post">
+						<input type="email" name="Email" placeholder="Enter your email..." required="">
+						<button class="btn1"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+						<div class="clearfix"> </div>
+					</form>
+				</div>
+				<div class="col-md-4 w3layouts_footer_grid">
+					<h3>Latest <span>Events</span></h3>
+					   <ul class="con_inner_text midimg">
+						<li><a href="#"><img src="images/g5.jpg" alt="" class="img-responsive" /></a></li>
+					    <li><a href="#"><img src="images/g6.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g7.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g8.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g9.jpg" alt="" class="img-responsive" /></a></li>
+					    <li><a href="#"><img src="images/g10.jpg" alt="" class="img-responsive" /></a></li>
+						 <li><a href="#"><img src="images/g12.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g11.jpg" alt="" class="img-responsive" /></a></li>
+				     </ul>
+					
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			</div>
+			<p class="copyright">© 2018 Football Club. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+	</div>
+	<!-- //footer -->
+{% endblock %}
+        
 {% endblock %}{# fin block body#}
 {% block javascripts %}
     <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>

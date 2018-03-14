@@ -13,59 +13,62 @@
 
 
 {% block content %}
-    <h1>Edition de la liste des joueurs</h1>
-    {{ form_start(form) }}
-    {{ form_row(form.prenom) }}
-    {{ form_row(form.nom) }}
-    {{ form_row(form.rue) }}
-    {{ form_row(form.cp) }}
-    {{ form_row(form.ville) }}
-    {{ form_row(form.tel1) }}
-    {{ form_row(form.tel2) }}
-    {{ form_row(form.dateNaissance) }}
-    {{ form_row(form.genre) }}
+<div class="container"> 
+    <div class="row">  
+        <div class="col-md-12">     
+            <h1>Edition de la liste des joueurs</h1>
+            {{ form_start(form) }}
+            {{ form_row(form.prenom) }}
+            {{ form_row(form.nom) }}
+            {{ form_row(form.rue) }}
+            {{ form_row(form.cp) }}
+            {{ form_row(form.ville) }}
+            {{ form_row(form.tel1) }}
+            {{ form_row(form.tel2) }}
+            {{ form_row(form.dateNaissance) }}
+            {{ form_row(form.genre) }}
+
+            {% if form.vars.value.image is not null %}
+                {#ou if article.image is not null #}
+                <p>
+
+                    <img src="{{ asset('upload/'~form.vars.value.image.filename) }}"
+                         width="200px">
+                </p>
+                {% endif %}
+
+            {% if form.vars.value.certificat is not null %}
+
+               
+                    <div class="modal fade" tabindex="-1" role="dialog">
+                         <div class="modal-dialog" role="document">
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">certificat</h4>
+                              </div>
+                              <div class="modal-body">
+                                <a href="{{ asset('upload/'~form.vars.value.certificat.filename) }}">pdf</a>
+                     
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                     </div>
+                            </div><!-- /.modal-content -->
+                          </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->               
+            {% endif %}
+
+                {{ form_end(form) }}
+            <div class="form-btn-group pull-right">
+                <button type="submit" class="btn btn-primary">
+                    Enregistrer
+                </button>
+                <a href="{{ path('app_admin_joueur_index') }}" class="btn btn-default">Retour</a>
+            </div>
+        </div>
+    </div> 
+</div>    
     
-    {% if form.vars.value.image is not null %}
-        {#ou if article.image is not null #}
-        <p>
-          
-            <img src="{{ asset('upload/'~form.vars.value.image.filename) }}"
-                 width="200px">
-        </p>
-        {% endif %}
-        
-    {% if form.vars.value.certificat is not null %}
-       
-        <p>
-            <div class="modal fade" tabindex="-1" role="dialog">
-                 <div class="modal-dialog" role="document">
-                     <div class="modal-content">
-                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">certificat</h4>
-                      </div>
-                      <div class="modal-body">
-                        <a href="{{ asset('upload/'~form.vars.value.certificat.filename) }}"
-             >pdf</a>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                             </div>
-                    </div><!-- /.modal-content -->
-                  </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-          
-           
-        </p>
-    {% endif %}
-        
-    
-    <div class="form-btn-group pull-right">
-        <button type="submit" class="btn btn-primary">
-            Enregistrer
-        </button>
-        <a href="{{ path('app_admin_joueur_index') }}" class="btn btn-default">Retour</a>
-    </div>
-    {{ form_end(form) }}
     
 {% endblock %}
