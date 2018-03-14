@@ -1,10 +1,21 @@
 {% extends 'layout.html.twig' %}
-
-
 {% block body %}
-{% block menu_admin %}   
-    {{parent()}}
-{% endblock %}
+    {% block menu_admin %}
+    {% if is_granted('ROLE_ADMIN') %}
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <a class="navbar-brand">Menu Admin</a>
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('app_admin_equipe_index') }}" class="navbar-brand">Gestion Clubs</a></li>
+                <li><a href="{{ path('app_admin_equipe_index') }}" class="navbar-brand">Gestion Equipes</a></li>
+                <li><a href="{{ path('app_admin_equipe_index') }}" class="navbar-brand">Gestion Joueurs</a></li>
+                <li><a href="{{ path('app_admin_rencontre_index') }}" class="navbar-brand">Gestion Rencontres</a></li>               
+                <li><a href="{{ path('app_admin_article_index') }}" class="navbar-brand">Gestion Articles</a></li>
+            </ul>
+        </div>
+    </nav>
+    {% endif %}
+    {% endblock %}
 {% block header %}{# pour ne pas afficher le block header#}{% endblock %}
 {% block content %}
         
@@ -52,7 +63,7 @@
 											<li><a href="codes.html" data-hover="Short Codes">Short Codes</a></li>
 										</ul>
 									</li> #}
-									<li><a href="{{ path('app_contact_index') }}" data-hover="Contact">Contact</a></li>
+									<li><a href="#" data-hover="Lien">Lien</a></li>
 									<li><a href="#" data-hover="Lien">Lien</a></li>
 								</ul>  
 								<div class="clearfix"> </div>	
@@ -412,13 +423,11 @@
 	<script>
 		$(document).ready(function () {
 			$("#owl-demo").owlCarousel({
-
 				autoPlay: 3000, //Set AutoPlay to 3 seconds
 				autoPlay: true,
 				items: 3,
 				itemsDesktop: [991, 2],
 				itemsDesktopSmall: [414, 4]
-
 			});
 		}); 
 	</script>
@@ -453,4 +462,3 @@
 		});
 	</script>
     {% endblock %}{# fin block javascripts #}
-

@@ -68,7 +68,7 @@ class JoueurType extends AbstractType
                 
             ->add(
                     'dateNaissance',
-                    DateType::class,
+                    TextType::class,
                     [
                         'label' => 'Date de naissance'
                     ]
@@ -93,7 +93,7 @@ class JoueurType extends AbstractType
                     'image',
                     FileType::class,
                     [
-                        'label'=>"Photo d'identité",
+                       'label'=>"Photo d'identité",
                        'required'=>false
                     ]
                     )
@@ -103,7 +103,7 @@ class JoueurType extends AbstractType
                     'certificat',
                     FileType::class,
                     [
-                        'label'=>"certificat de santé",
+                     'label'=>"certificat de santé",
                      'required'=>false
                     ]
                     )

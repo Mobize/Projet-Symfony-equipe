@@ -57,7 +57,7 @@ class Joueur
      * @Assert\Email(message="Cet email n'est pas valide")
      * @var string
      */
-    private$mel;
+    private $mel;
     
     /**
      * @ORM\Column(length=10,type="string")
@@ -105,9 +105,6 @@ class Joueur
         'M',
         'F'
     ];
-
-
-
 
 
 
