@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Club;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,14 +19,20 @@ class ClubType extends AbstractType
                   'nom',
                   TextType::class,
                     [
-                        'label' => 'Nom :'
+                        'label' => 'Nom :',
+                        'attr' => [
+                                    'class' => 'well' //Classe well pour la profondeur visuelle du champ
+                                   ]
                     ]
                 )
             ->add(
                   'anneeCreation',
                   TextType::class,
                     [
-                        'label' => 'Année de création :'
+                        'label' => 'Année de création :',
+                        'attr' => [
+                                    'class' => 'well'
+                                   ]
                     ]
                 )
                 
@@ -33,7 +40,10 @@ class ClubType extends AbstractType
                   'sigle',
                   TextType::class,
                     [
-                        'label' => 'Sigle Club :'
+                        'label' => 'Sigle Club :',
+                        'attr' => [
+                                    'class' => 'well'
+                                   ]
                     ]
                 )
                 
@@ -41,7 +51,10 @@ class ClubType extends AbstractType
                   'couleurs',
                   TextType::class,
                     [
-                        'label' => 'Couleurs du Club :'
+                        'label' => 'Couleurs du Club :',
+                        'attr' => [
+                                    'class' => 'well'
+                                   ]
                     ]
                 )
                 
@@ -49,7 +62,14 @@ class ClubType extends AbstractType
                   'logo',
                   FileType::class,
                     [
-                        'label' => 'Logo du Club :'
+                        'label' => 'Logo du Club :',
+                        'attr' => [
+                                    'class' => 'well'
+                                   ],
+                        'attr' => [
+                                    'id' => 'toggle'
+                                   ],
+                        'required' => false
                     ]
                 )
                 
@@ -57,7 +77,10 @@ class ClubType extends AbstractType
                   'stade',
                   TextType::class,
                     [
-                        'label' => 'Adresse du stade :'
+                        'label' => 'Adresse du stade :',
+                        'attr' => [
+                                    'class' => 'well'
+                                   ]
                     ]
                 )
                 
@@ -65,7 +88,10 @@ class ClubType extends AbstractType
                   'statut',
                   TextType::class,
                     [
-                        'label' => 'Statut social :'
+                        'label' => 'Statut social :',
+                        'attr' => [
+                                    'class' => 'well'
+                                   ]
                     ]
                 )
                 
@@ -73,7 +99,10 @@ class ClubType extends AbstractType
                   'president',
                   TextType::class,
                     [
-                        'label' => 'Président du Club :'
+                        'label' => 'Président du Club :',
+                        'attr' => [
+                                    'class' => 'well'
+                                   ]
                     ]
                 )
                 
@@ -81,7 +110,10 @@ class ClubType extends AbstractType
                   'ville',
                   TextType::class,
                     [
-                        'label' => 'Ville domiciliée :'
+                        'label' => 'Ville domiciliée :',
+                        'attr' => [
+                                    'class' => 'well'
+                                   ]
                     ]
                 )
                 
@@ -89,7 +121,10 @@ class ClubType extends AbstractType
                   'adresse',
                   TextType::class,
                     [
-                        'label' => 'Adresse du Club :'
+                        'label' => 'Adresse du Club :',
+                        'attr' => [
+                                    'class' => 'well'
+                                   ]
                     ]
                 )
                 
@@ -97,7 +132,10 @@ class ClubType extends AbstractType
                   'email',
                   TextType::class,
                     [
-                        'label' => 'E-mail :'
+                        'label' => 'E-mail :',
+                        'attr' => [
+                                    'class' => 'well'
+                                   ]
                     ]
                 )
                 
@@ -105,11 +143,29 @@ class ClubType extends AbstractType
                   'telephone',
                   TextType::class,
                     [
-                        'label' => 'Téléphone :'
+                        'label' => 'Téléphone :',
+                        'attr' => [
+                                    'class' => 'well'
+                                   ]
                     ]
                 )
                 
         ;
+        
+         //$options['data'] = L'entité Club
+        // si il y a une image enregistrée en bdd
+        if (!is_null($options['data']->getLogo())) {
+            $builder->add(
+                    'remove_logo',
+                    CheckboxType::class,
+                    [
+                        'label' => "Supprimer l'illustration",
+                        'required' => false,
+                        //champ non relié à un attribut de l'entité Club
+                        'mapped' => false
+                    ]
+            );
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)

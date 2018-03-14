@@ -6,6 +6,7 @@ use App\Entity\Club;
 use App\Form\ClubType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -93,7 +94,7 @@ class ClubController extends Controller
                     }
                 } else {
                     // getData sur une checkbox = true si cochée, false sinon
-                    if ($form->has('remove_image') && $form->get('remove_image')->getData()) {
+                    if ($form->has('remove_logo') && $form->get('remove_logo')->getData()) {
                         $club->setLogo(null);
                         unlink($this->getParameter('upload_dir') . '/' . $originalImage);
                     } else {
