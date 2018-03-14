@@ -19,21 +19,21 @@ class Joueur
     
     /** 
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(length=30)
      * @Assert\NotBlank()
      */
     private $prenom;
     
     /** 
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(length=25)
      * @Assert\NotBlank()
      */
     private $nom;
   
     /**
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(length=255)
      */
     private $rue;
     
@@ -46,34 +46,34 @@ class Joueur
     
      /**
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(length=30)
      * Assert\NotBlank()
      */
     private $ville;
     
      /**
-     * @ORM\Column(unique=true)
+     * @ORM\Column(unique=true,length=120)
      * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
      * @Assert\Email(message="Cet email n'est pas valide")
      * @var string
      */
-    private$mel;
+    private $mel;
     
     /**
-     * @ORM\Column(length=10,type="string")
+     * @ORM\Column(length=14,type="string")
      * @var string
      * @Assert\NotBlank()
      */
     private $tel1;
     
     /**
-    * @ORM\Column(length=10,type="string")
+    * @ORM\Column(length=14,type="string")
     * @var string
     */
     private $tel2;
     
     /**
-     * @var date
+     * @var string
      * @ORM\Column(type="date")
      * @Assert\NotBlank()
      */
@@ -94,20 +94,13 @@ class Joueur
     private $image;
         
      /**
-      * @ORM\Column(nullable=true)
-     * @Assert\Image()
+     * @ORM\Column(nullable=true)
+     * @Assert\File(mimeTypes={ "application/pdf" })
      * @var string
      */
     private $certificat;
     
-    
-    public static $genres = [
-        'M',
-        'F'
-    ];
-
-
-
+ 
 
 
 
@@ -205,20 +198,6 @@ class Joueur
         return $this;
     }
 
-    public function getGenre() {
-        return $this->genre;
-    }
-
-    public function setGenre($genre) {
-        if (!in_array($genre, self::$genres)) {
-            throw new \InvalidArgumentException('Genre non accepté');
-        }
-        
-        $this->genre = $genre;
-        return $this;
-    }
-
- 
     public function getCertificat() {
         return $this->certificat;
     }
@@ -228,5 +207,14 @@ class Joueur
         return $this;
     }
 
-  
+    public function getGenre() {
+        return $this->genre;
+    }
+
+    public function setGenre($genre) {
+        $this->genre = $genre;
+        return $this;
+    }
+
+
 }

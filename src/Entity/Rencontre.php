@@ -18,6 +18,20 @@ class Rencontre
     private $id;
 
     // add your own fields
+    //Date de création enregistrement
+    /**
+     * @ORM\Column(type="datetime",nullable=false)
+     * * @var \Datetime
+     */
+    private $createdAt;
+
+    //Date de modification enregistrement
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     * * @var datetime
+     */
+    private $updatedAt;
+    
       /**
      *@ORM\Column(type="date")
      * @var \Datetime
@@ -44,6 +58,13 @@ class Rencontre
      * @var string 
      */
     private $lieu;     
+    
+    
+    //pour l'enregistrement automatique de la date de création de l'enregistrement
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
     
     //SETTERS ET GETTERS
     
@@ -85,4 +106,22 @@ class Rencontre
         $this->lieu = $lieu;
         return $this;
     }
+    
+    
+    function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    function getUpdatedAt() {
+        return $this->updatedAt;
+    }
+
+    function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
+    }
+
+    function setUpdatedAt($updatedAt) {
+        $this->updatedAt = $updatedAt;
+    }
+
 }

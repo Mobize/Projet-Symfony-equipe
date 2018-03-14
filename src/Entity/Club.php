@@ -21,6 +21,19 @@ class Club
      */
     private $id;
     
+     //Date de création enregistrement
+    /**
+     * @ORM\Column(type="datetime",nullable=false)
+     * * @var \Datetime
+     */
+    private $createdAt;
+
+    //Date de modification enregistrement
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     * * @var \datetime
+     */
+    private $updatedAt;
     /**
      *@ORM\Column(length=200, unique=true)
      * @var string 
@@ -33,24 +46,22 @@ class Club
     private $nom;
     
      /**
-     *@ORM\Column(length=4, type="string")
+     *@ORM\Column(length=4, type="string",nullable=true)
      * @var string 
      * 
      */
     private $anneeCreation;
     
     /**
-     * @ORM\Column(length=15, type="string")
+     * @ORM\Column(length=15, type="string",nullable=true)
      * @var string 
      */
-    
     private $sigle;
     
     /**
-     * @ORM\Column(length=100, type="string")
+     * @ORM\Column(length=15, type="string",nullable=true)
      * @var string 
      */
-    
     private $couleurs;
     
     /**
@@ -58,59 +69,57 @@ class Club
      * @Assert\Image()
      * @var string 
      */
-    
     private $logo;
     
     /**
-     * @ORM\Column(length=255, type="string")
+     * @ORM\Column(length=255, type="string",nullable=true)
      * @var string 
      */
-    
     private $stade;
     
     /**
-     * @ORM\Column(length=255, type="string")
+     * @ORM\Column(length=255, type="string",nullable=true)
      * @var string 
      */
-    
-    
     private $statut;
     
     /**
-     * @ORM\Column(length=100, type="string")
+     * @ORM\Column(length=70, type="string",nullable=true)
      * @var string 
      */
-    
     private $president;
     
     /**
-     * @ORM\Column(length=100, type="string")
+     * @ORM\Column(length=100, type="string",nullable=true)
      * @var string 
      */
-    
     private $ville;
     
     /**
-     * @ORM\Column(length=255, type="string")
+     * @ORM\Column(length=255, type="string",nullable=true)
      * @var string 
      */
-    
     private $adresse;
     
     /**
-     * @ORM\Column(length=40, type="string")
+     * @ORM\Column(length=40, type="string",nullable=true)
      * @var string 
      */
-    
     private $email;
     
     /**
-     * @ORM\Column(length=15, type="string")
+     * @ORM\Column(length=15, type="string",nullable=true)
      * @var string 
      */
-    
     private $telephone;
     
+    //pour l'enregistrement automatique de la date de création de l'enregistrement
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    //SETTERS ET GETTERS
     public function getId() {
         return $this->id;
     }
@@ -225,10 +234,24 @@ class Club
 
     public function __toString() 
     {
-        return $this->name;
+        return $this->nom;
     }
 
-    
+     function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    function getUpdatedAt() {
+        return $this->updatedAt;
+    }
+
+    function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
+    }
+
+    function setUpdatedAt($updated_at) {
+        $this->updatedAt = $updatedAt;
+    }   
 
 
 
