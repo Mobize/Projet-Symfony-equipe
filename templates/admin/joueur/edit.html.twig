@@ -1,16 +1,24 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-       <h1>Edition de la liste des joueurs</h1>
-    {{ form_start(form) }}
-    {{ form_row(form.prenom) }}
-    {{ form_row(form.rue) }}
-    {{ form_row(form.cp) }}
-    {{ form_row(form.ville) }}
-    {{ form_row(form.tel1) }}
-    {{ form_row(form.tel2) }}
-    {{ form_row(form.dateNaissance) }}
-    {{ form_row(form.genre) }}
+   
+        <h1>Édition de la liste des joueurs</h1>
+            {{ form_start(form) }}
+            {{ form_row(form.prenom) }}
+            {{ form_row(form.nom) }}
+            {{ form_row(form.rue) }}
+            {{ form_row(form.cp) }}
+            {{ form_row(form.ville) }}
+            {{ form_row(form.tel1) }}
+            {{ form_row(form.tel2) }}
+            
+        <div>   
+          {{ form_row(form.dateNaissance) }}
+            <input id="date" type="date">{
+        </div>
+            
+            {{ form_row(form.genre) }}
+   
     
     <div class="form-btn-group pull-right">
         <button type="submit" class="btn btn-primary">
