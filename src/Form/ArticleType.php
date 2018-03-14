@@ -21,19 +21,28 @@ class ArticleType extends AbstractType
             ->add('title',
             TextType::class,
                     [
-                        'label' => 'Titre'
+                        'label' => 'Titre',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]             
                     ]
                 )
             ->add('content',
             TextareaType::class,
                     [
-                        'label' => 'Contenu'
+                        'label' => 'Contenu',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]             
                     ]
                 ) 
             ->add('description',
             TextareaType::class,
                     [
-                        'label' => 'Description'
+                        'label' => 'Description',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]             
                     ]
                 )
             ->add('category',
@@ -45,7 +54,10 @@ class ArticleType extends AbstractType
                       //nom du champ qui s'affiche dans les <option>
                       'choice_label' => 'name',
                       //1ère option vide
-                      'placeholder' => 'Choisissez une catégorie'
+                      'placeholder' => 'Choisissez une catégorie',
+                       'attr' => [
+                            'class' => 'perso'
+                        ]             
                   ]  
                 )
             ->add('image',
@@ -53,7 +65,9 @@ class ArticleType extends AbstractType
                     FileType::class,
                     [
                         'label' => 'Illustration',
-                        'required' => false
+                        'required' => false, 'attr' => [
+                        'class' => 'perso'
+                        ]             
                     ]
             )    
         ;

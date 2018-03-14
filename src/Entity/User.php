@@ -35,10 +35,25 @@ class User implements UserInterface
      */
     private $firstname;
     
+    /**
+     * @ORM\Column()
+     * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
+     * @var string
+     *
+     */
+    private $assoc;
+    
+      /**
+     * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Club 
+     */
+     private $club;
+    
      /**
      * @ORM\Column(unique=true)
      * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
-     * @Assert\Email(message="Cet email n'est pas valide")
+     * 
      * @var string
      */
     private $email;
@@ -73,7 +88,11 @@ class User implements UserInterface
     function getFirstname() {
         return $this->firstname;
     }
-
+    
+     function getAssoc() {
+        return $this->assoc;
+    }
+    
     function getEmail() {
         return $this->email;
     }
@@ -93,7 +112,11 @@ class User implements UserInterface
     function setFirstname($firstname) {
         $this->firstname = $firstname;
     }
-
+    
+    function setAssoc($assoc) {
+        $this->assoc = $assoc;
+    }
+    
     function setEmail($email) {
         $this->email = $email;
     }
@@ -147,6 +170,17 @@ class User implements UserInterface
     {
         return $this->getFullname();
     }
+
+         public function getClub(): ?Club {
+        return $this->club;
+    }
+
+    public function setClub(Club $club) {
+        $this->club = $club;
+        return $this;
+    }
+
+    
 
 
 }

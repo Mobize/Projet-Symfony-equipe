@@ -19,21 +19,21 @@ class Joueur
     
     /** 
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(length=30)
      * @Assert\NotBlank()
      */
     private $prenom;
     
     /** 
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(length=25)
      * @Assert\NotBlank()
      */
     private $nom;
   
     /**
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(length=255)
      */
     private $rue;
     
@@ -46,13 +46,13 @@ class Joueur
     
      /**
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(length=30)
      * Assert\NotBlank()
      */
     private $ville;
     
      /**
-     * @ORM\Column(unique=true)
+     * @ORM\Column(unique=true,length=120)
      * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
      * @Assert\Email(message="Cet email n'est pas valide")
      * @var string
@@ -60,14 +60,14 @@ class Joueur
     private$mel;
     
     /**
-     * @ORM\Column(length=10,type="string")
+     * @ORM\Column(length=14,type="string")
      * @var string
      * @Assert\NotBlank()
      */
     private $tel1;
     
     /**
-    * @ORM\Column(length=10,type="string")
+    * @ORM\Column(length=14,type="string")
     * @var string
     */
     private $tel2;

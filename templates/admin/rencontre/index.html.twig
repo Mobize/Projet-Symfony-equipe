@@ -1,14 +1,14 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Gestion des rencontres</h1>
-    <p>
-        <a class="btn btn-primary" href="{{path('app_admin_rencontre_edit')}}">Ajouter une rencontre</a>
-    </p>
+    <h1>Gestion des rencontres<a class="btn btn-primary pull-right" href="{{path('app_admin_rencontre_edit')}}">Ajouter une rencontre</a></h1>
+
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th>Id</th>
-            <th>Date</th>
+            <th>Date de création</th>
+            <th>Date de modification</th>
+            <th>Date de la rencontre</th>
             <th>ID Equipe 1</th>
             <th>ID Equipe 2</th>
             <th>Lieu</th>            
@@ -17,13 +17,21 @@
         {% for rencontre in rencontres %}
             <tr>
                 <td width="10px">{{ rencontre.id }}</td>
+                <td width="150px">{{ rencontre.createdAt|date('d/m/Y h:i:s')}}</td>
+                <td width="10px">{% if rencontre.updatedAt is not null %}{{ rencontre.updatedAt|date('d/m/Y h:i:s') }}{% endif %}</td>
                 <td width="150px">{{ rencontre.date|date('d/m/Y')}}</td>
                 <td width="150px">{{ rencontre.equipe1}}</td>
                 <td width="150px">{{ rencontre.equipe2}}</td>
                 <td width="150px">{{ rencontre.lieu}}</td>
-
-                
+                <td>
+                    <a href="{{ path('app_admin_rencontre_edit', {id: rencontre.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('app_admin_rencontre_delete', {id: rencontre.id}) }}" class="btn btn-danger">Supprimer</a>
+                </td>  
             </tr>
-        {% endfor %}    
+        {% else %}
+            <tr>
+                <td colspan="8">Aucune rencontre créée pour le moment.</td>
+            </tr>                    
+        {% endfor %}                  
     </table>
 {% endblock %}

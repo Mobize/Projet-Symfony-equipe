@@ -3,33 +3,36 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Rencontre;
-use App\Form\RencontreType;
+use App\Entity\Saison;
+use App\Form\SaisonType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/rencontre")
+ * @Route("/saison")
  */
-class RencontreController extends Controller
+class SaisonController extends Controller
 {
     /**
      * @Route("/")
      */
     public function index()
-        {
-        $repository = $this->getDoctrine()->getRepository(Rencontre::class);
+    {
+        dump($this->getUser());
+        
+        $repository = $this->getDoctrine()->getRepository(Saison::class);
         
         //on recup ts les matchs
-        $rencontres = $repository->findAll();
+        $saisons = $repository->findAll();
         
         return $this->render(
-            'admin/rencontre/index.html.twig', [
-            'rencontres' => $rencontres
-        ]);
+            'admin/saison/index.html.twig', [
+            'saisons' => $saisons
+            ]    
+        );
     }
-    
-    
+
      /**
      * @Route("/edit/{id}", defaults={"id":null})
      */
@@ -39,14 +42,14 @@ class RencontreController extends Controller
         $em= $this->getDoctrine()->getManager();
         
         if(is_null($id)){
-            $rencontre= new Rencontre();
-            
+            $saison= new Saison();
+            $saison->setClub($this->getUser()->getClub());
         } else {
-            $rencontre = $em->getRepository(Rencontre::class)->find($id);
+            $saison = $em->getRepository(Saison::class)->find($id);
         }        
         
         //création du formulaire lié à l'équipe
-        $form = $this->createForm(RencontreType::class, $rencontre);
+        $form = $this->createForm(SaisonType::class, $saison);
         
         //le formulaire traite la requete HTTP
         $form->handleRequest($request);
@@ -56,20 +59,20 @@ class RencontreController extends Controller
             //s'il n'y à pas d'erreurs de validation du formulaire
             if ($form->isValid()){
                 //prepare l'enregistrement en bdd
-                $em->persist($rencontre);
+                $em->persist($saison);
                 //fait l'enregistrement en bdd
                 $em->flush();
                 
                 //Ajout du message flash
-                $this->addFlash('success', 'La rencontre a été enregistrée');
+                $this->addFlash('success', 'La saison a été enregistrée');
                 //redirection vers la liste
-                return $this->redirectToRoute('app_admin_rencontre_index');                
+                return $this->redirectToRoute('app_admin_saison_index');                
             } else {
                 $this->addFlash('error', 'Le formulaire contient des erreurs');
             }
         }
         
-         return $this->render('admin/rencontre/edit.html.twig', 
+         return $this->render('admin/saison/edit.html.twig', 
                  [
                      'form' => $form->createView()
                  ]
@@ -83,17 +86,18 @@ class RencontreController extends Controller
     public function delete($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $rencontre = $em->find(Rencontre::class, $id);
+        $saison = $em->find(Saison::class, $id);
         
         //suppression de la categorie en bdd
-        $em->remove($rencontre);
+        $em->remove($saison);
         $em->flush();
         
         //ajout d'un message
-        $this->addFlash('success', 'La rencontre a été supprimée');
+        $this->addFlash('success', 'La saison a été supprimée');
         //redirection vers la liste des categories
-        return $this->redirectToRoute('app_admin_rencontre_index');
+        return $this->redirectToRoute('app_admin_saison_index');
         
-    }
-    
+    }    
+ 
 }
+    

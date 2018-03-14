@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ClubController extends Controller
 {
     /**
-     * @Route("/", name="club")
+     * @Route("/")
      */
     public function index()
     {
@@ -60,7 +60,7 @@ class ClubController extends Controller
                 $em->flush();
                 
                 //Ajout du message flash
-                $this->addFlash('success', 'Le club '.$club->getNom().' a été enregistrée');
+                $this->addFlash('success', 'Le club '.$club->getNom().' a été enregistré');
                 //redirection vers la liste
                 return $this->redirectToRoute('app_admin_club');                
             } else {
