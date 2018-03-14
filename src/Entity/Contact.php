@@ -18,7 +18,7 @@ class Contact
     private $id;
 
     /**
-     *@ORM\Column(length=200, unique=true)
+     * @ORM\Column(length=20)
      * @var string 
      * 
      * Validation
@@ -29,7 +29,7 @@ class Contact
     
      /** 
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(length=20)
      * @Assert\NotBlank()
      */
     private $prenom;
@@ -48,6 +48,7 @@ class Contact
      * @var string 
      */
     private $message;
+    
     function getId() {
         return $this->id;
     }
