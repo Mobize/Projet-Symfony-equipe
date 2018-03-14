@@ -47,7 +47,7 @@ class Club
     private $sigle;
     
     /**
-     * @ORM\Column(length=15, type="string")
+     * @ORM\Column(length=100, type="string")
      * @var string 
      */
     
@@ -77,7 +77,7 @@ class Club
     private $statut;
     
     /**
-     * @ORM\Column(length=70, type="string")
+     * @ORM\Column(length=100, type="string")
      * @var string 
      */
     
