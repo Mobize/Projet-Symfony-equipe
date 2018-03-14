@@ -1,0 +1,52 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Liste clubs</h1>
+    
+    <a href="{{ path('app_admin_club_edit') }}" class="btn btn-primary">Ajouter un club</a>
+    
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Année de création</th>
+            <th>Sigle</th>
+            <th>Couleurs</th>
+            <th>Logo</th>
+            <th>Stade</th>
+            <th>Statut</th>
+            <th>Président</th>
+            <th>Ville</th>
+            <th>Adresse</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            
+        </tr>
+        {% for club in clubs %}
+            <tr>
+                <td>{{ club.id }}</td>
+                <td>{{ club.nom }}</td>
+                <td>{{ club.anneeCreation }}</td>
+                <td>{{ club.sigle }}</td>
+                <td>{{ club.couleurs }}</td>
+                <td>
+                {% if club.logo is not null %}
+        <div class="thumbnail">
+            <img src="{{ club.logo }}">
+        </div>
+                {% endif %}
+                </td>
+                <td>{{ club.stade }}</td>
+                <td>{{ club.statut }}</td>
+                <td>{{ club.president }}</td>
+                <td>{{ club.ville }}</td>
+                <td>{{ club.adresse }}</td>
+                <td>{{ club.email }}</td>
+                <td>{{ club.telephone }}</td>
+                <td><a href="{{ path('app_admin_club_edit', {id: club.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('app_admin_club_delete', {id: club.id}) }}" class="btn btn-danger">Supprimer</a></td>
+            </tr>
+        {% endfor %}    
+    </table>
+{% endblock %}
+
