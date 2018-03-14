@@ -70,7 +70,9 @@ class JoueurType extends AbstractType
                     'dateNaissance',
                     TextType::class,
                     [
-                        'label' => 'Date de naissance'
+                        'label' => 'Date de naissance',
+                       
+                   
                     ]
                 ) 
                 
