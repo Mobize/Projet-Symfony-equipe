@@ -6,9 +6,9 @@
         <div class="container">
             <a class="navbar-brand">Menu Admin</a>
             <ul class="nav navbar-nav">
-                <li><a href="{{ path('app_admin_club_index') }}" class="navbar-brand">Gestion Clubs</a></li>
+                <li><a href="{{ path('app_admin_equipe_index') }}" class="navbar-brand">Gestion Clubs</a></li>
                 <li><a href="{{ path('app_admin_equipe_index') }}" class="navbar-brand">Gestion Equipes</a></li>
-                <li><a href="{{ path('app_admin_joueur_index') }}" class="navbar-brand">Gestion Joueurs</a></li>
+                <li><a href="{{ path('app_admin_equipe_index') }}" class="navbar-brand">Gestion Joueurs</a></li>
                 <li><a href="{{ path('app_admin_rencontre_index') }}" class="navbar-brand">Gestion Rencontres</a></li>               
                 <li><a href="{{ path('app_admin_article_index') }}" class="navbar-brand">Gestion Articles</a></li>
             </ul>
@@ -63,8 +63,8 @@
 											<li><a href="codes.html" data-hover="Short Codes">Short Codes</a></li>
 										</ul>
 									</li> #}
-									<li><a href="#" data-hover="Lien">Lien</a></li>
-									<li><a href="#" data-hover="Lien">Lien</a></li>
+									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contact</a></li>
+									<li><a href="{{ path('app_apropos_index') }}" data-hover="A propos">A propos</a></li>
 								</ul>  
 								<div class="clearfix"> </div>	
 							</div>
