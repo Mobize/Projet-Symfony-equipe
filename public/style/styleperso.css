@@ -8,7 +8,9 @@ and open the template in the editor.
     Author     : Etudiant
 */
 
-
+.navbar-inverse{
+    margin-bottom: 0;
+}
 .form-control.perso{
     border: 1px solid;
 }

@@ -1,5 +1,17 @@
 {% extends 'layout.html.twig' %}
 
+{% block header %}{# Reprend l'affiche de l'image d'accueil et du menu #}
+  {{ parent() }}
+{% endblock %} 
+
+{% block reduction_image %}{# Affiche l'image d'accueil en taille reduite #}
+  {{ parent() }} 
+{% endblock %}
+
+{% block index %}{# Vide pour ne pas afficher l'image en grande taille #}
+{% endblock %}    
+
+
 {% block content %}
     <h1>Edition Equipe</h1>
     {{ form_start(form) }}{# ouvre la balise form #}
