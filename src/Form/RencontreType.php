@@ -20,7 +20,10 @@ class RencontreType extends AbstractType
                   'date',
                   DateType::class,
                     [
-                        'label' => 'Date'
+                        'label' => 'Date',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]             
                     ]
                 )
             ->add(
@@ -29,10 +32,13 @@ class RencontreType extends AbstractType
                     [
                         'label' => 'ID Equipe 1',
                         'class' => Equipe::class,
-                      //nom du champ qui s'affiche dans les <option>
-                      'choice_label' => 'nom',
-                      //1ère option vide
-                      'placeholder' => 'Choisissez une catégorie'                        
+                        //nom du champ qui s'affiche dans les <option>
+                        'choice_label' => 'nom',
+                        //1ère option vide
+                        'placeholder' => 'Choisissez une catégorie',
+                        'attr' => [
+                            'class' => 'perso'
+                        ]                        
                     ]
                 )
             ->add(
@@ -41,17 +47,23 @@ class RencontreType extends AbstractType
                     [
                         'label' => 'ID Equipe 2',
                         'class' => Equipe::class,
-                       //nom du champ qui s'affiche dans les <option>
-                      'choice_label' => 'nom',
-                      //1ère option vide
-                      'placeholder' => 'Choisissez une catégorie'  
+                        //nom du champ qui s'affiche dans les <option>
+                        'choice_label' => 'nom',
+                        //1ère option vide
+                        'placeholder' => 'Choisissez une catégorie',
+                        'attr' => [
+                            'class' => 'perso'
+                        ]             
                     ]
                 )              
             ->add(
                   'lieu',
                     TextType::class,
                     [
-                        'label' => 'Lieu'
+                        'label' => 'Lieu',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]             
                     ]
                 )   
                 ;

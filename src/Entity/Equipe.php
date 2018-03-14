@@ -18,6 +18,21 @@ class Equipe
     private $id;
 
     // add your own fields
+    
+    //Date de création enregistrement
+    /**
+     * @ORM\Column(type="datetime",nullable=false)
+     * * @var \Datetime
+     */
+    private $createdAt;
+
+    //Date de modification enregistrement
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     * * @var \datetime
+     */
+    private $updatedAt;
+    
      /**
      *@ORM\Column(length=20)
      * @var string 
@@ -27,6 +42,12 @@ class Equipe
      * @Assert\Length(max=20,maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
     private $nom;
+    
+    //pour l'enregistrement automatique de la date de création de l'enregistrement
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
     
     //SETTERS ET GETTERS
     public function getId() {
@@ -42,11 +63,28 @@ class Equipe
         return $this;
     }
 
+    function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    function getUpdatedAt() {
+        return $this->updatedAt;
+    }
+
+    function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
+    }
+
+    function setUpdatedAt($updated_at) {
+        $this->updatedAt = $updatedAt;
+    }
+
+        
+    
     public function __toString() 
     {
         return $this->nom;
     }
-
 
     
     

@@ -7,6 +7,9 @@ use App\Form\EquipeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
+
+
 
 /**
  * @Route("/equipe")
@@ -23,6 +26,9 @@ class EquipeController extends Controller
         //on recup ttes les catégories
         $equipes = $repository->findAll();
         
+        //TEST
+        
+       
         return $this->render('admin/equipe/index.html.twig', [
                'equipes' => $equipes
         ]);

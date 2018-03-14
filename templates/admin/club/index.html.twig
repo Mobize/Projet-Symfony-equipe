@@ -1,13 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Liste clubs</h1>
-    
-    <a href="{{ path('app_admin_club_edit') }}" class="btn btn-primary">Ajouter un club</a>
-    
-    <table class="table">
+    <h1>Liste clubs<a href="{{ path('app_admin_club_edit') }}" class="btn btn-primary pull-right">Ajouter un club</a></h1>
+        
+    <table class="table table-striped table-bordered table-hover">
         <tr>
             <th>Id</th>
+            <th>Date de création</th>
+            <th>Date de modification</th>
             <th>Nom</th>
             <th>Année de création</th>
             <th>Sigle</th>
@@ -20,19 +20,22 @@
             <th>Adresse</th>
             <th>Email</th>
             <th>Téléphone</th>
+            <th width="300px"></th>
             
         </tr>
         {% for club in clubs %}
             <tr>
                 <td>{{ club.id }}</td>
+                <td width="150px">{{ club.createdAt|date('d/m/Y h:i:s')}}</td>
+                <td width="10px">{% if club.updatedAt is not null %}{{ club.updatedAt|date('d/m/Y h:i:s') }}{% endif %}</td>
                 <td>{{ club.nom }}</td>
                 <td>{{ club.anneeCreation }}</td>
                 <td>{{ club.sigle }}</td>
                 <td>{{ club.couleurs }}</td>
                 <td>
                 {% if club.logo is not null %}
-        <div class="thumbnail">
-            <img src="{{ club.logo }}">
+        <div class="">
+            <img src="{{ asset('upload/' ~ club.logo) }}" width="100px">
         </div>
                 {% endif %}
                 </td>
