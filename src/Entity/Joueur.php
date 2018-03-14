@@ -19,14 +19,14 @@ class Joueur
     
     /** 
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text",length=50)
      * @Assert\NotBlank()
      */
     private $prenom;
     
     /** 
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text",length=50)
      * @Assert\NotBlank()
      */
     private $nom;
@@ -46,7 +46,7 @@ class Joueur
     
      /**
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", length=50)
      * Assert\NotBlank()
      */
     private $ville;
@@ -73,7 +73,7 @@ class Joueur
     private $tel2;
     
     /**
-     * @var date
+     * @var string
      * @ORM\Column(type="date")
      * @Assert\NotBlank()
      */
@@ -94,17 +94,13 @@ class Joueur
     private $image;
         
      /**
-      * @ORM\Column(nullable=true)
-     * @Assert\Image()
+     * @ORM\Column(nullable=true)
+     * @Assert\File(mimeTypes={ "application/pdf" })
      * @var string
      */
     private $certificat;
     
-    
-    public static $genres = [
-        'M',
-        'F'
-    ];
+ 
 
 
 
@@ -202,20 +198,6 @@ class Joueur
         return $this;
     }
 
-    public function getGenre() {
-        return $this->genre;
-    }
-
-    public function setGenre($genre) {
-        if (!in_array($genre, self::$genres)) {
-            throw new \InvalidArgumentException('Genre non accepté');
-        }
-        
-        $this->genre = $genre;
-        return $this;
-    }
-
- 
     public function getCertificat() {
         return $this->certificat;
     }
@@ -225,5 +207,14 @@ class Joueur
         return $this;
     }
 
-  
+    public function getGenre() {
+        return $this->genre;
+    }
+
+    public function setGenre($genre) {
+        $this->genre = $genre;
+        return $this;
+    }
+
+
 }
