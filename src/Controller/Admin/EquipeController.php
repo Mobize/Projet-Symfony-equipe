@@ -9,8 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-
-
 /**
  * @Route("/equipe")
  */
@@ -21,16 +19,19 @@ class EquipeController extends Controller
      */
     public function index()
     {
-        $repository = $this->getDoctrine()->getRepository(Equipe::class);
+               
+        //récupération des équipes du club
+        // méthode ListEquipeClub() écrite dans App\Repository\EquipeRepository
+        $equipeRepository = $this->getDoctrine()->getRepository(Equipe::class);
+        $equipes = $equipeRepository->listEquipeClub();
         
-        //on recup ttes les catégories
-        $equipes = $repository->findAll();
+          //récupération des équipes extérieures
+        $equipeExts = $equipeRepository->listEquipeClub(false);
         
-        //TEST
-        
-       
         return $this->render('admin/equipe/index.html.twig', [
-               'equipes' => $equipes
+               'equipes' => $equipes,
+               'equipeExts' => $equipeExts
+               
         ]);
     }
  
@@ -72,9 +73,19 @@ class EquipeController extends Controller
             }
         }
         
+        $nom = $equipe->getNom();
+        $typeEquipe = $equipe->getLocal();
+        if($typeEquipe == 1){
+            $lib_Equipe = ' du club ';
+        } else {
+            $lib_Equipe = ' extérieure ';
+        }
+        
          return $this->render('admin/equipe/edit.html.twig', 
                  [
-                     'form' => $form->createView()
+                     'form' => $form->createView(),
+                     'nom' => $nom,
+                     'lib_Equipe' => $lib_Equipe
                  ]
         );
     }

@@ -69,9 +69,16 @@ class RencontreController extends Controller
             }
         }
         
+        $equipe1 = $rencontre->getEquipe1();
+        $equipe2 = $rencontre->getEquipe2();
+        $date = $rencontre->getDate();
+        
          return $this->render('admin/rencontre/edit.html.twig', 
                  [
-                     'form' => $form->createView()
+                     'form' => $form->createView(),
+                     'equipe1' => $equipe1,
+                     'equipe2' => $equipe2,
+                     'date' => $date
                  ]
         );
     }

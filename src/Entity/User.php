@@ -171,7 +171,7 @@ class User implements UserInterface
         return $this->getFullname();
     }
 
-         public function getClub(): ?Club {
+    public function getClub(): ?Club {
         return $this->club;
     }
 
