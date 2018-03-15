@@ -40,7 +40,14 @@ class Contact
      * @Assert\Email(message="Cet email n'est pas valide")
      * @var string
      */
-    private$mel;
+    private $mel;
+    
+    /**
+     * @var string
+     * @ORM\Column(length=20)
+     * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
+     */
+    private $telephone;
     
     /**
      * @ORM\Column(type="text")
@@ -83,6 +90,14 @@ class Contact
 
     function setMessage($message) {
         $this->message = $message;
+    }
+
+    function getTelephone() {
+        return $this->telephone;
+    }
+
+    function setTelephone($telephone) {
+        $this->telephone = $telephone;
     }
 
 
