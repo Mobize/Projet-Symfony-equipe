@@ -18,12 +18,14 @@
         <div class="container">
             <a class="navbar-brand">Menu Admin</a>
             <ul class="nav navbar-nav">
-                <li><a href="{{ path('app_admin_club_index') }}" class="navbar-brand">Gestion Clubs</a></li>
-                <li><a href="{{ path('app_admin_saison_index') }}" class="navbar-brand">Gestion Saisons</a></li>
-                <li><a href="{{ path('app_admin_equipe_index') }}" class="navbar-brand">Gestion Equipes</a></li>
-                <li><a href="{{ path('app_admin_joueur_index') }}" class="navbar-brand">Gestion Joueurs</a></li>
-                <li><a href="{{ path('app_admin_rencontre_index') }}" class="navbar-brand">Gestion Rencontres</a></li>               
-                <li><a href="{{ path('app_admin_article_index') }}" class="navbar-brand">Gestion Articles</a></li>
+                <li><a href="{{ path('app_admin_club_index') }}" class="navbar-brand">Gestion des clubs</a></li>
+                <li><a href="{{ path('app_admin_club_index') }}" class="navbar-brand">Profil du club</a></li>
+                <li><a href="{{ path('app_admin_staff_index') }}" class="navbar-brand">Gestion du staff</a></li>
+                <li><a href="{{ path('app_admin_saison_index') }}" class="navbar-brand">Gestion des saisons</a></li>
+                <li><a href="{{ path('app_admin_equipe_index') }}" class="navbar-brand">Gestion des équipes</a></li>
+                <li><a href="{{ path('app_admin_joueur_index') }}" class="navbar-brand">Gestion des joueurs</a></li>
+                <li><a href="{{ path('app_admin_rencontre_index') }}" class="navbar-brand">Gestion des rencontres</a></li>               
+                <li><a href="{{ path('app_admin_article_index') }}" class="navbar-brand">Gestion des articles</a></li>
             </ul>
         </div>
     </nav>
@@ -32,21 +34,7 @@
     {% block header %}{# Affichage du menu et image d'accueil #}
     	<div class="w3ls-banner">
 		<div class="w3lsbanner-info">
-                    <div class="container">
-        {% for type,messages in app.session.flashbag.all %}
-            {% for message in messages %}
-                {# pour la classe alert-danger du bootstrap #}
-                {% if type == 'error' %}
-                    {% set type = 'danger' %}
-                {% endif %}    
-                <div class="alert alert-{{ type }}">
-                    {{ message|raw }}                
-                </div>
-            {% endfor %}    
-        {% endfor %}
-        
-        
-    </div> 
+                   
 			<!-- header -->
 			<div class="header">
 				<div class="container">  
@@ -114,8 +102,26 @@
 		</div>
 	</div>
     {% endblock %}  {# fin block index #}
-	<!-- //banner -->
-	{% block content %}	<!--about-->
+    <!-- //banner <--></-->
+    
+    {% block message %}{# pour affichage des messages de validation  #}
+     <div class="container">
+        {% for type,messages in app.session.flashbag.all %}
+            {% for message in messages %}
+                {# pour la classe alert-danger du bootstrap #}
+                {% if type == 'error' %}
+                    {% set type = 'danger' %}
+                {% endif %}    
+                <div class="alert alert-{{ type }}">
+                    {{ message|raw }}                
+                </div>
+            {% endfor %}    
+        {% endfor %}
+       
+    </div> 
+    {% endblock %}  {# fin block message #}
+    
+    {% block content %}	<!--about-->
 	<div class="about">
 		<div class="container">
 			<div class="wthree_head_section">

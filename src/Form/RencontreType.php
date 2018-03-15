@@ -30,12 +30,12 @@ class RencontreType extends AbstractType
                   'equipe1',
                     EntityType::class,
                     [
-                        'label' => 'ID Equipe 1',
+                        'label' => 'Equipe 1',
                         'class' => Equipe::class,
                         //nom du champ qui s'affiche dans les <option>
                         'choice_label' => 'nom',
                         //1ère option vide
-                        'placeholder' => 'Choisissez une catégorie',
+                        'placeholder' => 'Choisissez une équipe',
                         'attr' => [
                             'class' => 'perso'
                         ]                        
@@ -45,12 +45,12 @@ class RencontreType extends AbstractType
                   'equipe2',
                     EntityType::class,
                     [
-                        'label' => 'ID Equipe 2',
+                        'label' => 'Equipe 2',
                         'class' => Equipe::class,
                         //nom du champ qui s'affiche dans les <option>
                         'choice_label' => 'nom',
                         //1ère option vide
-                        'placeholder' => 'Choisissez une catégorie',
+                        'placeholder' => 'Choisissez une équipe',
                         'attr' => [
                             'class' => 'perso'
                         ]             
@@ -60,7 +60,7 @@ class RencontreType extends AbstractType
                   'lieu',
                     TextType::class,
                     [
-                        'label' => 'Lieu',
+                        'label' => 'Lieu de la rencontre',
                          'attr' => [
                             'class' => 'perso'
                         ]             
