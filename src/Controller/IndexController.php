@@ -16,8 +16,8 @@ class IndexController extends Controller
     public function index()
     {
         $articleRepository= $this->getDoctrine()->getRepository(Article::class);
-        // méthode findLatest() écrite dans App\Repository\ArticleRepository
-        $articles = $articleRepository->findLatest(3);
+        // méthode addSelect écrite dans App\Repository\ArticleRepository
+        $articles = $articleRepository->addSelect($select = null);
         
         return $this->render(
                 'index/index.html.twig',

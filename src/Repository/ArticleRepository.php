@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Article;
-use App\Entity\Category;
+use App\Entity\Rencontre;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,26 +19,26 @@ class ArticleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Article::class);
     }
+    
+  /*fonction pour récupérer les valeurs dans d'autres entités*/  
 
-    public function findLatest($limit, Category $category = null)
-    {
-        $qb = $this->createQueryBuilder('a');
+  public function findByRencontre(Rencontre $rencontre) {
+        $qb = $this->createQueryBuilder('a')
+                ->join('a.rencontre', 'r')
+                ->where('r.id = :rencontre')
+                ->setParameter('rencontre', $rencontre->getId());
+        //dump($qb);
+        // try {
+        return $qb->getQuery()->getResult();  
+    
+  }
+         // Example - $qb->join('u.Group', 'g', 'WITH', 'u.status = ?1')
+    // Example - $qb->join('u.Group', 'g', 'WITH', 'u.status = ?1', 'g.id')
+  /*  public function join($join, $alias, $conditionType = null, $condition = null, $indexBy = null){
         
-        $qb
-            ->orderBy('a.id', 'DESC')
-            ->setMaxResults($limit); 
-        
-        if (!is_null($category)){
-            //$qb->andWhere('IDENTITY(a.category) = ' . $category->getId());
-            $qb
-                ->andWhere('IDENTITY(a.category) = :category')
-                ->setParameter('category', $category->getId());    
-        }
-        
-        return $qb->getQuery()->getResult();
     }
-    /*
-    public function findBySomething($value)
+    
+    /*public function findBySomething($value)
     {
         return $this->createQueryBuilder('a')
             ->where('a.something = :value')->setParameter('value', $value)

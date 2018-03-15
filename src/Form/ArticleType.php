@@ -36,30 +36,17 @@ class ArticleType extends AbstractType
                         ]             
                     ]
                 ) 
-            ->add('description',
+            ->add('resume',
             TextareaType::class,
                     [
-                        'label' => 'Description',
+                        'label' => 'Résumé',
                          'attr' => [
                             'class' => 'perso'
                         ]             
                     ]
                 )
-            ->add('category',
-                  //<select> sur une entité
-                  EntityType::class,
-                  [
-                      'label' => 'Catégorie',
-                      'class' => Category::class,
-                      //nom du champ qui s'affiche dans les <option>
-                      'choice_label' => 'name',
-                      //1ère option vide
-                      'placeholder' => 'Choisissez une catégorie',
-                       'attr' => [
-                            'class' => 'perso'
-                        ]             
-                  ]  
-                )
+ 
+     
             ->add('image',
                     //input type file
                     FileType::class,

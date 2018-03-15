@@ -32,22 +32,12 @@ class Article
     private $content;
     
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(length=50)
      * @Assert\NotBlank()
      * @var string 
      */
-    private $description;
-    
-    /**
-     * fetch="EAGER" pour eviter le LAZY LOADING
-     * 
-     * @ORM\ManyToOne(targetEntity="Category", fetch="EAGER")
-     * @Assert\NotBlank()
-     * @ORM\JoinColumn(nullable=false)
-     * @var Category 
-     */
-    private $category;
-    
+    private $resume;
+       
       /**
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(nullable=false)
@@ -61,57 +51,70 @@ class Article
      * @var string 
      */
     private $image;
-            
-    function getId() {
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Rencontre")
+     * @ORM\JoinColumn(nullable=false)
+      * @var Rencontre
+     */
+    private $rencontre;
+    
+   
+    
+    public function getId() {
         return $this->id;
     }
 
-    function getTitle() {
+    public function getTitle() {
         return $this->title;
     }
 
-    function getContent() {
+    public function getContent() {
         return $this->content;
     }
 
-    function getDescription() {
-        return $this->description;
-    }
-
-    function getCategory() {
-        return $this->category;
-    }
-
-    function getAuthor(): User {
+    public function getAuthor(): User {
         return $this->author;
     }
 
-    function setTitle($title) {
-        $this->title = $title;
-    }
-
-    function setContent($content) {
-        $this->content = $content;
-    }
-
-    function setDescription($description) {
-        $this->description = $description;
-    }
-
-    function setCategory(Category $category) {
-        $this->category = $category;
-    }
-
-    function setAuthor(User $author) {
-        $this->author = $author;
-    }
-
-    function getImage() {
+    public function getImage() {
         return $this->image;
     }
 
-    function setImage($image) {
+
+    public function setContent($content) {
+        $this->content = $content;
+        return $this;
+    }
+  
+    public function setAuthor(User $author) {
+        $this->author = $author;
+        return $this;
+    }
+
+    public function setImage($image) {
         $this->image = $image;
+        return $this;
+    }
+
+ 
+
+    public function getResume() {
+        return $this->resume;
+    }
+
+    public function setResume($resume) {
+        $this->resume = $resume;
+        return $this;
+    }
+
+    public function getRencontre(): ?Rencontre {
+        return $this->rencontre;
+    }
+
+    public function setRencontre(Rencontre $rencontre) {
+        $this->rencontre = $rencontre;
+        return $this;
     }
 
 
