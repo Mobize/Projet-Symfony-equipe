@@ -17,7 +17,6 @@
         {% if app.user is null %}{# si aucun utilisateur n'est connecté #}
     	<div class="w3ls-banner">
 		<div class="w3lsbanner-info">
-      
 			<!-- header -->
 			<div class="header">
 				<div class="container">  
@@ -96,14 +95,12 @@
                                                                         {% if is_granted('ROLE_ADMIN') %}
                                                                             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
 										<ul class="dropdown-menu">
-                                                                                  <li><a href="{{ path('app_admin_club_index') }}" class="navbar-brand">Gestion des clubs</a></li>
-                                                                                    <li><a href="{{ path('app_admin_club_index') }}" class="navbar-brand">Profil du club</a></li>
-                                                                                    <li><a href="{{ path('app_admin_staff_index') }}" class="navbar-brand">Gestion du staff</a></li>
-                                                                                    <li><a href="{{ path('app_admin_saison_index') }}" class="navbar-brand">Gestion des saisons</a></li>
-                                                                                    <li><a href="{{ path('app_admin_equipe_index') }}" class="navbar-brand">Gestion des équipes</a></li>
-                                                                                    <li><a href="{{ path('app_admin_joueur_index') }}" class="navbar-brand">Gestion des joueurs</a></li>
-                                                                                    <li><a href="{{ path('app_admin_rencontre_index') }}" class="navbar-brand">Gestion des rencontres</a></li>               
-                                                                                    <li><a href="{{ path('app_admin_article_index') }}" class="navbar-brand">Gestion des articles</a></li>                              
+                                                                                    <li><a href="{{ path('app_admin_club_index') }}" data-hover="Gestion Clubs">Gestion Clubs</a></li>
+                                                                                    <li><a href="{{ path('app_admin_saison_index') }}" data-hover="Gestion Saisons">Gestion Saisons</a></li>
+                                                                                    <li><a href="{{ path('app_admin_equipe_index') }}" data-hover="Gestion Equipes">Gestion Equipes</a></li>
+                                                                                    <li><a href="{{ path('app_admin_joueur_index') }}" data-hover="Gestion Joueurs">Gestion Joueurs</a></li>
+                                                                                    <li><a href="{{ path('app_admin_rencontre_index') }}" data-hover="Gestion Rencontres">Gestion Rencontres</a></li>
+                                                                                    <li><a href="{{ path('app_admin_article_index') }}" data-hover="Gestion Article">Gestion Article</a></li>
 										</ul>
                                                                             </li> 
                                                                                         
