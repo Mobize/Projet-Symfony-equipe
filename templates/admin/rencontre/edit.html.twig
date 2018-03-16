@@ -15,17 +15,26 @@
 {% block content %}
 <div class="container"> 
     <div class="row">  
-        <div class="col-md-12">     
-            <h1>Edition Rencontres</h1>
+        <div class="col-md-12"> 
+            <!-- Modification du titre selon création/édition -->
+             {% if equipe1 is not null %}
+                <h1>Edition de la rencontre : {{ equipe1 }} contre {{ equipe2 }} du {{ date }}</h1>
+            {% else %}    
+                <h1>Création d'une rencontre</h1>
+            {% endif %}
+                
             {{ form_start(form) }}{# ouvre la balise form #}
             {{ form_row(form.date) }}
-            {{ form_end(form) }}{# ferme la balise form #}
+            {{ form_row(form.equipe1) }}
+            {{ form_row(form.equipe2) }}
+            {{ form_row(form.lieu) }}
+            
             <div class="form-btn-group">
-                <button type="submit" class="btn btn-primary">
-                    Enregistrer
-                </button>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
                 <a href="{{ path('app_admin_rencontre_index') }}" class="btn btn-default">Retour</a>
             </div> 
+            {{ form_end(form) }}{# ferme la balise form #}
+
         </div>
     </div> 
 </div>    
