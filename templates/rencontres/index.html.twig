@@ -23,7 +23,11 @@
                 <table class="table table-striped table-bordered table-hover">
                     <tr>
                         <th colspan="6">
-                            <h1 class="text-center">Saison 2017/2018-"U8 Arcachon" <img src="imagesDev/redstar.png" alt="logo" />{#(pourquoi pas le logo en plus)#} <p>Calendrier</p> </h1>
+                            <h1 class="text-center">Saison 2017/2018-"U8 Arcachon" </h1>
+                            <div class="thumnails  text-center">
+                                <img src="{{ asset('images/redstar.png') }}" alt="logo" />{#(pourquoi pas le logo en plus?)#}
+                            </div>
+                            <h2 class="text-center">Calendrier</h2> 
                         </th>
                     </tr>
                     <tr>
@@ -69,7 +73,7 @@
                 </table>
                          <div id="filtre-rencontres">
                              <p class="text-center">
-                                 <b>Filtrer<b/> : <button class="btn btn-success btn" id="victoire" >V</button>
+                                 <b title="Cliquer sur un bouton pour filtrer">Filtrer :<b/> <button class="btn btn-success btn" id="victoire" >V</button>
                                            <button class="btn btn-warning btn" id="nul" >N</button>
                                            <button class="btn btn-danger btn" id="defaite" >D</button>
                              </p>
@@ -97,6 +101,7 @@
          * 
          */
         $(function() {
+            
             $("#victoire").click(function() {
                 $(".btn_def,.btn_nul ").fadeOut('slow').toggle();
             });
@@ -107,7 +112,7 @@
                 $(".btn_vic,.btn_nul ").fadeOut('slow').toggle();
             });
             /*$("#victoire").on("click" function() {
-                alert("a");
+                alert("test");
                 La méthode "on" ne fonctionne pas car version obsolète
             }) */
         });
