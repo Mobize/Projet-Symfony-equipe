@@ -1,9 +1,11 @@
 <?php
-//TEST GITd
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use App\Entity\Rencontre;
 use App\Form\ArticleType;
+use App\Form\RencontreType;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -23,10 +25,16 @@ class ArticleController extends Controller
         $repository = $this->getDoctrine()->getRepository(Article::class);
         $articles = $repository->findAll();
         
+        $repository = $this->getDoctrine()->getRepository(Rencontre::class);
+        $rencontres = $repository->findAll();
+        
+        
+        
         return $this->render(
             '/admin/article/index.html.twig',
             [
-                'articles' => $articles
+                'articles' => $articles,
+                'rencontres'=>$rencontres
             ]
         );
     }
@@ -45,7 +53,7 @@ class ArticleController extends Controller
             $article->setAuthor($this->getUser());
         } else { // modification
             $article = $em->find(Article::class, $id);
-            
+           
             if (!is_null($article->getImage())) {
                 $originalImage = $article->getImage();
                 $imagePath = $this->getParameter('upload_dir') . '/' . $originalImage;

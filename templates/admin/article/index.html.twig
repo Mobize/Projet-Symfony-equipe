@@ -35,16 +35,19 @@
                 {% for article in articles %}
                     <tr>
                         <td>{{ article.id }}</td>
+                        
+                        {% for rencontre in rencontres %}
                         <td>{{ rencontre.equipe1 }}</td>
                         <td>{{ rencontre.equipe2 }}</td>
                         <td>{{ rencontre.lieu}}</td>
                         <td>{{ rencontre.date }}</td>
-                        {#<td>{{ article.category.name }}</td>#}
-                        {# grace à la méthode __toString() : #}
-                        <td>{{ user.author}}</td>
+                        {% endfor %}
+                  
+                        {% for article in articles %}
                         <td>{{ article.title }}</td>
                         <td>{{ article.content }}</td>
                         <td>{{ article.resume }}</td>
+                        {% endfor %}
                         <td>
                             {% if article.image is not null %}
                                 <img src="{{ asset('upload/' ~ article.image) }}" width="100px">
