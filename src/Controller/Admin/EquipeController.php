@@ -23,10 +23,12 @@ class EquipeController extends Controller
         //récupération des équipes du club
         // méthode ListEquipeClub() écrite dans App\Repository\EquipeRepository
         $equipeRepository = $this->getDoctrine()->getRepository(Equipe::class);
-        $equipes = $equipeRepository->listEquipeClub();
+        $equipes = $equipeRepository->listEquipeClub($this->getUser()->getClub()->getId());
         
-          //récupération des équipes extérieures
-        $equipeExts = $equipeRepository->listEquipeClub(false);
+        //récupération des équipes extérieures
+        $equipeExts = $equipeRepository->listEquipeClub($this->getUser()->getClub()->getId(),false);
+       
+        //dump($this->getUser()->getClub()->getId());
         
         return $this->render('admin/equipe/index.html.twig', [
                'equipes' => $equipes,
@@ -45,9 +47,18 @@ class EquipeController extends Controller
         
         if(is_null($id)){
             $equipe = new Equipe();
+            
         } else {
             $equipe = $em->getRepository(Equipe::class)->find($id);
+           
         }        
+        
+        //Equipe du club par défaut (pas extérieure)
+        $equipe->setLocal(true);
+        
+        //alimentation de la clé étrangère club
+        $equipe->setClub($this->getUser()->getClub());
+
         
         //création du formulaire lié à l'équipe
         $form = $this->createForm(EquipeType::class, $equipe);

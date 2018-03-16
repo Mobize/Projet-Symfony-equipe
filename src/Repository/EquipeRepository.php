@@ -20,7 +20,7 @@ class EquipeRepository extends ServiceEntityRepository
     }
 
     //Sélection des équipes du club connecté
-    public function listEquipeClub(bool $local = true)
+    /*public function listEquipeClub(bool $local = true)
     {
         
         return $this->createQueryBuilder('e')
@@ -28,7 +28,19 @@ class EquipeRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }*/
+    
+    public function listEquipeClub($club,bool $local = true)
+    {
+        return $this->createQueryBuilder('e')
+            ->where('e.club = :club')->setParameter('club',$club)
+            ->andWhere('e.local = :local')->setParameter('local',(int)$local)    
+            ->getQuery()
+            ->getResult()
+        ;
     }
+    
+    
     /*
     public function findBySomething($value)
     {
