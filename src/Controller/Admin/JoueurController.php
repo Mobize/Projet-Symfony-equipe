@@ -67,9 +67,11 @@ class JoueurController extends Controller
             }  
         }        
         
+        //alimentation de la clé étrangère club
+        $joueur->setClub($this->getUser()->getClub());
+
         $form = $this->createForm(JoueurType::class, $joueur);
-        
-        
+
         $form->handleRequest($request);
         
         //si le formulaire à été envoyé

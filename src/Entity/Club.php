@@ -113,6 +113,14 @@ class Club
      */
     private $telephone;
     
+     /**
+     * @ORM\Column(unique=true)
+     * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
+     * @var string
+     *
+     */
+    private $assoc;
+    
     //pour l'enregistrement automatique de la date de création de l'enregistrement
     public function __construct()
     {
@@ -253,7 +261,21 @@ class Club
         $this->updatedAt = $updatedAt;
     }   
 
+    public function getClub(): ?Club {
+        return $this->club;
+    }
 
+    public function setClub(Club $club) {
+        $this->club = $club;
+        return $this;
+    }
+    function setAssoc($assoc) {
+        $this->assoc = $assoc;
+    }
+    
+    function getAssoc() {
+        return $this->assoc;
+    }
 
 
 }

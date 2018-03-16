@@ -100,10 +100,25 @@ class Joueur
      */
     private $certificat;
     
- 
+    //CHOIX EQUIPE
+     /**
+     * @ORM\ManyToOne(targetEntity="Equipe",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Equipe 
+     */
+     private $equipe;   
+     
+
+    //CLUB
+     /**
+     * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Club 
+     */
+     private $club;
 
 
-
+    //GETTERS ET SETTERS
     public function getId() {
         return $this->id;
     }
@@ -213,6 +228,23 @@ class Joueur
 
     public function setGenre($genre) {
         $this->genre = $genre;
+        return $this;
+    }
+
+    public function getClub(): Club {
+        return $this->club;
+    }
+
+    public function setClub(Club $club) {
+        $this->club = $club;
+        return $this;
+    }
+    public function getEquipe(){
+        return $this->equipe;
+    }
+
+    public function setEquipe($equipe) {
+        $this->equipe = $equipe;
         return $this;
     }
 
