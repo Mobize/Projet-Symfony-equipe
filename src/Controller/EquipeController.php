@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  /**
   * @Route("/equipes")
   */
-class EquipesController extends Controller
+class EquipeController extends Controller
 {
    /**
      * @Route("/")
