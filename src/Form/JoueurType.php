@@ -17,6 +17,14 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class JoueurType extends AbstractType
 {  
+    private $tokenStorage;
+
+
+    public function __construct(TokenStorageInterface $tokenStorage) {
+        $this->tokenStorage = $tokenStorage;
+    }
+
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $club = $this->tokenStorage->getToken()->getUser()->getClub();
