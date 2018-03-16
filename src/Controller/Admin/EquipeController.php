@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Equipe;
 use App\Form\EquipeType;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -40,14 +41,27 @@ class EquipeController extends Controller
      */
     public function edit(Request $request,$id)
     {
-        //entity manager gere les objets et les lignes en bdd
         $em= $this->getDoctrine()->getManager();
+        $originalImage = null;
         
         if(is_null($id)){
             $equipe = new Equipe();
         } else {
             $equipe = $em->getRepository(Equipe::class)->find($id);
+            
+            if (!is_null($equipe->getImage())) {
+                $originalImage = $equipe->getImage();
+                $imagePath = $this->getParameter('upload_dir') . '/' . $originalImage;
+                // objet File pour éviter une erreur du formulaire
+                $equipe->setImage(new File($imagePath));
+            }
         }        
+        
+        //Equipe du club par défaut (pas extérieure)
+        $equipe->setLocal(true);
+        
+        //alimentation de la clé étrangère club
+        $equipe->setClub($this->getUser()->getClub());
         
         //création du formulaire lié à l'équipe
         $form = $this->createForm(EquipeType::class, $equipe);
@@ -59,6 +73,38 @@ class EquipeController extends Controller
         if ($form->isSubmitted()){
             //s'il n'y à pas d'erreurs de validation du formulaire
             if ($form->isValid()){
+                
+                /** @var UploadedFile $image */
+                $image = $equipe->getImage();
+                
+                // s'il y a une image uploadée
+                if (!is_null($image)) {
+                    // nom du fichier que l'on va enregistrer
+                    $filename = uniqid() . '.' . $image->guessExtension();
+                    
+                    // équivalent move_uploaded_file()
+                    $image->move(
+                        // upload_dir défini dans service.yaml
+                        $this->getParameter('upload_dir'),
+                        $filename
+                    );
+                    
+                    $equipe->setImage($filename);
+                    
+                    // suppression de l'ancienne image en modification
+                    if (!is_null($originalImage)) {
+                        unlink($this->getParameter('upload_dir') . '/' . $originalImage);
+                    }
+                } else {
+                    // getData sur une checkbox = true si cochée, false sinon
+                    if ($form->has('remove_image') && $form->get('remove_image')->getData()) {
+                        $equipe->setImage(null);
+                        unlink($this->getParameter('upload_dir') . '/' . $originalImage);
+                    } else {
+                        $equipe->setImage($originalImage);
+                    }
+                }
+                
                 //prepare l'enregistrement en bdd
                 $em->persist($equipe);
                 //fait l'enregistrement en bdd

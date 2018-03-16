@@ -166,7 +166,7 @@
     
     {% block message %}{# affichage des messages info #}
         <div class="container">
-            <div class="col-md-6 erreur col-md-offset-4">
+            <div class="col-md-6 erreur col-md-offset-3">
                 {% for type,messages in app.session.flashbag.all %}
                     {% for message in messages %}
                         {# pour la classe alert-danger du bootstrap #}
