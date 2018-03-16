@@ -15,8 +15,20 @@ and open the template in the editor.
     border: 1px solid;
 }
 
+
+/*-----Partie rencontres calendrierpar équipe route provisoire "@/rencontres"" --------------*/
+
+
+/* Léger décalage bouton d'affichage victoires nuls défaites */
 .resultat_rencontres_btn {
     margin-left: 15px;
 }
+
+.div_btn_filtrage {
+    display: none;
+    margin-top: 6px;
+}
+
+margin-top: 6px;
 
 
