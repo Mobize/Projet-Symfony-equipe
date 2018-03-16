@@ -14,7 +14,7 @@
 {% block title %} Page rencontres équipe{% endblock %}
 
 {% block content %}
-    <!--
+    
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -82,8 +82,8 @@
                         
             </div>
         </div>
-             -->          
-                        
+                      
+     <!--                   
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -153,14 +153,13 @@
                         
             </div>
         </div>
-    
+    <-->
                         
 
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {{ parent() }}
     <script>
         /*
          *  .btn_def cible les boutons défaite
@@ -177,7 +176,7 @@
             
             
             $("#filtrage_btn").click(function() {
-                $(".div_btn_filtrage").show('fast');
+                $(".div_btn_filtrage").show('slow');
             }); // bouton filtrer
            
 
