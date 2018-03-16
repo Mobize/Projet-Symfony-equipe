@@ -36,6 +36,7 @@
                     <th>Date de création</th>
                     <th>Date de modification</th>
                     <th>Nom</th>
+                    <th>Illustration</th>
                     <th width="200px"></th>
                 </tr>
 
@@ -45,6 +46,9 @@
                         <td width="150px">{{ equipe.createdAt|date('d/m/Y h:i:s')}}</td>
                         <td width="10px">{{ equipe.updatedAt|date('d/m/Y h:i:s') }}</td>
                         <td width="150px">{{ equipe.nom}}</td>
+                            {% if equipe.image is not null %}
+                                <td width="150px"><img src="{{ asset('upload/' ~ equipe.image) }}" width="100px"></td> 
+                            {% endif %}  
                         <td width="75px">
                             <a href="{{ path('app_admin_equipe_edit', {id: equipe.id}) }}" class="btn btn-primary">Modifier</a>
                             <a href="{{ path('app_admin_equipe_delete', {id: equipe.id}) }}" class="btn btn-danger">Supprimer</a>

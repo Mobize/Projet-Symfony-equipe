@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Equipe;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -16,8 +17,11 @@ class EquipeController extends Controller
      */
     public function index()
     {
-        return $this->render('equipe/index.html.twig', [
-            
+        $equipeRepository = $this->getDoctrine()->getRepository(Equipe::class);
+        $equipes = $equipeRepository->listEquipeClub($this->getUser()->getClub()->getId());
+        
+        return $this->render('equipes/index.html.twig', [
+            'equipes' => $equipes,
         ]);
     }
 }

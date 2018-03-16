@@ -19,12 +19,16 @@ class SaisonController extends Controller
      */
     public function index()
     {
-        dump($this->getUser());
+        //dump($this->getUser());
         
         $repository = $this->getDoctrine()->getRepository(Saison::class);
         
-        //on recup ts les matchs
-        $saisons = $repository->findAll();
+        //on récupère les saisons du club
+        //$saisons = $repository->findAll();
+        
+        //récupération des saisons du club
+        $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+        $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
         
         return $this->render(
             'admin/saison/index.html.twig', [

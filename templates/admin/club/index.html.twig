@@ -24,6 +24,7 @@
                     <th>Date de création</th>
                     <th>Date de modification</th>
                     <th>Nom</th>
+                    <th>N° association</th>
                     <th>Année de création</th>
                     <th>Sigle</th>
                     <th>Couleurs</th>
@@ -44,6 +45,7 @@
                         <td width="150px">{{ club.createdAt|date('d/m/Y h:i:s')}}</td>
                         <td width="10px">{% if club.updatedAt is not null %}{{ club.updatedAt|date('d/m/Y h:i:s') }}{% endif %}</td>
                         <td>{{ club.nom }}</td>
+                        <td>{{ club.assoc }}</td>
                         <td>{{ club.anneeCreation }}</td>
                         <td>{{ club.sigle }}</td>
                         <td>{{ club.couleurs }}</td>

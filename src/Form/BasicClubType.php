@@ -24,6 +24,16 @@ class BasicClubType extends AbstractType
                         ]
                     ]
                 )
+            ->add(
+                  'assoc',
+                  TextType::class,
+                    [
+                        'label' => 'N° association',
+                        'attr' => [
+                            'class' => 'perso'
+                        ]
+                    ]
+                )
                 
         ;
     }

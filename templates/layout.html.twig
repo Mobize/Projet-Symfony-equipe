@@ -69,6 +69,7 @@
 		<div class="w3lsbanner-info">
                     <div class="header-mdl agileits-logo connecte"><!-- header-two --> 
 			<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
+                                    {{ app.user.club.nom }}
                         <h2 class="connecte">Bonjour <a class=" utilisateur">{{ app.user.fullname }}</a></h2>
                     </div>
 			<!-- header -->
@@ -166,7 +167,7 @@
     
     {% block message %}{# affichage des messages info #}
         <div class="container">
-            <div class="col-md-6 erreur col-md-offset-4">
+            <div class="col-md-6 erreur col-md-offset-3">
                 {% for type,messages in app.session.flashbag.all %}
                     {% for message in messages %}
                         {# pour la classe alert-danger du bootstrap #}

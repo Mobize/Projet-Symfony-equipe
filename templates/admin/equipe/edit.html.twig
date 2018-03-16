@@ -26,6 +26,11 @@
             
             {{ form_start(form) }}{# ouvre la balise form #}
             {{ form_row(form.nom) }}
+            {{ form_row(form.image) }}
+             {% if form.vars.value.image is not null %}
+        <p>Actuellement : <img src="{{ asset('upload/' ~ form.vars.value.image.filename) }}" width="100px"></p>
+        {{ form_row(form.remove_image) }}
+    {% endif %} 
             <div class="form-btn-group">
                 <button type="submit" class="btn btn-primary">
                     Enregistrer

@@ -49,7 +49,13 @@ class Equipe
      * @var Club 
      */
      private $club;
-
+     
+     /**
+     * @ORM\Column(nullable=true)
+     * @Assert\Image()
+     * @var string 
+     */
+     private $image;
 
      /**
      * @ORM\Column(type="boolean",nullable=true)
@@ -116,7 +122,13 @@ class Equipe
         return $this;
     }
 
+    function getImage() {
+        return $this->image;
+    }
 
+    function setImage($image) {
+        $this->image = $image;
+    }
     
     
 }
