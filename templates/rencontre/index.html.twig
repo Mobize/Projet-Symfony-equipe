@@ -32,16 +32,55 @@
             </ol> 
  </div>
 <h3>Lieu de la rencontre </h3>
-<h4>(Adresse du stade)</h4>
+<h4>{{ rencontre.lieu}}</h4>
 <div class="row">
-    <iframe
-  width="250"
-  height="250"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBMDN2M-7uqCr4qvWrqpgD9IoklMh3bYQE
-    &q=Eiffel+Tower,Paris+France" allowfullscreen>
-    </iframe>                             
-</div>
+     <div id="googleMap"></div>
+     
+      
+      {% block javascript %}
+          {{ parent() }}
+          <script src="https://maps.googleapis.com/maps/api/js?&language=fr&key=AIzaSyBMDN2M-7uqCr4qvWrqpgD9IoklMh3bYQE
+    "></script>
+    <script>
+       var geocoder;
+    var map;   
+    function TrouverADR(adresse)
+    {
+        geocoder = new google.maps.Geocoder();
+        geocoder.geocode( { "address": adresse}, function(results, status) {
+        
+        if (status == google.maps.GeocoderStatus.OK) {
+
+                
+                var strposition = results[0].geometry.location.toString();
+                var latlng = new google.maps.LatLng(strposition);
+                
+                var mapOptions = {
+                        zoom      : 15,
+                        center    : latlng,
+                        scrollwheel:false,
+                        zoomControl: true,
+                        scaleControl: true,
+                        streetViewControl: true
+                        }
+                        
+                map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);	  
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                                    map: map,
+                                    position: results[0].geometry.location
+                                });
+                }
+                    
+            }  );
+        }
+          
+    </script>
+    <script>
+         var adresse= '{{ rencontre.lieu }}';
+         TrouverADR(adresse);
+    </script>
+    {% endblock  %}
  <h3>Covoiturage</h3>
     <textarea class="form-control" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam maximus felis quis volutpat posuere. Suspendisse non sem pretium diam mattis tempus. Nunc urna metus, venenatis ac blandit at, maximus sit amet odio. Integer id tempor nibh. Vivamus nec nulla et lorem vestibulum tincidunt. Donec sit amet nibh ligula. </textarea>
 
