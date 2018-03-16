@@ -116,9 +116,11 @@ class ClubController extends Controller
             }
         }
         
-         return $this->render('admin/club/edit.html.twig', 
+        $nom = $club->getNom();
+        return $this->render('admin/club/edit.html.twig', 
                  [
-                     'form' => $form->createView()
+                     'form' => $form->createView(),
+                     'nom' => $nom
                  ]
         );
     }
@@ -145,4 +147,20 @@ class ClubController extends Controller
         return $this->redirectToRoute('app_admin_club_index');
         
     }
+    
+     /**
+     * @Route("/profil")
+     */
+    /*public function profil()
+    {
+        /*$repository = $this->getDoctrine()->getRepository(Club::class);
+
+        $club = $repository->find
+        return $this->render('admin/club/profil.html.twig', 
+                 [
+                     'club' => $club,
+                     
+                 ]
+        );*/
+    //}
 }

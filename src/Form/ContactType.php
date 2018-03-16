@@ -3,12 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Contact;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ContactType extends AbstractType
 {
@@ -29,7 +30,7 @@ class ContactType extends AbstractType
                      'prenom',
                      TextType::class,
                     [
-                        'label' => 'Prenom',
+                        'label' => 'Prénom',
                         'attr' => [
                             'class' => 'perso'
                         ]
@@ -45,10 +46,20 @@ class ContactType extends AbstractType
                         ]
                     ]
                 )
+                ->add(
+                     'telephone',
+                     NumberType::class,
+                        [
+                            'label' => 'Téléphone',
+                            'attr' => [
+                                'class' => 'perso'
+                            ]
+                        ]
+                )
                 ->add('message',
                     TextareaType::class,
                     [
-                        'label' => 'message',
+                        'label' => 'Message',
                         'attr' => [
                             'class' => 'perso'
                         ]

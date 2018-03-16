@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+
+{% block header %}{# Reprend l'affiche de l'image d'accueil et du menu #}
+  {{ parent() }}
+{% endblock %} 
+
+{% block reduction_image %}{# Affiche l'image d'accueil en taille reduite #}
+  {{ parent() }} 
+{% endblock %}
+
+{% block index %}{# Vide pour ne pas afficher l'image en grande taille #}
+{% endblock %}    
+
+
+{% block content %}
+<div class="container"> 
+    <div class="row">  
+        <div class="col-md-12">     
+            <h1>Gestion des membres du staff<a class="btn btn-primary pull-right" href="{{path('app_admin_staff_edit')}}">Ajouter un membre du staff</a></h1>
+
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>Id</th>
+                    <th>Date de création</th>
+                    <th>Date de modification</th>
+                    <th>Prénom</th>  
+                    <th>Nom</th>
+                    <th>Fonction dans le club</th>   
+                    <th width="200px"></th>
+                </tr>
+                {% for staff in staffs %}
+                    <tr>
+                        <td width="10px">{{ staff.id }}</td>
+                        <td width="150px">{{ staff.createdAt|date('d/m/Y h:i:s')}}</td>
+                        <td width="10px">{% if staff.updatedAt is not null %}{{ staff.updatedAt|date('d/m/Y h:i:s') }}{% endif %}</td>
+                        <td width="150px">{{ staff.prenom}}</td>
+                        <td width="150px">{{ staff.nom}}</td>
+                        <td width="150px">{{ staff.fonction}}</td>
+                        <td>
+                            <a href="{{ path('app_admin_staff_edit', {id: staff.id}) }}" class="btn btn-primary">Modifier</a>
+                            <a href="{{ path('app_admin_staff_delete', {id: staff.id}) }}" class="btn btn-danger">Supprimer</a>
+                        </td>  
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Aucun membre du staff créé pour le moment.</td>
+                    </tr>                    
+                {% endfor %}                  
+            </table>
+            
+        </div>
+    </div> 
+</div>     
+{% endblock %}

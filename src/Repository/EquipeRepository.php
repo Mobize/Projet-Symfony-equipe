@@ -19,6 +19,16 @@ class EquipeRepository extends ServiceEntityRepository
         parent::__construct($registry, Equipe::class);
     }
 
+    //Sélection des équipes du club connecté
+    public function listEquipeClub(bool $local = true)
+    {
+        
+        return $this->createQueryBuilder('e')
+            ->where('e.local = :local')->setParameter('local',(int)$local)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     /*
     public function findBySomething($value)
     {

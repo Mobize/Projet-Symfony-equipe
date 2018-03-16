@@ -13,45 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  * @Route("/contact")
  */
 class ContactController extends Controller
-{
-    /**
-     * @Route("/")
-     */
-   /* public function Add(Request $request)
-    {
-        $em= $this->getDoctrine()->getManager();
-        
-        $contact = new Contact();
-        
-        $form = $this->createForm(ContactType::class, $contact);
-        
-        $form->handleRequest($request);
-        
-        //si le formulaire à été envoyé
-        if ($form->isSubmitted()){
-            //s'il n'y à pas d'erreurs de validation du formulaire
-            if ($form->isValid()){
-                //prepare l'enregistrement en bdd
-                $em->persist($contact);
-                //fait l'enregistrement en bdd
-                $em->flush();
-                
-                //Ajout du message flash
-                $this->addFlash('success', 'Votre message a été enregistrée');
-                //redirection vers la liste
-                return $this->redirectToRoute('app_index_index');                
-            } else {
-                $this->addFlash('error', 'Le formulaire contient des erreurs');
-            }
-        }
-        
-        return $this->render('contact/index.html.twig', 
-                [
-                    'form' => $form->createView()
-                ]
-        );
-    }*/
-    
+{ 
     /**
      * @Route("/")
      */
@@ -78,7 +40,7 @@ class ContactController extends Controller
                 $em->flush();
                 
                 //Ajout du message flash
-                $this->addFlash('success', 'Le message a été enregistré');
+                $this->addFlash('success', 'Votre message a été enregistré');
                 //redirection vers la liste
                 return $this->redirectToRoute('app_contact_add');                
             } else {

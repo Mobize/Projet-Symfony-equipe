@@ -1,14 +1,39 @@
 {% extends 'layout.html.twig' %}
 
+{% block header %}{# Reprend l'affiche de l'image d'accueil et du menu #}
+  {{ parent() }}
+{% endblock %} 
+
+{% block reduction_image %}{# Affiche l'image d'accueil en taille reduite #}
+  {{ parent() }} 
+{% endblock %}
+
+{% block index %}{# Vide pour ne pas afficher l'image en grande taille #}
+{% endblock %}    
+
+
 {% block content %}
-    <h1>Edition Saisons</h1>
-    {{ form_start(form) }}{# ouvre la balise form #}
-    {{ form_row(form.nom) }}
-    <div class="form-btn-group pull-right">
-        <button type="submit" class="btn btn-primary">
-            Enregistrer
-        </button>
-        <a href="{{ path('app_admin_saison_index') }}" class="btn btn-default">Retour</a>
-    </div>
-    {{ form_end(form) }}{# ferme la balise form #}
+<div class="container"> 
+    <div class="row">  
+        <div class="col-md-6 col-md-offset-3">    
+           
+            <!-- Modification du titre selon création/édition -->
+            {% if nom is not null %}
+                <h1>Edition de la saison : {{ nom }}</h1>
+            {% else %}    
+                <h1>Création d'une saison</h1>
+            {% endif %}
+            
+            {{ form_start(form) }}{# ouvre la balise form #}
+            {{ form_row(form.nom) }}
+            <div class="form-btn-group pull-right">
+                <button type="submit" class="btn btn-primary">
+                    Enregistrer
+                </button>
+                <a href="{{ path('app_admin_saison_index') }}" class="btn btn-default">Retour</a>
+            </div>
+            {{ form_end(form) }}{# ferme la balise form #}
+        </div>
+    </div> 
+</div>     
 {% endblock %}
