@@ -69,7 +69,7 @@ class User implements UserInterface
      */
     private $plainPassword;
             
-    
+    //GETTERS ET SETTERS
     function getId() {
         return $this->id;
     }
@@ -81,8 +81,6 @@ class User implements UserInterface
     function getFirstname() {
         return $this->firstname;
     }
-    
-
     
     function getEmail() {
         return $this->email;
@@ -104,17 +102,20 @@ class User implements UserInterface
         $this->firstname = $firstname;
     }
     
-
     function setEmail($email) {
         $this->email = $email;
     }
 
     function setPassword($password) {
         $this->password = $password;
+        
+        return $this;
     }
 
     function setRole($role) {
         $this->role = $role;
+        
+        return $this;
     }
 
     function getPlainPassword() {
@@ -148,11 +149,7 @@ class User implements UserInterface
         return $this->email;
     }
     
-    //affiche le nom et prenom de l utilisateur si il est connecté
-    public function getFullname()
-    {
-        return $this->firstname . ' ' . $this->lastname;
-    }
+
     
     public function __toString() 
     {
@@ -168,7 +165,8 @@ class User implements UserInterface
         return $this;
     }
 
-    
-
-
+    public function getFullName()
+    {
+        return trim($this->getFirstname() . ' ' . $this->getFirstname());
+    }
 }

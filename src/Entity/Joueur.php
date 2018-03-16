@@ -17,20 +17,7 @@ class Joueur
      */
     private $id;
     
-    /** 
-     * @var string
-     * @ORM\Column(length=30)
-     * @Assert\NotBlank()
-     */
-    private $prenom;
     
-    /** 
-     * @var string
-     * @ORM\Column(length=25)
-     * @Assert\NotBlank()
-     */
-    private $nom;
-  
     /**
      * @var string
      * @ORM\Column(length=255)
@@ -51,14 +38,7 @@ class Joueur
      */
     private $ville;
     
-     /**
-     * @ORM\Column(unique=true,length=120)
-     * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
-     * @Assert\Email(message="Cet email n'est pas valide")
-     * @var string
-     */
-    private $mel;
-    
+   
     /**
      * @ORM\Column(length=14,type="string")
      * @var string
@@ -108,7 +88,6 @@ class Joueur
      */
      private $equipe;   
      
-
     //CLUB
      /**
      * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
@@ -117,19 +96,24 @@ class Joueur
      */
      private $club;
 
+     //USER
+     /**
+     * @ORM\OneToOne(targetEntity="User",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var User 
+     */
+     private $user;
+     
+     public function __construct() {
+         $this->user = new User();
+     }
 
+     
     //GETTERS ET SETTERS
     public function getId() {
         return $this->id;
     }
 
-    public function getPrenom() {
-        return $this->prenom;
-    }
-
-    public function getNom() {
-        return $this->nom;
-    }
 
     public function getRue() {
         return $this->rue;
@@ -153,16 +137,6 @@ class Joueur
 
     public function getDateNaissance() {
         return $this->dateNaissance;
-    }
-
-    public function setPrenom($prenom) {
-        $this->prenom = $prenom;
-        return $this;
-    }
-
-    public function setNom($nom) {
-        $this->nom = $nom;
-        return $this;
     }
 
     public function setRue($rue) {
@@ -195,18 +169,11 @@ class Joueur
         return $this;
     }
 
-    public function getMel() {
-        return $this->mel;
-    }
 
     public function getImage() {
         return $this->image;
     }
 
-    public function setMel($mel) {
-        $this->mel = $mel;
-        return $this;
-    }
 
     public function setImage($image) {
         $this->image = $image;
@@ -247,6 +214,18 @@ class Joueur
         $this->equipe = $equipe;
         return $this;
     }
+    public function getUser(): User {
+        return $this->user;
+    }
 
+    public function setUser(User $user) {
+        $this->user = $user;
+        return $this;
+    }
+
+    public function getFullName()
+    {
+        return $this->user->getFullName();
+    }
 
 }

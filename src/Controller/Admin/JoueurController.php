@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 /**
 * @Route("/joueur")
 */
@@ -31,7 +32,7 @@ class JoueurController extends Controller
     /**
      * @Route("/edit/{id}", defaults={"id":null})
      */
-    public function edit(Request $request,$id)
+    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder,$id)
     {
          $em= $this->getDoctrine()->getManager();
           // tentative gestion image---1 
@@ -78,6 +79,13 @@ class JoueurController extends Controller
         if ($form->isSubmitted()){
             //s'il n'y à pas d'erreurs de validation du formulaire
             if ($form->isValid()){
+                $password = $passwordEncoder->encodePassword($joueur->getUser(), $joueur->getUser()->getPlainPassword());
+                
+                $joueur->getUser()
+                    ->setPassword($password)
+                    ->setRole('ROLE_USER')
+                    ->setClub($this->getUser()->getClub())
+                ;
                 //prepare l'enregistrement en bdd
              //tentative gestion PDF--3
                 /** @var UploadedFile $certificat */
@@ -128,8 +136,11 @@ class JoueurController extends Controller
                 //fait l'enregistrement en bdd
                 $em->flush();   
                 
+                ///ENVOI MAIL
+                
+                
                 //Ajout du message flash
-                $this->addFlash('success', 'Le joueur '.$joueur->getNom().' a été enregistré');
+                $this->addFlash('success', 'Le joueur '.$joueur->getFullName().' a été enregistré');
                 //redirection vers la liste
                 return $this->redirectToRoute('app_admin_joueur_index');                
             } else {
@@ -137,12 +148,10 @@ class JoueurController extends Controller
             }
         }
         
-        $prenom_nom = $joueur->getPrenom().' '.$joueur->getNom();
-        
          return $this->render('admin/joueur/edit.html.twig', 
                  [
                      'form' => $form->createView(),
-                     'prenom_nom' => $prenom_nom
+                     'joueur' => $joueur
                  ]
         );
     }
