@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Repository;
 
 use App\Entity\Article;
-use App\Entity\Rencontre;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,25 +17,7 @@ class ArticleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Article::class);
     }
-    
-  /*fonction pour récupérer les valeurs dans d'autres entités*/  
-
-  public function findByRencontre(Rencontre $rencontre) {
-        $qb = $this->createQueryBuilder('a')
-                ->join('a.rencontre', 'r')
-                ->where('r.id = :rencontre')
-                ->setParameter('rencontre', $rencontre->getId());
-        //dump($qb);
-        // try {
-        return $qb->getQuery()->getResult();  
-    
-  }
-         // Example - $qb->join('u.Group', 'g', 'WITH', 'u.status = ?1')
-    // Example - $qb->join('u.Group', 'g', 'WITH', 'u.status = ?1', 'g.id')
-  /*  public function join($join, $alias, $conditionType = null, $condition = null, $indexBy = null){
-        
-    }
-    
+}  
     /*public function findBySomething($value)
     {
         return $this->createQueryBuilder('a')
@@ -49,4 +29,4 @@ class ArticleRepository extends ServiceEntityRepository
         ;
     }
     */
-}
+

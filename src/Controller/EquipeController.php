@@ -9,14 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  /**
   * @Route("/equipes")
   */
-class EquipesController extends Controller
+class EquipeController extends Controller
 {
    /**
      * @Route("/")
      */
     public function index()
     {
-        return $this->render('equipes/index.html.twig', [
+        return $this->render('equipe/index.html.twig', [
             
         ]);
     }
