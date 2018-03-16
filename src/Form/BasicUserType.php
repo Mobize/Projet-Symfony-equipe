@@ -11,12 +11,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class BasicUserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add(
+                 ->add(
                     'lastname',
                     TextType::class,
                     [
@@ -70,11 +70,6 @@ class UserType extends AbstractType
                     ]
                 )
                 
-                // nom et n° assoc du club allant ds la table club
-                ->add(
-                    'club',
-                    BasicClubType::class
-                )
                 
         ;
     }

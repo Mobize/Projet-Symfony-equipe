@@ -142,7 +142,7 @@ class ClubController extends Controller
         $em->flush();
         
         //ajout d'un message
-        $this->addFlash('success', 'Le club a été supprimée');
+        $this->addFlash('success', 'Le club a été supprimé');
         //redirection vers la liste des categories
         return $this->redirectToRoute('app_admin_club_index');
         
