@@ -30,6 +30,7 @@ class EquipeRepository extends ServiceEntityRepository
         ;
     }*/
     
+    //Sélection des équipes du club connecté
     public function listEquipeClub($club,bool $local = true)
     {
         return $this->createQueryBuilder('e')
