@@ -7,10 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Recontre|null find($id, $lockMode = null, $lockVersion = null)
- * @method Recontre|null findOneBy(array $criteria, array $orderBy = null)
- * @method Recontre[]    findAll()
- * @method Recontre[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Rencontre|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Rencontre|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Rencontre[]    findAll()
+ * @method Rencontre[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class RencontreRepository extends ServiceEntityRepository
 {
