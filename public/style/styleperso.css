@@ -7,9 +7,16 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
+.nom_club{
+    color: white;
+}
+.btn-info{
+    margin-top: -23px;
+    border-color: white;
+    background-color: #11162759;
+}
 .banner-text.agileinfo{
     padding: 15em 0;
-    
 }
 .hauteur_min{
     min-height: 500px;
@@ -29,7 +36,7 @@ and open the template in the editor.
 .header-nav ul.nav.navbar-nav{
     margin-top: 2em;
 }
-h1.titre{
+.titre{
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;

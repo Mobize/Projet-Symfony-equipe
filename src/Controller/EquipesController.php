@@ -18,7 +18,7 @@ class EquipesController extends Controller
     public function index()
     {
         $equipeRepository = $this->getDoctrine()->getRepository(Equipe::class);
-        $equipes = $equipeRepository->listEquipeClub();
+        $equipes = $equipeRepository->listEquipeClub($this->getUser()->getClub()->getId());
         
         return $this->render('equipes/index.html.twig', [
             'equipes' => $equipes,
