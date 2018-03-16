@@ -33,50 +33,74 @@ class JoueurType extends AbstractType
            /* ->add(
                     'prenom',
                     TextType::class,
-                    ['label'=>'Prénom'
+                    ['label'=>'Prénom',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]
                         ]
                     )
             ->add(
                     'nom',
                     TextType::class,
-                    ['label'=>'Nom'
+                    ['label'=>'Nom',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]
                         ]
                     )*/
             ->add(
                     'rue',
                     TextType::class,
-                    ['label'=>'Rue'
+                    ['label'=>'Adresse',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]
                         ]
                     )
             ->add(
                     'cp',
                     TextType::class,
-                    ['label'=>'Code postal'
+                    ['label'=>'Code postal',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]
                         ]
                     )
             ->add(
                     'ville',
                     TextType::class,
-                    ['label'=>'Ville'
+                    ['label'=>'Ville',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]
                         ]
                     )
             ->add(
                     'tel1',
                     TextType::class,
-                    ['label'=>'N° de tél.'
+                    ['label'=>' Telephone portable',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]
                         ]
                     )
             ->add(
                     'tel2',
                     TextType::class,
-                    ['label'=>'N° de tél. autre contact'
+                    ['label'=>'Telephone fixe',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]
                         ]
                     )
             /*->add(
                     'mel',
                     EmailType::class,
                     [
-                        'label' => 'Courriel'
+                        'label' => 'Courriel',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]
                     ]
                 ) */
                 
@@ -85,8 +109,7 @@ class JoueurType extends AbstractType
                     BirthdayType::class,
                     [
                         'label' => 'Date de naissance',
-                        'format'=> 'dd MM yyyy'
-                   
+                        'format'=> 'dd MM yyyy',
                     ]
                 ) 
                 
@@ -98,7 +121,8 @@ class JoueurType extends AbstractType
                         'label'=>"Vous êtes",
                         'choices'=>array (
                         'Une femme' => 'F',
-                        'Un homme' => 'H',
+                        'Un homme' => 'H'
+                      
                          )
                     )                      
                 ) 
@@ -108,7 +132,8 @@ class JoueurType extends AbstractType
                     FileType::class,
                     [
                        'label'=>"Photo d'identité",
-                       'required'=>false
+                       'required'=>false,
+                        
                     ]
                     )
                 

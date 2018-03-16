@@ -85,6 +85,7 @@ class Joueur
      * @ORM\ManyToOne(targetEntity="Equipe",cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      * @var Equipe 
+      * @Assert\NotBlank()
      */
      private $equipe;   
      
@@ -223,9 +224,10 @@ class Joueur
         return $this;
     }
 
-    public function getFullName()
+    //affiche le nom et prenom de l utilisateur si il est connecté
+    public function getFullname()
     {
-        return $this->user->getFullName();
+        return $this->prenom . ' ' . $this->nom;
     }
 
 }
