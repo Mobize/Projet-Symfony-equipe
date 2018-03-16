@@ -7,13 +7,49 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
-
+.banner-text.agileinfo{
+    padding: 15em 0;
+    
+}
+.hauteur_min{
+    min-height: 500px;
+}
+.utilisateur{
+    color:white;
+}
+.connecte{
+    color:white;
+}
 .navbar-inverse{
     margin-bottom: 0;
+}
+.header{
+    padding: 5em 0 5em;
+}
+.header-nav ul.nav.navbar-nav{
+    margin-top: 2em;
+}
+h1.titre{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 .form-control.perso{
     border: 1px solid;
 }
+#contact_message{
+    height:241px;
+}
+.carte{
+    height:300px;
+}
+.erreur{
+    margin-top: 25px;
+}
+.footer{
+    margin-top:50px;
+}
+
 
 
 /*-----Partie rencontres calendrierpar équipe route provisoire "@/rencontres"" --------------*/

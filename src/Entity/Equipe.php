@@ -43,6 +43,26 @@ class Equipe
      */
     private $nom;
     
+     /**
+     * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Club 
+     */
+     private $club;
+     
+     /**
+     * @ORM\Column(nullable=true)
+     * @Assert\Image()
+     * @var string 
+     */
+     private $image;
+
+     /**
+     * @ORM\Column(type="boolean",nullable=true)
+     * * @var boolean   
+     */
+     private $local;
+     
     //pour l'enregistrement automatique de la date de création de l'enregistrement
     public function __construct()
     {
@@ -77,15 +97,38 @@ class Equipe
 
     function setUpdatedAt($updated_at) {
         $this->updatedAt = $updatedAt;
-    }
-
-        
+    } 
     
     public function __toString() 
     {
         return $this->nom;
     }
 
+    public function getClub(): Club {
+        return $this->club;
+    }
+
+    public function setClub(Club $club) {
+        $this->club = $club;
+        return $this;
+    }
+
+    public function getLocal() {
+        return $this->local;
+    }
+
+    public function setLocal($local) {
+        $this->local = $local;
+        return $this;
+    }
+
+    function getImage() {
+        return $this->image;
+    }
+
+    function setImage($image) {
+        $this->image = $image;
+    }
     
     
 }

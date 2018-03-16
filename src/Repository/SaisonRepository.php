@@ -19,6 +19,16 @@ class SaisonRepository extends ServiceEntityRepository
         parent::__construct($registry, Saison::class);
     }
 
+      //Sélection des équipes du club connecté
+    public function listSaisonClub($club)
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.club = :club')->setParameter('club',$club)  
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
     /*
     public function findBySomething($value)
     {

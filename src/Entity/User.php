@@ -35,14 +35,7 @@ class User implements UserInterface
      */
     private $firstname;
     
-    /**
-     * @ORM\Column()
-     * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
-     * @var string
-     *
-     */
-    private $assoc;
-    
+   
       /**
      * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
@@ -68,7 +61,7 @@ class User implements UserInterface
      *@ORM\Column(length=20)
      * @var type 
      */
-    private $role = 'ROLE_USER';
+    private $role = 'ROLE_ADMIN';
     
     /**
      *@Assert\NotBlank(message="Ce champ ne doit pas etre vide")
@@ -89,9 +82,7 @@ class User implements UserInterface
         return $this->firstname;
     }
     
-     function getAssoc() {
-        return $this->assoc;
-    }
+
     
     function getEmail() {
         return $this->email;
@@ -113,10 +104,7 @@ class User implements UserInterface
         $this->firstname = $firstname;
     }
     
-    function setAssoc($assoc) {
-        $this->assoc = $assoc;
-    }
-    
+
     function setEmail($email) {
         $this->email = $email;
     }
@@ -171,7 +159,7 @@ class User implements UserInterface
         return $this->getFullname();
     }
 
-         public function getClub(): ?Club {
+    public function getClub(): ?Club {
         return $this->club;
     }
 

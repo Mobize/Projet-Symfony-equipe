@@ -16,7 +16,14 @@
 <div class="container"> 
     <div class="row">  
         <div class="col-md-12">     
-            <h1>Edition de la liste des joueurs</h1>
+            
+            <!-- Modification du titre selon création/édition -->
+            {% if prenom_nom is not null %}
+                <h1>Edition du joueur : {{ prenom_nom }}</h1>
+            {% else %}    
+                <h1>Création d'un joueur</h1>
+            {% endif %}
+            
             {{ form_start(form) }}
             {{ form_row(form.prenom) }}
             {{ form_row(form.nom) }}
@@ -58,14 +65,14 @@
                           </div><!-- /.modal-dialog -->
                             </div><!-- /.modal -->               
             {% endif %}
-
-                {{ form_end(form) }}
             <div class="form-btn-group pull-right">
                 <button type="submit" class="btn btn-primary">
                     Enregistrer
                 </button>
                 <a href="{{ path('app_admin_joueur_index') }}" class="btn btn-default">Retour</a>
             </div>
+                {{ form_end(form) }}
+
         </div>
     </div> 
 </div>    

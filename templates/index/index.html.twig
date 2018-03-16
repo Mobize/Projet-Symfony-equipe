@@ -1,10 +1,6 @@
 {% extends 'layout.html.twig' %}
 {% block body %}
- 
- {% block menu_admin %}
-   {{parent()}}  
- {% endblock %}
-    
+     
 {% block header %}
 {{parent()}}  {# reprend  #} 
 {% endblock %}
@@ -22,11 +18,5 @@
 
 {% block footer %}
 {% endblock %}
-
-{% block javascripts %}
-{{parent()}}
-{% endblock %}
-
-
 
 {% endblock %}{# fin block body #}

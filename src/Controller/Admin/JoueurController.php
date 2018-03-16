@@ -67,9 +67,11 @@ class JoueurController extends Controller
             }  
         }        
         
+        //alimentation de la clé étrangère club
+        $joueur->setClub($this->getUser()->getClub());
+
         $form = $this->createForm(JoueurType::class, $joueur);
-        
-        
+
         $form->handleRequest($request);
         
         //si le formulaire à été envoyé
@@ -124,7 +126,7 @@ class JoueurController extends Controller
    
                 $em->persist($joueur);
                 //fait l'enregistrement en bdd
-                $em->flush();
+                $em->flush();   
                 
                 //Ajout du message flash
                 $this->addFlash('success', 'Le joueur '.$joueur->getNom().' a été enregistré');
@@ -135,9 +137,12 @@ class JoueurController extends Controller
             }
         }
         
+        $prenom_nom = $joueur->getPrenom().' '.$joueur->getNom();
+        
          return $this->render('admin/joueur/edit.html.twig', 
                  [
-                     'form' => $form->createView()
+                     'form' => $form->createView(),
+                     'prenom_nom' => $prenom_nom
                  ]
         );
     }

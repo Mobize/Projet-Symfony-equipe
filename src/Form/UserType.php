@@ -35,27 +35,7 @@ class UserType extends AbstractType
                             'class' => 'perso'
                         ]
                     ]
-                )
-                 ->add(
-                     'assoc',
-                     TextType::class,
-                     [
-                         'label' => 'Numéro d association',
-                         'attr' => [
-                             'class' => 'perso'
-                         ]
-                     ]   
-                )
-                ->add(
-                     'assoc',
-                     TextType::class,
-                     [
-                         'label' => 'Numéro d association',
-                         'attr' => [
-                             'class' => 'perso'
-                         ]
-                     ]   
-                )
+                )              
                 ->add(
                     'email',
                      EmailType::class,
@@ -89,10 +69,13 @@ class UserType extends AbstractType
                         ]
                     ]
                 )
+                
+                // nom du club allant ds la table club
                 ->add(
                     'club',
                     BasicClubType::class
                 )
+                
         ;
     }
 
