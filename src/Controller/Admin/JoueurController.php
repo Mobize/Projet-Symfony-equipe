@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Saison;
 use App\Entity\Joueur;
 use App\Form\JoueurType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,8 +26,21 @@ class JoueurController extends Controller
         //on recup ts les joueurs
         $joueurs = $repository->findAll();
         
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+       
+        
+        
         return $this->render('admin/joueur/index.html.twig', [
-           'joueurs' => $joueurs
+           'joueurs' => $joueurs,
+            'nbsaisons' => $nbsaison
         ]);
     }
     /**

@@ -19,7 +19,7 @@ class EquipeType extends AbstractType
                 'nom',
                     TextType::class,
                     [
-                        'label' => 'Nom',
+                        'label' => 'Nom ( ex: U10 , U17...)',
                         'attr' => [
                             'class' => 'perso'
                         ]
@@ -29,7 +29,7 @@ class EquipeType extends AbstractType
                     //input type file
                     FileType::class,
                     [
-                        'label' => 'Illustration',
+                        'label' => 'Choisissez une photo de votre équipe',
                         'required' => false
                     ]
             )      

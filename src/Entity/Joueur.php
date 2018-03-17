@@ -52,6 +52,14 @@ class Joueur
     */
     private $tel2;
     
+     /**
+     * @ORM\Column(unique=true)
+     * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
+     * 
+     * @var string
+     */
+    private $email;
+    
     /**
      * @var string
      * @ORM\Column(type="date")
@@ -229,5 +237,15 @@ class Joueur
     {
         return $this->prenom . ' ' . $this->nom;
     }
+    
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+
 
 }

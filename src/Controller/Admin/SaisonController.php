@@ -68,7 +68,7 @@ class SaisonController extends Controller
                 $em->flush();
                 
                 //Ajout du message flash
-                $this->addFlash('success', 'La saison a été enregistrée');
+                $this->addFlash('success', 'La saison a été enregistrée, vous devez à présent ajouter une équipe');
                 //redirection vers la liste
                 return $this->redirectToRoute('app_admin_saison_index');                
             } else {

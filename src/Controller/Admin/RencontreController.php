@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Saison;
 use App\Entity\Rencontre;
 use App\Form\RencontreType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -23,9 +24,21 @@ class RencontreController extends Controller
         //on recup ts les matchs
         $rencontres = $repository->findAll();
         
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+       
+        
         return $this->render(
             'admin/rencontre/index.html.twig', [
-            'rencontres' => $rencontres
+            'rencontres' => $rencontres,
+             'nbsaisons' => $nbsaison
         ]);
     }
     

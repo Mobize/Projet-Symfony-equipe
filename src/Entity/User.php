@@ -38,7 +38,7 @@ class User implements UserInterface
    
       /**
      * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, unique=true)
      * @var Club 
      */
      private $club;
@@ -156,9 +156,14 @@ class User implements UserInterface
         return $this->getFullname();
     }
 
+    
+    
     public function getClub(): ?Club {
         return $this->club;
     }
+       
+    
+    
 
     public function setClub(Club $club) {
         $this->club = $club;
@@ -167,6 +172,10 @@ class User implements UserInterface
 
     public function getFullName()
     {
-        return trim($this->getFirstname() . ' ' . $this->getFirstname());
+        return trim($this->getFirstname() . ' ' . $this->getLastname());
     }
+    
+   
+
+    
 }

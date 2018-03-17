@@ -17,7 +17,7 @@ class SaisonType extends AbstractType
             'nom',
                     TextType::class,
                     [
-                        'label' => 'Nom',
+                        'label' => 'Nom (ex: 2017-2018)',
                         'attr' => [
                             'class' => 'perso'
                         ]

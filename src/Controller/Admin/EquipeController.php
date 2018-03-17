@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Saison;
 use App\Entity\Equipe;
 use App\Form\EquipeType;
 use Symfony\Component\HttpFoundation\File\File;
@@ -31,9 +32,23 @@ class EquipeController extends Controller
        
         //dump($this->getUser()->getClub()->getId());
         
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+       
+      
+        
+        
         return $this->render('admin/equipe/index.html.twig', [
                'equipes' => $equipes,
-               'equipeExts' => $equipeExts
+               'equipeExts' => $equipeExts,
+                'nbsaisons' => $nbsaison
                
         ]);
     }
@@ -114,7 +129,7 @@ class EquipeController extends Controller
                 $em->flush();
                 
                 //Ajout du message flash
-                $this->addFlash('success', 'L\équipe '.$equipe->getNom().' a été enregistrée');
+                $this->addFlash('success', 'L\'équipe '.$equipe->getNom().' a été enregistrée, veuillez ajouter vos joueurs');
                 //redirection vers la liste
                 return $this->redirectToRoute('app_admin_equipe_index');                
             } else {

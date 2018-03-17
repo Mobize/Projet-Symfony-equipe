@@ -15,7 +15,14 @@
 {% block content %}
 <div class="container"> 
     <div class="row">  
-        <div class="col-md-12">      
+        <div class="col-md-8 col-md-offset-2"> 
+            {% if(nbsaisons is defined and nbsaisons == false) %}
+                          <div class="jumbotron">
+                            <h2>Pour accéder à la gestion de vos rencontres, <br>vous devez d'abord créer une saison</h2>
+                           
+                            <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_index') }}" role="button">Créer ma 1ère saison</a></p></div>
+                          </div>      
+            {% else %}
             <h1>Gestion des rencontres<a class="btn btn-primary pull-right" href="{{path('app_admin_rencontre_edit')}}">Ajouter une rencontre</a></h1>
 
             <table class="table table-striped table-bordered table-hover">
@@ -49,7 +56,7 @@
                     </tr>                    
                 {% endfor %}                  
             </table>
-            
+            {% endif %}
         </div>
     </div> 
 </div>      

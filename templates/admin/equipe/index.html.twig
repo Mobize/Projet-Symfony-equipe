@@ -15,7 +15,15 @@
 {% block content %}
 <div class="container"> 
     <div class="row">  
-        <div class="col-md-12">       
+        <div class="col-md-8 col-md-offset-2"> 
+            {% if(nbsaisons is defined and nbsaisons == false) %}
+                          <div class="jumbotron">
+                            <h2>Pour accéder à la gestion de votre équipe, <br>vous devez d'abord créer une saison</h2>
+                           
+                            <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_index') }}" role="button">Créer ma 1ère saison</a></p></div>
+                          </div>      
+            {% else %}
+    
             <h1>Gestion des équipes</h1>
             
             <!-- Nav tabs -->
@@ -52,6 +60,7 @@
                         <td width="75px">
                             <a href="{{ path('app_admin_equipe_edit', {id: equipe.id}) }}" class="btn btn-primary">Modifier</a>
                             <a href="{{ path('app_admin_equipe_delete', {id: equipe.id}) }}" class="btn btn-danger">Supprimer</a>
+                            <a href="{{ path('app_admin_joueur_index', {id: equipe.id}) }}" class="btn btn-success ">Ajoutez vos joueurs</a>
                         </td>  
                     </tr>
 
@@ -95,18 +104,11 @@
                 {% endfor %}           
             </table>
         </div> <!-- fin tab 2-->
-  </div>
-            
-            
-            
-            
-            
-            
-            
-            
-
+  </div>   
+{% endif %}
             
         </div> <!-- fin col --> 
     </div> <!-- fin row --> 
-</div>  <!-- fin contaner -->       
+</div>  <!-- fin contaner -->    
+
 {% endblock %}
