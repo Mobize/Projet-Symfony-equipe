@@ -89,10 +89,13 @@ class JoueurController extends Controller
             }  
         }        
         
-        //alimentation de la clé étrangère club
+        //alimentation de la clé étrangère IDclub
         $joueur->setClub($this->getUser()->getClub());
 
-        //alimentation de la clé étrangère SAISON
+        //alimentation de la clé étrangère IDjoueur
+        //$joueur->setClub($this->getUser()->getClub());
+        
+        //alimentation de la clé étrangère IDsaison
             //Récupération id de la dernière saison enregistrée pour le club
             $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
             $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());

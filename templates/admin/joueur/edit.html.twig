@@ -15,54 +15,55 @@
 {% block content %}
 <div class="container"> 
     <div class="row">  
-        <div class="col-md-6 col-md-offset-3">     
-            
-            <!-- Modification du titre selon création/édition -->
-            {% if joueur.id is not null %}
-                <h1>Edition du joueur : {{ joueur.fullName }}</h1>
-            {% else %}    
-                <h1>Création d'un joueur</h1>
-            {% endif %}
-            
-            {{ form_start(form) }}
-            <fieldset>
-                <legend>Identité du joueur</legend>
-            {{ form_row(form.user.firstname) }}
-            {{ form_row(form.user.lastname) }}
-            {{ form_row(form.rue) }}
-            {{ form_row(form.cp) }}
-            {{ form_row(form.ville) }}
-            {{ form_row(form.tel1) }}
-            {{ form_row(form.tel2) }}
+        <div class="col-md-12">     
+            <div class="col-md-6"> 
+                <!-- Modification du titre selon création/édition -->
+                {% if joueur.id is not null %}
+                    <h1>Edition du joueur : {{ joueur.fullName }}</h1>
+                {% else %}    
+                    <h1>Création d'un joueur</h1>
+                {% endif %}
 
-            {{ form_row(form.dateNaissance) }}
-            {{ form_row(form.genre) }}
-            </fieldset>
+                {{ form_start(form) }}
+                <fieldset>
+                    <legend>Identité du joueur</legend>
+                {{ form_row(form.user.firstname) }}
+                {{ form_row(form.user.lastname) }}
+                {{ form_row(form.rue) }}
+                {{ form_row(form.cp) }}
+                {{ form_row(form.ville) }}
+                {{ form_row(form.tel1) }}
+                {{ form_row(form.tel2) }}
 
-            <fieldset>
-            <legend>Document(s) administratifs()</legend>
-            {{ form_row(form.image) }}
-            {{ form_row(form.certificat) }}
-            </fieldset>
-            
-            <fieldset>
-            <legend>Affectation à une équipe du club</legend>            
-            {{ form_row(form.equipe) }}
-            </fieldset>
-            
-            <fieldset>
-            <legend>Section membre accès plateforme</legend>    
-            {{ form_row(form.user.email) }}
-            </fieldset>
-            
-            <div class="form-btn-group pull-right">
-                <button type="submit" class="btn btn-primary">
-                    Enregistrer
-                </button>
-                <a href="{{ path('app_admin_joueur_index') }}" class="btn btn-default">Retour</a>
+                {{ form_row(form.dateNaissance) }}
+                {{ form_row(form.genre) }}
+                </fieldset>
             </div>
-                {{ form_end(form) }}
+            <div class="col-md-6"> 
+                <fieldset>
+                <legend>Document(s) administratifs()</legend>
+                {{ form_row(form.image) }}
+                {{ form_row(form.certificat) }}
+                </fieldset>
 
+                <fieldset>
+                <legend>Affectation à une équipe du club</legend>            
+                {{ form_row(form.equipe) }}
+                </fieldset>
+
+                <fieldset>
+                <legend>Section membre accès plateforme</legend>    
+                {{ form_row(form.user.email) }}
+                </fieldset>
+
+                <div class="form-btn-group pull-right">
+                    <button type="submit" class="btn btn-primary">
+                        Enregistrer
+                    </button>
+                    <a href="{{ path('app_admin_joueur_index') }}" class="btn btn-default">Retour</a>
+                </div>
+                    {{ form_end(form) }}
+            </div>
         </div>
     </div> 
 </div>    

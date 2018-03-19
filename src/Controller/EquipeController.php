@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Saison;
 use App\Entity\Equipe;
-use App\Entity\Saison;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -43,8 +42,7 @@ class EquipeController extends Controller
         
         return $this->render('equipes/index.html.twig', [
             'NomderniereSaisonClub' => $NomderniereSaisonClub,
-            'listEquipes' => $listEquipes
-            'equipes' => $equipes,
+            'listEquipes' => $listEquipes,
             'nbsaisons' => $nbsaison
         ]);
     }

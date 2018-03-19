@@ -28,6 +28,7 @@ class Joueur
      * @ORM\Column(length=5,type="string")
      * @var string
      * @Assert\NotBlank()
+     * @Assert\Length(max=5,maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
     private $cp;
     
@@ -35,19 +36,20 @@ class Joueur
      * @var string
      * @ORM\Column(length=30)
      * Assert\NotBlank()
+     * @Assert\Length(max=30,maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
     private $ville;
     
    
     /**
-     * @ORM\Column(length=14,type="string")
+     * @ORM\Column(length=14,type="string",nullable=true)
      * @var string
-     * @Assert\NotBlank()
+     * @Assert\Length(max=14,maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
     private $tel1;
     
     /**
-    * @ORM\Column(length=14,type="string")
+    * @ORM\Column(length=14,type="string",nullable=true)
     * @var string
     */
     private $tel2;
@@ -58,7 +60,7 @@ class Joueur
      * 
      * @var string
      */
-    private $email;
+    //private $email;
     
     /**
      * @var string

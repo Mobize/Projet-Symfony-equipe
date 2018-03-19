@@ -30,24 +30,6 @@ class JoueurType extends AbstractType
         $club = $this->tokenStorage->getToken()->getUser()->getClub();
         
         $builder
-           /* ->add(
-                    'prenom',
-                    TextType::class,
-                    ['label'=>'Prénom',
-                         'attr' => [
-                            'class' => 'perso'
-                        ]
-                        ]
-                    )
-            ->add(
-                    'nom',
-                    TextType::class,
-                    ['label'=>'Nom',
-                         'attr' => [
-                            'class' => 'perso'
-                        ]
-                        ]
-                    )*/
             ->add(
                     'rue',
                     TextType::class,
@@ -91,19 +73,8 @@ class JoueurType extends AbstractType
                          'attr' => [
                             'class' => 'perso'
                         ]
-                        ]
-                    )
-            /*->add(
-                    'mel',
-                    EmailType::class,
-                    [
-                        'label' => 'Courriel',
-                         'attr' => [
-                            'class' => 'perso'
-                        ]
                     ]
-                ) */
-                
+            )               
             ->add(
                     'dateNaissance',
                     BirthdayType::class,

@@ -61,7 +61,13 @@ class Staff
      */
      private $club;
     
-    
+     /**
+     * @ORM\Column(nullable=true)
+     * @Assert\Image()
+     * @var string 
+     */
+     private $image;
+     
     //CONSTRUCTEUR : initié pour l'enregistrement automatique de la date 
     //de création de l'enregistrement
     public function __construct()
@@ -125,6 +131,15 @@ class Staff
 
     public function setClub(Club $club) {
         $this->club = $club;
+        return $this;
+    }
+
+    public function getImage() {
+        return $this->image;
+    }
+
+    public function setImage($image) {
+        $this->image = $image;
         return $this;
     }
 

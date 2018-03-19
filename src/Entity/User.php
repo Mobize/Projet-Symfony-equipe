@@ -35,14 +35,13 @@ class User implements UserInterface
      */
     private $firstname;
     
-   
-      /**
+     /**
      * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
-     * @ORM\JoinColumn(nullable=false, unique=true)
+     * @ORM\JoinColumn(nullable=false)
      * @var Club 
      */
      private $club;
-    
+   
      /**
      * @ORM\Column(unique=true)
      * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
@@ -162,9 +161,6 @@ class User implements UserInterface
         return $this->club;
     }
        
-    
-    
-
     public function setClub(Club $club) {
         $this->club = $club;
         return $this;
@@ -174,8 +170,5 @@ class User implements UserInterface
     {
         return trim($this->getFirstname() . ' ' . $this->getLastname());
     }
-    
-   
-
     
 }

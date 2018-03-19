@@ -52,6 +52,7 @@
                     <th class="col-md-1">Date de modification</th>
                     <th class="col-md-1">Nom</th>
                     <th class="col-md-1">Illustration</th>
+                    <th class="col-md-1">Entraîneur</th>
                     <th class="col-md-6">Actions</th>
                 </tr>
 
@@ -65,12 +66,19 @@
                             <td align="center"><img src="{{ asset('upload/' ~ equipe.image) }}" width="100px"></td> 
                         {% else %}
                             <td align="center"><img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" heigth="75px" width="75px" class="img-responsive"></td>
+                        {% endif %}
+                        
+                         
+                        {% if equipe.staff is not null %}
+                            <td>{{ equipe.staff.nom}}</td>
+                        {% else %}
+                            <td align="center">-</td>
                         {% endif %} 
                         <td>
                             <div class="btn-group">
                                 <a type="button" href="{{ path('app_admin_equipe_edit', {id: equipe.id}) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Modifier</a>
                                 <a type="button" href="{{ path('app_admin_equipe_edit', {id: equipe.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Supprimer</a>
-                                <a type="button" href="{{ path('app_admin_equipe_edit', {id: equipe.id}) }}" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i> Ajouter une rencontre</a>
+                                <a type="button" href="{{ path('app_admin_rencontre_edit') }}" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i> Ajouter une rencontre</a>
                             </div>                
                         </td>  
                     </tr>
@@ -98,6 +106,7 @@
                         <th class="col-md-1">Date de modification</th>
                         <th class="col-md-1">Nom</th>
                         <th class="col-md-1">Illustration</th>
+                        <th class="col-md-1">Entraîneur du club créateur de l'équipe extérieure</th>
                         <th class="col-md-6">Actions</th>
                     </tr>
 
@@ -111,6 +120,12 @@
                                 <td align="center"><img src="{{ asset('upload/' ~ equipe.image) }}" width="100px"></td> 
                             {% else %}
                                 <td align="center"><img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" heigth="75px" width="75px" class="img-responsive"></td>
+                            {% endif %} 
+                            
+                            {% if equipe.staff is not null %}
+                                <td>{{ equipe.staff.nom}}</td>
+                            {% else %}
+                                <td align="center">-</td>
                             {% endif %} 
                             <td>
                                 <div class="btn-group">
