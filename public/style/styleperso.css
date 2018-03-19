@@ -7,6 +7,180 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
+@media (max-width: 991px){
+.navbar-nav > li {
+    margin: 0 1.3em;
+}
+}
+
+.clr2{
+    min-height: 308px;
+}
+.clr3{
+    max-height: 308px;
+}
+.liste{
+    list-style: none;
+    color: white;
+}
+.lien_accueil{
+    color: #a8f644;
+}
+.lien_accueil:hover{
+    color:white;
+}
+.banner-text h2{
+    margin-top: -120px;
+}
+.alert{
+    font-size: 1em;
+}
+.bouton{
+    margin-top: 25px;
+}
+h1{
+    font-size: 22px;
+}
+legend{
+    font-size: 18px;
+    color : dodgerblue;
+}
+
+.nom_club{
+    color: white;
+}
+.btn-info{
+    margin-top: -14px;
+    border-color: white;
+    background-color: #11162759;
+}
+.btn-info:hover{
+    background: black !important;
+    border: 1px solid white;
+}
+.bouton_club a:hover{
+    color:white;
+}
+.banner-text.agileinfo{
+    padding: 15em 0;
+}
+.hauteur_min{
+    min-height: 500px;
+}
+.utilisateur{
+    color:white;
+}
+.connecte{
+    color:white;
+}
+.navbar-inverse{
+    margin-bottom: 0;
+}
+.header{
+    padding: 5em 0 5em;
+}
+.header-nav ul.nav.navbar-nav{
+    margin-top: 2em;
+}
+.titre{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.form-control.perso{
+    border: 1px solid;
+}
+#contact_message{
+    height:241px;
+}
+.carte{
+    height:300px;
+}
+.erreur{
+    margin-top: 25px;
+}
+.footer{
+    margin-top:50px;
+}
+
+@media (min-width: 996px){
+.creer_saison{
+    margin-left: 18em;
+}
+}
+
+/*-----Partie rencontres calendrierpar équipe route provisoire "@/rencontres"" --------------*/
+
+
+/* Léger décalage bouton d'affichage victoires nuls défaites */
+.resultat_rencontres_btn {
+    margin-left: 15px;
+}
+
+.div_btn_filtrage {
+    display: none;
+    margin-top: 6px;
+}
+
+@media (max-width: 480px){
+.agileits-logo h1 {
+    font-size: 2.3em;
+    margin-bottom: 15px;
+}
+.agileits-logo h1 a {
+    padding:.5em;
+}
+.bouton_club{
+    margin-left: 35px;
+}
+h3{
+    font-size: 1.3em;
+}
+}
+
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9 mars 2018, 15:34:20
+    Author     : Etudiant
+*/
+.clr2{
+    min-height: 308px;
+}
+.clr3{
+    max-height: 308px;
+}
+.liste{
+    list-style: none;
+    color: white;
+}
+.lien_accueil{
+    color: #a8f644;
+}
+.lien_accueil:hover{
+    color:white;
+}
+.banner-text h2{
+    margin-top: -120px;
+}
+.alert{
+    font-size: 1em;
+}
+.bouton{
+    margin-top: 25px;
+}
+h1{
+    font-size: 22px;
+}
+legend{
+    font-size: 18px;
+    color : dodgerblue;
+}
+
 .nom_club{
     color: white;
 }

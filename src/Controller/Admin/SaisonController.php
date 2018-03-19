@@ -26,8 +26,16 @@ class SaisonController extends Controller
         $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
         $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
         
-        $nbsaison = count($saisons);
-         
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+        
         return $this->render(
             'admin/saison/index.html.twig', [
             'saisons' => $saisons,
@@ -67,7 +75,7 @@ class SaisonController extends Controller
                 $em->flush();
                 
                 //Ajout du message flash
-                $this->addFlash('success', 'La saison a été enregistrée');
+                $this->addFlash('success', 'La saison a été enregistrée, vous devez à présent ajouter une équipe');
                 //redirection vers la liste
                 return $this->redirectToRoute('app_admin_saison_index');                
             } else {
@@ -81,12 +89,24 @@ class SaisonController extends Controller
         
         $nbsaison = count($saisons);
         
-        $nom = $saison->getNom();        
+        $nom = $saison->getNom();
+        
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+        
          return $this->render('admin/saison/edit.html.twig', 
                  [
                      'form' => $form->createView(),
                      'nom' => $nom,
                      'nbsaisons' => $nbsaison
+                     
                  ]
         );
     }

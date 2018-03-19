@@ -69,7 +69,10 @@
 		<div class="w3lsbanner-info">
                     <div class="header-mdl agileits-logo connecte"><!-- header-two --> 
 			<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
-                        <span><button type="button" class="btn btn-info"><a class="nom_club" href="{{ path('app_equipe_index') }}">{{ app.user.club.nom }}</a></button></span>
+                       
+                       
+                        <span class="bouton_club center"><button type="button" class="btn btn-info "><a class="nom_club" href="{{ path('app_equipe_index') }}">{{ app.user.club.nom }}</a></button></span>
+                       
                         <h3 class="connecte">Bonjour</h3>
                         <h3>{{ app.user.fullname }}</h3>
                     </div>
@@ -92,12 +95,19 @@
 								<ul class="nav navbar-nav cl-effect-16">
                                                                        
 									<li><a href="{{ path('app_index_index') }}" class="active" data-hover="Accueil">Accueil</a></li>
-                                                                        <li><a href="{{ path('app_equipe_index') }}" data-hover="Mon Club" >Mon Club</a></li> 
+                                                                        {% if(nbsaisons is defined and nbsaisons == false) %}
+                                                                                
+                                                                        {% else %}
+                                                                                 
+                                                                            <li><a href="{{ path('app_equipe_index') }}" data-hover="Mon Club" >Mon Club</a></li>   
+                                                                                
+                                                                        {% endif %}
+                                                                        
                                                                         {% block menu_admin %}
                                                                         {% if is_granted('ROLE_ADMIN') %}
                                                                             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
 										<ul class="dropdown-menu">
-                                                                                    <li><a href="{{ path('app_admin_club_index') }}" data-hover="Gestion Clubs">Gestion Clubs</a></li>
+                                                                                    <li><a href="{{ path('app_admin_club_profil') }}" data-hover="Profil Club">Profil Club</a></li>
                                                                                     <li><a href="{{ path('app_admin_saison_index') }}" data-hover="Gestion Saisons">Gestion Saisons</a></li>
                                                                                     <li><a href="{{ path('app_admin_equipe_index') }}" data-hover="Gestion Equipes">Gestion Equipes</a></li>
                                                                                     <li><a href="{{ path('app_admin_joueur_index') }}" data-hover="Gestion Joueurs">Gestion Joueurs</a></li>
@@ -157,7 +167,13 @@
          			<div class="banner-text agileinfo"> 
 				<div class="container">
 					<div class="agileitsbnr-textinfo">  
-						<h2>Salut</h2>
+                                 {% if(nbsaisons is defined and nbsaisons == false) %}
+                                     <h2><a class="lien_accueil" href="{{ path('app_admin_saison_edit') }}">Créez votre 1ère Saison</a></h2>
+                                {% else %}
+                                    
+                                    <h2>AJOUTER ICI DU TEXTE</h2>
+                            {% endif %}
+						
 					</div>					
 				</div>
 			</div>			   
@@ -191,26 +207,26 @@
 		<div class="container">
 			<div class="wthree_head_section">
 				<h3 class="w3l_header">Comment ça fonctionne ?</h3>
-				<p>Inscription rapide et gratuite pour tous </p>
+				<p>Inscription rapide et gratuite</p>
 			</div>
 			<div class="agileits-banner-grids text-center">
 				<div class="banner-bottom-girds">
 					<div class="col-md-4  col-sm-4 clr1 agileits-banner-grid">
-						<span class="fa fa-sun-o banner-icon" aria-hidden="true"></span>
+						<span class="fa fa-edit banner-icon" aria-hidden="true"></span>
 						<h4>1- Inscrivez-vous</h4>
-						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
-						
+                                                
+						<p>Vous êtes dirigeant de club? profitez de toutes les fonctionnalités du site.</p>
+						<button type="button" class="btn btn-default"><a href="{{ path('app_security_register') }}" data-hover="Inscription">Inscription</a></button>
 					</div>
 					<div class="col-md-4 col-sm-4 clr2 agileits-banner-grid">
-						<span class="fa fa-arrows banner-icon" aria-hidden="true"></span>
-						<h4>2-Créez vos équipes</h4>
-						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
-						
+						<span class="fa fa-users banner-icon" aria-hidden="true"></span>
+						<h4>2- Créez votre Club</h4>
+                                                <p>Ajoutez vos équipes, vos joueurs, vos rencontres. Intègrez vos photos, vos résultats de matchs. Modifiez vos équipes <p>
 					</div>
 					<div class=" col-md-4 col-sm-4 clr3 agileits-banner-grid">
-						<span class="fa fa-cog banner-icon" aria-hidden="true"></span>
-						<h4>3-Gérez votre Club</h4>
-						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
+						<span class="fa fa-cogs banner-icon" aria-hidden="true"></span>
+						<h4>3- Gérez votre Club</h4>
+						<p>Informez vos adhérents, gérer votre staff, Faites évoluer vos joueurs, gérez vos documents en ligne (inscription joueurs, certificat médicaux)</p>
 						
 					</div>
 					<div class="clearfix"></div>
@@ -219,7 +235,8 @@
 		</div>
 	</div>
 	<!--//about-->
-	<!-- carrer -->
+	<!-- carrer 
+        
 <div class="carrer">
 	<div class="container">
 		<div class="wthree_head_section">
@@ -246,9 +263,9 @@
 			</diV>
 	</div>
 </div>
-<!-- //carrer -->
+carrer -->
 	
-<!-- welcome -->
+<!-- welcome
 	<div class="about-3">
 			<div class="wthree_head_section">
 				<h3 class="w3l_header">Welcome To Club</h3>
@@ -275,7 +292,7 @@
 			
 		</div>
 	</div>
-	<!-- //welcome -->	
+	//welcome -->	
 <!-- feedback -->
 	<div class="feedback section-w3ls about-w3ls">
 		<div class="feedback-agileinfo">
@@ -395,7 +412,7 @@
 	</div>
 	<!-- //feedback -->
 
-<!-- pricing -->
+<!-- pricing
 	<div class="w3ls-section wthree-pricing">	
 		<div class="container">
 			<div class="wthree_head_section">
@@ -460,61 +477,33 @@
 									</div>
 								</div>
 								<div class="clearfix"> </div> 
-				<!--End-slider-script-->
+				
 			</div>
 		</div>	
 	</div>	
-	<!--//pricing-->   	
+	pricing -->   	
 		<!-- footer -->
-	<div class="footer">
-	<div class="container">
-		<div class="f-bg-w3l">
-                    <div class="col-md-4 w3layouts_footer_grid">
-					<h2>Contact <span>Information</span></h2>
-					    <ul class="con_inner_text">
-							<li><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, 4th block, <label> New York City.</label></li>
-							<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
-							<li><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
-						</ul>
-
-					<ul class="social_agileinfo">
-						<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
-						<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
-					</ul>
-                    </div>
-				<div class="col-md-4 w3layouts_footer_grid">
-					<h2>Subscribe <span>Newsletter</span></h2>
-					<p>By subscribing to our mailing list you will always get latest news from us.</p>
-					<form action="#" method="post">
-						<input type="email" name="Email" placeholder="Enter your email..." required="">
-						<button class="btn1"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
-						<div class="clearfix"> </div>
-					</form>
-				</div>
-				<div class="col-md-4 w3layouts_footer_grid">
-					<h3>Latest <span>Events</span></h3>
-					  <ul class="con_inner_text midimg">
-						<li><a href="#"><img src="images/g5.jpg" alt="" class="img-responsive" /></a></li>
-					    <li><a href="#"><img src="images/g6.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/g7.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/g8.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/g9.jpg" alt="" class="img-responsive" /></a></li>
-					    <li><a href="#"><img src="images/g10.jpg" alt="" class="img-responsive" /></a></li>
-						 <li><a href="#"><img src="images/g12.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/g11.jpg" alt="" class="img-responsive" /></a></li>
-				     </ul>
-					
-				</div>
-				<div class="clearfix"> </div>
-		</div>
-            </div>
-			<p class="copyright">© 2018 Football Club. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
-	</div>
+	
                 {% else %}
-            
-                <p>Bonjour</p>
+                <div class="hauteur_min">   
+                    <div class='col-md-6 col-md-offset-3 '>  
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                              <h2>Derniers résultats</h2>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    
+                    <div class='col-md-6 col-md-offset-3'>  
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                              <h2>Prochaines rencontres de {{ app.user.club.nom }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                
                 
         {% endif %}  
   

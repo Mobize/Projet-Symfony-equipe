@@ -59,6 +59,21 @@ class Article
      */
     private $rencontre;
     
+     //CLUB
+     /**
+     * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Club 
+     */
+     private $club;
+
+     //SAISON
+     /**
+     * @ORM\ManyToOne(targetEntity="Saison",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Saison 
+     */
+     private $saison;
    
     
     public function getId() {
@@ -97,8 +112,6 @@ class Article
         return $this;
     }
 
- 
-
     public function getResume() {
         return $this->resume;
     }
@@ -114,6 +127,24 @@ class Article
 
     public function setRencontre(Rencontre $rencontre) {
         $this->rencontre = $rencontre;
+        return $this;
+    }
+
+    public function getClub(): Club {
+        return $this->club;
+    }
+
+    public function getSaison(): Saison {
+        return $this->saison;
+    }
+
+    public function setClub(Club $club) {
+        $this->club = $club;
+        return $this;
+    }
+
+    public function setSaison(Saison $saison) {
+        $this->saison = $saison;
         return $this;
     }
 

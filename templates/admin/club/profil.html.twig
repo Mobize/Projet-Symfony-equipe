@@ -13,7 +13,20 @@
 
 
 {% block content %}
-    
- Profil du club  
-    
+<div class="container"> 
+    <div class="row">  
+        <div class="col-md-12">
+            {% if(nbsaisons is defined and nbsaisons == false) %}
+                <div class="text-center"><h2>Créez votre première saison !*</h2></div>
+                <p class="text-center">*Pour bénéficier de toutes fonctionnalités du site:</p>
+                <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_edit') }}" role="button">Créer ma 1ère saison</a></p></div>
+                <hr>
+                <h2>Profil Club</h2>
+                {% else %}
+
+                <h2>Profil Club</h2>
+          {% endif %}  
+        </div> 
+    </div>    
+</div>            
 {% endblock %}

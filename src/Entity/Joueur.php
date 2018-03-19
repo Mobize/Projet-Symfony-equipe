@@ -52,6 +52,14 @@ class Joueur
     */
     private $tel2;
     
+     /**
+     * @ORM\Column(unique=true)
+     * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
+     * 
+     * @var string
+     */
+    private $email;
+    
     /**
      * @var string
      * @ORM\Column(type="date")
@@ -101,9 +109,10 @@ class Joueur
 
      //SAISON
      /**
-     * @ORM\Column(type="integer")
-     * * @var integer
-      */ 
+     * @ORM\ManyToOne(targetEntity="Saison",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Saison 
+     */
      private $saison;
    
      
@@ -236,11 +245,10 @@ class Joueur
     }
 
     //affiche le nom et prenom de l utilisateur si il est connecté
-    public function getFullname()
+    /*public function getFullname()
     {
         return $this->prenom . ' ' . $this->nom;
-    }
- 
+    }*/
     public function getSaison() {
         return $this->saison;
     }

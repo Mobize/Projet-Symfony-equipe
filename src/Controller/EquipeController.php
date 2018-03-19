@@ -30,9 +30,21 @@ class EquipeController extends Controller
                 $IdDerniereSaisonClub
         );
         
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+        
         return $this->render('equipes/index.html.twig', [
             'NomderniereSaisonClub' => $NomderniereSaisonClub,
-            'listEquipes' => $listEquipes
+            'listEquipes' => $listEquipes,
+            'equipes' => $equipes,
+            'nbsaisons' => $nbsaison
         ]);
     }
 }

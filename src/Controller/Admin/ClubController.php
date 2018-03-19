@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Saison;
 use App\Entity\Club;
 use App\Form\ClubType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -27,8 +28,19 @@ class ClubController extends Controller
         //on recup ttes les catégories
         $clubs = $repository->findAll();
         
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+        
         return $this->render('admin/club/index.html.twig', [
-            'clubs' => $clubs
+            'clubs' => $clubs,
+            'nbsaisons' => $nbsaison
         ]);
     }
     
@@ -151,16 +163,28 @@ class ClubController extends Controller
      /**
      * @Route("/profil")
      */
-    /*public function profil()
+    public function profil()
     {
-        /*$repository = $this->getDoctrine()->getRepository(Club::class);
+        $repository = $this->getDoctrine()->getRepository(Club::class);
 
-        $club = $repository->find
+        $club = $repository->findall();
+        
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+        
         return $this->render('admin/club/profil.html.twig', 
                  [
                      'club' => $club,
+                     'nbsaisons' => $nbsaison
                      
                  ]
-        );*/
-    //}
+        );
+    }
 }
