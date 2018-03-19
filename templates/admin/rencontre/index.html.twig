@@ -45,8 +45,8 @@
                         <td align="center">{{ rencontre.createdAt|date('d/m/Y h:i:s')}}</td>
                         <td align="center">{% if rencontre.updatedAt is not null %}{{ rencontre.updatedAt|date('d/m/Y h:i:s') }}{% endif %}</td>
                         <td align="center">{{ rencontre.date|date('d/m/Y')}}</td>
-                        <td align="center">{{ rencontre.equipe1}}</td>
-                        <td align="center">{{ rencontre.equipe2}}</td>
+                        <td align="center">{{ rencontre.equipe1 }}</td>
+                        <td align="center">{{ rencontre.equipe2 }}</td>
                         {% if(rencontre.equipe1Score == false) %}
                             <td>-</td>
                         {% else %}
