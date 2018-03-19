@@ -1,9 +1,9 @@
 <?php
 namespace App\Controller\Admin;
 
-use App\Entity\Saison;
 use App\Entity\Article;
 use App\Entity\Rencontre;
+use App\Entity\Saison;
 use App\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
@@ -36,16 +36,14 @@ class ArticleController extends Controller
         } else {
             $nbsaison = 0;
         }
-        
-        
-        
+       
        //vue 
         return $this->render(
             '/admin/article/index.html.twig',
             [
                 'articles' => $articles,
                 'rencontres'=>$rencontres,
-                'nbsaisons' => $nbsaison
+                'nbsaisons' => $nbsaisons
             ]
         );
     }
@@ -109,21 +107,7 @@ class ArticleController extends Controller
                     
                     $article->setImage($filename);
                     
-                    // suppression de l'ancienne image en modification
-                    if (!is_null($originalImage)) {
-                        unlink($this->getParameter('upload_dir') . '/' . $originalImage);
-                    }
-                } else {
-                    // getData sur une checkbox = true si cochée, false sinon
-                    if ($form->has('remove_image') && $form->get('remove_image')->getData()) {
-                        $article->setImage(null);
-                        unlink($this->getParameter('upload_dir') . '/' . $originalImage);
-                    } else {
-                        $article->setImage($originalImage);
-                    }
-                }
-                
-                $em->persist($article);
+                 $em->persist($article);
                 $em->flush();
                 
                 $this->addFlash('success', "L'article est enregistré");
@@ -137,9 +121,11 @@ class ArticleController extends Controller
         return $this->render(
             '/admin/article/edit.html.twig',
             [
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'article'=>$article
             ]
         );
+    }
     }
     
     /**

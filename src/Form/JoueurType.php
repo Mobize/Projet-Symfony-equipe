@@ -87,7 +87,7 @@ class JoueurType extends AbstractType
             ->add(
                     'tel2',
                     TextType::class,
-                    ['label'=>'Telephone fixe',
+                    ['label'=>'Telephone parent',
                          'attr' => [
                             'class' => 'perso'
                         ]
@@ -142,7 +142,7 @@ class JoueurType extends AbstractType
                     'certificat',
                     FileType::class,
                     [
-                     'label'=>"certificat de santé",
+                     'label'=>"certificat médical",
                      'required'=>false
                     ]
             )
