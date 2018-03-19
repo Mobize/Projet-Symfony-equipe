@@ -20,7 +20,7 @@
                           <div class="jumbotron">
                             <h2>Pour accéder à la gestion de vos rencontres, <br>vous devez d'abord créer une saison</h2>
                            
-                            <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_edit') }}" role="button">Créer ma 1ère saison</a></p></div>
+                            <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_index') }}" role="button">Créer ma 1ère saison</a></p></div>
                           </div>      
             {% else %}
             <h1>Gestion des rencontres<a class="btn btn-primary pull-right" href="{{path('app_admin_rencontre_edit')}}">Ajouter une rencontre</a></h1>
@@ -32,8 +32,8 @@
                     <th>Date de modification</th>
                     <th>Date de la rencontre</th>
                     <th>Equipe du club</th>
-                    <th>Score Equipe du club</th>
                     <th>Equipe extérieure</th>
+                    <th>Score Equipe du club</th>
                     <th>Score Equipe extérieure</th>
                     <th>A domicile</th>
                     <th>Lieu</th>            
@@ -46,13 +46,14 @@
                         <td align="center">{% if rencontre.updatedAt is not null %}{{ rencontre.updatedAt|date('d/m/Y h:i:s') }}{% endif %}</td>
                         <td align="center">{{ rencontre.date|date('d/m/Y')}}</td>
                         <td align="center">{{ rencontre.equipe1}}</td>
+                        <td align="center">{{ rencontre.equipe2}}</td>
                         {% if(rencontre.equipe1Score == false) %}
                             <td>-</td>
                         {% else %}
                             <td align="center">{{ rencontre.equipe1Score}}</td>
                         {% endif %}
                                             
-                        <td align="center">{{ rencontre.equipe2}}</td>
+                        
                         {% if(rencontre.equipe2Score == false) %}
                             <td align="center">-</td>
                         {% else %}

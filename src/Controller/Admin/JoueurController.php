@@ -97,8 +97,9 @@ class JoueurController extends Controller
             $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
             $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
 
-            //dump($IdDerniereSaisonClub);
-            $equipe->setSaison($IdDerniereSaisonClub);
+            $saison = $SaisonClubRepository->find($IdDerniereSaisonClub['id']);
+            dump($saison);
+            $joueur->setSaison($saison);
         
         //Création du formulaire    
         $form = $this->createForm(JoueurType::class, $joueur);
@@ -169,7 +170,8 @@ class JoueurController extends Controller
                 
                 
                 //Ajout du message flash
-                $this->addFlash('success', 'Le joueur '.$joueur->getFullName().' a été enregistré');
+                //$this->addFlash('success', 'Le joueur '.$joueur->getFullName().' a été enregistré');
+                $this->addFlash('success', 'Le joueur a été enregistré');
                 //redirection vers la liste
                 return $this->redirectToRoute('app_admin_joueur_index');                
             } else {
