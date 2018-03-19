@@ -31,6 +31,24 @@ class JoueurType extends AbstractType
         
         $builder
             ->add(
+                    'prenom',
+                    TextType::class,
+                    ['label'=>'Prénom',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]
+                        ]
+                    )
+            ->add(
+                    'nom',
+                    TextType::class,
+                    ['label'=>'Nom',
+                         'attr' => [
+                            'class' => 'perso'
+                        ]
+                        ]
+                    )
+            ->add(
                     'rue',
                     TextType::class,
                     ['label'=>'Adresse',
