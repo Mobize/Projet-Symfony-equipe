@@ -7,9 +7,16 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
+.nom_club{
+    color: white;
+}
+.btn-info{
+    margin-top: -23px;
+    border-color: white;
+    background-color: #11162759;
+}
 .banner-text.agileinfo{
     padding: 15em 0;
-    
 }
 .hauteur_min{
     min-height: 500px;
@@ -29,7 +36,7 @@ and open the template in the editor.
 .header-nav ul.nav.navbar-nav{
     margin-top: 2em;
 }
-h1.titre{
+.titre{
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
@@ -52,7 +59,7 @@ h1.titre{
 
 
 
-/*-----Partie rencontres calendrierpar équipe route provisoire "@/rencontres"" --------------*/
+/*-----Partie rencontres calendrier par équipe route provisoire "@/rencontres"" --------------*/
 
 
 /* Léger décalage bouton d'affichage victoires nuls défaites */
@@ -60,11 +67,52 @@ h1.titre{
     margin-left: 15px;
 }
 
+/* div cachant les boutons */
 .div_btn_filtrage {
     display: none;
     margin-top: 6px;
 }
 
-margin-top: 6px;
+/* Pour cacher et faire apparaître les boutons */
+.cacher {
+    display: none;
+}
 
 
+/* ------------Surcharge footer--------------------*/
+
+.hauteur_min {
+    min-height: 300px;
+}
+
+.footer{
+    background: url("../images/herbe-verte-artificielle.jpg");
+}
+
+
+.blocOpaque { /* Astuce de création d'un bloc à 60% opaque à l'image de fond */
+  width:100%;
+  height:100%;
+  margin:0px 0px;
+  background-color:rgba(0,0,255,0.10);
+}
+
+.w3layouts_footer_grid h2 span, .w3layouts_footer_grid h3 span{
+        color: #1dd1a1;
+        font-weight: bold;
+}
+
+.w3layouts_footer_grid p {
+        color: #f1f2f6;
+        font-size: 1.1em;
+        font-weight: bold;
+}
+ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
+    color: #f1f2f6;
+}
+
+#inputmail::placeholder {
+  color:#c8d6e5;
+}
+ 
+/* Fin surcharge footer */

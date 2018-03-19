@@ -69,8 +69,9 @@
 		<div class="w3lsbanner-info">
                     <div class="header-mdl agileits-logo connecte"><!-- header-two --> 
 			<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
-                                    {{ app.user.club.nom }}
-                        <h2 class="connecte">Bonjour <a class=" utilisateur">{{ app.user.fullname }}</a></h2>
+                        <span><button type="button" class="btn btn-info"><a class="nom_club" href="{{ path('app_equipe_index') }}">{{ app.user.club.nom }}</a></button></span>
+                        <h3 class="connecte">Bonjour</h3>
+                        <h3>{{ app.user.fullname }}</h3>
                     </div>
 			<!-- header -->
 			<div class="header">
@@ -190,25 +191,25 @@
 		<div class="container">
 			<div class="wthree_head_section">
 				<h3 class="w3l_header">Comment ça fonctionne ?</h3>
-				<p>A football team is a group of players selected to play together in the various team sports known as football. </p>
+				<p>Inscription rapide et gratuite pour tous </p>
 			</div>
 			<div class="agileits-banner-grids text-center">
 				<div class="banner-bottom-girds">
 					<div class="col-md-4  col-sm-4 clr1 agileits-banner-grid">
 						<span class="fa fa-sun-o banner-icon" aria-hidden="true"></span>
-						<h4>Feature-1</h4>
+						<h4>1- Inscrivez-vous</h4>
 						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
 						
 					</div>
 					<div class="col-md-4 col-sm-4 clr2 agileits-banner-grid">
 						<span class="fa fa-arrows banner-icon" aria-hidden="true"></span>
-						<h4>Feature-2</h4>
+						<h4>2-Créez vos équipes</h4>
 						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
 						
 					</div>
 					<div class=" col-md-4 col-sm-4 clr3 agileits-banner-grid">
 						<span class="fa fa-cog banner-icon" aria-hidden="true"></span>
-						<h4>Feature-3</h4>
+						<h4>3-Gérez votre Club</h4>
 						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
 						
 					</div>
@@ -465,11 +466,11 @@
 	</div>	
 	<!--//pricing-->   	
 		<!-- footer -->
-	<div class="footer">
-	<div class="container">
+                                <div class="footer">
+	<div class="container blocOpaque">
 		<div class="f-bg-w3l">
-                    <div class="col-md-4 w3layouts_footer_grid">
-					<h2>Contact <span>Information</span></h2>
+		<div class="col-md-4 w3layouts_footer_grid">
+                    <h2>Informations de <span>Contact</span> </h2>
 					    <ul class="con_inner_text">
 							<li><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, 4th block, <label> New York City.</label></li>
 							<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
@@ -482,19 +483,19 @@
 						<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
 						<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
 					</ul>
-                    </div>
+				</div>
 				<div class="col-md-4 w3layouts_footer_grid">
-					<h2>Subscribe <span>Newsletter</span></h2>
-					<p>By subscribing to our mailing list you will always get latest news from us.</p>
+					<h2>S'inscrire à la <span>Newsletter</span></h2>
+					<p>En souscrivant à la newsletter, vous serez tenu au courant des dernières infos sur votre club!</p>
 					<form action="#" method="post">
-						<input type="email" name="Email" placeholder="Enter your email..." required="">
+                                            <input type="email" id="inputmail" name="Email" class="mailp" placeholder="Entrez votre email..." required />
 						<button class="btn1"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
 						<div class="clearfix"> </div>
 					</form>
 				</div>
 				<div class="col-md-4 w3layouts_footer_grid">
-					<h3>Latest <span>Events</span></h3>
-					  <ul class="con_inner_text midimg">
+					<h3>Derniers <span>Matchs</span></h3>
+					   <ul class="con_inner_text midimg">
 						<li><a href="#"><img src="images/g5.jpg" alt="" class="img-responsive" /></a></li>
 					    <li><a href="#"><img src="images/g6.jpg" alt="" class="img-responsive" /></a></li>
 						<li><a href="#"><img src="images/g7.jpg" alt="" class="img-responsive" /></a></li>
@@ -507,8 +508,8 @@
 					
 				</div>
 				<div class="clearfix"> </div>
-		</div>
-            </div>
+			</div>
+			</div>
 			<p class="copyright">© 2018 Football Club. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
 	</div>
                 {% else %}
@@ -523,10 +524,10 @@
 {% block footer %}
     		<!-- footer -->
 	<div class="footer">
-	<div class="container">
+	<div class="container blocOpaque">
 		<div class="f-bg-w3l">
 		<div class="col-md-4 w3layouts_footer_grid">
-					<h2>Contact <span>Information</span></h2>
+                    <h2>Informations de <span>Contact</span> </h2>
 					    <ul class="con_inner_text">
 							<li><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, 4th block, <label> New York City.</label></li>
 							<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
@@ -541,16 +542,16 @@
 					</ul>
 				</div>
 				<div class="col-md-4 w3layouts_footer_grid">
-					<h2>Subscribe <span>Newsletter</span></h2>
-					<p>By subscribing to our mailing list you will always get latest news from us.</p>
+					<h2>S'inscrire à la <span>Newsletter</span></h2>
+					<p>En souscrivant à la newsletter, vous serez tenu au courant des dernières infos sur votre club!</p>
 					<form action="#" method="post">
-						<input type="email" name="Email" placeholder="Enter your email..." required="">
+                                            <input type="email" id="inputmail" name="Email" class="mailp" placeholder="Entrez votre email..." required />
 						<button class="btn1"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
 						<div class="clearfix"> </div>
 					</form>
 				</div>
 				<div class="col-md-4 w3layouts_footer_grid">
-					<h3>Latest <span>Events</span></h3>
+					<h3>Derniers <span>Matchs</span></h3>
 					   <ul class="con_inner_text midimg">
 						<li><a href="#"><img src="images/g5.jpg" alt="" class="img-responsive" /></a></li>
 					    <li><a href="#"><img src="images/g6.jpg" alt="" class="img-responsive" /></a></li>

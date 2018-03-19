@@ -21,7 +21,7 @@ class FicheEquipeController extends Controller
     {
         $em= $this->getDoctrine()->getManager();
         
-        $joueurs = $em->getRepository(Joueur::class )->find($id);
+        $joueurs = $em->getRepository(Joueur::class )->findAll();
         
         return $this->render('fiche_equipe/index.html.twig', [
             
