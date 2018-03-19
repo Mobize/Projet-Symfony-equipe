@@ -49,6 +49,7 @@ class EquipeController extends Controller
         return $this->render('equipes/index.html.twig', [
             'NomderniereSaisonClub' => $NomderniereSaisonClub,
             'listEquipes' => $listEquipes,
+            
             'nbsaisons' => $nbsaison
         ]);
     }

@@ -17,7 +17,19 @@ class Joueur
      */
     private $id;
     
+     /**
+     * @var string
+     * @ORM\Column(length=255)
+     */
+    private $nom;
     
+   /**
+     * @var string
+     * @ORM\Column(length=255)
+     */
+    private $prenom;
+
+
     /**
      * @var string
      * @ORM\Column(length=255)
@@ -253,6 +265,26 @@ class Joueur
         return $this;
     }
 
+    function getNom() {
+        return $this->nom;
+    }
+
+    function getPrenom() {
+        return $this->prenom;
+    }
+
+    function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    function setPrenom($prenom) {
+        $this->prenom = $prenom;
+    }
+    
+    public function getFullName()
+    {
+        return trim($this->getNom() . ' ' . $this->getprenom());
+    }
 
 
 }

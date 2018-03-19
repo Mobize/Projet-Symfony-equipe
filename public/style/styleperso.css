@@ -7,14 +7,36 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
-<<<<<<< HEAD
-=======
 @media (max-width: 991px){
 .navbar-nav > li {
     margin: 0 1.3em;
 }
 }
 
+.logo_fff{
+    width:10%;
+}
+.feedback-img-info p.domicile{
+    color:blue;
+}
+.feedback-img-info h5{
+    color: black;
+}
+.feedback-img-info p{
+    color:red;
+}
+.agileits-feedback-grids{
+     background: rgba(153, 188, 89, 0.24);
+     border-radius: 10px;
+}
+.index_admin{
+        color: #99bc59;
+        font-size: 4em;
+}
+.fleche_bas{
+    font-size:4em;
+    color:white;
+}
 .clr2{
     min-height: 308px;
 }
