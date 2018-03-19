@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Saison;
 use App\Entity\Joueur;
 use App\Form\JoueurType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,13 +21,33 @@ class JoueurController extends Controller
      */
     public function index()
     {
+        
+        //Récupération du nom de la dernière saison enregistrée pour le club
+        $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
+        $NomderniereSaisonClub = $SaisonClubRepository->findNomLatestSaison($this->getUser()->getClub()->getId());
+        //$IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
+
         $repository = $this->getDoctrine()->getRepository(Joueur::class);
         
         //on recup ts les joueurs
         $joueurs = $repository->findAll();
         
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+       
+        
+        
         return $this->render('admin/joueur/index.html.twig', [
-           'joueurs' => $joueurs
+           'joueurs' => $joueurs,
+            'nbsaisons' => $nbsaison,
+            'NomderniereSaisonClub' => $NomderniereSaisonClub
         ]);
     }
     /**
@@ -71,8 +92,16 @@ class JoueurController extends Controller
         //alimentation de la clé étrangère club
         $joueur->setClub($this->getUser()->getClub());
 
-        $form = $this->createForm(JoueurType::class, $joueur);
+        //alimentation de la clé étrangère SAISON
+            //Récupération id de la dernière saison enregistrée pour le club
+            $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
 
+            //dump($IdDerniereSaisonClub);
+            $equipe->setSaison($IdDerniereSaisonClub);
+        
+        //Création du formulaire    
+        $form = $this->createForm(JoueurType::class, $joueur);
         $form->handleRequest($request);
         
         //si le formulaire à été envoyé

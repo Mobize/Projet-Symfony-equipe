@@ -19,7 +19,7 @@ class SaisonRepository extends ServiceEntityRepository
         parent::__construct($registry, Saison::class);
     }
 
-      //Sélection des équipes du club connecté
+      //Sélection des saisons du club connecté
     public function listSaisonClub($club)
     {
         return $this->createQueryBuilder('s')
@@ -27,14 +27,44 @@ class SaisonRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }  
+
+    // retourne l'id de la dernière saison enregistrée du club connecté
+    public function findIdLatestSaison($club)
+    {      
+            $qb = $this->createQueryBuilder('a');
+ 
+            $qb->select('a.id')
+                ->where('a.club = :club')->setParameter('club',$club)  
+                ->orderBy('a.id', 'DESC')
+                ->setMaxResults(1);
+ 
+            return $qb->getQuery()
+                ->getOneOrNullResult();                
+            
     }
     
-    /*
+    // retourne le nom de la dernière saison enregistrée du club connecté
+    public function findNomLatestSaison($club)
+    {      
+            $qb = $this->createQueryBuilder('a');
+ 
+            $qb->select('a.nom')
+                ->where('a.club = :club')->setParameter('club',$club)  
+                ->orderBy('a.id', 'DESC')
+                ->setMaxResults(1);
+ 
+            return $qb->getQuery()
+                ->getOneOrNullResult();                
+            
+    }
+
+        /*
     public function findBySomething($value)
     {
-        return $this->createQueryBuilder('s')
-            ->where('s.something = :value')->setParameter('value', $value)
-            ->orderBy('s.id', 'ASC')
+        return $this->createQueryBuilder('a')
+            ->where('a.something = :value')->setParameter('value', $value)
+            ->orderBy('a.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()

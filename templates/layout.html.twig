@@ -69,8 +69,9 @@
 		<div class="w3lsbanner-info">
                     <div class="header-mdl agileits-logo connecte"><!-- header-two --> 
 			<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
-                                    {{ app.user.club.nom }}
-                        <h2 class="connecte">Bonjour <a class=" utilisateur">{{ app.user.fullname }}</a></h2>
+                        <span><button type="button" class="btn btn-info"><a class="nom_club" href="{{ path('app_equipe_index') }}">{{ app.user.club.nom }}</a></button></span>
+                        <h3 class="connecte">Bonjour</h3>
+                        <h3>{{ app.user.fullname }}</h3>
                     </div>
 			<!-- header -->
 			<div class="header">
@@ -190,25 +191,25 @@
 		<div class="container">
 			<div class="wthree_head_section">
 				<h3 class="w3l_header">Comment ça fonctionne ?</h3>
-				<p>A football team is a group of players selected to play together in the various team sports known as football. </p>
+				<p>Inscription rapide et gratuite pour tous </p>
 			</div>
 			<div class="agileits-banner-grids text-center">
 				<div class="banner-bottom-girds">
 					<div class="col-md-4  col-sm-4 clr1 agileits-banner-grid">
 						<span class="fa fa-sun-o banner-icon" aria-hidden="true"></span>
-						<h4>Feature-1</h4>
+						<h4>1- Inscrivez-vous</h4>
 						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
 						
 					</div>
 					<div class="col-md-4 col-sm-4 clr2 agileits-banner-grid">
 						<span class="fa fa-arrows banner-icon" aria-hidden="true"></span>
-						<h4>Feature-2</h4>
+						<h4>2-Créez vos équipes</h4>
 						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
 						
 					</div>
 					<div class=" col-md-4 col-sm-4 clr3 agileits-banner-grid">
 						<span class="fa fa-cog banner-icon" aria-hidden="true"></span>
-						<h4>Feature-3</h4>
+						<h4>3-Gérez votre Club</h4>
 						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
 						
 					</div>

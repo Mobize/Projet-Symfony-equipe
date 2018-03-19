@@ -85,6 +85,7 @@ class Joueur
      * @ORM\ManyToOne(targetEntity="Equipe",cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      * @var Equipe 
+      * @Assert\NotBlank()
      */
      private $equipe;   
      
@@ -96,6 +97,13 @@ class Joueur
      */
      private $club;
 
+     //SAISON
+     /**
+     * @ORM\Column(type="integer")
+     * * @var integer
+     */
+     private $saison;
+     
      //USER
      /**
      * @ORM\OneToOne(targetEntity="User",cascade={"persist"}, fetch="EAGER")
@@ -169,11 +177,9 @@ class Joueur
         return $this;
     }
 
-
     public function getImage() {
         return $this->image;
     }
-
 
     public function setImage($image) {
         $this->image = $image;
@@ -223,9 +229,20 @@ class Joueur
         return $this;
     }
 
-    public function getFullName()
+    //affiche le nom et prenom de l utilisateur si il est connecté
+    public function getFullname()
     {
-        return $this->user->getFullName();
+        return $this->prenom . ' ' . $this->nom;
     }
+    public function getSaison() {
+        return $this->saison;
+    }
+
+    public function setSaison($saison) {
+        $this->saison = $saison;
+        return $this;
+    }
+
+
 
 }
