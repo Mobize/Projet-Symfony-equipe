@@ -20,7 +20,7 @@ class UserType extends AbstractType
                     'lastname',
                     TextType::class,
                     [
-                        'label' => 'Nom',
+                        'label' => 'Nom du dirigeant',
                         'attr' => [
                             'class' => 'perso'
                         ]

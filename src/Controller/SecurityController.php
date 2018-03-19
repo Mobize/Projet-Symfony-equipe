@@ -64,6 +64,8 @@ class SecurityController extends Controller
                     'last_username' => $lastUsername
                 ]
             );
+        
+       
     }
     
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Saison;
 use App\Entity\Equipe;
 use App\Entity\Saison;
 use App\Form\EquipeType;
@@ -99,9 +100,8 @@ class EquipeController extends Controller
             //Récupération id de la dernière saison enregistrée pour le club
             $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
             $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
-
-            dump($IdDerniereSaisonClub);
-            $equipe->setSaison($IdDerniereSaisonClub);
+            $saison = $SaisonClubRepository->find($IdDerniereSaisonClub['id']);
+            $equipe->setSaison($saison);
      
         //création du formulaire lié à l'équipe
         $form = $this->createForm(EquipeType::class, $equipe);
