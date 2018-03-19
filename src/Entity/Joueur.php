@@ -89,20 +89,24 @@ class Joueur
      */
      private $equipe;   
      
+     
+   
     //CLUB
      /**
      * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      * @var Club 
      */
-     private $club;
+    private $club;
 
      //SAISON
      /**
      * @ORM\Column(type="integer")
      * * @var integer
-     */
+      */ 
      private $saison;
+   
+     
      
      //USER
      /**
@@ -220,6 +224,8 @@ class Joueur
         $this->equipe = $equipe;
         return $this;
     }
+ 
+ 
     public function getUser(): User {
         return $this->user;
     }
@@ -234,6 +240,7 @@ class Joueur
     {
         return $this->prenom . ' ' . $this->nom;
     }
+ 
     public function getSaison() {
         return $this->saison;
     }

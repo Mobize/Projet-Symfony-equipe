@@ -2,8 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Saison;
 use App\Entity\Joueur;
+use App\Entity\Saison;
 use App\Form\JoueurType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use function dump;
 /**
 * @Route("/joueur")
 */
@@ -23,21 +24,21 @@ class JoueurController extends Controller
     {
         
         //Récupération du nom de la dernière saison enregistrée pour le club
-        $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
+       $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
         $NomderniereSaisonClub = $SaisonClubRepository->findNomLatestSaison($this->getUser()->getClub()->getId());
-        //$IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
+        $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
 
         $repository = $this->getDoctrine()->getRepository(Joueur::class);
         
         //on recup ts les joueurs
         $joueurs = $repository->findAll();
         
-        if(!is_null($this->getUser())){
-            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
-            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
-            $nbsaison = count($saisons);
+       if(!is_null($this->getUser())){
+           $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+           $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+           $nbsaison = count($saisons);
             
-            //dump($nbsaison);
+            dump($nbsaison);
         } else {
             $nbsaison = 0;
         }
@@ -53,7 +54,7 @@ class JoueurController extends Controller
     /**
      * @Route("/edit/{id}", defaults={"id":null})
      */
-    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder,$id)
+    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder, $id)
     {
          $em= $this->getDoctrine()->getManager();
           // tentative gestion image---1 
