@@ -30,6 +30,12 @@ class EquipeController extends Controller
                 $IdDerniereSaisonClub
         );
         
+        //Récupération du nb de joueurs par équipe du club
+        //$SNbJoueursEquipeRepository = $this->getDoctrine()->getRepository(Equipe::class);
+        //$NbJoueursEquipe= $SNbJoueursEquipeRepository->NbJoueursEquipe(
+        //        $this->getUser()->getClub()->getId(),$equipe);
+        
+        
         if(!is_null($this->getUser())){
             $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
             $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
