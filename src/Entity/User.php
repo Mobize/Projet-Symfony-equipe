@@ -38,7 +38,7 @@ class User implements UserInterface
    
       /**
      * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
-     * @ORM\JoinColumn(nullable=false, unique=true)
+     * @ORM\JoinColumn(nullable=false)
      * @var Club 
      */
      private $club;
