@@ -20,7 +20,7 @@ class RencontresController extends Controller
         // recup des rencontres
         $rencontres = $repository->findAll();
         
-        $Clubrepository = $this->getDoctrine()->getRepository(Club::class);
+       /* $Clubrepository = $this->getDoctrine()->getRepository(Club::class);
         //recup des clubs
         $clubs = $Clubrepository->findAll();
         
@@ -38,11 +38,11 @@ class RencontresController extends Controller
         } 
          
        
-        } // fin else
+        } // fin else*/
      return $this->render('rencontres/index.html.twig',
          [
             'rencontres' => $rencontres,
-            'clubs' => $clubs
+           // 'clubs' => $clubs
          ]);
     
         }//fin fonction index

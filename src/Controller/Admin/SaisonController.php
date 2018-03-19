@@ -101,6 +101,7 @@ class SaisonController extends Controller
             $nbsaison = 0;
         }
         
+        $nom = $saison->getNom();
          return $this->render('admin/saison/edit.html.twig', 
                  [
                      'form' => $form->createView(),
