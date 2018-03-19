@@ -58,6 +58,18 @@ class RencontreController extends Controller
             $rencontre = $em->getRepository(Rencontre::class)->find($id);
         }        
         
+        //alimentation de la clé étrangère club
+        $rencontre->setClub($this->getUser()->getClub());
+
+        //alimentation de la clé étrangère SAISON
+            //Récupération id de la dernière saison enregistrée pour le club
+            $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
+
+            $saison = $SaisonClubRepository->find($IdDerniereSaisonClub['id']);
+            dump($saison);
+            $rencontre->setSaison($saison);
+            
         //création du formulaire lié à l'équipe
         $form = $this->createForm(RencontreType::class, $rencontre);
         

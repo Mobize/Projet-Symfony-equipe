@@ -7,6 +7,19 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
+.alert{
+    font-size: 1em;
+}
+.bouton{
+    margin-top: 25px;
+}
+h1{
+    font-size: 22px;
+}
+legend{
+    font-size: 18px;
+    color : dodgerblue;
+}
 .nom_club{
     color: white;
 }

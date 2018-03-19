@@ -47,7 +47,7 @@ class Rencontre
     private $equipe1;
      
      /**
-     * @ORM\Column(type="integer",nullable=true)
+     * @ORM\Column(type="integer",nullable=true, options={"default" : 0})) 
      * @var int
      */  
     private $equipe1Score;
@@ -60,8 +60,8 @@ class Rencontre
      */
     private $equipe2;  
     
-         /**
-     * @ORM\Column(type="integer",nullable=true)
+     /**
+     * @ORM\Column(type="integer",nullable=true, options={"default" : 0})) 
      * @var int
      */  
     private $equipe2Score;
@@ -78,6 +78,22 @@ class Rencontre
      */
     private $lieu;     
     
+    //CLUB
+     /**
+     * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Club 
+     */
+     private $club;
+
+     //SAISON
+     /**
+     * @ORM\ManyToOne(targetEntity="Saison",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Saison 
+     */
+     private $saison;
+     
     
     //pour l'enregistrement automatique de la date de création de l'enregistrement
     public function __construct()
@@ -173,4 +189,24 @@ class Rencontre
     {
         return $this->date;
     }*/
+    
+ public function getClub(): Club {
+     return $this->club;
+ }
+
+ public function getSaison(): Saison {
+     return $this->saison;
+ }
+
+ public function setClub(Club $club) {
+     $this->club = $club;
+     return $this;
+ }
+
+ public function setSaison(Saison $saison) {
+     $this->saison = $saison;
+     return $this;
+ }
+
+
 }
