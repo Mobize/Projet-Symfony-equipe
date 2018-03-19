@@ -14,32 +14,35 @@
 {% block content %} 
 <div class="container"> 
     <div class="row">  
-        <h1 class="titre">Mon Club pour la saison {{ NomderniereSaisonClub.nom }}</h1>
-        <hr>
-        {% for equipe in listEquipes %}
-        <div class="col-md-3"> 
-            <div class="thumbnail">
-                <div class="caption text-center">
-                    <h3 id="equipes_titre">{{ equipe.nom }}</h3>
-                    <div class="thumbnail">
-                        {% if(equipe.image is not null)%}
+        <div class="col-md-8 col-md-offset-2">
+            {% if(nbsaisons is defined and nbsaisons == false) %}
+                          <div class="jumbotron">
+                            <h2>Pour accéder à la gestion de votre Club, <br>vous devez d'abord créer une saison</h2>
+                           
+                            <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_edit') }}" role="button">Créer ma 1ère saison</a></p></div>
+                          </div>      
+            {% else %}
+            <h1 class="titre">Mon Club pour la saison 2017-2018</h1>
+            <hr>
+            {% for equipe in equipes %}
+            <div class="col-md-3"> 
+                <div class="thumbnail">
+                    <div class="caption text-center">
+                        <h3>{{ equipe.nom }}</h3>
+                        <div class="thumbnail">
                             <img src="{{ asset('upload/' ~ equipe.image) }}" class="img-responsive">
-                        {% else %}
-                            <img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" heigth="100px" width="100px" class="img-responsive">
-                        {% endif %}
-
-                        
+                        </div>
                     </div>
+                        <p>Nom de l'entraineur:</p>
+                        <p>Nombre de joueurs: 16</p>
+                        <span class=""><a href="{{ path('app_ficheequipe_index', {id: equipe.id}) }}" class="btn btn-primary" role="button">Fiche Equipe</a></span>
+                        <span class="pull-right"><a href="#" class="btn btn-primary" role="button">Rencontres</a></span>{#<a href="#" class="btn btn-default" role="button">Button</a></p>#}
                 </div>
-                    <p>Nom de l'entraineur:</p>
-                    <p>Nombre de joueurs: 16</p>
-                    <span class=""><a href="{{ path('app_ficheequipe_index', {id: equipe.id}) }}" class="btn btn-primary" role="button">Fiche Equipe</a></span>
-                    <span class="pull-right"><a href="#" class="btn btn-primary" role="button">Rencontres</a></span>{#<a href="#" class="btn btn-default" role="button">Button</a></p>#}
             </div>
-        </div>
-      {% endfor %}
+            {% endfor %}
+          {% endif  %}
+        </div>  
     </div> 
-    <hr>
     
 </div>              
 {% endblock %}

@@ -24,14 +24,14 @@
                     <p>Pour vous inscrire et mettre en place la gestion
                         de votre club au sein de la plateforme Team'Up, vous devez vous munir de votre n° d'association.
                     </p>
-                    <small> *Tous les champs du formulaire sont obligatoires.</small>
+                    <small> *Tous les champs du formulaires sont obligatoires.</small>
                 </div>
             </div>
             <h1>J'inscris mon club à Team'Up</h1>
-            {{ form_start(form) }}
             <fieldset>
                 <legend>J'identifie mon club</legend>
                 {# champs club #}
+                {{ form_start(form) }}
                 {{ form_row(form.club.assoc) }}
                 {{ form_row(form.club.nom) }}
             </fieldset>
@@ -43,8 +43,10 @@
             {{ form_row(form.email) }}
             {{ form_row(form.plainPassword) }}
              </fieldset>           
-            </fieldset>
+            
 
+
+            
             <div class="form-btn-group text-center">
                 <button type="submit" class="btn btn-primary">
                     Enregistrer

@@ -7,6 +7,39 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
+.clr2{
+    min-height: 308px;
+}
+.clr3{
+    max-height: 308px;
+}
+.liste{
+    list-style: none;
+    color: white;
+}
+.lien_accueil{
+    color: #a8f644;
+}
+.lien_accueil:hover{
+    color:white;
+}
+.banner-text h2{
+    margin-top: -120px;
+}
+.alert{
+    font-size: 1em;
+}
+.bouton{
+    margin-top: 25px;
+}
+h1{
+    font-size: 22px;
+}
+legend{
+    font-size: 18px;
+    color : dodgerblue;
+}
+
 .nom_club{
     color: white;
 }

@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use App\Repository\SaisonRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -121,7 +123,14 @@ class Saison
 
 
 
+    public function getSaison(): ?Saison {
+        return $this->saison;
+    }
 
+    public function setSaison(Saison $saison) {
+        $this->saison = $saison;
+        return $this;
+    }
  
 
 
