@@ -17,7 +17,7 @@
     <div class="row">  
         
         {% if(nbsaisons is defined and nbsaisons == false) %}
-        <div class="col-md-7 col-md-offset-2">        
+        <div class="col-md-7 col-md-offset-2 creer_saison">        
                 <div class="text-center"><h2>Créez votre première saison</h2></div>
                 <hr>
                 <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_edit') }}" role="button">Créer</a></p></div>
@@ -49,7 +49,7 @@
                         <td>
                             <a href="{{ path('app_admin_saison_edit', {id: saison.id}) }}" class="btn btn-primary">Modifier</a>
                             <a href="{{ path('app_admin_saison_delete', {id: saison.id}) }}" class="btn btn-danger">Supprimer</a>
-                            <a href="{{ path('app_admin_equipe_index', {id: saison.id}) }}" class="btn btn-success pull-right">Ajoutez une équipe</a>
+                            <a href="{{ path('app_admin_equipe_index', {id: saison.id}) }}" class="btn btn-success pull-right">Ajoutez équipe</a>
                         </td>  
                     </tr>
                 {% else %}

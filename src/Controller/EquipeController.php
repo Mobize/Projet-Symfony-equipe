@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Saison;
 use App\Entity\Equipe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;

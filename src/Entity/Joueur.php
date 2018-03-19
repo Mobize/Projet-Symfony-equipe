@@ -54,13 +54,6 @@ class Joueur
     */
     private $tel2;
     
-     /**
-     * @ORM\Column(unique=true)
-     * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
-     * 
-     * @var string
-     */
-    //private $email;
     
     /**
      * @var string
@@ -99,13 +92,15 @@ class Joueur
      */
      private $equipe;   
      
+     
+   
     //CLUB
      /**
      * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      * @var Club 
      */
-     private $club;
+    private $club;
 
      //SAISON
      /**
@@ -114,6 +109,8 @@ class Joueur
      * @var Saison 
      */
      private $saison;
+   
+     
      
      //USER
      /**
@@ -231,6 +228,8 @@ class Joueur
         $this->equipe = $equipe;
         return $this;
     }
+ 
+ 
     public function getUser(): User {
         return $this->user;
     }

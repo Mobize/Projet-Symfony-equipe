@@ -22,10 +22,10 @@ class ArticleType extends AbstractType
                 
                 
                 
-            ->add('equipe1',
+      /*      ->add('equipe1',
             EntityType::class,
                     [
-                        'label' => 'Équipe 1',
+                        'label' => 'Equipe 1/Equipe du club',
                         'class'=> Rencontre::class,
                          'attr' => [
                             'class' => 'perso'
@@ -61,11 +61,12 @@ class ArticleType extends AbstractType
                             'class' => 'perso'
                         ]             
                     ]
-                )
+                )*/
             ->add('title',
             TextType::class,
                     [
                         'label' => 'Titre',
+                        'class'=> Article::class,
                          'attr' => [
                             'class' => 'perso'
                         ]             
@@ -80,19 +81,10 @@ class ArticleType extends AbstractType
                         ]             
                     ]
                 ) 
-            ->add('resume',
-            TextareaType::class,
-                    [
-                        'label' => 'Résumé',
-                         'attr' => [
-                            'class' => 'perso'
-                        ]             
-                    ]
-                )
             ->add('fullname',
              EntityType::class,
                     [
-                        'label' => 'Date',
+                        'label' => 'Auteur',
                         'class'=> User::class,
                          'attr' => [
                             'class' => 'perso'
@@ -100,11 +92,8 @@ class ArticleType extends AbstractType
                     ]
                 )
                   
- 
-     
             ->add('image',
-                    //input type file
-                    FileType::class,
+                FileType::class,
                     [
                         'label' => 'Illustration',
                         'required' => false, 'attr' => [
@@ -113,21 +102,9 @@ class ArticleType extends AbstractType
                     ]
             )    
         ;
-        
-        //$options['data'] = L'entité Article
-        // si il y a une image enregistrée en bdd
-        if (!is_null($options['data']->getImage())){
-            $builder->add(
-                    'remove_image',
-                    CheckboxType::class,
-                    [
-                        'label' => "Supprimer l'illustration",
-                        'required' => false,
-                        //champ non relié à un attribut de l'entité Article
-                        'mapped' => false
-                    ]
-            );
-        }
+      
+         
+       
     }
 
     public function configureOptions(OptionsResolver $resolver)
