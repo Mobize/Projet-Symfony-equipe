@@ -5,8 +5,6 @@ use App\Entity\Saison;
 use App\Entity\Article;
 use App\Entity\Rencontre;
 use App\Form\ArticleType;
-use App\Form\RencontreType;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -41,6 +39,7 @@ class ArticleController extends Controller
         
         
         
+       //vue 
         return $this->render(
             '/admin/article/index.html.twig',
             [
@@ -74,6 +73,19 @@ class ArticleController extends Controller
             }
         }
         
+        //alimentation de la clé étrangère club
+        $article->setClub($this->getUser()->getClub());
+
+        //alimentation de la clé étrangère SAISON
+            //Récupération id de la dernière saison enregistrée pour le club
+            $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
+
+            $saison = $SaisonClubRepository->find($IdDerniereSaisonClub['id']);
+            //dump($saison);
+            $article->setSaison($saison);
+            
+        //création du formulaire lié à l'équipe
         $form = $this->createForm(ArticleType::class, $article);
         
         $form->handleRequest($request);
