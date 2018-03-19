@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
  /**
   * @Route("/equipes")
   */
-class EquipesController extends Controller
+class EquipeController extends Controller
 {
    /**
      * @Route("/")

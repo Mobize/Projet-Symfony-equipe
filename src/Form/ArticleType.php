@@ -2,9 +2,10 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Article;
+use App\Entity\Rencontre;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -18,6 +19,49 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+                
+                
+                
+            ->add('equipe1',
+            EntityType::class,
+                    [
+                        'label' => 'Équipe 1',
+                        'class'=> Rencontre::class,
+                         'attr' => [
+                            'class' => 'perso'
+                        ]             
+                    ]
+                )
+            ->add('equipe2',
+            EntityType::class,
+                    [
+                        'label' => 'Équipe 2',
+                        'class'=> Rencontre::class,
+                         'attr' => [
+                            'class' => 'perso'
+                        ]             
+                    ]
+                )
+            ->add('lieu',
+            EntityType::class,
+                    [
+                        'label' => 'Lieu',
+                        'class'=> Rencontre::class,
+                         'attr' => [
+                            'class' => 'perso'
+                        ]             
+                    ]
+                )
+            ->add('date',
+            EntityType::class,
+                    [
+                        'label' => 'Date',
+                        'class'=> Rencontre::class,
+                         'attr' => [
+                            'class' => 'perso'
+                        ]             
+                    ]
+                )
             ->add('title',
             TextType::class,
                     [
@@ -36,30 +80,28 @@ class ArticleType extends AbstractType
                         ]             
                     ]
                 ) 
-            ->add('description',
+            ->add('resume',
             TextareaType::class,
                     [
-                        'label' => 'Description',
+                        'label' => 'Résumé',
                          'attr' => [
                             'class' => 'perso'
                         ]             
                     ]
                 )
-            ->add('category',
-                  //<select> sur une entité
-                  EntityType::class,
-                  [
-                      'label' => 'Catégorie',
-                      'class' => Category::class,
-                      //nom du champ qui s'affiche dans les <option>
-                      'choice_label' => 'name',
-                      //1ère option vide
-                      'placeholder' => 'Choisissez une catégorie',
-                       'attr' => [
+            ->add('fullname',
+             EntityType::class,
+                    [
+                        'label' => 'Date',
+                        'class'=> User::class,
+                         'attr' => [
                             'class' => 'perso'
                         ]             
-                  ]  
+                    ]
                 )
+                  
+ 
+     
             ->add('image',
                     //input type file
                     FileType::class,
