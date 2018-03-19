@@ -103,12 +103,12 @@ and open the template in the editor.
 }
 
 .w3layouts_footer_grid p {
-        color: #f1f2f6;
+        color: #fff;
         font-size: 1.1em;
         font-weight: bold;
 }
 ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
-    color: #f1f2f6;
+    color: #fff;
 }
 
 #inputmail::placeholder {
