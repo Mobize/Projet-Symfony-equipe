@@ -89,6 +89,8 @@ class SaisonController extends Controller
         
         $nbsaison = count($saisons);
         
+        $nom = $saison->getNom();
+        
         if(!is_null($this->getUser())){
             $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
             $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
