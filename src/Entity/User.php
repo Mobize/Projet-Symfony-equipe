@@ -148,16 +148,7 @@ class User implements UserInterface
     public function getUsername(): string {
         return $this->email;
     }
-    
-
-    
-    public function __toString() 
-    {
-        return $this->getFullname();
-    }
-
-    
-    
+  
     public function getClub(): ?Club {
         return $this->club;
     }
@@ -170,12 +161,16 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getFullName()
-    {
-        return trim($this->getFirstname() . ' ' . $this->getLastname());
-    }
+    //creation de l'identité prénom nom
+      public function getFullname()
+   {
+       return $this->firstname.' '. $this->lastname;
+   }
     
-   
+      public function __toString() 
+    {
+        return $this->getFullname();
+    }
 
     
 }
