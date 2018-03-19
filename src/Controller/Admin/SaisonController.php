@@ -30,9 +30,20 @@ class SaisonController extends Controller
         $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
         $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
         
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+        
         return $this->render(
             'admin/saison/index.html.twig', [
-            'saisons' => $saisons
+            'saisons' => $saisons,
+            'nbsaisons' => $nbsaison
             ]    
         );
     }
@@ -78,10 +89,22 @@ class SaisonController extends Controller
         
         $nom = $saison->getNom();
         
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+        
          return $this->render('admin/saison/edit.html.twig', 
                  [
                      'form' => $form->createView(),
-                     'nom' => $nom
+                     'nom' => $nom,
+                     'nbsaisons' => $nbsaison
+                     
                  ]
         );
     }

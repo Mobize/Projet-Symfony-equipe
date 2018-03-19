@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\Admin;
 
+use App\Entity\Saison;
 use App\Entity\Article;
 use App\Entity\Rencontre;
 use App\Form\ArticleType;
@@ -28,13 +29,24 @@ class ArticleController extends Controller
         $repository = $this->getDoctrine()->getRepository(Rencontre::class);
         $rencontres = $repository->findAll();
         
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
+        
         
         
         return $this->render(
             '/admin/article/index.html.twig',
             [
                 'articles' => $articles,
-                'rencontres'=>$rencontres
+                'rencontres'=>$rencontres,
+                'nbsaisons' => $nbsaison
             ]
         );
     }
