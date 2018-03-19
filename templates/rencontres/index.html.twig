@@ -20,11 +20,11 @@
             <div class="col-md-12">
                 
                 
-                {# équipes statiques en attendant rzlation avec la base #} 
+                {# équipes statiques en attendant relation avec la base #} 
                 <table class="table table-striped table-bordered table-hover">
                     <tr>
                         <th colspan="6">
-                            <h1 class="text-center">Saison 2017/2018-"U8 Arcachon" <img src="{{asset ('images/redstar.png') }}" alt="logo" /> <p>Calendrier</p> </h1>
+                            <h1 class="text-center">Saison 2017/2018-U8 Arcachon <img src="{{asset ('images/redstar.png') }}" alt="logo" /> <p>Calendrier</p> </h1>
                         </th>
                     </tr>
                     <tr>
@@ -38,10 +38,10 @@
                        {# j'imagine que les noms d'équipes et dates deviendront tous cliquables dans le futur a voir. #}
                     <tr>
                         <td>02/11/2017(date d'un match précis)</td>
-                        {# Dans le football la convention est que l'équipe notée en premier est celle qui joue à domivile #}
+                        {# Dans le football la convention est que l'équipe notée en premier est celle qui joue à domicile #}
                         <td>Nom Stade adresse?</td>
-                        <td>Nom Lieu équipe 1 vs Nom Lieu équipe 2 </td>
-                        <td class="text-center">0-1<button class=" btn btn-success resultat_rencontres_btn btn_vic" disabled>V</button>(victoire de l'équipe 2 dans ce cas)</td>
+                        <td> équipe 1 vs équipe 2 </td>
+                        <td class="text-center">0-1<button class=" btn btn-success resultat_rencontres_btn btn_vic" disabled>V</button></td>
                         <td><a href="#" target="_blank">Fiche détaillée</a></td>
                     </tr>
                     {# insertion de deux lignes supplémentaires ligne pour impression visuelle #}
@@ -83,7 +83,7 @@
             </div>
         </div>
                       
-     <!--                   
+     <!--       A remplir avec base opérationnelle            
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -172,36 +172,73 @@
          * 
          */
         
-        $(function() {
-            
-            
-            $("#filtrage_btn").click(function() {
-                $(".div_btn_filtrage").show('slow');
-            }); // bouton filtrer
-           
+         $(function() {
+                
+                function boutonFiltrer(){  //Fonction pour gérer le bouton de filtrage
 
-          
-        
-       /*
-       if ($("#victoire") == "active") {
-    
-            $('#victoire').attr('disabled');
-         }
-        */
-         $("#victoire").click(function() {
-                $(".btn_nul,.btn_def ").fadeOut('slow').toggle();
+                    if($("#filtrage_btn").text() === "Filtrer") 
+                    {
+                            $(".div_btn_filtrage").fadeIn('slow');
+                            $("#filtrage_btn").text("Retirer filtrage").attr("title","cliquer pour enlever le filtrage");
+                    }        
+                
+                    else if ($("#filtrage_btn").text() === "Retirer filtrage") 
+                    {
+                        $(".div_btn_filtrage").fadeOut('slow');
+                        $("#filtrage_btn").attr("title","cliquer pour choisir un filtrage");
+                        $(".btn_nul,.btn_def,.btn_vic").removeClass("cacher"); //Remets les élts en place
+                        $("#filtrage_btn").text("Filtrer"); // Change le texte du bouton
+                        
+                    }
+                }// Fin fonction boutonFiltrer()
+
+                $("#filtrage_btn").click(function() { 
+                    boutonFiltrer(); //fonction appliquée au click sur le bouton "filtrer"
+                });
+                    
+                // gestion des boutons de filtrage "victoire nul défaite"
+                function vic() {
+
+                         if ($(".btn_vic").is(":visible"))
+                         {
+                                 $(".btn_nul").toggleClass("cacher");
+                                 $(".btn_def ").toggleClass("cacher");
+                         }           
+                                } // fin fonction vic
+
+                function nul() {
+
+                    if ($(".btn_nul").is(":visible")) {
+                    
+                        $(".btn_vic").toggleClass("cacher");
+                             $(".btn_def ").toggleClass("cacher");              
+                    }  
+                 } // fin fonction nul
+                            
+
+                function def() {
+
+                    if ($(".btn_def").is(":visible")) {
+
+                                $(".btn_vic").toggleClass("cacher");
+                                $(".btn_nul ").toggleClass("cacher");
+                    } // fin fonction def
+                }
+                     
+            //Application des différentes fonctions aux clics respectifs   
+            $("#victoire").click(function() {
+                vic();
             });
+                
             $("#nul").click(function() {
-                $(".btn_vic,.btn_def ").fadeOut('slow').toggle();
+                nul();
             });
+                
             $("#defaite").click(function() {
-                $(".btn_vic,.btn_nul ").fadeOut('slow').toggle();
+                def();
             });
-            /*$("#victoire").on("click" function() {
-                alert("test");
-                La méthode "on" ne fonctionne pas car version obsolète
-            }) */
-        });
+                
+            }); // fin jquery
     </script>    
     
 {% endblock %}    
