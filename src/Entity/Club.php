@@ -276,6 +276,5 @@ class Club
     function getAssoc() {
         return $this->assoc;
     }
-
-
+    
 }

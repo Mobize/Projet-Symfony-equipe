@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Equipe;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Saison;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Routing\Annotation\Route;
 
 
  /**
@@ -17,11 +18,21 @@ class EquipeController extends Controller
      */
     public function index()
     {
-        $equipeRepository = $this->getDoctrine()->getRepository(Equipe::class);
-        $equipes = $equipeRepository->listEquipeClub($this->getUser()->getClub()->getId());
+        //Récupération du nom de la dernière saison enregistrée pour le club
+        $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
+        $NomderniereSaisonClub = $SaisonClubRepository->findNomLatestSaison($this->getUser()->getClub()->getId());
+        $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
+             
+        //Récupération de la liste des équipes du club de la dernière saison
+        $equipesSaisonClubRepository = $this->getDoctrine()->getRepository(Equipe::class);
+        $listEquipes = $equipesSaisonClubRepository->listEquipesSaisonClub(
+                $this->getUser()->getClub()->getId(),
+                $IdDerniereSaisonClub
+        );
         
         return $this->render('equipes/index.html.twig', [
-            'equipes' => $equipes,
+            'NomderniereSaisonClub' => $NomderniereSaisonClub,
+            'listEquipes' => $listEquipes
         ]);
     }
 }

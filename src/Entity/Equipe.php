@@ -42,13 +42,6 @@ class Equipe
      * @Assert\Length(max=20,maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
     private $nom;
-    
-     /**
-     * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
-     * @ORM\JoinColumn(nullable=false)
-     * @var Club 
-     */
-     private $club;
      
      /**
      * @ORM\Column(nullable=true)
@@ -63,6 +56,20 @@ class Equipe
      */
      private $local;
      
+     /**
+     * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Club 
+     */
+     private $club;
+     
+     /**
+     * @ORM\ManyToOne(targetEntity="Saison",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Saison 
+     */
+     private $saison;
+     
     //pour l'enregistrement automatique de la date de création de l'enregistrement
     public function __construct()
     {
@@ -75,11 +82,11 @@ class Equipe
     }
 
     public function getNom() {
-        return $this->nom;
+        return strtoupper($this->nom);
     }
 
     public function setNom($nom) {
-        $this->nom = $nom;
+        $this->nom = strtoupper($nom);
         return $this;
     }
 
@@ -130,5 +137,13 @@ class Equipe
         $this->image = $image;
     }
     
-    
+    function getSaison(){
+        return $this->saison;
+    }
+
+    function setSaison($saison) {
+        $this->saison = $saison;
+        return $this;
+    }
+   
 }

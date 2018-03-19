@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html.twig' %}
 
 {% block title %}Club de Foot{% endblock %}
@@ -629,3 +630,636 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ asset('js/bootstrap.js') }}"></script>
 {% endblock %}
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}Club de Foot{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('style/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ asset('style/style.css') }}"/>
+<link rel="stylesheet" href="{{ asset('style/font-awesome.css') }}"/>
+<link rel="stylesheet" href="{{ asset('style/lightbox.css') }}"/>
+<link rel="stylesheet" href="{{ asset('style/owl.carousel.css') }}"/>
+<link rel="stylesheet" href="{{ asset('style/owl.theme.css') }}"/>
+<link rel="stylesheet" href="{{ asset('style/styleperso.css') }}"/>
+{% endblock %}
+
+{% block body %} 
+    
+    {% block header %}{# Affichage du menu et image d'accueil #}
+        {% if app.user is null %}{# si aucun utilisateur n'est connecté #}
+    	<div class="w3ls-banner">
+		<div class="w3lsbanner-info">
+			<!-- header -->
+			<div class="header">
+				<div class="container">  
+					<div class="header-mdl agileits-logo"><!-- header-two --> 
+						<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
+					</div>
+					<div class="header-nav"><!-- header-three --> 	
+						<nav class="navbar navbar-default">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button> 
+							</div>
+							<!-- top-nav -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav cl-effect-16">
+                                                                       
+									<li><a href="{{ path('app_index_index') }}" class="active" data-hover="Accueil">Accueil</a></li>
+                                                                          
+                                                                        
+                                                                            
+                                                                                        <li><a href="{{ path('app_security_register') }}" data-hover="Inscription">Inscription</a></li>         
+                                                                                        <li><a href="{{ path('app_security_login') }}" data-hover="Connexion">Connexion</a></li>    
+
+                                                                            
+                                                                        
+									{#<li><a href="about.html" data-hover="About">About</a></li> #}
+									{#<li><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="icons.html" data-hover="Web Icons">Web Icons</a></li>
+											<li><a href="codes.html" data-hover="Short Codes">Short Codes</a></li>
+										</ul>
+									</li> #}
+                                                                        {#<li><a href="{{ path('app_apropos_index') }}" data-hover="A propos">A propos</a></li>#}
+									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contact</a></li>
+									
+								</ul>  
+								<div class="clearfix"> </div>	
+							</div>
+						</nav>    
+					</div>	
+				</div>	
+			</div>
+                
+        {% else %}{# si un utilisateur est connecté #}
+            <div class="w3ls-banner">
+		<div class="w3lsbanner-info">
+                    <div class="header-mdl agileits-logo connecte"><!-- header-two --> 
+			<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
+                        <span><button type="button" class="btn btn-info"><a class="nom_club" href="{{ path('app_equipe_index') }}">{{ app.user.club.nom }}</a></button></span>
+                        <h3 class="connecte">Bonjour</h3>
+                        <h3>{{ app.user.fullname }}</h3>
+                    </div>
+			<!-- header -->
+			<div class="header">
+				<div class="container">  
+                                    
+					<div class="header-nav"><!-- header-three --> 	
+						<nav class="navbar navbar-default">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button> 
+							</div>
+							<!-- top-nav -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav cl-effect-16">
+                                                                       
+									<li><a href="{{ path('app_index_index') }}" class="active" data-hover="Accueil">Accueil</a></li>
+                                                                        <li><a href="{{ path('app_equipe_index') }}" data-hover="Mon Club" >Mon Club</a></li> 
+                                                                        {% block menu_admin %}
+                                                                        {% if is_granted('ROLE_ADMIN') %}
+                                                                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
+										<ul class="dropdown-menu">
+                                                                                    <li><a href="{{ path('app_admin_club_index') }}" data-hover="Gestion Clubs">Gestion Clubs</a></li>
+                                                                                    <li><a href="{{ path('app_admin_saison_index') }}" data-hover="Gestion Saisons">Gestion Saisons</a></li>
+                                                                                    <li><a href="{{ path('app_admin_equipe_index') }}" data-hover="Gestion Equipes">Gestion Equipes</a></li>
+                                                                                    <li><a href="{{ path('app_admin_joueur_index') }}" data-hover="Gestion Joueurs">Gestion Joueurs</a></li>
+                                                                                    <li><a href="{{ path('app_admin_rencontre_index') }}" data-hover="Gestion Rencontres">Gestion Rencontres</a></li>
+                                                                                    <li><a href="{{ path('app_admin_article_index') }}" data-hover="Gestion Article">Gestion Article</a></li>
+										</ul>
+                                                                            </li> 
+                                                                                        
+                                                                        
+                                                                        {% endif %}
+                                                                        {% endblock %}{# fin du block menu_admin #} 
+                                                                        
+                                                                                       
+                                                                                        <li>
+                                                                                            <a href="{{ path('app_security_logout') }}" data-hover="Deconnexion">Deconnexion</a>
+                                                                                        </li>
+                                                                            
+                                                                        
+									{#<li><a href="about.html" data-hover="About">About</a></li> #}
+									{#<li><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="icons.html" data-hover="Web Icons">Web Icons</a></li>
+											<li><a href="codes.html" data-hover="Short Codes">Short Codes</a></li>
+										</ul>
+									</li> #}
+                                                                        {#<li><a href="{{ path('app_apropos_index') }}" data-hover="A propos">A propos</a></li>#}
+									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contact</a></li>
+									
+								</ul>  
+								<div class="clearfix"> </div>	
+							</div>
+						</nav>    
+					</div>	
+				</div>	
+			</div>
+                                                                                        
+    {% endif %}                                                
+                                                                        <!-- //header --> 			
+    {% endblock %}{# fin block header #}
+        {% block reduction_image %}{# pour affichage de la banniere image reduite  #}
+                </div>
+        </div>      
+        {% endblock %}
+       
+    {% block index %}{# pour affichage de l'image d'accueil en grande taille  #}
+        {% if app.user is null %}
+			<div class="banner-text agileinfo"> 
+				<div class="container">
+					<div class="agileitsbnr-textinfo">  
+						<h2>Gerez votre club sportif</h2>
+					</div>					
+				</div>
+			</div>			   
+		</div>
+	</div>
+        {% else %} 
+         			<div class="banner-text agileinfo"> 
+				<div class="container">
+					<div class="agileitsbnr-textinfo">  
+						<h2>Salut</h2>
+					</div>					
+				</div>
+			</div>			   
+		</div>
+	</div>   
+        {% endif %}
+    {% endblock %}  {# fin block index #}
+    
+    {% block message %}{# affichage des messages info #}
+        <div class="container">
+            <div class="col-md-6 erreur col-md-offset-3">
+                {% for type,messages in app.session.flashbag.all %}
+                    {% for message in messages %}
+                        {# pour la classe alert-danger du bootstrap #}
+                        {% if type == 'error' %}
+                            {% set type = 'danger' %}
+                        {% endif %}    
+                        <div class=" text-center alert alert-{{ type }}">
+                            {{ message|raw }}                
+                        </div>
+                    {% endfor %}    
+                {% endfor %}
+            </div>
+        </div> 
+    {% endblock %}
+	<!-- //banner -->
+        <div class="hauteur_min">
+	{% block content %}
+        {% if app.user is null %}
+	<div class="about">
+		<div class="container">
+			<div class="wthree_head_section">
+				<h3 class="w3l_header">Comment ça fonctionne ?</h3>
+				<p>Inscription rapide et gratuite pour tous </p>
+			</div>
+			<div class="agileits-banner-grids text-center">
+				<div class="banner-bottom-girds">
+					<div class="col-md-4  col-sm-4 clr1 agileits-banner-grid">
+						<span class="fa fa-sun-o banner-icon" aria-hidden="true"></span>
+						<h4>1- Inscrivez-vous</h4>
+						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
+						
+					</div>
+					<div class="col-md-4 col-sm-4 clr2 agileits-banner-grid">
+						<span class="fa fa-arrows banner-icon" aria-hidden="true"></span>
+						<h4>2-Créez vos équipes</h4>
+						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
+						
+					</div>
+					<div class=" col-md-4 col-sm-4 clr3 agileits-banner-grid">
+						<span class="fa fa-cog banner-icon" aria-hidden="true"></span>
+						<h4>3-Gérez votre Club</h4>
+						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
+						
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--//about-->
+	<!-- carrer -->
+<div class="carrer">
+	<div class="container">
+		<div class="wthree_head_section">
+				<h3 class="w3l_header ggg">Career Starts Here</h3>
+				<p class="hhh">A football team is a group of players selected to play together in the various team sports known as football. </p>
+			</div>
+			<div class="carrer-top">
+				<div class="col-md-6 carrer-left">
+				</div>
+				<div class="col-md-6 carrer-right">
+					<div class="car-ght">
+						<h5>Aenean ante massa</h5>
+						<p>Phasellus sed iaculis nibh, non suscipit tortor. Aenean ante massa, lobortis et dolor eget, sollicitudin luctus arcu. Donec eros tortor, ultrices in lectus quis, aliquet commodo lectus.</p>
+					</div>
+					<div class="car-ght">
+						<h5>Aenean ante massa</h5>
+						<p>Phasellus sed iaculis nibh, non suscipit tortor. Aenean ante massa, lobortis et dolor eget, sollicitudin luctus arcu. Donec eros tortor, ultrices in lectus quis, aliquet commodo lectus.</p>
+					</div>
+					<div class="car-ght">
+						<h5>Aenean ante massa</h5>
+						<p>Phasellus sed iaculis nibh, non suscipit tortor. Aenean ante massa, lobortis et dolor eget, sollicitudin luctus arcu. Donec eros tortor, ultrices in lectus quis, aliquet commodo lectus.</p>
+					</div>
+				</div>
+			</diV>
+	</div>
+</div>
+<!-- //carrer -->
+	
+<!-- welcome -->
+	<div class="about-3">
+			<div class="wthree_head_section">
+				<h3 class="w3l_header">Welcome To Club</h3>
+				<p>A football team is a group of players selected to play together in the various team sports known as football.</p>
+			</div>
+		<div class="container">
+			<div class="d-flex">
+				
+				<div class="about1"> 
+					<h4>Join our club free. Our members are people of different status with one passion that unites everyone - that is Football. Professionals, amateurs and beginners are welcome!</h4>
+					<p class="details">Play Football, relax with soulmates, enjoy the atmosphere of fair play and good talk with interesting people.</p>
+					<ul class="about-list">
+						<li><i class="fa fa-arrow-right" aria-hidden="true"></i>Professional sport equipment</li>
+						<li><i class="fa fa-arrow-right" aria-hidden="true"></i>Football kit for each member</li>
+						<li><i class="fa fa-arrow-right" aria-hidden="true"></i>Safisfaction from the game process</li>
+						<li><i class="fa fa-arrow-right" aria-hidden="true"></i>Polite opponents</li>
+						<li><i class="fa fa-arrow-right" aria-hidden="true"></i>Amazing scenery</li>
+					</ul>
+				</div>
+				<div class="about2">
+					
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<!-- //welcome -->	
+<!-- feedback -->
+	<div class="feedback section-w3ls about-w3ls">
+		<div class="feedback-agileinfo">
+			<div class="container">
+			<div class="wthree_head_section">
+				<h3 class="w3l_header ggg">Testimonials</h3>
+				<p class="hhh">A football team is a group of players selected to play together in the various team sports known as football.</p>
+			</div>
+				<div class="agileits-feedback-grids">
+					<div id="owl-demo" class="owl-carousel owl-theme">
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t1.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Mary Jane</h5>
+										<p>Vestibulum</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t2.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Peter</h5>
+										<p>Vestibulum</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t3.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Steven</h5>
+										<p>Vestibulum</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t4.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Mary Jane</h5>
+										<p>Vestibulum</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t1.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Guptill</h5>
+										<p>Vestibulum</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t2.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5> Wilson</h5>
+										<p>Vestibulum</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //feedback -->
+
+<!-- pricing -->
+	<div class="w3ls-section wthree-pricing">	
+		<div class="container">
+			<div class="wthree_head_section">
+				<h3 class="w3l_header">Club Membership</h3>
+				<p>A football team is a group of players selected to play together in the various team sports known as football.</p>
+			</div>
+			<div class="pricing-grids-info">
+								<div class="pricing-grid grid-one">
+									<div class="w3ls-top">
+										<h3>Junior</h3> 
+									</div>
+									<div class="w3ls-bottom">
+										<ul class="count">
+											<li>Our club says that  players must be less than 19 years as at January, 1st.</li>
+										</ul>
+										<h4> 200<span class="sup">$</span> </h4>
+										<div class="more">
+											<a href="contact.html">Join Now</a>					
+										</div>
+									</div>
+								</div>
+								<div class="pricing-grid grid-two">
+									<div class="w3ls-top">
+										<h3>Group</h3> 
+									</div>
+									<div class="w3ls-bottom">
+										<ul class="count">
+											<li>Save $150 every year compared to the monthly plan by paying yearly.</li>
+										</ul>
+										<h4> 350<span class="sup">$</span> </h4>
+										<div class="more">
+											<a href="contact.html">Join Now</a>				
+										</div>
+									</div>
+								</div>
+								<div class="pricing-grid grid-three">
+									<div class="w3ls-top">
+										<h3>Individual</h3> 
+									</div>
+									<div class="w3ls-bottom">
+										<ul class="count">
+											<li>Save $98 every year compared to the monthly plan by paying yearly.</li>
+										</ul>
+										<h4> 500<span class="sup">$</span> </h4>
+										<div class="more">
+											<a href="contact.html">Join Now</a>			
+										</div>
+									</div>
+								</div>
+								<div class="zb pricing-grid grid-four">
+									<div class="w3ls-top">
+										<h3>Senior</h3> 
+									</div>
+									<div class="w3ls-bottom">
+										<ul class="count">
+											<li>Our club says that  players must be less than 25 years as at January, 1st.</li>
+										</ul>
+										<h4> 800<span class="sup">$</span> </h4>
+										<div class="more">
+											<a href="contact.html">Join Now</a>				
+										</div>
+									</div>
+								</div>
+								<div class="clearfix"> </div> 
+				<!--End-slider-script-->
+			</div>
+		</div>	
+	</div>	
+	<!--//pricing-->   	
+		<!-- footer -->
+	<div class="footer">
+	<div class="container">
+		<div class="f-bg-w3l">
+                    <div class="col-md-4 w3layouts_footer_grid">
+					<h2>Contact <span>Information</span></h2>
+					    <ul class="con_inner_text">
+							<li><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, 4th block, <label> New York City.</label></li>
+							<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
+							<li><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
+						</ul>
+
+					<ul class="social_agileinfo">
+						<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
+					</ul>
+                    </div>
+				<div class="col-md-4 w3layouts_footer_grid">
+					<h2>Subscribe <span>Newsletter</span></h2>
+					<p>By subscribing to our mailing list you will always get latest news from us.</p>
+					<form action="#" method="post">
+						<input type="email" name="Email" placeholder="Enter your email..." required="">
+						<button class="btn1"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+						<div class="clearfix"> </div>
+					</form>
+				</div>
+				<div class="col-md-4 w3layouts_footer_grid">
+					<h3>Latest <span>Events</span></h3>
+					  <ul class="con_inner_text midimg">
+						<li><a href="#"><img src="images/g5.jpg" alt="" class="img-responsive" /></a></li>
+					    <li><a href="#"><img src="images/g6.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g7.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g8.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g9.jpg" alt="" class="img-responsive" /></a></li>
+					    <li><a href="#"><img src="images/g10.jpg" alt="" class="img-responsive" /></a></li>
+						 <li><a href="#"><img src="images/g12.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g11.jpg" alt="" class="img-responsive" /></a></li>
+				     </ul>
+					
+				</div>
+				<div class="clearfix"> </div>
+		</div>
+            </div>
+			<p class="copyright">© 2018 Football Club. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+	</div>
+                {% else %}
+            
+                <p>Bonjour</p>
+                
+        {% endif %}  
+  
+{% endblock %}{# fin du content #}
+        </div>
+          
+{% block footer %}
+    		<!-- footer -->
+	<div class="footer">
+	<div class="container">
+		<div class="f-bg-w3l">
+		<div class="col-md-4 w3layouts_footer_grid">
+					<h2>Contact <span>Information</span></h2>
+					    <ul class="con_inner_text">
+							<li><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, 4th block, <label> New York City.</label></li>
+							<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
+							<li><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
+						</ul>
+
+					<ul class="social_agileinfo">
+						<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-4 w3layouts_footer_grid">
+					<h2>Subscribe <span>Newsletter</span></h2>
+					<p>By subscribing to our mailing list you will always get latest news from us.</p>
+					<form action="#" method="post">
+						<input type="email" name="Email" placeholder="Enter your email..." required="">
+						<button class="btn1"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+						<div class="clearfix"> </div>
+					</form>
+				</div>
+				<div class="col-md-4 w3layouts_footer_grid">
+					<h3>Latest <span>Events</span></h3>
+					   <ul class="con_inner_text midimg">
+						<li><a href="#"><img src="images/g5.jpg" alt="" class="img-responsive" /></a></li>
+					    <li><a href="#"><img src="images/g6.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g7.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g8.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g9.jpg" alt="" class="img-responsive" /></a></li>
+					    <li><a href="#"><img src="images/g10.jpg" alt="" class="img-responsive" /></a></li>
+						 <li><a href="#"><img src="images/g12.jpg" alt="" class="img-responsive" /></a></li>
+						<li><a href="#"><img src="images/g11.jpg" alt="" class="img-responsive" /></a></li>
+				     </ul>
+					
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			</div>
+			<p class="copyright">© 2018 Football Club. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+	</div>
+	<!-- //footer -->
+{% endblock %}
+        
+{% endblock %}{# fin block body#}
+{% block javascripts %}
+
+        <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+	<script src="{{ asset('js/SmoothScroll.min.js') }}"></script>
+	<!-- //js --> 
+	<!-- owl carousel -->
+	<script src="{{ asset('js/owl.carousel.js') }}"></script>
+	<script>
+		$(document).ready(function () {
+			$("#owl-demo").owlCarousel({
+
+				autoPlay: 3000, //Set AutoPlay to 3 seconds
+				autoPlay: true,
+				items: 3,
+				itemsDesktop: [991, 2],
+				itemsDesktopSmall: [414, 4]
+
+			});
+		}); 
+	</script>
+	<!-- //owl carousel -->
+	<!-- start-smooth-scrolling -->
+	<script src="{{ asset('js/move-top.js') }}"></script>
+	<script src="{{ asset('js/easing.js') }}"></script>	
+	<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+			
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+	</script>
+	<!-- //end-smooth-scrolling -->	
+	<!-- smooth-scrolling-of-move-up -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+			
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+	<!-- //smooth-scrolling-of-move-up -->  
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+{% endblock %}
+>>>>>>> 227e5fd8498bd43c5c4fbe692e2b13e5e743eef1

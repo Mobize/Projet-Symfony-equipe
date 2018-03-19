@@ -19,18 +19,25 @@
             
             <!-- Modification du titre selon création/édition -->
             {% if nom is not null %}
-                <h1>Edition de l'équipe {{ lib_Equipe }}: {{ nom }}</h1>
+                <h1><i class="fa fa-edit"></i> Edition de l'équipe {{ lib_Equipe }}: {{ nom }}</h1>
             {% else %}    
-                <h1>Création d'une équipe {{ lib_Equipe }}</h1>
+                <h1>Création d'une nouvelle équipe</h1>
             {% endif %}
             
             {{ form_start(form) }}{# ouvre la balise form #}
+            {{ form_row(form.local) }}
             {{ form_row(form.nom) }}
             {{ form_row(form.image) }}
-             {% if form.vars.value.image is not null %}
-        <p>Actuellement : <img src="{{ asset('upload/' ~ form.vars.value.image.filename) }}" width="100px"></p>
-        {{ form_row(form.remove_image) }}
-    {% endif %} 
+             
+        <p>Actuellement : 
+            {% if form.vars.value.image is not null %}
+                <img src="{{ asset('upload/' ~ form.vars.value.image.filename) }}" width="100px"> 
+                {{ form_row(form.remove_image) }}
+            {% else %}
+                <img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" width="100px">
+            {% endif %} 
+        </p>
+
             <div class="form-btn-group">
                 <button type="submit" class="btn btn-primary">
                     Enregistrer

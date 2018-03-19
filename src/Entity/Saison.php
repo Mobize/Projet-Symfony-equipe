@@ -24,8 +24,7 @@ class Saison
      * * @var \Datetime
      */
     private $createdAt;
-    
-    
+     
     //Date de modification enregistrement
     /**
      * @ORM\Column(type="datetime",nullable=true)
@@ -33,9 +32,21 @@ class Saison
      */
     private $updatedAt;
     
+     /**
+     *@ORM\Column(type="date")
+     * @var \Datetime
+     */
+    private $dateDebut;
+ 
+     /**
+     *@ORM\Column(type="date")
+     * @var \Datetime
+     */
+    private $datefin;   
+    
      /** 
      * @var string
-     * @ORM\Column(length=25)
+     * @ORM\Column(length=25,unique=true)
      * @Assert\NotBlank()
      */
     private $nom;
@@ -90,6 +101,24 @@ class Saison
         $this->club = $club;
         return $this;
     }
+    public function getDateDebut(): ?\Datetime {
+        return $this->dateDebut;
+    }
+
+    public function getDatefin(): ?\Datetime {
+        return $this->datefin;
+    }
+
+    public function setDateDebut(\Datetime $dateDebut) {
+        $this->dateDebut = $dateDebut;
+        return $this;
+    }
+
+    public function setDatefin(\Datetime $datefin) {
+        $this->datefin = $datefin;
+        return $this;
+    }
+
 
 
 

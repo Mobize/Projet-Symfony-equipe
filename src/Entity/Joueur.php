@@ -97,6 +97,13 @@ class Joueur
      */
      private $club;
 
+     //SAISON
+     /**
+     * @ORM\Column(type="integer")
+     * * @var integer
+     */
+     private $saison;
+     
      //USER
      /**
      * @ORM\OneToOne(targetEntity="User",cascade={"persist"}, fetch="EAGER")
@@ -170,11 +177,9 @@ class Joueur
         return $this;
     }
 
-
     public function getImage() {
         return $this->image;
     }
-
 
     public function setImage($image) {
         $this->image = $image;
@@ -229,5 +234,15 @@ class Joueur
     {
         return $this->prenom . ' ' . $this->nom;
     }
+    public function getSaison() {
+        return $this->saison;
+    }
+
+    public function setSaison($saison) {
+        $this->saison = $saison;
+        return $this;
+    }
+
+
 
 }

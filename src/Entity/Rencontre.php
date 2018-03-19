@@ -32,12 +32,13 @@ class Rencontre
      */
     private $updatedAt;
     
-      /**
+     /**
      *@ORM\Column(type="date")
      * @var \Datetime
      */
     private $date;
     
+    //EQUIPE DU CLUB
      /**
      * @ORM\ManyToOne(targetEntity="Equipe")
      * @ORM\JoinColumn(nullable=false)
@@ -46,12 +47,30 @@ class Rencontre
     private $equipe1;
      
      /**
+     * @ORM\Column(type="integer",nullable=true)
+     * @var int
+     */  
+    private $equipe1Score;
+    
+    //EQUIPE EXTERIEURE
+     /**
      * @ORM\ManyToOne(targetEntity="Equipe")
      * @ORM\JoinColumn(nullable=false)
      * @var Equipe 
      */
     private $equipe2;  
     
+         /**
+     * @ORM\Column(type="integer",nullable=true)
+     * @var int
+     */  
+    private $equipe2Score;
+     /**
+     * @ORM\Column(type="boolean",nullable=true)
+     * * @var boolean   
+     */
+     private $domicile;
+        
      /**
      * @ORM\Column()
      * @Assert\NotBlank()
@@ -123,5 +142,35 @@ class Rencontre
     function setUpdatedAt($updatedAt) {
         $this->updatedAt = $updatedAt;
     }
+    public function getEquipe1Score() {
+        return $this->equipe1Score;
+    }
 
+    public function getEquipe2Score() {
+        return $this->equipe2Score;
+    }
+
+    public function getDomicile() {
+        return $this->domicile;
+    }
+
+    public function setEquipe1Score($equipe1Score) {
+        $this->equipe1Score = $equipe1Score;
+        return $this;
+    }
+
+    public function setEquipe2Score($equipe2Score) {
+        $this->equipe2Score = $equipe2Score;
+        return $this;
+    }
+
+    public function setDomicile($domicile) {
+        $this->domicile = $domicile;
+        return $this;
+    }
+
+        /*public function __toString() 
+    {
+        return $this->date;
+    }*/
 }
