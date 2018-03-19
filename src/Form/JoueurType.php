@@ -30,7 +30,7 @@ class JoueurType extends AbstractType
         $club = $this->tokenStorage->getToken()->getUser()->getClub();
         
         $builder
-           /* ->add(
+            ->add(
                     'prenom',
                     TextType::class,
                     ['label'=>'Prénom',
@@ -47,7 +47,7 @@ class JoueurType extends AbstractType
                             'class' => 'perso'
                         ]
                         ]
-                    )*/
+                    )
             ->add(
                     'rue',
                     TextType::class,

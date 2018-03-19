@@ -2,8 +2,9 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Saison;
 use App\Entity\Joueur;
+use App\Entity\Saison;
+use App\Entity\User;
 use App\Form\JoueurType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use function dump;
 /**
 * @Route("/joueur")
 */
@@ -28,9 +30,12 @@ class JoueurController extends Controller
         //$IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
 
         $repository = $this->getDoctrine()->getRepository(Joueur::class);
-        
-        //on recup ts les joueurs
+         //on recup ts les joueurs
         $joueurs = $repository->findAll();
+        
+        $repository2 = $this->getDoctrine()->getRepository(User::class);
+        $users = $repository2->findAll();
+       
         
         if(!is_null($this->getUser())){
             $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
@@ -47,7 +52,8 @@ class JoueurController extends Controller
         return $this->render('admin/joueur/index.html.twig', [
            'joueurs' => $joueurs,
             'nbsaisons' => $nbsaison,
-            'NomderniereSaisonClub' => $NomderniereSaisonClub
+            'NomderniereSaisonClub' => $NomderniereSaisonClub,
+             'users' => $users
         ]);
     }
     /**
@@ -168,7 +174,6 @@ class JoueurController extends Controller
                 
                 ///ENVOI MAIL
                 
-                
                 //Ajout du message flash
                 //$this->addFlash('success', 'Le joueur '.$joueur->getFullName().' a été enregistré');
                 $this->addFlash('success', 'Le joueur a été enregistré');
@@ -179,10 +184,15 @@ class JoueurController extends Controller
             }
         }
         
+                $repository2 = $this->getDoctrine()->getRepository(User::class);
+                $user = $repository2->findAll();
+                
+        
          return $this->render('admin/joueur/edit.html.twig', 
                  [
                      'form' => $form->createView(),
-                     'joueur' => $joueur
+                     'joueur' => $joueur,
+                     'user' => $user
                  ]
         );
     }

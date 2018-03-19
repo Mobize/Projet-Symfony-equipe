@@ -171,7 +171,8 @@
                                      <h2><a class="lien_accueil" href="{{ path('app_admin_saison_edit') }}">Créez votre 1ère Saison</a></h2>
                                 {% else %}
                                     
-                                    <h2>AJOUTER ICI DU TEXTE</h2>
+                                    <h2>Dernières actualités du club</h2>
+                                    <span class="glyphicon glyphicon-menu-down fleche_bas" aria-hidden="true"></span>
                             {% endif %}
 						
 					</div>					
@@ -486,22 +487,99 @@ carrer -->
 	
                 {% else %}
                 <div class="hauteur_min">   
-                    <div class='col-md-6 col-md-offset-3 '>  
+                    
+                   
+                    
+                    <div class='col-md-6 col-md-offset-3'>  
+                        
+                        <h2 class="text-center titre index_admin">Prochaines rencontres <img src="{{ asset('images/logos/fff.png') }}" class="logo_fff" alt=""></h2>  
+                         
+                         <div class="agileits-feedback-grids">
+					<div id="owl-demo" class="owl-carousel owl-theme">
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> {{ app.user.club.nom }} contre </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t1.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Equipe U8</h5>
+										<p class="domicile">A domicile</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> {{ app.user.club.nom }} contre  </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t2.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Equipe U19</h5>
+										<p>Exterieur</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> {{ app.user.club.nom }} contre  </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t3.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Equipe Senior</h5>
+										<p class="domicile">A domicile</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> {{ app.user.club.nom }} contre  </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t4.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Equipe U10</h5>
+										<p class="domicile">A domicile</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+				</div>
+                              
+                    </div>
+                        
+                    </div>
+                    
+                    {# <div class='col-md-6 col-md-offset-3 '>  
                         <div class="panel panel-default">
                             <div class="panel-body">
                               <h2>Derniers résultats</h2>
                             </div>
                         </div>
-                    </div>
-                   
-                    
-                    <div class='col-md-6 col-md-offset-3'>  
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                              <h2>Prochaines rencontres de {{ app.user.club.nom }}</h2>
-                            </div>
-                        </div>
-                    </div>
+                    </div>#}
                 </div> 
                 
                 
@@ -612,6 +690,11 @@ carrer -->
 			
 		});
 	</script>
+      <script type="text/javascript">
+    $(window).on('load',function(){
+        $('#exampleModalCenter').modal('show');
+    });
+</script>
 	<!-- //smooth-scrolling-of-move-up -->  
 	<!-- Bootstrap core JavaScript
     ================================================== -->

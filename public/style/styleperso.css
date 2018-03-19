@@ -13,6 +13,30 @@ and open the template in the editor.
 }
 }
 
+.logo_fff{
+    width:10%;
+}
+.feedback-img-info p.domicile{
+    color:blue;
+}
+.feedback-img-info h5{
+    color: black;
+}
+.feedback-img-info p{
+    color:red;
+}
+.agileits-feedback-grids{
+     background: rgba(153, 188, 89, 0.24);
+     border-radius: 10px;
+}
+.index_admin{
+        color: #99bc59;
+        font-size: 4em;
+}
+.fleche_bas{
+    font-size:4em;
+    color:white;
+}
 .clr2{
     min-height: 308px;
 }

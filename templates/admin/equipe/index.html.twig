@@ -13,10 +13,31 @@
 
 
 {% block content %}
-<div class="container-fluid"> 
+<div class="container"> 
     <div class="row">  
         <div class="col-md-8 col-md-offset-2"> 
             {% if(nbsaison is defined and nbsaison == false) %}
+                
+                {#        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <h3>Pour accéder à la gestion de votre équipe, <br>vous devez d'abord créer une saison</h3>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_edit') }}" role="button">Créer ma 1ère saison</a></p></div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>#}
+                
                           <div class="jumbotron">
                             <h2>Pour accéder à la gestion de votre équipe, <br>vous devez d'abord créer une saison</h2>
                            
@@ -70,7 +91,7 @@
                             <div class="btn-group">
                                 <a type="button" href="{{ path('app_admin_equipe_edit', {id: equipe.id}) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Modifier</a>
                                 <a type="button" href="{{ path('app_admin_equipe_edit', {id: equipe.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Supprimer</a>
-                                <a type="button" href="{{ path('app_admin_equipe_edit', {id: equipe.id}) }}" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i> Ajouter une rencontre</a>
+                                <a type="button" href="{{ path('app_admin_rencontre_edit') }}" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i> Ajouter une rencontre</a>
                             </div>                
                         </td>  
                     </tr>
@@ -135,3 +156,5 @@
 </div>  <!-- fin contaner -->    
 
 {% endblock %}
+
+ 

@@ -22,14 +22,14 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column()
+     * @ORM\Column(nullable = true)
      * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
      * @var string
      */
     private $lastname;
     
     /**
-     * @ORM\Column()
+     * @ORM\Column(nullable = true)
      * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
      * @var string
      */
@@ -38,7 +38,7 @@ class User implements UserInterface
    
       /**
      * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
-     * @ORM\JoinColumn(nullable=false, unique=true)
+     * @ORM\JoinColumn(nullable=false)
      * @var Club 
      */
      private $club;
