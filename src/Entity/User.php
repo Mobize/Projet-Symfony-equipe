@@ -95,7 +95,7 @@ class User implements UserInterface
     }
 
     function setLastname($lastname) {
-        $this->lastname = $lastname;
+        $this->lastname = strtoupper($lastname);
     }
 
     function setFirstname($firstname) {
@@ -167,6 +167,6 @@ class User implements UserInterface
 
     public function getFullName()
     {
-        return trim($this->getFirstname() . ' ' . $this->getFirstname());
+        return trim($this->getFirstname() . ' ' . $this->getLastname());
     }
 }

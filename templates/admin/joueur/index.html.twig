@@ -15,9 +15,19 @@
 {% block content %}
 <div class="container"> 
     <div class="row">  
-        <div class="col-md-12">       
-            <h1>Gestion des joueurs<a href="{{ path('app_admin_joueur_edit') }}" class="btn btn-primary pull-right">Ajouter un joueur</a></h1>
-                
+        <div class="col-md-8 col-md-offset-2">       
+            {% if(nbsaisons is defined and nbsaisons == false) %}
+                <div class="jumbotron">
+                    <h2>Pour accéder à la gestion de vos joueurs, <br>vous devez d'abord créer une saison</h2>
+                           
+                    <div class="text-center bouton">
+                        <p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_index') }}" role="button">Créer ma 1ère saison</a></p>
+                    </div>
+                </div>      
+            {% else %}
+            <h1>Gestion des joueurs pour la saison {{ NomderniereSaisonClub.nom }}</h1>
+            <hr>
+            <a href="{{ path('app_admin_joueur_edit') }}" class="btn btn-primary pull-right">Ajouter un joueur</a>
               <table class="table table-striped table-bordered table-hover">
               <tr>
                   <th>Id</th>
@@ -30,7 +40,7 @@
                   <th>N° de tél. autre contact</th>
                   <th>Courriel</th>
                   <th>Date de naissance</th>
-                  <th>Vous êtes</th>
+                  <th>Sexe</th>
                   <th>Photo d'identité</th>
                   <th>Certificat de santé</th>
                   <th width="200px"></th>
@@ -39,14 +49,15 @@
               <tr>
 
                       <td>{{ joueur.id }}</td>
-                      <td>{{ joueur.prenom }}</td>
-                      <td>{{ joueur.nom }}</td>
+                      <!-- <td>prénom</td>-->
+                      <!-- <td>nom</td>-->
                       <td>{{ joueur.rue }}</td>
                       <td>{{ joueur.cp }}</td>
                       <td>{{ joueur.ville}}</td>
                       <td>{{ joueur.tel1}}</td>
                       <td>{{ joueur.tel2}}</td>
-                      <td>{{ joueur.mel}}</td>
+                      <!-- <td>email</td>-->
+                      
                       <td>{{ joueur.dateNaissance|date('d/m/Y')}}</td>
                       <td>{{ joueur.genre}}</td>
                       <td>
@@ -70,7 +81,7 @@
 
               {%endfor%}
             </table>
-            
+            {% endif %}
         </div>
     </div> 
 </div>        

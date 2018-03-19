@@ -6,6 +6,8 @@ use App\Entity\Equipe;
 use App\Entity\Rencontre;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,6 +25,7 @@ class RencontreType extends AbstractType
                         'label' => 'Date',
                          'attr' => [
                             'class' => 'perso'
+                            
                         ]             
                     ]
                 )
@@ -30,12 +33,12 @@ class RencontreType extends AbstractType
                   'equipe1',
                     EntityType::class,
                     [
-                        'label' => 'Equipe 1',
+                        'label' => 'Equipe 1/Equipe du club',
                         'class' => Equipe::class,
                         //nom du champ qui s'affiche dans les <option>
                         'choice_label' => 'nom',
                         //1ère option vide
-                        'placeholder' => 'Choisissez une équipe',
+                        'placeholder' => 'Choisissez une équipe du club ',
                         'attr' => [
                             'class' => 'perso'
                         ]                        
@@ -45,17 +48,27 @@ class RencontreType extends AbstractType
                   'equipe2',
                     EntityType::class,
                     [
-                        'label' => 'Equipe 2',
+                        'label' => 'Equipe 2/Equipe extérieure',
                         'class' => Equipe::class,
                         //nom du champ qui s'affiche dans les <option>
                         'choice_label' => 'nom',
                         //1ère option vide
-                        'placeholder' => 'Choisissez une équipe',
+                        'placeholder' => 'Choisissez une équipe extérieure',
                         'attr' => [
                             'class' => 'perso'
                         ]             
                     ]
-                )              
+                ) 
+            ->add(
+                'domicile',
+                ChoiceType::class, array
+                (
+                    'label'=>"A domicile/En extérieur",
+                    'choices'=>array (
+                    'Match à domicile' => true,
+                    'Match extérieur' => false),
+            'choices_as_values' => true,'multiple'=>false,'expanded'=>true)                 
+            )    
             ->add(
                   'lieu',
                     TextType::class,
@@ -65,7 +78,27 @@ class RencontreType extends AbstractType
                             'class' => 'perso'
                         ]             
                     ]
+                )  
+            ->add(
+                  'equipe1Score',
+                  IntegerType::class,
+                    [
+                        'label' => "Score de l'équipe 1",
+                         'attr' => [
+                            'class' => 'perso'
+                        ]             
+                    ]
                 )   
+            ->add(
+                  'equipe2Score',
+                  IntegerType::class,
+                    [
+                        'label' => "Score de l'équipe 2",
+                         'attr' => [
+                            'class' => 'perso'
+                        ]             
+                    ]
+                )  
                 ;
     }
 

@@ -3,12 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Equipe;
+use App\Entity\Saison;
 use App\Form\EquipeType;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * @Route("/equipe")
@@ -20,20 +21,48 @@ class EquipeController extends Controller
      */
     public function index()
     {
-               
-        //récupération des équipes du club
-        // méthode ListEquipeClub() écrite dans App\Repository\EquipeRepository
-        $equipeRepository = $this->getDoctrine()->getRepository(Equipe::class);
-        $equipes = $equipeRepository->listEquipeClub($this->getUser()->getClub()->getId());
+                    
+        //Récupération du nom de la dernière saison enregistrée pour le club
+        $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
+        $NomderniereSaisonClub = $SaisonClubRepository->findNomLatestSaison($this->getUser()->getClub()->getId());
+        $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
+             
+        //Récupération de la liste des EQUIPES DU CLUB du club de la dernière saison
+        $equipesSaisonClubRepository = $this->getDoctrine()->getRepository(Equipe::class);
+        $listEquipesClub = $equipesSaisonClubRepository->listEquipesSaisonClub(
+                $this->getUser()->getClub()->getId(),
+                $IdDerniereSaisonClub);
         
-        //récupération des équipes extérieures
-        $equipeExts = $equipeRepository->listEquipeClub($this->getUser()->getClub()->getId(),false);
+        $nbEquipesClub = count($listEquipesClub);
+
+        //Récupération de la liste des EQUIPES EXTERIEURES de la dernière saison
+        $listEquipesExt = $equipesSaisonClubRepository->listEquipesSaisonClub(
+                $this->getUser()->getClub()->getId(),
+                $IdDerniereSaisonClub,
+                false);
+        dump($this->getUser()->getClub()->getId());
+        dump($IdDerniereSaisonClub);
+        
+        
+        $nbEquipesExt = count($listEquipesExt);
+        
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);
+            
+            //dump($nbsaison);
+        } else {
+            $nbsaison = 0;
+        }
        
-        //dump($this->getUser()->getClub()->getId());
-        
         return $this->render('admin/equipe/index.html.twig', [
-               'equipes' => $equipes,
-               'equipeExts' => $equipeExts
+            'nbsaison' => $nbsaison,
+            'NomderniereSaisonClub' => $NomderniereSaisonClub,
+            'listEquipesClub' => $listEquipesClub,
+            'nbEquipesClub' => $nbEquipesClub,
+            'listEquipesExt' => $listEquipesExt,
+            'nbEquipesExt' => $nbEquipesExt
                
         ]);
     }
@@ -63,9 +92,17 @@ class EquipeController extends Controller
         //Equipe du club par défaut (pas extérieure)
         $equipe->setLocal(true);
         
-        //alimentation de la clé étrangère club
+        //alimentation de la clé étrangère CLUB
         $equipe->setClub($this->getUser()->getClub());
         
+        //alimentation de la clé étrangère SAISON
+            //Récupération id de la dernière saison enregistrée pour le club
+            $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
+
+            dump($IdDerniereSaisonClub);
+            $equipe->setSaison($IdDerniereSaisonClub);
+     
         //création du formulaire lié à l'équipe
         $form = $this->createForm(EquipeType::class, $equipe);
         
@@ -114,7 +151,13 @@ class EquipeController extends Controller
                 $em->flush();
                 
                 //Ajout du message flash
-                $this->addFlash('success', 'L\équipe '.$equipe->getNom().' a été enregistrée');
+                $typeEquipe = $equipe->getLocal();
+                if($typeEquipe == 1){
+                    $lib_Equipe = ' du club ';
+                } else {
+                    $lib_Equipe = ' extérieure ';
+                }
+                $this->addFlash('success', 'L\'équipe '.$lib_Equipe.$equipe->getNom().' a été enregistrée');
                 //redirection vers la liste
                 return $this->redirectToRoute('app_admin_equipe_index');                
             } else {
@@ -129,7 +172,6 @@ class EquipeController extends Controller
         } else {
             $lib_Equipe = ' extérieure ';
         }
-        
          return $this->render('admin/equipe/edit.html.twig', 
                  [
                      'form' => $form->createView(),
