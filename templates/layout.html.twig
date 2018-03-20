@@ -486,9 +486,10 @@
         </div>
           
 {% block footer %}
-    		<!-- footer -->
+    		<!-- footer -->      
 	<div class="footer">
-	<div class="container blocOpaque">
+            <div class="blocOpaque"> <!-- trucage pour l'opacité -->
+	<div class="container">
 		<div class="f-bg-w3l">
 		<div class="col-md-4 w3layouts_footer_grid">
                     <h2>Informations de <span>Contact</span> </h2>
@@ -530,9 +531,10 @@
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-			</div>
+			</div> <!-- fin container -->
+            </div>  <!-- fin trucage opaque -->
 			<p class="copyright">© 2018 Football Club. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
-	</div>
+	</div> 
 	<!-- //footer -->
 {% endblock %}
         

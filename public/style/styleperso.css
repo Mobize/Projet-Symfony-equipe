@@ -135,7 +135,7 @@ legend{
     margin-top:50px;
 }
 
-<<<<<<< HEAD
+
 
 
 /*-----Partie rencontres calendrier par équipe route provisoire "@/rencontres"" --------------*/
@@ -147,7 +147,6 @@ legend{
 }
 
 /*-----Partie rencontres calendrierpar équipe route provisoire "@/rencontres"" --------------*/
->>>>>>> 8985aeeca6e4232567aa9fb0b5d4bb4ec7695569
 
 
 /* Léger décalage bouton d'affichage victoires nuls défaites */
@@ -155,16 +154,13 @@ legend{
     margin-left: 15px;
 }
 
-<<<<<<< HEAD
+
 /* div cachant les boutons */
-=======
->>>>>>> 8985aeeca6e4232567aa9fb0b5d4bb4ec7695569
 .div_btn_filtrage {
     display: none;
     margin-top: 6px;
 }
 
-<<<<<<< HEAD
 /* Pour cacher et faire apparaître les boutons */
 .cacher {
     display: none;
@@ -183,9 +179,7 @@ legend{
 
 
 .blocOpaque { /* Astuce de création d'un bloc à 60% opaque à l'image de fond */
-  width:100%;
   height:100%;
-  margin:0px 0px;
   background-color:rgba(0,0,255,0.10);
 }
 
@@ -208,7 +202,7 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
 }
  
 /* Fin surcharge footer */
-=======
+
 @media (max-width: 480px){
 .agileits-logo h1 {
     font-size: 2.3em;
@@ -226,7 +220,7 @@ h3{
 }
 
 
->>>>>>> 8985aeeca6e4232567aa9fb0b5d4bb4ec7695569
+
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -319,9 +313,6 @@ legend{
     margin-top:50px;
 }
 
-
-
-/*-----Partie rencontres calendrierpar équipe route provisoire "@/rencontres"" --------------*/
 
 
 /* Léger décalage bouton d'affichage victoires nuls défaites */
