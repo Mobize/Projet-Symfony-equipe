@@ -204,6 +204,16 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
 #inputmail::placeholder {
   color:#c8d6e5;
 }
+
+.f-bg-w3l {
+    background: #747d8c;
+    padding: 5em 0;
+}
+
+.hauteur_min {
+    min-height: 500px;
+    background: #f1f2f6;
+}
  
 /* Fin surcharge footer */
 
