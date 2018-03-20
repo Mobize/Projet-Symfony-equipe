@@ -13,6 +13,15 @@ and open the template in the editor.
 }
 }
 
+.feedback-top{
+    background-color: rgba(8, 90, 242, 0.65);
+    position: ;
+}
+
+.feedback-top:after{
+    border-top: 9px solid rgba(8, 90, 242, 0.65);
+}
+
 #actions{
     width: 18% !important;
 }
@@ -26,6 +35,7 @@ and open the template in the editor.
     border-radius: 10px;
     padding: 10px;
     box-shadow: 1px 1px 8px black;
+    background-color: #fff;
 }
 .feedback-img-info{
     width: 100%;
@@ -107,9 +117,7 @@ legend{
 .banner-text.agileinfo{
     padding: 15em 0;
 }
-.hauteur_min{
-    min-height: 500px;
-}
+
 .utilisateur{
     color:white;
 }
@@ -219,7 +227,7 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
 
 .hauteur_min {
     min-height: 500px;
-    background: #f1f2f6;
+    background: #fff;
 }
  
 /* Fin surcharge footer */

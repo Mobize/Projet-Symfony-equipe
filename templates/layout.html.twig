@@ -20,15 +20,8 @@
 			<!-- header -->
 			<div class="header">
 				<div class="container">  
-					<div class="header-mdl agileits-logo"><!-- header-two -->
-                                            
-                                                {# Logo de Team up à insérer
-                                                <div>
-                                                    <img src="{{ logo team up }}" width="200px">
-                                                </div>  
-                                                #} 
-                                                
-                                                <h1><a href="">TEAM UP</a></h1> 
+					<div class="header-mdl agileits-logo"><!-- header-two --> 
+						<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
 					</div>
 					<div class="header-nav"><!-- header-three --> 	
 						<nav class="navbar navbar-default">
@@ -125,13 +118,13 @@
                                                                         {% if is_granted('ROLE_ADMIN') %}
                                                                             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
 										<ul class="dropdown-menu">
-                                                                                    <li><a href="{{ path('app_admin_club_profil') }}" data-hover="Profil Club">Profil du club</a></li>
-                                                                                    <li><a href="{{ path('app_admin_staff_index') }}" data-hover="Gestion Staff">Gestion du staff</a></li>
-                                                                                    <li><a href="{{ path('app_admin_saison_index') }}" data-hover="Gestion Saisons">Gestion  de la saison</a></li>
-                                                                                    <li><a href="{{ path('app_admin_equipe_index') }}" data-hover="Gestion Equipes">Gestion des équipes</a></li>
-                                                                                    <li><a href="{{ path('app_admin_joueur_index') }}" data-hover="Gestion Joueurs">Gestion des joueurs</a></li>
-                                                                                    <li><a href="{{ path('app_admin_rencontre_index') }}" data-hover="Gestion Rencontres">Gestion des rencontres</a></li>
-                                                                                    <li><a href="{{ path('app_admin_article_index') }}" data-hover="Gestion Article">Gestion des articles</a></li>
+                                                                                    <li><a href="{{ path('app_admin_club_profil') }}" data-hover="Profil Club">Profil Club</a></li>                                                     
+                                                                                    <li><a href="{{ path('app_admin_saison_index') }}" data-hover="Gestion Saisons">Gestion Saisons</a></li>
+                                                                                    <li><a href="{{ path('app_admin_staff_index') }}" data-hover="Gestion Staff">Gestion Staff</a></li>
+                                                                                    <li><a href="{{ path('app_admin_equipe_index') }}" data-hover="Gestion Equipes">Gestion Equipes</a></li>
+                                                                                    <li><a href="{{ path('app_admin_joueur_index') }}" data-hover="Gestion Joueurs">Gestion Joueurs</a></li>
+                                                                                    <li><a href="{{ path('app_admin_rencontre_index') }}" data-hover="Gestion Rencontres">Gestion Rencontres</a></li>
+                                                                                    <li><a href="{{ path('app_admin_article_index') }}" data-hover="Gestion Article">Gestion Article</a></li>
 										</ul>
                                                                             </li> 
                                                                                         
@@ -141,7 +134,7 @@
                                                                         
                                                                                        
                                                                                         <li>
-                                                                                            <a href="{{ path('app_security_logout') }}" data-hover="Deconnexion">Déconnexion</a>
+                                                                                            <a href="{{ path('app_security_logout') }}" data-hover="Deconnexion">Deconnexion</a>
                                                                                         </li>
                                                                             
                                                                         
@@ -525,74 +518,33 @@ carrer -->
                          
                          <div class="agileits-feedback-grids">
 					<div id="owl-demo" class="owl-carousel owl-theme">
+                                            {% for rencontre in rencontres %}
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre </p>
+                                                                    
+                                                                    <p> {{ rencontre.equipe_domicile }} <strong>VS</strong> {{ rencontre.equipe_exterieur }}</p>
+                                                                       
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
 										<img src="images/t1.jpg" alt="" />
 									</div>
 									<div class="feedback-img-info">
-										<h5>Équipe U8</h5>
-										<p class="domicile">À domicile</p>
+                                                                            
+                                                                            <p><strong>{{ rencontre.date|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</strong></p>
+                                                                            
+										<p class="domicile">Lieu :{{ rencontre.lieu }}</p>
 									</div>
+                                                                    
 									<div class="clearfix"> </div>
 								</div>
 							</div>
 						</div>
-						<div class="item">
-							<div class="feedback-info">
-								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre  </p>
-								</div>
-								<div class="feedback-grids">
-									<div class="feedback-img">
-										<img src="images/t2.jpg" alt="" />
-									</div>
-									<div class="feedback-img-info">
-										<h5>Équipe U19</h5>
-										<p>Extérieur</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feedback-info">
-								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre  </p>
-								</div>
-								<div class="feedback-grids">
-									<div class="feedback-img">
-										<img src="images/t3.jpg" alt="" />
-									</div>
-									<div class="feedback-img-info">
-										<h5>Équipe Senior</h5>
-										<p class="domicile">À domicile</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feedback-info">
-								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre  </p>
-								</div>
-								<div class="feedback-grids">
-									<div class="feedback-img">
-										<img src="images/t4.jpg" alt="" />
-									</div>
-									<div class="feedback-img-info">
-										<h5>Équipe U10</h5>
-										<p class="domicile">À domicile</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
+                                                {% endfor %} 
+						
+						
+						
 						
 						
 					</div>
