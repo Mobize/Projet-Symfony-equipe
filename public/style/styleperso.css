@@ -38,7 +38,8 @@ and open the template in the editor.
     color:white;
 }
 .clr1,.clr2,.clr3 {
-    max-height: 350px;
+    min-height: 400px;
+    max-height: 450px;
 }
 
 .liste{
