@@ -48,12 +48,12 @@ and open the template in the editor.
     font-size:4em;
     color:white;
 }
-.clr2{
-    min-height: 308px;
+/* blocs page accueil inscrivez-vous*/
+.clr1,.clr2,.clr3 {
+    min-height: 400px;
+    max-height: 450px;
 }
-.clr3{
-    max-height: 308px;
-}
+
 .liste{
     list-style: none;
     color: white;
@@ -211,6 +211,16 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
 #inputmail::placeholder {
   color:#c8d6e5;
 }
+
+.f-bg-w3l {
+    background: #747d8c;
+    padding: 5em 0;
+}
+
+.hauteur_min {
+    min-height: 500px;
+    background: #f1f2f6;
+}
  
 /* Fin surcharge footer */
 
@@ -241,12 +251,7 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
-.clr2{
-    min-height: 308px;
-}
-.clr3{
-    max-height: 308px;
-}
+
 .liste{
     list-style: none;
     color: white;
@@ -335,7 +340,13 @@ legend{
     display: none;
     margin-top: 6px;
 }
+/*modif des titres en blanc pour visibilité*/
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+}
 
-margin-top: 6px;
-
-
+.feedback-img-info h5 {
+    color: white;
+}
