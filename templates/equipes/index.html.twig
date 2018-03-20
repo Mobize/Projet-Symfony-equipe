@@ -16,11 +16,13 @@
     <div class="row">  
             {% if(nbsaisons is defined and nbsaisons == false) %}
                 <div class="col-md-8 col-md-offset-2">
+                   <div class="container"> 
                           <div class="jumbotron">
-                            <h2>Pour accéder à la gestion de votre Club, <br>vous devez d'abord créer une saison</h2>
+                            <h2>Pour accéder à la gestion de votre club, <br>vous devez d'abord créer une saison</h2>
                            
-                            <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_edit') }}" role="button">Créer ma 1ère saison</a></p></div>
-                          </div>      
+                           <a class="btn btn-success btn-lg" type="button" href="{{ path('app_admin_saison_edit') }}" role="button">Créer ma première saison</a>
+                          </div>  
+                    </div>        
             {% else %}
             <h1 class="titre">Mon Club pour la saison 2017-2018</h1>
             <hr>
