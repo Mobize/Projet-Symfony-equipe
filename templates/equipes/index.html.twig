@@ -36,7 +36,7 @@
                         <p>Nom de l'entraineur: <span style="color:dodgerblue">{{ equipe.staff.nom }}</span></p>
                         <p>Nombre de joueurs: <span style="color:dodgerblue">A faire</span></p>
                         <span class=""><a href="{{ path('app_ficheequipe_index', {id: equipe.id}) }}" class="btn btn-primary" role="button">Fiche Equipe</a></span>
-                        <span class="pull-right"><a href="#" class="btn btn-primary" role="button">Rencontres</a></span>{#<a href="#" class="btn btn-default" role="button">Button</a></p>#}
+                        <span class="pull-right"><a href="{{ path('app_rencontres_index', {id: equipe.id}) }}" class="btn btn-primary" role="button">Rencontres</a></span>{#<a href="#" class="btn btn-default" role="button">Button</a></p>#}
                 </div>
             </div>
             {% endfor %}
