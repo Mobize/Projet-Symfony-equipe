@@ -13,6 +13,10 @@ and open the template in the editor.
 }
 }
 
+#actions{
+    width: 18% !important;
+}
+
 .logo_fff{
     width:10%;
 }
@@ -26,7 +30,7 @@ and open the template in the editor.
     color:red;
 }
 .agileits-feedback-grids{
-     background: rgba(153, 188, 89, 0.24);
+     background: rgba(17, 18, 16, 0.13);
      border-radius: 10px;
 }
 .index_admin{
