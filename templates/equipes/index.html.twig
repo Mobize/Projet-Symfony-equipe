@@ -14,8 +14,8 @@
 {% block content %} 
 <div class="container"> 
     <div class="row">  
+        <div class="col-md-8 col-md-offset-2">
             {% if(nbsaisons is defined and nbsaisons == false) %}
-                <div class="col-md-8 col-md-offset-2">
                           <div class="jumbotron">
                             <h2>Pour accéder à la gestion de votre Club, <br>vous devez d'abord créer une saison</h2>
                            
@@ -28,15 +28,15 @@
             <div class="col-md-3"> 
                 <div class="thumbnail">
                     <div class="caption text-center">
-                        <h3>{{ equipe.nom }}</h3>
+                        <h3>{{ listEquipe.nom }}</h3>
                         <div class="thumbnail">
-                            <img src="{{ asset('upload/' ~ equipe.image) }}" class="img-responsive">
+                            <img src="{{ asset('upload/' ~ listEquipe.image) }}" class="img-responsive">
                         </div>
                     </div>
                         <p>Nom de l'entraineur: <span style="color:dodgerblue">{{ equipe.staff.nom }}</span></p>
                         <p>Nombre de joueurs: <span style="color:dodgerblue">A faire</span></p>
                         <span class=""><a href="{{ path('app_ficheequipe_index', {id: equipe.id}) }}" class="btn btn-primary" role="button">Fiche Equipe</a></span>
-                        <span class="pull-right"><a href="{{ path('app_admin_rencontre_index', {id: equipe.id}) }}" class="btn btn-primary" role="button">Rencontres</a></span>{#<a href="#" class="btn btn-default" role="button">Button</a></p>#}
+                        <span class="pull-right"><a href="#" class="btn btn-primary" role="button">Rencontres</a></span>{#<a href="#" class="btn btn-default" role="button">Button</a></p>#}
                 </div>
             </div>
             {% endfor %}
