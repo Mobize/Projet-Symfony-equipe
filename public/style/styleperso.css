@@ -37,12 +37,10 @@ and open the template in the editor.
     font-size:4em;
     color:white;
 }
-.clr2{
-    min-height: 308px;
+.clr1,.clr2,.clr3 {
+    max-height: 350px;
 }
-.clr3{
-    max-height: 308px;
-}
+
 .liste{
     list-style: none;
     color: white;
@@ -236,12 +234,7 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
-.clr2{
-    min-height: 308px;
-}
-.clr3{
-    max-height: 308px;
-}
+
 .liste{
     list-style: none;
     color: white;
