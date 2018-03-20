@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Joueur;
+use App\Entity\User;
 use App\Entity\Saison;
 use App\Form\JoueurType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

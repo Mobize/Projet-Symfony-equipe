@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Rencontre;
 use App\Entity\Saison;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,16 +36,23 @@ class IndexController extends Controller
         } else {
             $nbsaison = 0;
         }
+        
+        $RencontreRepository = $this->getDoctrine()->getRepository(Rencontre::class);
+        $rencontres= $RencontreRepository->afficheLesRencontres();
+        
        
         return $this->render(
                 'index/index.html.twig',
                 [
                   'logoClub' => $logoClub,
                   'nomClub' => $nomClub,
-                  'nbsaisons' => $nbsaison
+                  'nbsaisons' => $nbsaison,
+                  'rencontres' => $rencontres
                 ]
         );
     }
+    
+    
     
 
 }

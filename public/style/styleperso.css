@@ -13,11 +13,22 @@ and open the template in the editor.
 }
 }
 
+#actions{
+    width: 18% !important;
+}
+
 .logo_fff{
     width:10%;
 }
-.feedback-img-info p.domicile{
-    color:blue;
+.feedback-info{
+    margin: 1em !important;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 8px black;
+}
+.feedback-img-info{
+    width: 100%;
 }
 .feedback-img-info h5{
     color: black;
@@ -26,7 +37,7 @@ and open the template in the editor.
     color:red;
 }
 .agileits-feedback-grids{
-     background: rgba(153, 188, 89, 0.24);
+     background: rgba(17, 18, 16, 0.13);
      border-radius: 10px;
 }
 .index_admin{
@@ -37,12 +48,12 @@ and open the template in the editor.
     font-size:4em;
     color:white;
 }
-.clr2{
-    min-height: 308px;
+/* blocs page accueil inscrivez-vous*/
+.clr1,.clr2,.clr3 {
+    min-height: 400px;
+    max-height: 450px;
 }
-.clr3{
-    max-height: 308px;
-}
+
 .liste{
     list-style: none;
     color: white;
@@ -75,12 +86,12 @@ legend{
     color: white;
 }
 .btn-info{
-<<<<<<< HEAD
+
     margin-top: -23px;
     border-color: white;
     background-color: #11162759;
 }
-=======
+
     margin-top: -14px;
     border-color: white;
     background-color: #11162759;
@@ -92,7 +103,7 @@ legend{
 .bouton_club a:hover{
     color:white;
 }
->>>>>>> 8985aeeca6e4232567aa9fb0b5d4bb4ec7695569
+
 .banner-text.agileinfo{
     padding: 15em 0;
 }
@@ -135,11 +146,11 @@ legend{
     margin-top:50px;
 }
 
-<<<<<<< HEAD
+
 
 
 /*-----Partie rencontres calendrier par équipe route provisoire "@/rencontres"" --------------*/
-=======
+
 @media (min-width: 996px){
 .creer_saison{
     margin-left: 18em;
@@ -147,7 +158,6 @@ legend{
 }
 
 /*-----Partie rencontres calendrierpar équipe route provisoire "@/rencontres"" --------------*/
->>>>>>> 8985aeeca6e4232567aa9fb0b5d4bb4ec7695569
 
 
 /* Léger décalage bouton d'affichage victoires nuls défaites */
@@ -155,16 +165,13 @@ legend{
     margin-left: 15px;
 }
 
-<<<<<<< HEAD
+
 /* div cachant les boutons */
-=======
->>>>>>> 8985aeeca6e4232567aa9fb0b5d4bb4ec7695569
 .div_btn_filtrage {
     display: none;
     margin-top: 6px;
 }
 
-<<<<<<< HEAD
 /* Pour cacher et faire apparaître les boutons */
 .cacher {
     display: none;
@@ -183,9 +190,7 @@ legend{
 
 
 .blocOpaque { /* Astuce de création d'un bloc à 60% opaque à l'image de fond */
-  width:100%;
   height:100%;
-  margin:0px 0px;
   background-color:rgba(0,0,255,0.10);
 }
 
@@ -206,9 +211,19 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
 #inputmail::placeholder {
   color:#c8d6e5;
 }
+
+.f-bg-w3l {
+    background: #747d8c;
+    padding: 5em 0;
+}
+
+.hauteur_min {
+    min-height: 500px;
+    background: #f1f2f6;
+}
  
 /* Fin surcharge footer */
-=======
+
 @media (max-width: 480px){
 .agileits-logo h1 {
     font-size: 2.3em;
@@ -226,7 +241,7 @@ h3{
 }
 
 
->>>>>>> 8985aeeca6e4232567aa9fb0b5d4bb4ec7695569
+
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -236,12 +251,7 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
-.clr2{
-    min-height: 308px;
-}
-.clr3{
-    max-height: 308px;
-}
+
 .liste{
     list-style: none;
     color: white;
@@ -321,9 +331,6 @@ legend{
 
 
 
-/*-----Partie rencontres calendrierpar équipe route provisoire "@/rencontres"" --------------*/
-
-
 /* Léger décalage bouton d'affichage victoires nuls défaites */
 .resultat_rencontres_btn {
     margin-left: 15px;
@@ -333,7 +340,13 @@ legend{
     display: none;
     margin-top: 6px;
 }
+/*modif des titres en blanc pour visibilité*/
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+}
 
-margin-top: 6px;
-
-
+.feedback-img-info h5 {
+    color: white;
+}
