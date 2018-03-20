@@ -22,14 +22,14 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
      * @var string
      */
     private $lastname;
     
     /**
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
      * @var string
      */

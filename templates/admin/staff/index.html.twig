@@ -51,6 +51,7 @@
                         <td>
                             <a href="{{ path('app_admin_staff_edit', {id: staff.id}) }}" class="btn btn-primary">Modifier</a>
                             <a href="{{ path('app_admin_staff_delete', {id: staff.id}) }}" class="btn btn-danger">Supprimer</a>
+                            <a href="{{ path('app_admin_equipe_index', {id: staff.id}) }}" class="btn btn-success pull-right">Ajoutez une équipe</a>
                         </td>  
                     </tr>
                 {% else %}
