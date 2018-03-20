@@ -79,19 +79,12 @@
                         {# Logo du club à insérer 
                         {% if club.logo is not null %}
                             <div>
-                                <img src="{{ asset('upload/' ~ club.logo) }}" width="200px">
+                                <img src="{{ asset('upload/' ~ club.logo) }}" width="200px">{{ app.user.club.logo }}
                             </div>
-                            {% else %}
-                            <div>
-                                <img src="{{ logo team up }}" width="200px">
-                            </div>  
+                         
                         {% endif %}#} 
 			<h1><a href="{{ path('app_index_index') }}">{{ app.user.club.nom }}</a></h1> 
-                       
-                       
-                        <span class="bouton_club center"><button type="button" class="btn btn-info "><a class="nom_club" href="{{ path('app_equipe_index') }}">{{ app.user.club.nom }}</a></button></span>
-                       
-                        <h3 class="connecte">Bonjour</h3>
+            
                         <h3>{{ app.user.fullname }}</h3>
                     </div>
 			<!-- header -->
@@ -220,7 +213,7 @@
         </div> 
     {% endblock %}
 	<!-- //banner -->
-        <div class="hauteur_min">
+  <div class="hauteur_min">
 	{% block content %}
         {% if app.user is null %}
 	<div class="about">
@@ -516,9 +509,7 @@ carrer -->
 	
                 {% else %}
                 <div class="hauteur_min">   
-                    
-                   
-                    
+
                     <div class='col-md-6 col-md-offset-3'>  
                         
                         <h2 class="text-center titre index_admin">Prochaines rencontres <img src="{{ asset('images/logos/fff.png') }}" class="logo_fff" alt=""></h2>  
@@ -597,7 +588,7 @@ carrer -->
 						
 					</div>
 				</div>
-                              
+                            <div><a class="btn btn-primary btn-lg btn-block nom_club" type="button" href="{{ path('app_equipe_index') }}">Accéder aux équipes du club</a></div>     
                     </div>
                         
                     </div>
@@ -609,11 +600,11 @@ carrer -->
                             </div>
                         </div>
                     </div>#}
-                </div> 
+ </div> 
                 
                 
         {% endif %}  
-  
+
 {% endblock %}{# fin du content #}
         </div>
           
