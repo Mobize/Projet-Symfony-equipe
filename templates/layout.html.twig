@@ -167,7 +167,14 @@
          			<div class="banner-text agileinfo"> 
 				<div class="container">
 					<div class="agileitsbnr-textinfo">  
-						<h2>Salut</h2>
+                                         {% if(nbsaisons is defined and nbsaisons == false) %}
+                                        <h2><a class="lien_accueil" href="{{ path('app_admin_saison_edit') }}">Créez votre 1ère Saison</a></h2>
+                                         {% else %}
+
+                                            <h2>Dernières actualités du club</h2>
+                                            <span class="glyphicon glyphicon-menu-down fleche_bas" aria-hidden="true"></span>
+                                           {% endif %}
+						
 					</div>					
 				</div>
 			</div>			   
