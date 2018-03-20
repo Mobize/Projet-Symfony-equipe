@@ -64,7 +64,7 @@
         <h3>Liste des équipes du club</h3>
 
         {# Affichage du comptage d'équipes si déjà 1 équipe créée #}
-        <small>Nb d'équipes du club crées : {{ nbEquipesClub }}</small>
+        <small>Nb d'équipes du club créées : {{ nbEquipesClub }}</small>
         
         <table class="table table-striped table-bordered table-hover">
                 <tr>
@@ -98,15 +98,16 @@
                         <td>
                             <div class="btn-group">
                                 <a type="button" href="{{ path('app_admin_equipe_edit', {id: equipe.id}) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Modifier</a>
-                                <a type="button" href="{{ path('app_admin_equipe_edit', {id: equipe.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Supprimer</a>
+                                <a type="button" href="{{ path('app_admin_equipe_delete', {id: equipe.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Supprimer</a>
                                 <a type="button" href="{{ path('app_admin_rencontre_edit') }}" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i> Ajouter une rencontre</a>
+                                <a type="button" href="{{ path('app_admin_joueur_index') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Ajouter joueur</a>
                             </div>                
                         </td>  
                     </tr>
 
                 {% else %}
                     <tr>
-                        <td colspan="6">Aucune équipe créée pour le moment.</td>
+                        <td colspan="7">Aucune équipe créée pour le moment.</td>
                     </tr>                    
                 {% endfor %}           
             </table>
@@ -118,7 +119,7 @@
             <h3>Liste des équipes extérieures</h3>
             
             {# Affichage du comptage d'équipes si déjà 1 équipe créée #}
-            <small>Nb d'équipes du club crées : {{ nbEquipesExt }}</small>
+            <small>Nb d'équipes extérieures créées : {{ nbEquipesExt }}</small>
             
             <table class="table table-striped table-bordered table-hover">
                     <tr>
@@ -158,7 +159,7 @@
 
                     {% else %}
                         <tr>
-                            <td colspan="6">Aucune équipe extérieure créée pour le moment.</td>
+                            <td colspan="7">Aucune équipe extérieure créée pour le moment.</td>
                         </tr>                    
                     {% endfor %}           
                 </table>

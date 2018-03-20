@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Joueur;
+use App\Entity\User;
 use App\Entity\Saison;
 use App\Form\JoueurType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -41,14 +42,11 @@ class JoueurController extends Controller
         } else {
             $nbsaison = 0;
         }
-       
-        
-        
+             
         return $this->render('admin/joueur/index.html.twig', [
            'joueurs' => $joueurs,
             'nbsaisons' => $nbsaison,
-            'NomderniereSaisonClub' => $NomderniereSaisonClub,
-             'users' => $users
+            'NomderniereSaisonClub' => $NomderniereSaisonClub
         ]);
     }
     /**
@@ -102,7 +100,7 @@ class JoueurController extends Controller
             $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
 
             $saison = $SaisonClubRepository->find($IdDerniereSaisonClub['id']);
-            dump($saison);
+            //dump($saison);
             $joueur->setSaison($saison);
         
         //Création du formulaire    

@@ -29,17 +29,13 @@ class RencontreType extends AbstractType
         $club = $this->tokenStorage->getToken()->getUser()->getClub();
         
         $builder
-            ->add(
-                  'date',
-                  DateType::class,
-                    [
-                        'label' => 'Date',
-                         'attr' => [
+            ->add('date', DateType::class, array(
+              'widget' => 'single_text',
+                    'attr' => [
                             'class' => 'perso'
-                            
-                        ]             
-                    ]
-                )
+                        ]      
+            ))
+                
              ->add('equipe1',
                   //<select> sur une équipe
                   EntityType::class,

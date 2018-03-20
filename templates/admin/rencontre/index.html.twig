@@ -45,20 +45,15 @@
                         <td align="center">{{ rencontre.createdAt|date('d/m/Y h:i:s')}}</td>
                         <td align="center">{% if rencontre.updatedAt is not null %}{{ rencontre.updatedAt|date('d/m/Y h:i:s') }}{% endif %}</td>
                         <td align="center">{{ rencontre.date|date('d/m/Y')}}</td>
-                        <td align="center">{{ rencontre.equipe1}}</td>
-                        <td align="center">{{ rencontre.equipe2}}</td>
-                        {% if(rencontre.equipe1Score == false) %}
-                            <td>-</td>
-                        {% else %}
-                            <td align="center">{{ rencontre.equipe1Score}}</td>
-                        {% endif %}
-                                            
+                        <td align="center">{{ rencontre.equipe1 }}</td>
+                        <td align="center">{{ rencontre.equipe2 }}</td>
+
+                            <td align="center">{{ rencontre.equipe1Score}}</td>                                           
                         
-                        {% if(rencontre.equipe2Score == false) %}
-                            <td align="center">-</td>
-                        {% else %}
+  
+
                             <td align="center">{{ rencontre.equipe2Score}}</td>
-                        {% endif %}  
+
                         {% if(rencontre.domicile == 1) %}
                             <td align="center"><i class="fa fa-check-square"></i></td>
                         {% else %}
@@ -68,8 +63,8 @@
                         
                         <td>{{ rencontre.lieu}}</td>
                         <td>
-                            <a href="{{ path('app_admin_rencontre_edit', {id: rencontre.id}) }}" class="btn btn-primary">Modifier</a>
-                            <a href="{{ path('app_admin_rencontre_delete', {id: rencontre.id}) }}" class="btn btn-danger">Supprimer</a>
+                            <a href="{{ path('app_admin_rencontre_edit', {id: rencontre.id}) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Modifier</a>
+                            <a href="{{ path('app_admin_rencontre_delete', {id: rencontre.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
                         </td>  
                     </tr>
                 {% else %}

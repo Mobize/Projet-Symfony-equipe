@@ -16,7 +16,7 @@
 <div class="container"> 
     <div class="row">  
         <div class="col-md-12">     
-            <h1>Gestion des membres du staff<a class="btn btn-primary pull-right" href="{{path('app_admin_staff_edit')}}">Ajouter un membre du staff</a></h1>
+            <h1>Gestion des membres du staff</h1>
 
             <table class="table table-striped table-bordered table-hover">
                 <tr>
@@ -51,15 +51,16 @@
                         <td>
                             <a href="{{ path('app_admin_staff_edit', {id: staff.id}) }}" class="btn btn-primary">Modifier</a>
                             <a href="{{ path('app_admin_staff_delete', {id: staff.id}) }}" class="btn btn-danger">Supprimer</a>
+                            <a href="{{ path('app_admin_equipe_index', {id: staff.id}) }}" class="btn btn-success pull-right">Ajoutez une équipe</a>
                         </td>  
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="7">Aucun membre du staff créé pour le moment.</td>
+                        <td colspan="8">Aucun membre du staff créé pour le moment.</td>
                     </tr>                    
                 {% endfor %}                  
             </table>
-            
+                <div class="text-center"><a class="btn btn-primary" href="{{path('app_admin_staff_edit')}}">Ajouter un membre du staff</a></div>
         </div>
     </div> 
 </div>     

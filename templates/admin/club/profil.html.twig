@@ -16,17 +16,51 @@
 <div class="container"> 
     <div class="row">  
         <div class="col-md-12">
+            
             {% if(nbsaisons is defined and nbsaisons == false) %}
                 <div class="text-center"><h2>Créez votre première saison !*</h2></div>
                 <p class="text-center">*Pour bénéficier de toutes fonctionnalités du site:</p>
-                <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_edit') }}" role="button">Créer ma 1ère saison</a></p></div>
+                <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_edit') }}" role="button">Créer ma première saison</a></p></div>
                 <hr>
-                <h2>Profil Club</h2>
-                {% else %}
 
                 <h2>Profil Club</h2>
-          {% endif %}  
+                <hr>
+                <div class="col-md-4">
+                <div class="row">
+                
+                    {% for club in clubs %}
+
+                <table>
+                    <tr>
+                        <th>N° d'association :</th>
+                        <td>{{ club.assoc }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom du club :</th>
+                        <td>{{ club.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse :</th>
+                        <td>{{ club.adresseStade }}</td>
+                    </tr>
+                     <tr>
+                        <th>Année de création : </th>
+                        <td>{{ club.anneeCreation }}</td>
+                    </tr>
+                </table>
+
+
+               <a type="button" href="{{ path('app_admin_club_edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Modifier</a>
         </div> 
+                <div class="col-md-8">
+                    <div class="well">
+                        {% if club.logo is not null %}
+                          <img src="{{ asset('upload/'~club.logo) }}" width="100px">
+                        {% endif %}
+                    </div>
+                </div> 
+        {% endfor %}
+        </div>
     </div>    
 </div>            
 {% endblock %}

@@ -31,4 +31,15 @@ class RencontreRepository extends ServiceEntityRepository
         ;
     }
     */
+    
+       public function afficheLesRencontres()
+    {
+        $connection=$this->getEntityManager()->getConnection();
+        $sql="SELECT REN.equipe1_id, REN.equipe2_id, REN.lieu, REN.date, EQ1.nom as equipe_domicile,EQ2.nom as equipe_exterieur
+                FROM rencontre REN
+                INNER JOIN equipe EQ1 ON EQ1.id =REN.equipe1_id
+                INNER JOIN equipe EQ2 ON EQ2.id =REN.equipe2_id";
+        $resultat=$connection->query($sql);
+        return $resultat->fetchAll();
+    }
 }

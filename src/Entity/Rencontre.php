@@ -73,7 +73,6 @@ class Rencontre
         
      /**
      * @ORM\Column()
-     * @Assert\NotBlank()
      * @var string 
      */
     private $lieu;     
@@ -93,6 +92,13 @@ class Rencontre
      * @var Saison 
      */
      private $saison;
+ 
+     /**
+     * @ORM\Column()
+     * @var string 
+     */
+    private $libelle;  
+     
      
     
     //pour l'enregistrement automatique de la date de création de l'enregistrement
@@ -205,6 +211,15 @@ class Rencontre
 
  public function setSaison(Saison $saison) {
      $this->saison = $saison;
+     return $this;
+ }
+
+ public function getLibelle() {
+     return $this->libelle;
+ }
+
+ public function setLibelle($libelle) {
+     $this->libelle = $libelle;
      return $this;
  }
 

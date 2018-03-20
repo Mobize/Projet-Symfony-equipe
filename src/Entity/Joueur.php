@@ -274,7 +274,7 @@ class Joueur
     }
 
     function setNom($nom) {
-        $this->nom = $nom;
+        $this->nom = strtoupper($nom);
     }
 
     function setPrenom($prenom) {

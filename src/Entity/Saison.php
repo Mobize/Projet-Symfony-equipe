@@ -48,7 +48,7 @@ class Saison
     
      /** 
      * @var string
-     * @ORM\Column(length=25,unique=true)
+     * @ORM\Column(length=25)
      * @Assert\NotBlank()
      */
     private $nom;

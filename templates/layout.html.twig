@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Club de Foot{% endblock %}
+{% block title %}Team Up{% endblock %}
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset('style/bootstrap.css') }}">
 <link rel="stylesheet" href="{{ asset('style/style.css') }}"/>
@@ -54,7 +54,7 @@
 										</ul>
 									</li> #}
                                                                         {#<li><a href="{{ path('app_apropos_index') }}" data-hover="A propos">A propos</a></li>#}
-									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contact</a></li>
+									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contactez-nous</a></li>
 									
 								</ul>  
 								<div class="clearfix"> </div>	
@@ -68,10 +68,21 @@
             <div class="w3ls-banner">
 		<div class="w3lsbanner-info">
                     <div class="header-mdl agileits-logo connecte"><!-- header-two --> 
-			<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
+                         
+                        {# Logo du club à insérer 
+                        {% if club.logo is not null %}
+                            <div>
+                                <img src="{{ asset('upload/' ~ club.logo) }}" width="200px">
+                            </div>
+                            {% else %}
+                            <div>
+                                <img src="{{ logo team up }}" width="200px">
+                            </div>  
+                        {% endif %}#} 
+			<h1><a href="{{ path('app_index_index') }}">{{ app.user.club.nom }}</a></h1> 
                        
                        
-                        <span class="bouton_club center"><button type="button" class="btn btn-info "><a class="nom_club" href="{{ path('app_equipe_index') }}">{{ app.user.club.nom }}</a></button></span>
+                        
                        
                         <h3 class="connecte">Bonjour</h3>
                         <h3>{{ app.user.fullname }}</h3>
@@ -107,9 +118,9 @@
                                                                         {% if is_granted('ROLE_ADMIN') %}
                                                                             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
 										<ul class="dropdown-menu">
-                                                                                    <li><a href="{{ path('app_admin_club_profil') }}" data-hover="Profil Club">Profil Club</a></li>
-                                                                                    <li><a href="{{ path('app_admin_staff_index') }}" data-hover="Gestion Staff">Gestion Staff</a></li>
+                                                                                    <li><a href="{{ path('app_admin_club_profil') }}" data-hover="Profil Club">Profil Club</a></li>                                                     
                                                                                     <li><a href="{{ path('app_admin_saison_index') }}" data-hover="Gestion Saisons">Gestion Saisons</a></li>
+                                                                                    <li><a href="{{ path('app_admin_staff_index') }}" data-hover="Gestion Staff">Gestion Staff</a></li>
                                                                                     <li><a href="{{ path('app_admin_equipe_index') }}" data-hover="Gestion Equipes">Gestion Equipes</a></li>
                                                                                     <li><a href="{{ path('app_admin_joueur_index') }}" data-hover="Gestion Joueurs">Gestion Joueurs</a></li>
                                                                                     <li><a href="{{ path('app_admin_rencontre_index') }}" data-hover="Gestion Rencontres">Gestion Rencontres</a></li>
@@ -135,7 +146,7 @@
 										</ul>
 									</li> #}
                                                                         {#<li><a href="{{ path('app_apropos_index') }}" data-hover="A propos">A propos</a></li>#}
-									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contact</a></li>
+									<li><a href="{{ path('app_contact_add') }}" data-hover="Contactez-nous">Contactez-nous</a></li>
 									
 								</ul>  
 								<div class="clearfix"> </div>	
@@ -158,7 +169,7 @@
 			<div class="banner-text agileinfo"> 
 				<div class="container">
 					<div class="agileitsbnr-textinfo">  
-						<h2>Gerez votre club sportif</h2>
+						<h2>Gérez votre club sportif</h2>
 					</div>					
 				</div>
 			</div>			   
@@ -169,10 +180,10 @@
 				<div class="container">
 					<div class="agileitsbnr-textinfo">  
                                  {% if(nbsaisons is defined and nbsaisons == false) %}
-                                     <h2><a class="lien_accueil" href="{{ path('app_admin_saison_edit') }}">Créez votre 1ère Saison</a></h2>
+                                     <h2><a class="lien_accueil" href="{{ path('app_admin_saison_edit') }}">Créez votre première saison</a></h2>
                                 {% else %}
                                     
-                                    <h2>Dernières actualités du club</h2>
+                                    <h2>Actualité du club</h2>
                                     <span class="glyphicon glyphicon-menu-down fleche_bas" aria-hidden="true"></span>
                             {% endif %}
 						
@@ -209,7 +220,7 @@
 		<div class="container">
 			<div class="wthree_head_section">
 				<h3 class="w3l_header">Comment ça fonctionne ?</h3>
-				<p>Inscription rapide et gratuite</p>
+				
 			</div>
 			<div class="agileits-banner-grids text-center">
 				<div class="banner-bottom-girds">
@@ -217,18 +228,28 @@
 						<span class="fa fa-edit banner-icon" aria-hidden="true"></span>
 						<h4>1- Inscrivez-vous</h4>
                                                 
-						<p>Vous êtes dirigeant de club? profitez de toutes les fonctionnalités du site.</p>
-						<button type="button" class="btn btn-default"><a href="{{ path('app_security_register') }}" data-hover="Inscription">Inscription</a></button>
-					</div>
+                                                <p>Vous êtes dirigeant de club?<br> 
+                                                Profitez de toutes les fonctionnalités du site<br>
+                                                Inscription rapide et gratuite</p>
+                                                <p>
+                                                    <button type="button" class="btn btn-default"><a href="{{ path('app_security_register') }}" data-hover="Inscription">Inscription</a></button>
+                                                <p/>
+                                        </div>
 					<div class="col-md-4 col-sm-4 clr2 agileits-banner-grid">
 						<span class="fa fa-users banner-icon" aria-hidden="true"></span>
-						<h4>2- Créez votre Club</h4>
-                                                <p>Ajoutez vos équipes, vos joueurs, vos rencontres. Intègrez vos photos, vos résultats de matchs. Modifiez vos équipes <p>
+						<h4>2- Créez votre club</h4>
+                                                <p>Ajoutez vos équipes, vos joueurs<br>
+                                                   Personnalisez vos rencontres :
+                                               intégrez vos photos, vos résultats et commentez-les<br>
+                                               Vous pouvez actualiser vos informations à tout moment </p>
 					</div>
 					<div class=" col-md-4 col-sm-4 clr3 agileits-banner-grid">
 						<span class="fa fa-cogs banner-icon" aria-hidden="true"></span>
 						<h4>3- Gérez votre Club</h4>
-						<p>Informez vos adhérents, gérer votre staff, Faites évoluer vos joueurs, gérez vos documents en ligne (inscription joueurs, certificat médicaux)</p>
+                                                <p>Informez vos adhérents<br>
+                                                   et communiquez avec eux<br>
+                                                   Faites évoluer vos joueurs<br>
+                                                   Gérez vos documents en ligne (inscription, certificats médicaux)</p>
 						
 					</div>
 					<div class="clearfix"></div>
@@ -300,23 +321,23 @@ carrer -->
 		<div class="feedback-agileinfo">
 			<div class="container">
 			<div class="wthree_head_section">
-				<h3 class="w3l_header ggg">Testimonials</h3>
-				<p class="hhh">A football team is a group of players selected to play together in the various team sports known as football.</p>
+                            <h3 class="w3l_header ggg">Les clubs inscrits</h3>
+				<p class="hhh">Comme eux, rejoignez la Team up !</p>
 			</div>
 				<div class="agileits-feedback-grids">
 					<div id="owl-demo" class="owl-carousel owl-theme">
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/t1.jpg" alt="" />
+										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
 									</div>
 									<div class="feedback-img-info">
-										<h5>Mary Jane</h5>
-										<p>Vestibulum</p>
+										<h5>CLUB 1</h5>
+                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -325,15 +346,15 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/t2.jpg" alt="" />
+										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
 									</div>
 									<div class="feedback-img-info">
-										<h5>Peter</h5>
-										<p>Vestibulum</p>
+										<h5>CLUB 2</h5>
+                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -342,15 +363,15 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/t3.jpg" alt="" />
+										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
 									</div>
 									<div class="feedback-img-info">
-										<h5>Steven</h5>
-										<p>Vestibulum</p>
+										<h5>CLUB 3</h5>
+                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -359,15 +380,15 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/t4.jpg" alt="" />
+										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
 									</div>
 									<div class="feedback-img-info">
-										<h5>Mary Jane</h5>
-										<p>Vestibulum</p>
+										<h5>CLUB 4</h5>
+                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -376,15 +397,15 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/t1.jpg" alt="" />
+										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
 									</div>
 									<div class="feedback-img-info">
-										<h5>Guptill</h5>
-										<p>Vestibulum</p>
+										<h5>CLUB 5</h5>
+                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -393,15 +414,15 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-									<p> Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque. </p>
+                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/t2.jpg" alt="" />
+										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
 									</div>
 									<div class="feedback-img-info">
-										<h5> Wilson</h5>
-										<p>Vestibulum</p>
+										<h5>CLUB 6</h5>
+                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -497,74 +518,33 @@ carrer -->
                          
                          <div class="agileits-feedback-grids">
 					<div id="owl-demo" class="owl-carousel owl-theme">
+                                            {% for rencontre in rencontres %}
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre </p>
+                                                                    
+                                                                    <p> {{ rencontre.equipe_domicile }} <strong>VS</strong> {{ rencontre.equipe_exterieur }}</p>
+                                                                       
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
 										<img src="images/t1.jpg" alt="" />
 									</div>
 									<div class="feedback-img-info">
-										<h5>Equipe U8</h5>
-										<p class="domicile">A domicile</p>
+                                                                            
+                                                                            <p><strong>{{ rencontre.date|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</strong></p>
+                                                                            
+										<p class="domicile">Lieu :{{ rencontre.lieu }}</p>
 									</div>
+                                                                    
 									<div class="clearfix"> </div>
 								</div>
 							</div>
 						</div>
-						<div class="item">
-							<div class="feedback-info">
-								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre  </p>
-								</div>
-								<div class="feedback-grids">
-									<div class="feedback-img">
-										<img src="images/t2.jpg" alt="" />
-									</div>
-									<div class="feedback-img-info">
-										<h5>Equipe U19</h5>
-										<p>Exterieur</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feedback-info">
-								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre  </p>
-								</div>
-								<div class="feedback-grids">
-									<div class="feedback-img">
-										<img src="images/t3.jpg" alt="" />
-									</div>
-									<div class="feedback-img-info">
-										<h5>Equipe Senior</h5>
-										<p class="domicile">A domicile</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feedback-info">
-								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre  </p>
-								</div>
-								<div class="feedback-grids">
-									<div class="feedback-img">
-										<img src="images/t4.jpg" alt="" />
-									</div>
-									<div class="feedback-img-info">
-										<h5>Equipe U10</h5>
-										<p class="domicile">A domicile</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
+                                                {% endfor %} 
+						
+						
+						
 						
 						
 					</div>
@@ -591,11 +571,13 @@ carrer -->
           
 {% block footer %}
     		<!-- footer -->
+
 	<div class="footer">
+            <div class="blocOpaque">
 	<div class="container">
 		<div class="f-bg-w3l">
 		<div class="col-md-4 w3layouts_footer_grid">
-					<h2>Contact <span>Information</span></h2>
+					<h2>Informations de <span>Contact</span></h2>
 					    <ul class="con_inner_text">
 							<li><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, 4th block, <label> New York City.</label></li>
 							<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
@@ -610,16 +592,16 @@ carrer -->
 					</ul>
 				</div>
 				<div class="col-md-4 w3layouts_footer_grid">
-					<h2>Subscribe <span>Newsletter</span></h2>
-					<p>By subscribing to our mailing list you will always get latest news from us.</p>
+					<h2>Souscrire à la  <span>Newsletter</span></h2>
+					<p>Inscrivez vous à la Newsletter pour connaître les dernières actualités de votre club!</p>
 					<form action="#" method="post">
-						<input type="email" name="Email" placeholder="Enter your email..." required="">
+						<input type="email" name="Email" placeholder="Entrez votre courriel..." required="">
 						<button class="btn1"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
 						<div class="clearfix"> </div>
 					</form>
 				</div>
 				<div class="col-md-4 w3layouts_footer_grid">
-					<h3>Latest <span>Events</span></h3>
+					<h3>Derniers <span>Matchs</span></h3>
 					   <ul class="con_inner_text midimg">
 						<li><a href="#"><img src="images/g5.jpg" alt="" class="img-responsive" /></a></li>
 					    <li><a href="#"><img src="images/g6.jpg" alt="" class="img-responsive" /></a></li>
@@ -634,7 +616,9 @@ carrer -->
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-			</div>
+                                      </div> <!-- fin container -->
+			</div> <!-- fin bloc opaque -->
+                                        
 			<p class="copyright">© 2018 Football Club. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
 	</div>
 	<!-- //footer -->
