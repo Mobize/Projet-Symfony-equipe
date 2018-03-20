@@ -43,7 +43,7 @@ class ArticleController extends Controller
             [
                 'articles' => $articles,
                 'rencontres'=>$rencontres,
-                'nbsaisons' => $nbsaisons
+                'nbsaisons' => $nbsaison
             ]
         );
     }

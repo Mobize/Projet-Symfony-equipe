@@ -49,7 +49,7 @@
                         <td>
                             <a href="{{ path('app_admin_saison_edit', {id: saison.id}) }}" class="btn btn-primary">Modifier</a>
                             <a href="{{ path('app_admin_saison_delete', {id: saison.id}) }}" class="btn btn-danger">Supprimer</a>
-                            <a href="{{ path('app_admin_staff_edit', {id: saison.id}) }}" class="btn btn-success pull-right">Ajoutez un entraineur</a>
+                            <a href="{{ path('app_admin_staff_index', {id: saison.id}) }}" class="btn btn-success pull-right">Ajoutez un entraineur</a>
                         </td>  
                     </tr>
                 {% else %}
