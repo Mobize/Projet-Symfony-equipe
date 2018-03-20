@@ -26,16 +26,28 @@
                     <th>Prénom</th>  
                     <th>Nom</th>
                     <th>Fonction dans le club</th>   
-                    <th width="200px"></th>
+                    <th>Photo</th>
+                    <th>Actions</th>
                 </tr>
                 {% for staff in staffs %}
                     <tr>
-                        <td width="10px">{{ staff.id }}</td>
-                        <td width="150px">{{ staff.createdAt|date('d/m/Y h:i:s')}}</td>
-                        <td width="10px">{% if staff.updatedAt is not null %}{{ staff.updatedAt|date('d/m/Y h:i:s') }}{% endif %}</td>
-                        <td width="150px">{{ staff.prenom}}</td>
-                        <td width="150px">{{ staff.nom}}</td>
-                        <td width="150px">{{ staff.fonction}}</td>
+                        <td>{{ staff.id }}</td>
+                        <td>{{ staff.createdAt|date('d/m/Y h:i:s')}}</td>
+                        <td>{% if staff.updatedAt is not null %}{{ staff.updatedAt|date('d/m/Y h:i:s') }}{% endif %}</td>
+                        <td>{{ staff.prenom}}</td>
+                        <td>{{ staff.nom}}</td>
+                        {% if staff.fonction == 1 %}
+                            <td>Dirigeant</td>
+                        {% else %}
+                            <td>Entraineur</td>
+                        {% endif %} 
+                        
+                        {% if staff.image is not null %}
+                            <td align="center"><img src="{{ asset('upload/' ~ staff.image) }}" width="100px"></td> 
+                        {% else %}
+                            <td align="center"><img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" heigth="75px" width="75px" class="img-responsive"></td>
+                        {% endif %} 
+                            
                         <td>
                             <a href="{{ path('app_admin_staff_edit', {id: staff.id}) }}" class="btn btn-primary">Modifier</a>
                             <a href="{{ path('app_admin_staff_delete', {id: staff.id}) }}" class="btn btn-danger">Supprimer</a>
@@ -43,7 +55,7 @@
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="5">Aucun membre du staff créé pour le moment.</td>
+                        <td colspan="7">Aucun membre du staff créé pour le moment.</td>
                     </tr>                    
                 {% endfor %}                  
             </table>

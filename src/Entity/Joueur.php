@@ -17,7 +17,19 @@ class Joueur
      */
     private $id;
     
+     /**
+     * @var string
+     * @ORM\Column(length=255)
+     */
+    private $nom;
     
+   /**
+     * @var string
+     * @ORM\Column(length=255)
+     */
+    private $prenom;
+
+
     /**
      * @var string
      * @ORM\Column(length=255)
@@ -28,6 +40,7 @@ class Joueur
      * @ORM\Column(length=5,type="string")
      * @var string
      * @Assert\NotBlank()
+     * @Assert\Length(max=5,maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
     private $cp;
     
@@ -35,19 +48,20 @@ class Joueur
      * @var string
      * @ORM\Column(length=30)
      * Assert\NotBlank()
+     * @Assert\Length(max=30,maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
     private $ville;
     
    
     /**
-     * @ORM\Column(length=14,type="string")
+     * @ORM\Column(length=14,type="string",nullable=true)
      * @var string
-     * @Assert\NotBlank()
+     * @Assert\Length(max=14,maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
     private $tel1;
     
     /**
-    * @ORM\Column(length=14,type="string")
+    * @ORM\Column(length=14,type="string",nullable=true)
     * @var string
     */
     private $tel2;
@@ -90,13 +104,15 @@ class Joueur
      */
      private $equipe;   
      
+     
+   
     //CLUB
      /**
      * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      * @var Club 
      */
-     private $club;
+    private $club;
 
      //SAISON
      /**
@@ -105,6 +121,8 @@ class Joueur
      * @var Saison 
      */
      private $saison;
+   
+     
      
      //USER
      /**
@@ -222,6 +240,8 @@ class Joueur
         $this->equipe = $equipe;
         return $this;
     }
+ 
+ 
     public function getUser(): User {
         return $this->user;
     }
@@ -245,6 +265,26 @@ class Joueur
         return $this;
     }
 
+    function getNom() {
+        return $this->nom;
+    }
+
+    function getPrenom() {
+        return $this->prenom;
+    }
+
+    function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    function setPrenom($prenom) {
+        $this->prenom = $prenom;
+    }
+    
+    public function getFullName()
+    {
+        return trim($this->getNom() . ' ' . $this->getprenom());
+    }
 
 
 }

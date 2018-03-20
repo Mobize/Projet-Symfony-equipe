@@ -67,7 +67,6 @@ class RencontreController extends Controller
             $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
 
             $saison = $SaisonClubRepository->find($IdDerniereSaisonClub['id']);
-            dump($saison);
             $rencontre->setSaison($saison);
             
         //création du formulaire lié à l'équipe
@@ -75,6 +74,10 @@ class RencontreController extends Controller
         
         //le formulaire traite la requete HTTP
         $form->handleRequest($request);
+        
+        $equipe1 = $rencontre->getEquipe1();
+        $equipe2 = $rencontre->getEquipe2();
+        $date = $rencontre->getDate();
         
         //si le formulaire à été envoyé
         if ($form->isSubmitted()){
@@ -86,7 +89,7 @@ class RencontreController extends Controller
                 $em->flush();
                 
                 //Ajout du message flash
-                $this->addFlash('success', "La rencontre opposant l'équipe à l'équipe Y le JJ/MM/AAAA a été enregistrée");
+                $this->addFlash('success', "La rencontre opposant l'équipe ".$equipe1." à l'équipe ".$equipe2." le ".$date->format('d/m/Y')." a été enregistrée");
                 //redirection vers la liste
                 return $this->redirectToRoute('app_admin_rencontre_index');                
             } else {
@@ -94,9 +97,7 @@ class RencontreController extends Controller
             }
         }
         
-        $equipe1 = $rencontre->getEquipe1();
-        $equipe2 = $rencontre->getEquipe2();
-        $date = $rencontre->getDate();
+
         
          return $this->render('admin/rencontre/edit.html.twig', 
                  [

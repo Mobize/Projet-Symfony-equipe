@@ -70,6 +70,15 @@ class Equipe
      */
      private $saison;
      
+      /**
+     * @ORM\ManyToOne(targetEntity="Staff",cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Staff 
+     */
+     private $staff;    
+     
+     //---------------------------------------------------------------------------
+     
     //pour l'enregistrement automatique de la date de création de l'enregistrement
     public function __construct()
     {
@@ -145,5 +154,14 @@ class Equipe
         $this->saison = $saison;
         return $this;
     }
-   
+    public function getStaff() {
+        return $this->staff;
+    }
+
+    public function setStaff(Staff $staff) {
+        $this->staff = $staff;
+        return $this;
+    }
+
+
 }

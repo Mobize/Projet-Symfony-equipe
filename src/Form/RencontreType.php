@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Equipe;
 use App\Entity\Rencontre;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -12,11 +13,21 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class RencontreType extends AbstractType
 {
+    
+    private $tokenStorage;
+
+    public function __construct(TokenStorageInterface $tokenStorage) {
+        $this->tokenStorage = $tokenStorage;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $club = $this->tokenStorage->getToken()->getUser()->getClub();
+        
         $builder
             ->add(
                   'date',
@@ -29,35 +40,51 @@ class RencontreType extends AbstractType
                         ]             
                     ]
                 )
-            ->add(
-                  'equipe1',
-                    EntityType::class,
-                    [
-                        'label' => 'Equipe 1/Equipe du club',
-                        'class' => Equipe::class,
-                        //nom du champ qui s'affiche dans les <option>
-                        'choice_label' => 'nom',
-                        //1ère option vide
-                        'placeholder' => 'Choisissez une équipe du club ',
-                        'attr' => [
-                            'class' => 'perso'
-                        ]                        
-                    ]
-                )
-            ->add(
-                  'equipe2',
-                    EntityType::class,
-                    [
-                        'label' => 'Equipe 2/Equipe extérieure',
-                        'class' => Equipe::class,
-                        //nom du champ qui s'affiche dans les <option>
-                        'choice_label' => 'nom',
-                        //1ère option vide
-                        'placeholder' => 'Choisissez une équipe extérieure',
-                        'attr' => [
+             ->add('equipe1',
+                  //<select> sur une équipe
+                  EntityType::class,
+                  [
+                      'label' => 'Associé à l\'équipe',
+                      'class' => Equipe::class,
+                      'query_builder' => function (EntityRepository $er) use ($club) {
+                            return $er->createQueryBuilder('e')
+                                    ->where('e.local = :local')
+                                    ->setParameter('local',1)
+                                    ->andWhere('IDENTITY(e.club) = :club')
+                                    ->setParameter('club', $club->getId())
+                            ;
+                        },
+                      //nom du champ qui s'affiche dans les <option>
+                      'choice_label' => 'nom',
+                      //1ère option vide
+                      'placeholder' => 'Choisissez une équipe du club',
+                       'attr' => [
                             'class' => 'perso'
                         ]             
-                    ]
+                  ]  
+                ) 
+            ->add('equipe2',
+                  //<select> sur une équipe
+                  EntityType::class,
+                  [
+                      'label' => 'Associé à l\'équipe',
+                      'class' => Equipe::class,
+                      'query_builder' => function (EntityRepository $er) use ($club) {
+                            return $er->createQueryBuilder('e')
+                                    ->where('e.local = :local')
+                                    ->setParameter('local',0)
+                                    ->andWhere('IDENTITY(e.club) = :club')
+                                    ->setParameter('club', $club->getId())
+                            ;
+                        },
+                      //nom du champ qui s'affiche dans les <option>
+                      'choice_label' => 'nom',
+                      //1ère option vide
+                      'placeholder' => 'Choisissez une équipe extérieure',
+                       'attr' => [
+                            'class' => 'perso'
+                        ]             
+                  ]  
                 ) 
             ->add(
                 'domicile',

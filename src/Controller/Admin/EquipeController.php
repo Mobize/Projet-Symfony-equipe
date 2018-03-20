@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Equipe;
-use App\Entity\Saison;
 use App\Form\EquipeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
@@ -171,6 +170,9 @@ class EquipeController extends Controller
         } else {
             $lib_Equipe = ' extérieure ';
         }
+        
+        $nom = $equipe->getNom();
+        dump($nom);
          return $this->render('admin/equipe/edit.html.twig', 
                  [
                      'form' => $form->createView(),

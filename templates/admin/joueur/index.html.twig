@@ -13,7 +13,7 @@
 
 
 {% block content %}
-<div class="container"> 
+<div class="container-fluid"> 
     <div class="row">  
         <div class="col-md-8 col-md-offset-2">       
             {% if(nbsaisons is defined and nbsaisons == false) %}
@@ -27,7 +27,7 @@
             {% else %}
             <h1>Gestion des joueurs pour la saison {{ NomderniereSaisonClub.nom }}</h1>
             <hr>
-            <a href="{{ path('app_admin_joueur_edit') }}" class="btn btn-primary pull-right">Ajouter un joueur</a>
+            
               <table class="table table-striped table-bordered table-hover">
               <tr>
                   <th>Id</th>
@@ -43,20 +43,19 @@
                   <th>Sexe</th>
                   <th>Photo d'identité</th>
                   <th>Certificat de santé</th>
-                  <th width="200px"></th>
+                  <th>Actions</th>
               </tr>
            {%for joueur in joueurs %}
               <tr>
-
                       <td>{{ joueur.id }}</td>
-                      <td style="color:dodgerblue">prénom</td>
-                      <td style="color:dodgerblue">nom</td>
+                      <td>{{ joueur.prenom }}</td>
+                      <td>{{ joueur.nom }}</td>
                       <td>{{ joueur.rue }}</td>
                       <td>{{ joueur.cp }}</td>
                       <td>{{ joueur.ville}}</td>
                       <td>{{ joueur.tel1}}</td>
                       <td>{{ joueur.tel2}}</td>
-                      <td style="color:dodgerblue">email</td>
+                      <td style="color:dodgerblue">Courriel</td>
                       
                       <td>{{ joueur.dateNaissance|date('d/m/Y')}}</td>
                       <td>{{ joueur.genre}}</td>
@@ -78,8 +77,13 @@
                           <a href="{{ path('app_admin_joueur_delete', {id:joueur.id}) }}" class="btn btn-danger">Supprimer</a>
                       </td>
                   </tr>    
-
-              {%endfor%}
+                    {% else %}
+                    <tr>
+                        <td colspan="14">Aucun joueur créé pour le moment.<br>Cliquer sur le bouton ci-dessus pour en créer un.
+                            <a class="btn btn-primary pull-right" href="{{path('app_admin_joueur_edit')}}">Ajouter un joueur</a>
+                        </td>
+                    </tr>                    
+                {% endfor %}  
             </table>
             {% endif %}
         </div>

@@ -29,6 +29,16 @@
             {{ form_row(form.prenom) }}
             {{ form_row(form.nom) }}
             {{ form_row(form.fonction) }}
+            
+             <p>Actuellement : 
+            {% if form.vars.value.image is not null %}
+                <img src="{{ asset('upload/' ~ form.vars.value.image.filename) }}" width="100px"> 
+                {{ form_row(form.remove_image) }}
+            {% else %}
+                <img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" width="100px">
+            {% endif %} 
+        </p>
+        
             <div class="form-btn-group pull-right">
                 <button type="submit" class="btn btn-primary">
                     Enregistrer

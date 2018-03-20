@@ -35,14 +35,13 @@ class User implements UserInterface
      */
     private $firstname;
     
-   
-      /**
+     /**
      * @ORM\ManyToOne(targetEntity="Club",cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      * @var Club 
      */
      private $club;
-    
+   
      /**
      * @ORM\Column(unique=true)
      * @Assert\NotBlank(message="Ce champ ne doit pas etre vide")
@@ -148,34 +147,25 @@ class User implements UserInterface
     public function getUsername(): string {
         return $this->email;
     }
-    
-
-    
-    public function __toString() 
-    {
-        return $this->getFullname();
-    }
-
-    
-    
+  
     public function getClub(): ?Club {
         return $this->club;
     }
        
-    
-    
-
     public function setClub(Club $club) {
         $this->club = $club;
         return $this;
     }
 
-    public function getFullName()
-    {
-        return trim($this->getFirstname() . ' ' . $this->getLastname());
-    }
+    //creation de l'identité prénom nom
+      public function getFullname()
+   {
+       return $this->firstname.' '. $this->lastname;
+   }
     
-   
-
+      public function __toString() 
+    {
+        return $this->getFullname();
+    }
     
 }

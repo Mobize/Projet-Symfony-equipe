@@ -16,7 +16,7 @@ class BasicUserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                 ->add(
+                 /*->add(
                     'lastname',
                     TextType::class,
                     [
@@ -35,7 +35,7 @@ class BasicUserType extends AbstractType
                             'class' => 'perso'
                         ]
                     ]
-                )              
+                ) */             
                 ->add(
                     'email',
                      EmailType::class,

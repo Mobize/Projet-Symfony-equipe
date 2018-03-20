@@ -7,6 +7,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\RencontreRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * 
  */
 class Article
 {
@@ -30,14 +33,7 @@ class Article
      * @var string 
      */
     private $content;
-    
-    /**
-     * @ORM\Column(length=50)
-     * @Assert\NotBlank()
-     * @var string 
-     */
-    private $resume;
-       
+
       /**
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(nullable=false)
@@ -112,14 +108,6 @@ class Article
         return $this;
     }
 
-    public function getResume() {
-        return $this->resume;
-    }
-
-    public function setResume($resume) {
-        $this->resume = $resume;
-        return $this;
-    }
 
     public function getRencontre(): ?Rencontre {
         return $this->rencontre;

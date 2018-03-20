@@ -33,41 +33,39 @@
                     <th>Lieu</th>
                     <th>Date</th>
                     <th>Auteur</th>
+                    
                     <th>Titre</th>
                     <th>Contenu</th>
-                    <th>Résumé</th>
                     <th>Illustration</th>
                     <th width="200px"></th>
                 </tr>
+                <tr>
                 {% for article in articles %}
-                    <tr>
-                        <td>{{ article.id }}</td>
-                        
-                        {% for rencontre in rencontres %}
-                        <td>{{ rencontre.equipe1 }}</td>
-                        <td>{{ rencontre.equipe2 }}</td>
-                        <td>{{ rencontre.lieu}}</td>
-                        <td>{{ rencontre.date }}</td>
-                        {% endfor %}
-                  
-                        {% for article in articles %}
-                        <td>{{ article.title }}</td>
-                        <td>{{ article.content }}</td>
-                        <td>{{ article.resume }}</td>
-                        {% endfor %}
-                        <td>
-                            {% if article.image is not null %}
-                                <img src="{{ asset('upload/' ~ article.image) }}" width="100px">
-                            {% endif %}    
-                        </td>
-                        <td><a href="{{ path('app_admin_article_edit', {id: article.id}) }}" class="btn btn-primary">Modifier</a>
-                        <a href="{{ path('app_admin_article_delete', {id: article.id}) }}" class="btn btn-danger">Supprimer</a></td>  
-                    </tr>
-                {% endfor %}    
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.content }}</td>
+                {% endfor %}
+                         
+                {% for rencontre in rencontres %}
+                    <td>{{ rencontre.equipe1 }}</td>
+                    <td>{{ rencontre.equipe2 }}</td>
+                    <td>{{ rencontre.lieu}}</td>
+                    <td>{{ rencontre.date }}</td>
+                {% endfor %}
+               {% for article in articles %}
+                    <td>
+                {% if article.image is not null %}
+                    <img src="{{ asset('upload/' ~ article.image) }}" width="100px">
+                {% endif %}    
+                    </td>
+                    <td><a href="{{ path('app_admin_article_edit', {id: article.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('app_admin_article_delete', {id: article.id}) }}" class="btn btn-danger">Supprimer</a></td>  
+                </tr>
+                 {% endfor %}
             </table>
-            <p>
-                <a class="btn btn-primary" href="{{path('app_admin_article_edit')}}">Ajouter un article</a>
-            </p>
+                <p>
+                    <a class="btn btn-primary" href="{{path('app_admin_article_edit')}}">Ajouter un article</a>
+                </p>
             {% endif %}
         </div>
     </div> 
