@@ -75,12 +75,12 @@ legend{
     color: white;
 }
 .btn-info{
-<<<<<<< HEAD
+
     margin-top: -23px;
     border-color: white;
     background-color: #11162759;
 }
-=======
+
     margin-top: -14px;
     border-color: white;
     background-color: #11162759;
@@ -92,7 +92,7 @@ legend{
 .bouton_club a:hover{
     color:white;
 }
->>>>>>> 8985aeeca6e4232567aa9fb0b5d4bb4ec7695569
+
 .banner-text.agileinfo{
     padding: 15em 0;
 }
@@ -139,7 +139,7 @@ legend{
 
 
 /*-----Partie rencontres calendrier par équipe route provisoire "@/rencontres"" --------------*/
-=======
+
 @media (min-width: 996px){
 .creer_saison{
     margin-left: 18em;
