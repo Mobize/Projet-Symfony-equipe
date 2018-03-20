@@ -492,74 +492,33 @@
                          
                          <div class="agileits-feedback-grids">
 					<div id="owl-demo" class="owl-carousel owl-theme">
+                                            {% for rencontre in rencontres %}
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre </p>
+                                                                    
+									<p> {{ rencontre.equipe_domicile }} contre {{ rencontre.equipe_exterieur }}</p>
+                                                                       
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
 										<img src="images/t1.jpg" alt="" />
 									</div>
 									<div class="feedback-img-info">
-										<h5>Equipe U8</h5>
-										<p class="domicile">A domicile</p>
+                                                                            
+                                                                            <p><strong>{{ rencontre.date|date('d M Y')}}</strong></p>
+                                                                            
+										<p class="domicile">Lieu :{{ rencontre.lieu }}</p>
 									</div>
+                                                                    
 									<div class="clearfix"> </div>
 								</div>
 							</div>
 						</div>
-						<div class="item">
-							<div class="feedback-info">
-								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre  </p>
-								</div>
-								<div class="feedback-grids">
-									<div class="feedback-img">
-										<img src="images/t2.jpg" alt="" />
-									</div>
-									<div class="feedback-img-info">
-										<h5>Equipe U19</h5>
-										<p>Exterieur</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feedback-info">
-								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre  </p>
-								</div>
-								<div class="feedback-grids">
-									<div class="feedback-img">
-										<img src="images/t3.jpg" alt="" />
-									</div>
-									<div class="feedback-img-info">
-										<h5>Equipe Senior</h5>
-										<p class="domicile">A domicile</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feedback-info">
-								<div class="feedback-top">
-									<p> {{ app.user.club.nom }} contre  </p>
-								</div>
-								<div class="feedback-grids">
-									<div class="feedback-img">
-										<img src="images/t4.jpg" alt="" />
-									</div>
-									<div class="feedback-img-info">
-										<h5>Equipe U10</h5>
-										<p class="domicile">A domicile</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
+                                                {% endfor %} 
+						
+						
+						
 						
 						
 					</div>
