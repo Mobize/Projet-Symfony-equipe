@@ -16,14 +16,24 @@ class ClubType extends AbstractType
     {
         $builder
             ->add(
+                  'assoc',
+                  TextType::class,
+                    [
+                        'label' => "N° d'association :",
+                        'attr' => [
+                            'class' => 'perso'
+                        ]
+                    ]
+                )                
+            ->add(
                   'nom',
                   TextType::class,
                     [
                         'label' => 'Nom :',
                         'attr' => [
-                                    'class' => 'well' //Classe well pour la profondeur visuelle du champ
-                                   ]
+                            'class' => 'perso'
                     ]
+                ]
                 )
             ->add(
                   'anneeCreation',
@@ -31,9 +41,8 @@ class ClubType extends AbstractType
                     [
                         'label' => 'Année de création :',
                         'attr' => [
-                                    'class' => 'well'
-                                   ]
-                    ]
+                            'class' => 'perso'
+                    ]]
                 )
                 
             ->add(
@@ -42,9 +51,8 @@ class ClubType extends AbstractType
                     [
                         'label' => 'Sigle Club :',
                         'attr' => [
-                                    'class' => 'well'
-                                   ]
-                    ]
+                            'class' => 'perso'
+                    ]]
                 )
                 
             ->add(
@@ -53,9 +61,8 @@ class ClubType extends AbstractType
                     [
                         'label' => 'Couleurs du Club :',
                         'attr' => [
-                                    'class' => 'well'
-                                   ]
-                    ]
+                            'class' => 'perso'
+                    ]]
                 )
                 
             ->add(
@@ -64,90 +71,42 @@ class ClubType extends AbstractType
                     [
                         'label' => 'Logo du Club :',
                         'attr' => [
-                                    'class' => 'well'
-                                   ],
-                        'attr' => [
                                     'id' => 'toggle'
                                    ],
-                        'required' => false
+                        'required' => false,
+                        'attr' => [
+                            'class' => 'well'
+                        ]
                     ]
-                )
-                
+                )             
             ->add(
-                  'stade',
+                  'adresseStade',
                   TextType::class,
                     [
                         'label' => 'Adresse du stade :',
                         'attr' => [
-                                    'class' => 'well'
-                                   ]
-                    ]
+                            'class' => 'perso'
+                    ]]
+                )
+                    
+            ->add(
+                  'emailBureau',
+                  TextType::class,
+                    [
+                        'label' => 'Email du bureau:',
+                        'attr' => [
+                            'class' => 'perso'
+                    ]]
                 )
                 
             ->add(
-                  'statut',
+                  'telephoneBureau',
                   TextType::class,
                     [
-                        'label' => 'Statut social :',
+                        'label' => 'Téléphone du bureau :',
                         'attr' => [
-                                    'class' => 'well'
-                                   ]
-                    ]
-                )
-                
-            ->add(
-                  'president',
-                  TextType::class,
-                    [
-                        'label' => 'Président du Club :',
-                        'attr' => [
-                                    'class' => 'well'
-                                   ]
-                    ]
-                )
-                
-            ->add(
-                  'ville',
-                  TextType::class,
-                    [
-                        'label' => 'Ville domiciliée :',
-                        'attr' => [
-                                    'class' => 'well'
-                                   ]
-                    ]
-                )
-                
-            ->add(
-                  'adresse',
-                  TextType::class,
-                    [
-                        'label' => 'Adresse du Club :',
-                        'attr' => [
-                                    'class' => 'well'
-                                   ]
-                    ]
-                )
-                
-            ->add(
-                  'email',
-                  TextType::class,
-                    [
-                        'label' => 'E-mail :',
-                        'attr' => [
-                                    'class' => 'well'
-                                   ]
-                    ]
-                )
-                
-            ->add(
-                  'telephone',
-                  TextType::class,
-                    [
-                        'label' => 'Téléphone :',
-                        'attr' => [
-                                    'class' => 'well'
-                                   ]
-                    ]
+                            'class' => 'perso'
+                    ]]
                 )
                 
         ;

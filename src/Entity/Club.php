@@ -34,15 +34,13 @@ class Club
      * * @var \datetime
      */
     private $updatedAt;
+    
     /**
      *@ORM\Column(length=200, unique=true)
      * @var string 
-     * 
-     * Validation
      * @Assert\NotBlank(message="Le nom est oblgatoire")
      * @Assert\Length(max=20,maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
-
     private $nom;
     
      /**
@@ -51,67 +49,50 @@ class Club
      * 
      */
     private $anneeCreation;
-    
-    /**
-     * @ORM\Column(length=15, type="string",nullable=true)
-     * @var string 
-     */
-    private $sigle;
-    
+       
     /**
      * @ORM\Column(length=15, type="string",nullable=true)
      * @var string 
      */
     private $couleurs;
-    
+
+    /**
+     * @ORM\Column(length=6, type="string",nullable=true)
+     * @var string 
+     */
+    private $sigle;    
     /**
      * @ORM\Column(nullable=true)
      * @Assert\Image()
      * @var string 
      */
     private $logo;
+
+    /**
+     * @ORM\Column(nullable=true)
+     * @Assert\Image()
+     * @var string 
+     */
+    private $photoStade;
     
     /**
      * @ORM\Column(length=255, type="string",nullable=true)
      * @var string 
      */
-    private $stade;
+    private $adresseStade;
     
-    /**
-     * @ORM\Column(length=255, type="string",nullable=true)
-     * @var string 
-     */
-    private $statut;
-    
-    /**
-     * @ORM\Column(length=70, type="string",nullable=true)
-     * @var string 
-     */
-    private $president;
-    
-    /**
-     * @ORM\Column(length=100, type="string",nullable=true)
-     * @var string 
-     */
-    private $ville;
-    
-    /**
-     * @ORM\Column(length=255, type="string",nullable=true)
-     * @var string 
-     */
-    private $adresse;
     
     /**
      * @ORM\Column(length=40, type="string",nullable=true)
      * @var string 
      */
-    private $email;
+    private $emailBureau;
     
     /**
      * @ORM\Column(length=15, type="string",nullable=true)
      * @var string 
      */
-    private $telephone;
+    private $telephoneBureau;
     
      /**
      * @ORM\Column(unique=true)
@@ -140,44 +121,20 @@ class Club
         return $this->anneeCreation;
     }
 
-    public function getSigle() {
-        return $this->sigle;
-    }
-
-    public function getCouleurs() {
-        return $this->couleurs;
-    }
-
     public function getLogo() {
         return $this->logo;
     }
 
-    public function getStade() {
-        return $this->stade;
+    public function getAdresseStade() {
+        return $this->adresseStade;
     }
 
-    public function getStatut() {
-        return $this->statut;
+    public function getEmailBureau() {
+        return $this->emailBureau;
     }
 
-    public function getPresident() {
-        return $this->president;
-    }
-
-    public function getVille() {
-        return $this->ville;
-    }
-
-    public function getAdresse() {
-        return $this->adresse;
-    }
-
-    public function getEmail() {
-        return $this->email;
-    }
-
-    public function getTelephone() {
-        return $this->telephone;
+    public function getTelephoneBureau() {
+        return $this->telephoneBureau;
     }
 
     public function setNom($nom) {
@@ -190,53 +147,23 @@ class Club
         return $this;
     }
 
-    public function setSigle($sigle) {
-        $this->sigle = $sigle;
-        return $this;
-    }
-
-    public function setCouleurs($couleurs) {
-        $this->couleurs = $couleurs;
-        return $this;
-    }
-
     public function setLogo($logo) {
         $this->logo = $logo;
         return $this;
     }
 
-    public function setStade($stade) {
-        $this->stade = $stade;
+    public function setAdresseStade($adresseStade) {
+        $this->adresseStade = $adresseStade;
         return $this;
     }
 
-    public function setStatut($statut) {
-        $this->statut = $statut;
+    public function setEmailBureau($EmailBureau) {
+        $this->EmailBureau = $EmailBureau;
         return $this;
     }
 
-    public function setPresident($president) {
-        $this->president = $president;
-        return $this;
-    }
-
-    public function setVille($ville) {
-        $this->ville = $ville;
-        return $this;
-    }
-
-    public function setAdresse($adresse) {
-        $this->adresse = $adresse;
-        return $this;
-    }
-
-    public function setEmail($email) {
-        $this->email = $email;
-        return $this;
-    }
-
-    public function setTelephone($telephone) {
-        $this->telephone = $telephone;
+    public function setTelephoneBureau($telephoneBureau) {
+        $this->telephoneBureau = $telephoneBureau;
         return $this;
     }
 
@@ -276,5 +203,31 @@ class Club
     function getAssoc() {
         return $this->assoc;
     }
-    
+    public function getCouleurs() {
+        return $this->couleurs;
+    }
+
+    public function getPhotoStade() {
+        return $this->photoStade;
+    }
+
+    public function setCouleurs($couleurs) {
+        $this->couleurs = $couleurs;
+        return $this;
+    }
+
+    public function setPhotoStade($photoStade) {
+        $this->photoStade = $photoStade;
+        return $this;
+    }
+    public function getSigle() {
+        return $this->sigle;
+    }
+
+    public function setSigle($sigle) {
+        $this->sigle = $sigle;
+        return $this;
+    }
+
+
 }
