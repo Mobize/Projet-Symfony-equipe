@@ -1,5 +1,5 @@
 {% extends 'layout.html.twig' %}
-
+  
 {% block header %}{# Reprend l'affiche de l'image d'accueil et du menu #}
   {{ parent() }}
 {% endblock %} 
@@ -11,18 +11,67 @@
 {% block index %}{# Vide pour ne pas afficher l'image en grande taille #}
 {% endblock %}    
 
-
-{% block body %}
-    <h1>{{ article.title }}</h1>
-    {% for image in  images %}
-        {% if article.image is not null %}
-            <div class="thumbnail">
-                <img src="{{ asset('upload/' ~ article.image) }}">
-            </div>
-        {% endif %}
-    {% endfor %}
-    <p>
-       par {{ article.author }}</p>
-    </p>
-    <div>{{ article.content }}</div>
+{% block content %}
+<div class="container-fluid"> 
+    <div class="row">  
+        <div class="col-md-8 col-md-offset-2">       
+            {% if(nbsaisons is defined and nbsaisons == false) %}
+                <div class="jumbotron">
+                    <h2>Pour accéder à la gestion de vos joueurs, <br>vous devez d'abord créer une saison</h2>
+                           
+                    <div class="text-center bouton">
+                        <p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_index') }}" role="button">Créer ma 1ère saison</a></p>
+                    </div>
+                </div>      
+            {% else %}
+            <h1>Gestion des articles pour la saison {{ NomderniereSaisonClub.nom }}</h1>
+            <hr>
+                        {# Affichage du comptage d'équipes si déjà 1 équipe créée #}
+            <small>Nb d'articles : {{ nbArticles }}</small>
+            
+            
+         <table class="table table-striped table-bordered table-hover">
+              <tr>
+                  <th>Id</th>
+                  <th>Date de rencontre</th>
+                  <th>Equipe du club</th>
+                  <th>Equipe extérieure</th>
+                  <th>Score de la rencontre (Equipe club - équipe extérieure)</th>
+                  <th>Titre</th>
+                  <th>Contenu</th>
+                  <th>Image</th>
+                  <th>Actions</th>
+              </tr>
+             {% for article in articles %}
+                    <tr>
+                        <td>{{ article.id }}</td>
+                        <td>{{ article.date|date('d/m/Y') }}</td>
+                        <td>{{ article.equipe1_id }}</td>
+                        <td>{{ article.equipe2_id }}</td>    
+                        <td>{{ article.equipe1score }} - {{ article.equipe2score }}</td>
+                        <td>{{ article.title }}</td>
+                        <td>{{ article.content }}</td>
+                        <td>
+                            {% if article.image is not null %}
+                                <img src="{{ asset('upload/' ~ article.image) }}" width="100px">
+                            {% endif %}  
+                        </td>
+                         <td>
+                            <a type="button" href="{{ path('app_admin_article_edit', {id: article.id}) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Modifier</a>
+                            <a type="button" href="{{ path('app_admin_article_delete', {id: article.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Supprimer</a>
+                         </td>
+                    </tr>
+              {% else %}
+                    <tr>
+                        <td colspan="9">Aucun article créé pour le moment.<br>Cliquer sur le bouton ci-dessus pour en créer un.
+                              
+                        </td>
+                    </tr>
+                {% endfor %}  
+            </table>
+                <div class="text-center"><a class="btn btn-primary" href="{{path('app_admin_article_edit')}}">Ajouter un article</a></div>
+            {% endif %}
+        </div>
+    </div> 
+</div>        
 {% endblock %}

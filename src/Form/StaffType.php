@@ -3,9 +3,10 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -53,6 +54,20 @@ class StaffType extends AbstractType
                     ]
             )         
         ;
+        
+                                        //$options['data'] = L'entité Article
+        if(!is_null($options['data']->getImage())){
+            $builder->add(
+               'remove_image',
+               CheckboxType::class,
+               [
+                   'label' => "Supprimer l'illustration",
+                   'required' => false,
+                   //champ non relié à un attribut de l'entité Article
+                   'mapped' => false
+               ]
+            );
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)

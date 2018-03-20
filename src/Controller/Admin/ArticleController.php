@@ -32,22 +32,12 @@ class ArticleController extends Controller
             $nbsaison = 0;
         }
         
-        dump($saison);
-        
-        /*$repository = $this->getDoctrine()->getRepository(Article::class);
-        $articles = $repository->findAll();
-        
-        $repository = $this->getDoctrine()->getRepository(Rencontre::class);
-        $rencontres = $repository->findAll();*/
-        
-        //Récupéaration de tous les articles d'une rencontre de la saison du club
+        //Récupération de tous les articles d'une rencontre de la saison du club
         $articlesRepository = $this->getDoctrine()->getRepository(Article::class);
         $articles = $articlesRepository->ArticlesSaisonClub(
             $this->getUser()->getClub()->getId(),
             $saison);
-            $nbArticles= count($articles);
-        
-      dump($articles);
+            $nbArticles= count($articles);  
             
        //vue 
         return $this->render(
@@ -66,7 +56,7 @@ class ArticleController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
+         $em = $this->getDoctrine()->getManager();
         $originalImage = null;
         
         if (is_null($id)) { // création
@@ -75,7 +65,7 @@ class ArticleController extends Controller
             $article->setAuthor($this->getUser());
         } else { // modification
             $article = $em->find(Article::class, $id);
-           
+            
             if (!is_null($article->getImage())) {
                 $originalImage = $article->getImage();
                 $imagePath = $this->getParameter('upload_dir') . '/' . $originalImage;
@@ -84,17 +74,16 @@ class ArticleController extends Controller
             }
         }
         
-        //alimentation de la clé étrangère club
-        $article->setClub($this->getUser()->getClub());
+            //alimentation de la clé étrangère CLUB
+            $article->setClub($this->getUser()->getClub());
 
-        //alimentation de la clé étrangère SAISON
+            //alimentation de la clé étrangère SAISON
             //Récupération id de la dernière saison enregistrée pour le club
             $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
             $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
 
             $saison = $SaisonClubRepository->find($IdDerniereSaisonClub['id']);
-            //dump($saison);
-            $article->setSaison($saison);
+            $article->setSaison($saison);          
             
         //création du formulaire lié à l'équipe
         $form = $this->createForm(ArticleType::class, $article);
@@ -120,7 +109,21 @@ class ArticleController extends Controller
                     
                     $article->setImage($filename);
                     
-                 $em->persist($article);
+                    // suppression de l'ancienne image en modification
+                    if (!is_null($originalImage)) {
+                        unlink($this->getParameter('upload_dir') . '/' . $originalImage);
+                    }
+                } else {
+                    // getData sur une checkbox = true si cochée, false sinon
+                    if ($form->has('remove_image') && $form->get('remove_image')->getData()) {
+                        $article->setImage(null);
+                        unlink($this->getParameter('upload_dir') . '/' . $originalImage);
+                    } else {
+                        $article->setImage($originalImage);
+                    }
+                }
+                
+                $em->persist($article);
                 $em->flush();
                 
                 $this->addFlash('success', "L'article est enregistré");
@@ -134,11 +137,9 @@ class ArticleController extends Controller
         return $this->render(
             '/admin/article/edit.html.twig',
             [
-                'form' => $form->createView(),
-                'article'=>$article
+                'form' => $form->createView()
             ]
         );
-    }
     }
     
     /**

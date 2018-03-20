@@ -17,8 +17,10 @@ class IndexController extends Controller
     {
         if($this->getUser()){
           $nomClub = $this->getUser()->getClub()->getNom();  
+          $logoClub = $this->getUser()->getClub()->getNom();  
         } else {
             $nomClub ='';
+            $logoClub = '';
         }
         
         //requete à partir de SaisonRepository pour savoir si le club connecté
@@ -37,6 +39,7 @@ class IndexController extends Controller
         return $this->render(
                 'index/index.html.twig',
                 [
+                  'logoClub' => $logoClub,
                   'nomClub' => $nomClub,
                   'nbsaisons' => $nbsaison
                 ]

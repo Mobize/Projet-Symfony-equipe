@@ -78,18 +78,7 @@ class ClubType extends AbstractType
                             'class' => 'well'
                         ]
                     ]
-                )
-            ->add(
-                  'photoStade',
-                  FileType::class,
-                    [
-                        'label' => 'Vue du stade :',
-                        'required' => false,
-                        'attr' => [
-                            'class' => 'well'
-                        ]
-                    ]
-                )                
+                )             
             ->add(
                   'adresseStade',
                   TextType::class,
