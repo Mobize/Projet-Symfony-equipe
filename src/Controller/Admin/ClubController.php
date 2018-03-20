@@ -45,15 +45,18 @@ class ClubController extends Controller
     }
     
     /**
-     * @Route("/edit/{id}", defaults={"id":null})
+     * @Route("/edit", defaults={"id":null})
      */
     public function edit(Request $request,$id)
     {
+        $id = $this->getUser()->getClub()->getId();
+        
         //entity manager gere les objets et les lignes en bdd
         $em= $this->getDoctrine()->getManager();
         
         // tentative gestion image---1 
-        $originalImage = null;
+        $originalImageLogo = null;
+        $originalImageStade = null;
         // fin tentative--1
         
         if(is_null($id) ) {
@@ -63,13 +66,22 @@ class ClubController extends Controller
             
             //tentative gestion image --2
             if (!is_null($club->getLogo()) ) {
-                $originalImage = $club->getLogo();
-                $imagePath = $this->getParameter('upload_dir') . '/' . $originalImage;
+                $originalImageLogo = $club->getLogo();
+                $imagePathLogo = $this->getParameter('upload_dir') . '/' . $originalImageLogo;
                 // objet File pour éviter une erreur du formulaire
-                $club->setLogo(new File($imagePath)); //fin tentative --2
+                $club->setLogo(new File($imagePathLogo)); //fin tentative --2
+            }
+            
+            //PHOTO STADE
+            if (!is_null($club->getPhotoStade()) ) {
+                $originalImageStade = $club->getPhotoStade();
+                $imagePathStade = $this->getParameter('upload_dir') . '/' . $originalImageStade;
+                // objet File pour éviter une erreur du formulaire
+                $club->setPhotoStade(new File($imagePathStade)); //fin tentative --2
             }
         }        
         
+        //FORMULAIRE
         //création du formulaire lié à la catégorie
         $form = $this->createForm(ClubType::class, $club);
         
@@ -82,11 +94,11 @@ class ClubController extends Controller
             if ($form->isValid()){
                 //prepare l'enregistrement en bdd
                 
-                //tentative gestion image--3
-                /** @var UploadedFile $image */
+                //TRAITEMENT LOGO
+                /** @var UploadedFile $logo */
                 $image = $club->getLogo();
                 
-                 // s'il y a une image uploadée
+                // s'il y a une image uploadée
                 if (!is_null($image)) {
                     // nom du fichier que l'on va enregistrer
                     $filename = uniqid() . '.' . $image->guessExtension();
@@ -98,7 +110,7 @@ class ClubController extends Controller
                         $filename
                     );
                     
-                    $club->setLogo($filename);
+                    $club->setImage($filename);
                     
                     // suppression de l'ancienne image en modification
                     if (!is_null($originalImage)) {
@@ -106,14 +118,42 @@ class ClubController extends Controller
                     }
                 } else {
                     // getData sur une checkbox = true si cochée, false sinon
-                    if ($form->has('remove_logo') && $form->get('remove_logo')->getData()) {
-                        $club->setLogo(null);
+                    if ($form->has('remove_image') && $form->get('remove_image')->getData()) {
+                        $equipe->setImage(null);
                         unlink($this->getParameter('upload_dir') . '/' . $originalImage);
                     } else {
-                        $club->setLogo($originalImage);
+                        $club->setImage($originalImage);
                     }
                 }
-                // fin tentative 3
+
+                //TRAITEMENT PHOTO STADE
+                /** @var UploadedFile $photoStade */
+                /*$image2 = $club->getPhotoStade();
+                
+
+                if (!is_null($image2)) {
+                    $filename2 = uniqid() . '.' . $image2->guessExtension();
+                    
+                    
+                    $image2->move(
+                        $this->getParameter('upload_dir'),
+                        $filename2
+                    );
+                    
+                    $club->setPhotoStade($filename2);
+                    
+                    if (!is_null($originalImage)) {
+                        unlink($this->getParameter('upload_dir') . '/' . $originalImage);
+                    }
+                } else {
+                    if ($form->has('remove_image') && $form->get('remove_image')->getData()) {
+                        $equipe->setPhotoStade(null);
+                        unlink($this->getParameter('upload_dir') . '/' . $originalImage);
+                    } else {
+                        $club->setPhotoStade($originalImage);
+                    }
+                }  */              
+ 
                 
                 $em->persist($club);
                 //fait l'enregistrement en bdd
@@ -122,7 +162,7 @@ class ClubController extends Controller
                 //Ajout du message flash
                 $this->addFlash('success', 'Le club '.$club->getNom().' a été enregistré');
                 //redirection vers la liste
-                return $this->redirectToRoute('app_admin_club_index');                
+                return $this->redirectToRoute('app_admin_club_profil');                
             } else {
                 $this->addFlash('error', 'Le formulaire contient des erreurs');
             }
@@ -136,7 +176,7 @@ class ClubController extends Controller
                  ]
         );
     }
-    
+
     
     /**
      * @Route("/delete/{id}")
@@ -167,7 +207,7 @@ class ClubController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository(Club::class);
 
-        $club = $repository->findall();
+        $clubs = $repository->findall();
         
         if(!is_null($this->getUser())){
             $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
@@ -181,7 +221,7 @@ class ClubController extends Controller
         
         return $this->render('admin/club/profil.html.twig', 
                  [
-                     'club' => $club,
+                     'clubs' => $clubs,
                      'nbsaisons' => $nbsaison
                      
                  ]

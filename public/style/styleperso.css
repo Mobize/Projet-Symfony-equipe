@@ -20,8 +20,15 @@ and open the template in the editor.
 .logo_fff{
     width:10%;
 }
-.feedback-img-info p.domicile{
-    color:blue;
+.feedback-info{
+    margin: 1em !important;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 8px black;
+}
+.feedback-img-info{
+    width: 100%;
 }
 .feedback-img-info h5{
     color: black;
@@ -41,6 +48,7 @@ and open the template in the editor.
     font-size:4em;
     color:white;
 }
+/* blocs page accueil inscrivez-vous*/
 .clr1,.clr2,.clr3 {
     min-height: 400px;
     max-height: 450px;
@@ -332,6 +340,13 @@ legend{
     display: none;
     margin-top: 6px;
 }
+/*modif des titres en blanc pour visibilité*/
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+}
 
-margin-top: 6px;
-
+.feedback-img-info h5 {
+    color: white;
+}
