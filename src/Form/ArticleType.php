@@ -81,7 +81,7 @@ class ArticleType extends AbstractType
                         ]             
                     ]
                 ) 
-            ->add('fullname',
+            /*->add('fullname',
              EntityType::class,
                     [
                         'label' => 'Auteur',
@@ -90,7 +90,7 @@ class ArticleType extends AbstractType
                             'class' => 'perso'
                         ]             
                     ]
-                )
+                )*/
                   
             ->add('image',
                 FileType::class,

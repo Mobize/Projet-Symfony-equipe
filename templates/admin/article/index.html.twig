@@ -12,64 +12,17 @@
 {% endblock %}    
 
 
-{% block content %}
-<div class="container"> 
-    <div class="row">  
-        <div class="col-md-8 col-md-offset-2">       
-            {% if(nbsaisons is defined and nbsaisons == false) %}
-                          <div class="jumbotron">
-                            <h2>Pour accéder à la gestion de vos articles, <br>vous devez d'abord créer une saison</h2>
-                           
-                            <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_edit') }}" role="button">Créer ma 1ère saison</a></p></div>
-                          </div>      
-            {% else %}
-            <h1>Gestion article</h1>
-            
-            <table class="table table-striped table-bordered table-hover">
-                <tr>
-                    <th>Id</th>
-                    <th>Équipe 1</th>
-                    <th>Équipe 2</th>
-                    <th>Lieu</th>
-                    <th>Date</th>
-                    <th>Auteur</th>
-                    
-                    <th>Titre</th>
-                    <th>Contenu</th>
-                    <th>Illustration</th>
-                    <th width="200px"></th>
-                </tr>
-                <tr>
-                {% for article in articles %}
-                    <td>{{ article.id }}</td>
-                    <td>{{ article.title }}</td>
-                    <td>{{ article.content }}</td>
-                {% endfor %}
-                         
-                {% for rencontre in rencontres %}
-                    <td>{{ rencontre.equipe1 }}</td>
-                    <td>{{ rencontre.equipe2 }}</td>
-                    <td>{{ rencontre.lieu}}</td>
-                    <td>{{ rencontre.date }}</td>
-                {% endfor %}
-               {% for article in articles %}
-                    <td>
-                {% if article.image is not null %}
-                    <img src="{{ asset('upload/' ~ article.image) }}" width="100px">
-                {% endif %}    
-                    </td>
-                    <td><a href="{{ path('app_admin_article_edit', {id: article.id}) }}" class="btn btn-primary">Modifier</a>
-                    <a href="{{ path('app_admin_article_delete', {id: article.id}) }}" class="btn btn-danger">Supprimer</a></td>  
-                </tr>
-                 {% endfor %}
-            </table>
-                <p>
-                    <a class="btn btn-primary" href="{{path('app_admin_article_edit')}}">Ajouter un article</a>
-                </p>
-            {% endif %}
-        </div>
-    </div> 
-</div>        
-        
+{% block body %}
+    <h1>{{ article.title }}</h1>
+    {% for image in  images %}
+        {% if article.image is not null %}
+            <div class="thumbnail">
+                <img src="{{ asset('upload/' ~ article.image) }}">
+            </div>
+        {% endif %}
+    {% endfor %}
+    <p>
+       par {{ article.author }}</p>
+    </p>
+    <div>{{ article.content }}</div>
 {% endblock %}
-

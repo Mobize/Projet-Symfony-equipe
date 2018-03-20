@@ -21,29 +21,42 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $repository = $this->getDoctrine()->getRepository(Article::class);
-        $articles = $repository->findAll();
-        
-        $repository = $this->getDoctrine()->getRepository(Rencontre::class);
-        $rencontres = $repository->findAll();
-        
         if(!is_null($this->getUser())){
             $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
             $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
             $nbsaison = count($saisons);
+            $NomderniereSaisonClub = $saisonRepository->findNomLatestSaison($this->getUser()->getClub()->getId());
+            $saison = $saisonRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
             
-            //dump($nbsaison);
         } else {
             $nbsaison = 0;
         }
-       
+        
+        dump($saison);
+        
+        /*$repository = $this->getDoctrine()->getRepository(Article::class);
+        $articles = $repository->findAll();
+        
+        $repository = $this->getDoctrine()->getRepository(Rencontre::class);
+        $rencontres = $repository->findAll();*/
+        
+        //Récupéaration de tous les articles d'une rencontre de la saison du club
+        $articlesRepository = $this->getDoctrine()->getRepository(Article::class);
+        $articles = $articlesRepository->ArticlesSaisonClub(
+            $this->getUser()->getClub()->getId(),
+            $saison);
+            $nbArticles= count($articles);
+        
+      dump($articles);
+            
        //vue 
         return $this->render(
             '/admin/article/index.html.twig',
             [
-                'articles' => $articles,
-                'rencontres'=>$rencontres,
-                'nbsaisons' => $nbsaisons
+                'nbsaisons' => $nbsaison,
+                'NomderniereSaisonClub' => $NomderniereSaisonClub,
+                'nbArticles' => $nbArticles,
+                'articles' => $articles
             ]
         );
     }
