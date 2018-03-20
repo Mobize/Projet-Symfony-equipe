@@ -42,14 +42,11 @@ class JoueurController extends Controller
         } else {
             $nbsaison = 0;
         }
-       
-        
-        
+             
         return $this->render('admin/joueur/index.html.twig', [
            'joueurs' => $joueurs,
             'nbsaisons' => $nbsaison,
-            'NomderniereSaisonClub' => $NomderniereSaisonClub,
-             
+            'NomderniereSaisonClub' => $NomderniereSaisonClub
         ]);
     }
     /**
@@ -103,7 +100,7 @@ class JoueurController extends Controller
             $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
 
             $saison = $SaisonClubRepository->find($IdDerniereSaisonClub['id']);
-            dump($saison);
+            //dump($saison);
             $joueur->setSaison($saison);
         
         //Création du formulaire    

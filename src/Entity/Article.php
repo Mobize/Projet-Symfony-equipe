@@ -7,8 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
- * @ORM\Entity(repositoryClass="App\Repository\RencontreRepository")
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * 
  */
 class Article
@@ -49,7 +47,7 @@ class Article
     private $image;
     
     /**
-     * @ORM\OneToOne(targetEntity="Rencontre")
+     * @ORM\ManyToOne(targetEntity="Rencontre")
      * @ORM\JoinColumn(nullable=false)
       * @var Rencontre
      */
@@ -136,5 +134,8 @@ class Article
         return $this;
     }
 
-
+    public function setTitle($title) {
+        $this->title = $title;
+        return $this;
+    }
 }

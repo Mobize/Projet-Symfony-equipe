@@ -91,58 +91,10 @@ legend{
     color : dodgerblue;
 }
 
->>>>>>> 8985aeeca6e4232567aa9fb0b5d4bb4ec7695569
-.nom_club{
-    color: white;
-}
-.btn-info{
-
-    margin-top: -23px;
-    border-color: white;
-    background-color: #11162759;
-}
-
-    margin-top: -14px;
-    border-color: white;
-    background-color: #11162759;
-}
-.btn-info:hover{
-    background: black !important;
-    border: 1px solid white;
-}
-.bouton_club a:hover{
-    color:white;
-}
-
-.banner-text.agileinfo{
-    padding: 15em 0;
-}
-
-.utilisateur{
-    color:white;
-}
-.connecte{
-    color:white;
-}
-.navbar-inverse{
-    margin-bottom: 0;
-}
-.header{
-    padding: 5em 0 5em;
-}
-.header-nav ul.nav.navbar-nav{
-    margin-top: 2em;
-}
-.titre{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-.form-control.perso{
-    border: 1px solid;
-}
-#contact_message{
-    height:241px;
+.hauteur_min{
+    min-height: 500px;
+    margin:0;
+}   
 }
 .carte{
     height:300px;
@@ -357,4 +309,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .feedback-img-info h5 {
     color: white;
+}
+
+/*mise en forme jumbotron*/
+.container-fluid .jumbotron {
+    padding-top: 60px;
+    padding-right: 60px;
+    padding-left: 60px;
+    text-align: center;
 }
