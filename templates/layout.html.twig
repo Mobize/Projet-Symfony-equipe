@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Club de Foot{% endblock %}
+{% block title %}Team Up{% endblock %}
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset('style/bootstrap.css') }}">
 <link rel="stylesheet" href="{{ asset('style/style.css') }}"/>
@@ -20,8 +20,15 @@
 			<!-- header -->
 			<div class="header">
 				<div class="container">  
-					<div class="header-mdl agileits-logo"><!-- header-two --> 
-						<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
+					<div class="header-mdl agileits-logo"><!-- header-two -->
+                                            
+                                                {# Logo de Team up à insérer
+                                                <div>
+                                                    <img src="{{ logo team up }}" width="200px">
+                                                </div>  
+                                                #} 
+                                                
+                                                <h1><a href="">TEAM UP</a></h1> 
 					</div>
 					<div class="header-nav"><!-- header-three --> 	
 						<nav class="navbar navbar-default">
@@ -54,7 +61,7 @@
 										</ul>
 									</li> #}
                                                                         {#<li><a href="{{ path('app_apropos_index') }}" data-hover="A propos">A propos</a></li>#}
-									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contact</a></li>
+									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contactez-nous</a></li>
 									
 								</ul>  
 								<div class="clearfix"> </div>	
@@ -68,16 +75,21 @@
             <div class="w3ls-banner">
 		<div class="w3lsbanner-info">
                     <div class="header-mdl agileits-logo connecte"><!-- header-two --> 
-			<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
-                        <span><button type="button" class="btn btn-info"><a class="nom_club" href="{{ path('app_equipe_index') }}">{{ app.user.club.nom }}</a></button></span>
-                        {% if(nbsaisons is defined and nbsaisons == false) %}
-                                PAS DE SAISON
-                                {% else %}
-                                    
-                                AU MOINS 1 SAISON
-                            {% endif %}
+                         
+                        {# Logo du club à insérer 
+                        {% if club.logo is not null %}
+                            <div>
+                                <img src="{{ asset('upload/' ~ club.logo) }}" width="200px">
+                            </div>
+                            {% else %}
+                            <div>
+                                <img src="{{ logo team up }}" width="200px">
+                            </div>  
+                        {% endif %}#} 
+			<h1><a href="{{ path('app_index_index') }}">{{ app.user.club.nom }}</a></h1> 
                        
-                        <span><button type="button" class="btn btn-info"><a class="nom_club" href="{{ path('app_equipe_index') }}">{{ app.user.club.nom }}</a></button></span>
+                       
+                        <span class="bouton_club center"><button type="button" class="btn btn-info "><a class="nom_club" href="{{ path('app_equipe_index') }}">{{ app.user.club.nom }}</a></button></span>
                        
                         <h3 class="connecte">Bonjour</h3>
                         <h3>{{ app.user.fullname }}</h3>
@@ -101,17 +113,25 @@
 								<ul class="nav navbar-nav cl-effect-16">
                                                                        
 									<li><a href="{{ path('app_index_index') }}" class="active" data-hover="Accueil">Accueil</a></li>
-                                                                        <li><a href="{{ path('app_equipe_index') }}" data-hover="Mon Club" >Mon Club</a></li> 
+                                                                        {% if(nbsaisons is defined and nbsaisons == false) %}
+                                                                                
+                                                                        {% else %}
+                                                                                 
+                                                                            <li><a href="{{ path('app_equipe_index') }}" data-hover="Mon Club" >Mon club</a></li>   
+                                                                                
+                                                                        {% endif %}
+                                                                        
                                                                         {% block menu_admin %}
                                                                         {% if is_granted('ROLE_ADMIN') %}
                                                                             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
 										<ul class="dropdown-menu">
-                                                                                    <li><a href="{{ path('app_admin_club_index') }}" data-hover="Gestion Clubs">Gestion Clubs</a></li>
-                                                                                    <li><a href="{{ path('app_admin_saison_index') }}" data-hover="Gestion Saisons">Gestion Saisons</a></li>
-                                                                                    <li><a href="{{ path('app_admin_equipe_index') }}" data-hover="Gestion Equipes">Gestion Equipes</a></li>
-                                                                                    <li><a href="{{ path('app_admin_joueur_index') }}" data-hover="Gestion Joueurs">Gestion Joueurs</a></li>
-                                                                                    <li><a href="{{ path('app_admin_rencontre_index') }}" data-hover="Gestion Rencontres">Gestion Rencontres</a></li>
-                                                                                    <li><a href="{{ path('app_admin_article_index') }}" data-hover="Gestion Article">Gestion Article</a></li>
+                                                                                    <li><a href="{{ path('app_admin_club_profil') }}" data-hover="Profil Club">Profil du club</a></li>
+                                                                                    <li><a href="{{ path('app_admin_staff_index') }}" data-hover="Gestion Staff">Gestion du staff</a></li>
+                                                                                    <li><a href="{{ path('app_admin_saison_index') }}" data-hover="Gestion Saisons">Gestion  de la saison</a></li>
+                                                                                    <li><a href="{{ path('app_admin_equipe_index') }}" data-hover="Gestion Equipes">Gestion des équipes</a></li>
+                                                                                    <li><a href="{{ path('app_admin_joueur_index') }}" data-hover="Gestion Joueurs">Gestion des joueurs</a></li>
+                                                                                    <li><a href="{{ path('app_admin_rencontre_index') }}" data-hover="Gestion Rencontres">Gestion des rencontres</a></li>
+                                                                                    <li><a href="{{ path('app_admin_article_index') }}" data-hover="Gestion Article">Gestion des articles</a></li>
 										</ul>
                                                                             </li> 
                                                                                         
@@ -121,7 +141,7 @@
                                                                         
                                                                                        
                                                                                         <li>
-                                                                                            <a href="{{ path('app_security_logout') }}" data-hover="Deconnexion">Deconnexion</a>
+                                                                                            <a href="{{ path('app_security_logout') }}" data-hover="Deconnexion">Déconnexion</a>
                                                                                         </li>
                                                                             
                                                                         
@@ -133,7 +153,7 @@
 										</ul>
 									</li> #}
                                                                         {#<li><a href="{{ path('app_apropos_index') }}" data-hover="A propos">A propos</a></li>#}
-									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contact</a></li>
+									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contactez-nous</a></li>
 									
 								</ul>  
 								<div class="clearfix"> </div>	
@@ -156,7 +176,7 @@
 			<div class="banner-text agileinfo"> 
 				<div class="container">
 					<div class="agileitsbnr-textinfo">  
-						<h2>Gerez votre club sportif</h2>
+						<h2>Gérez votre club sportif</h2>
 					</div>					
 				</div>
 			</div>			   
@@ -166,7 +186,14 @@
          			<div class="banner-text agileinfo"> 
 				<div class="container">
 					<div class="agileitsbnr-textinfo">  
-						<h2>Salut</h2>
+                                 {% if(nbsaisons is defined and nbsaisons == false) %}
+                                     <h2><a class="lien_accueil" href="{{ path('app_admin_saison_edit') }}">Créez votre première saison</a></h2>
+                                {% else %}
+                                    
+                                    <h2>Actualité du club</h2>
+                                    <span class="glyphicon glyphicon-menu-down fleche_bas" aria-hidden="true"></span>
+                            {% endif %}
+						
 					</div>					
 				</div>
 			</div>			   
@@ -200,26 +227,36 @@
 		<div class="container">
 			<div class="wthree_head_section">
 				<h3 class="w3l_header">Comment ça fonctionne ?</h3>
-				<p>Inscription rapide et gratuite pour tous </p>
+				
 			</div>
 			<div class="agileits-banner-grids text-center">
 				<div class="banner-bottom-girds">
 					<div class="col-md-4  col-sm-4 clr1 agileits-banner-grid">
-						<span class="fa fa-sun-o banner-icon" aria-hidden="true"></span>
+						<span class="fa fa-edit banner-icon" aria-hidden="true"></span>
 						<h4>1- Inscrivez-vous</h4>
-						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
-						
-					</div>
+                                                
+                                                <p>Vous êtes dirigeant de club?<br> 
+                                                Profitez de toutes les fonctionnalités du site<br>
+                                                Inscription rapide et gratuite</p>
+                                                <p>
+                                                    <button type="button" class="btn btn-default"><a href="{{ path('app_security_register') }}" data-hover="Inscription">Inscription</a></button>
+                                                <p/>
+                                        </div>
 					<div class="col-md-4 col-sm-4 clr2 agileits-banner-grid">
-						<span class="fa fa-arrows banner-icon" aria-hidden="true"></span>
-						<h4>2-Créez vos équipes</h4>
-						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
-						
+						<span class="fa fa-users banner-icon" aria-hidden="true"></span>
+						<h4>2- Créez votre club</h4>
+                                                <p>Ajoutez vos équipes, vos joueurs<br>
+                                                   Personnalisez vos rencontres :
+                                               intégrez vos photos, vos résultats et commentez-les<br>
+                                               Vous pouvez actualiser vos informations à tout moment </p>
 					</div>
 					<div class=" col-md-4 col-sm-4 clr3 agileits-banner-grid">
-						<span class="fa fa-cog banner-icon" aria-hidden="true"></span>
-						<h4>3-Gérez votre Club</h4>
-						<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
+						<span class="fa fa-cogs banner-icon" aria-hidden="true"></span>
+						<h4>3- Gérez votre Club</h4>
+                                                <p>Informez vos adhérents<br>
+                                                   et communiquez avec eux<br>
+                                                   Faites évoluer vos joueurs<br>
+                                                   Gérez vos documents en ligne (inscription, certificats médicaux)</p>
 						
 					</div>
 					<div class="clearfix"></div>
@@ -228,7 +265,8 @@
 		</div>
 	</div>
 	<!--//about-->
-	<!-- carrer -->
+	<!-- carrer 
+        
 <div class="carrer">
 	<div class="container">
 		<div class="wthree_head_section">
@@ -255,9 +293,9 @@
 			</diV>
 	</div>
 </div>
-<!-- //carrer -->
+carrer -->
 	
-<!-- welcome -->
+<!-- welcome
 	<div class="about-3">
 			<div class="wthree_head_section">
 				<h3 class="w3l_header">Welcome To Club</h3>
@@ -284,14 +322,14 @@
 			
 		</div>
 	</div>
-	<!-- //welcome -->	
+	//welcome -->	
 <!-- feedback -->
 	<div class="feedback section-w3ls about-w3ls">
 		<div class="feedback-agileinfo">
 			<div class="container">
 			<div class="wthree_head_section">
-				<h3 class="w3l_header ggg">Testimonials</h3>
-				<p class="hhh">A football team is a group of players selected to play together in the various team sports known as football.</p>
+                            <h3 class="w3l_header ggg">Les clubs inscrits</h3>
+				<p class="hhh">Comme eux, rejoignez la Team up !</p>
 			</div>
 				<div class="agileits-feedback-grids">
 					<div id="owl-demo" class="owl-carousel owl-theme">
@@ -404,7 +442,7 @@
 	</div>
 	<!-- //feedback -->
 
-<!-- pricing -->
+<!-- pricing
 	<div class="w3ls-section wthree-pricing">	
 		<div class="container">
 			<div class="wthree_head_section">
@@ -469,15 +507,109 @@
 									</div>
 								</div>
 								<div class="clearfix"> </div> 
-				<!--End-slider-script-->
+				
 			</div>
 		</div>	
 	</div>	
-	<!--//pricing-->   	
-
+	pricing -->   	
+		<!-- footer -->
+	
                 {% else %}
-            
-                <p>Bonjour</p>
+                <div class="hauteur_min">   
+                    
+                   
+                    
+                    <div class='col-md-6 col-md-offset-3'>  
+                        
+                        <h2 class="text-center titre index_admin">Prochaines rencontres <img src="{{ asset('images/logos/fff.png') }}" class="logo_fff" alt=""></h2>  
+                         
+                         <div class="agileits-feedback-grids">
+					<div id="owl-demo" class="owl-carousel owl-theme">
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> {{ app.user.club.nom }} contre </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t1.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Equipe U8</h5>
+										<p class="domicile">A domicile</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> {{ app.user.club.nom }} contre  </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t2.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Equipe U19</h5>
+										<p>Exterieur</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> {{ app.user.club.nom }} contre  </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t3.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Equipe Senior</h5>
+										<p class="domicile">A domicile</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+									<p> {{ app.user.club.nom }} contre  </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										<img src="images/t4.jpg" alt="" />
+									</div>
+									<div class="feedback-img-info">
+										<h5>Equipe U10</h5>
+										<p class="domicile">A domicile</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+				</div>
+                              
+                    </div>
+                        
+                    </div>
+                    
+                    {# <div class='col-md-6 col-md-offset-3 '>  
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                              <h2>Derniers résultats</h2>
+                            </div>
+                        </div>
+                    </div>#}
+                </div> 
                 
                 
         {% endif %}  
@@ -486,13 +618,12 @@
         </div>
           
 {% block footer %}
-    		<!-- footer -->      
+    		<!-- footer -->
 	<div class="footer">
-            <div class="blocOpaque"> <!-- trucage pour l'opacité -->
 	<div class="container">
 		<div class="f-bg-w3l">
 		<div class="col-md-4 w3layouts_footer_grid">
-                    <h2>Informations de <span>Contact</span> </h2>
+					<h2>Contact <span>Information</span></h2>
 					    <ul class="con_inner_text">
 							<li><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, 4th block, <label> New York City.</label></li>
 							<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
@@ -507,16 +638,16 @@
 					</ul>
 				</div>
 				<div class="col-md-4 w3layouts_footer_grid">
-					<h2>S'inscrire à la <span>Newsletter</span></h2>
-					<p>En souscrivant à la newsletter, vous serez tenu au courant des dernières infos sur votre club!</p>
+					<h2>Subscribe <span>Newsletter</span></h2>
+					<p>By subscribing to our mailing list you will always get latest news from us.</p>
 					<form action="#" method="post">
-                                            <input type="email" id="inputmail" name="Email" class="mailp" placeholder="Entrez votre email..." required />
+						<input type="email" name="Email" placeholder="Enter your email..." required="">
 						<button class="btn1"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
 						<div class="clearfix"> </div>
 					</form>
 				</div>
 				<div class="col-md-4 w3layouts_footer_grid">
-					<h3>Derniers <span>Matchs</span></h3>
+					<h3>Latest <span>Events</span></h3>
 					   <ul class="con_inner_text midimg">
 						<li><a href="#"><img src="images/g5.jpg" alt="" class="img-responsive" /></a></li>
 					    <li><a href="#"><img src="images/g6.jpg" alt="" class="img-responsive" /></a></li>
@@ -531,10 +662,9 @@
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-			</div> <!-- fin container -->
-            </div>  <!-- fin trucage opaque -->
+			</div>
 			<p class="copyright">© 2018 Football Club. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
-	</div> 
+	</div>
 	<!-- //footer -->
 {% endblock %}
         
@@ -589,6 +719,11 @@
 			
 		});
 	</script>
+      <script type="text/javascript">
+    $(window).on('load',function(){
+        $('#exampleModalCenter').modal('show');
+    });
+</script>
 	<!-- //smooth-scrolling-of-move-up -->  
 	<!-- Bootstrap core JavaScript
     ================================================== -->

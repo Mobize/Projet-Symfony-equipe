@@ -36,7 +36,7 @@
                     <th>Nom de la saison</th>  
                     <th>Date de début de saison</th>
                     <th>Date de fin de saison</th>
-                    <th>Actions</th>
+                    <th id="actions">Actions</th>
                 </tr>
                 {% for saison in saisons %}
                     <tr>
@@ -49,7 +49,7 @@
                         <td>
                             <a href="{{ path('app_admin_saison_edit', {id: saison.id}) }}" class="btn btn-primary">Modifier</a>
                             <a href="{{ path('app_admin_saison_delete', {id: saison.id}) }}" class="btn btn-danger">Supprimer</a>
-                            <a href="{{ path('app_admin_equipe_index', {id: saison.id}) }}" class="btn btn-success pull-right">Ajoutez équipe</a>
+                            <a href="{{ path('app_admin_staff_index', {id: saison.id}) }}" class="btn btn-success pull-right">Ajoutez un entraineur</a>
                         </td>  
                     </tr>
                 {% else %}

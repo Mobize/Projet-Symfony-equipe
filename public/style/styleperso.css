@@ -13,6 +13,10 @@ and open the template in the editor.
 }
 }
 
+#actions{
+    width: 18% !important;
+}
+
 .logo_fff{
     width:10%;
 }
@@ -26,7 +30,7 @@ and open the template in the editor.
     color:red;
 }
 .agileits-feedback-grids{
-     background: rgba(153, 188, 89, 0.24);
+     background: rgba(17, 18, 16, 0.13);
      border-radius: 10px;
 }
 .index_admin{
@@ -37,12 +41,11 @@ and open the template in the editor.
     font-size:4em;
     color:white;
 }
-.clr2{
-    min-height: 308px;
+.clr1,.clr2,.clr3 {
+    min-height: 400px;
+    max-height: 450px;
 }
-.clr3{
-    max-height: 308px;
-}
+
 .liste{
     list-style: none;
     color: white;
@@ -75,12 +78,12 @@ legend{
     color: white;
 }
 .btn-info{
-<<<<<<< HEAD
+
     margin-top: -23px;
     border-color: white;
     background-color: #11162759;
 }
-=======
+
     margin-top: -14px;
     border-color: white;
     background-color: #11162759;
@@ -92,7 +95,7 @@ legend{
 .bouton_club a:hover{
     color:white;
 }
->>>>>>> 8985aeeca6e4232567aa9fb0b5d4bb4ec7695569
+
 .banner-text.agileinfo{
     padding: 15em 0;
 }
@@ -139,7 +142,7 @@ legend{
 
 
 /*-----Partie rencontres calendrier par équipe route provisoire "@/rencontres"" --------------*/
-=======
+
 @media (min-width: 996px){
 .creer_saison{
     margin-left: 18em;
@@ -240,12 +243,7 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
-.clr2{
-    min-height: 308px;
-}
-.clr3{
-    max-height: 308px;
-}
+
 .liste{
     list-style: none;
     color: white;
@@ -336,5 +334,4 @@ legend{
 }
 
 margin-top: 6px;
-
 
