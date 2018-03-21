@@ -98,31 +98,34 @@ class RencontreType extends AbstractType
                     [
                         'label' => 'Lieu de la rencontre',
                          'attr' => [
-                            'class' => 'perso'
-                        ]             
+                            'class' => 'perso',
+                        ]
                     ]
-                )  
-            ->add(
-                  'equipe1Score',
-                  IntegerType::class,
-                    [
-                        'label' => "Score de l'équipe 1",
-                         'attr' => [
-                            'class' => 'perso'
-                        ]             
-                    ]
-                )   
-            ->add(
-                  'equipe2Score',
-                  IntegerType::class,
-                    [
-                        'label' => "Score de l'équipe 2",
-                         'attr' => [
-                            'class' => 'perso'
-                        ]             
-                    ]
-                )  
+                )
+            ;
+            if ($options['data']->getId()) {
+                $builder->add(
+                      'equipe1Score',
+                      IntegerType::class,
+                        [
+                            'label' => "Score de l'équipe 1",
+                             'attr' => [
+                                'class' => 'perso'
+                            ]             
+                        ]
+                    )   
+                ->add(
+                      'equipe2Score',
+                      IntegerType::class,
+                        [
+                            'label' => "Score de l'équipe 2",
+                             'attr' => [
+                                'class' => 'perso'
+                            ]             
+                        ]
+                    )  
                 ;
+            }
     }
 
     public function configureOptions(OptionsResolver $resolver)

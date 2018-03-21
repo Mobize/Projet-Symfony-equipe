@@ -50,7 +50,7 @@ class Rencontre
      * @ORM\Column(type="integer",nullable=true, options={"default" : 0})) 
      * @var int
      */  
-    private $equipe1Score;
+    private $equipe1Score = 0;
     
     //EQUIPE EXTERIEURE
      /**
@@ -64,7 +64,7 @@ class Rencontre
      * @ORM\Column(type="integer",nullable=true, options={"default" : 0})) 
      * @var int
      */  
-    private $equipe2Score;
+    private $equipe2Score = 0;
      /**
      * @ORM\Column(type="boolean",nullable=true)
      * * @var boolean   

@@ -16,24 +16,27 @@ class SaisonType extends AbstractType
         $builder
             ->add(
                   'dateDebut',
-                  DateType::class,
-                    [
+                  DateType::class, 
+                    array(
                         'label' => 'Date de début de saison',
-                         'attr' => [
+                        'widget' => 'single_text',
+                        'attr' => [
                             'class' => 'perso'
-                        ]             
-                    ]
-                )
+                        ]      
+            )
+)
             ->add(
                   'dateFin',
-                  DateType::class,
-                    [
+                  DateType::class, 
+                    array(
                         'label' => 'Date de fin de saison',
-                         'attr' => [
+                        'widget' => 'single_text',
+                        'attr' => [
                             'class' => 'perso'
-                        ]             
-                    ]
-                )
+                        ]      
+            )
+)
+                
             ->add(
             'nom',
                     TextType::class,
