@@ -7,6 +7,14 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
+.agileits-feedback-grids{
+    background:transparent !important;
+    height:300px;
+}
+.img_equipe{
+    min-height: 160px;
+    max-height: 160px;
+}
 .team_up_titre{
     font-size:0.3em;
 }
@@ -26,7 +34,7 @@ and open the template in the editor.
     margin: 0 1.3em;
 }
 }
-
+/*
 .feedback-top{
     background-color: rgba(8, 90, 242, 0.65);
     position: ;
@@ -34,7 +42,7 @@ and open the template in the editor.
 
 .feedback-top:after{
     border-top: 9px solid rgba(8, 90, 242, 0.65);
-}
+}*/
 
 #actions{
     width: 18% !important;
@@ -43,6 +51,7 @@ and open the template in the editor.
 .logo_fff{
     width:10%;
 }
+/*
 .feedback-info{
     margin: 1em !important;
     border: 1px solid grey;
@@ -63,7 +72,7 @@ and open the template in the editor.
 .agileits-feedback-grids{
      background: rgba(17, 18, 16, 0.13);
      border-radius: 10px;
-}
+}*/
 .index_admin{
         color: #99bc59;
         font-size: 4em;
@@ -73,10 +82,7 @@ and open the template in the editor.
     color:white;
 }
 /* blocs page accueil inscrivez-vous*/
-.clr1,.clr2,.clr3 {
-    min-height: 400px;
-    max-height: 450px;
-}
+
 
 .liste{
     list-style: none;
@@ -360,7 +366,7 @@ and open the template in the editor.
 
 .logo_fff{
     width:10%;
-}
+}/*
 .feedback-img-info p.domicile{
     color:blue;
 }
@@ -373,7 +379,7 @@ and open the template in the editor.
 .agileits-feedback-grids{
      background: rgba(153, 188, 89, 0.24);
      border-radius: 10px;
-}
+}*/
 .index_admin{
         color: #99bc59;
         font-size: 4em;
@@ -440,7 +446,7 @@ and open the template in the editor.
     margin: 0 1.3em;
 }
 }
-
+/*
 .feedback-top{
     background: #4c5056;
     
@@ -448,7 +454,7 @@ and open the template in the editor.
 
 .feedback-top:after{
     border-top: 9px solid ;
-}
+}*/
 
 #actions{
     width: 18% !important;
@@ -457,7 +463,7 @@ and open the template in the editor.
 .logo_fff{
     width:10%;
 }
-.feedback-info{
+/*.feedback-info{
     margin: 1em !important;
     border: 1px solid grey;
     border-radius: 10px;
@@ -477,7 +483,7 @@ and open the template in the editor.
 .agileits-feedback-grids{
      background: rgba(17, 18, 16, 0.13);
      border-radius: 10px;
-}
+}*/
 .index_admin{
         color: #99bc59;
         font-size: 4em;
@@ -488,7 +494,7 @@ and open the template in the editor.
 }
 /* blocs page accueil inscrivez-vous*/
 .clr1,.clr2,.clr3 {
-    min-height: 400px;
+    min-height: 361px;
     max-height: 450px;
 }
 
@@ -725,10 +731,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Josefin Sans', sans-serif;
     color: white;
 }
-
+/*
 .feedback-img-info h5 {
     color: white;
-}
+}*/
 
 /*mise en forme jumbotron*/
 .container-fluid .jumbotron {
