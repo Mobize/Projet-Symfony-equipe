@@ -26,8 +26,8 @@
         <div class="col-md-12"> 
                
                 
-            <h1>Gestion des saisons</h1>
-
+            <h1>Gestion des saisons<a class="btn btn-primary pull-right" href="{{path('app_admin_saison_edit')}}"><i class="fa fa-plus"></i> Ajouter une saison</a></h1>
+            <hr>    
             <table class="table table-striped table-bordered table-hover">
                 <tr>
                     <th>Id</th>
@@ -47,9 +47,9 @@
                         <td align="center">{{ saison.dateDebut|date('d/m/Y')}}</td>
                         <td align="center">{{ saison.dateFin|date('d/m/Y')}}</td>
                         <td>
-                            <a href="{{ path('app_admin_saison_edit', {id: saison.id}) }}" class="btn btn-primary">Modifier</a>
-                            <a href="{{ path('app_admin_saison_delete', {id: saison.id}) }}" class="btn btn-danger">Supprimer</a>
-                            <a href="{{ path('app_admin_staff_index', {id: saison.id}) }}" class="btn btn-success pull-right">Ajoutez un entraineur</a>
+                            <a href="{{ path('app_admin_saison_edit', {id: saison.id}) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Modifier</a>
+                            <a href="{{ path('app_admin_saison_delete', {id: saison.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Supprimer</a>
+                            <a href="{{ path('app_admin_staff_index', {id: saison.id}) }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Ajoutez un entraineur</a>
                         </td>  
                     </tr>
                 {% else %}
@@ -60,7 +60,7 @@
                     </tr>                    
                 {% endfor %}                  
             </table>
-                <div class="text-center"><a class="btn btn-primary" href="{{path('app_admin_saison_edit')}}">Ajouter une saison</a></div>
+                
                 {% endif %}
         </div>
     </div> 
