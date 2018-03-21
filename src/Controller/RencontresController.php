@@ -8,10 +8,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/rencontres/{id}", defaults={"id": null})
+ */
 class RencontresController extends Controller
 {
     /**
-     * @Route("/rencontres/{id}", name="rencontres", defaults={"id": null})
+     * @Route("/")
      */
     public function index(Request $request,$id)
     {

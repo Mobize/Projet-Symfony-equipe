@@ -97,7 +97,7 @@ class Joueur
     
     //CHOIX EQUIPE
      /**
-     * @ORM\ManyToOne(targetEntity="Equipe",cascade={"persist"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Equipe", inversedBy="joueurs",cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      * @var Equipe 
       * @Assert\NotBlank()

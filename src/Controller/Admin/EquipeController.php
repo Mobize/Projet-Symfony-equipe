@@ -44,8 +44,9 @@ class EquipeController extends Controller
         dump($IdDerniereSaisonClub);
         
         
-        $nbEquipesExt = count($listEquipesExt);
         
+        $nbEquipesExt = count($listEquipesExt);
+                
         if(!is_null($this->getUser())){
             $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
             $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
@@ -63,6 +64,7 @@ class EquipeController extends Controller
             'nbEquipesClub' => $nbEquipesClub,
             'listEquipesExt' => $listEquipesExt,
             'nbEquipesExt' => $nbEquipesExt
+            
                
         ]);
     }
@@ -156,7 +158,7 @@ class EquipeController extends Controller
                 } else {
                     $lib_Equipe = ' extérieure ';
                 }
-                $this->addFlash('success', 'L\'équipe '.$lib_Equipe.$equipe->getNom().' a été enregistrée');
+                $this->addFlash('success', 'L\'équipe '.$lib_Equipe.$equipe->getNom().' a été enregistrée, vous pouvez à présent ajouter vos joueurs');
                 //redirection vers la liste
                 return $this->redirectToRoute('app_admin_equipe_index');                
             } else {

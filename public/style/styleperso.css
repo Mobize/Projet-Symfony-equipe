@@ -7,6 +7,14 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
+.thumbnail{
+    min-height:160px;
+}
+#formcache
+{
+    display:none;
+    
+}
 @media (max-width: 991px){
 .navbar-nav > li {
     margin: 0 1.3em;
@@ -95,7 +103,7 @@ legend{
     min-height: 500px;
     margin:0;
 }   
-}
+
 .carte{
     height:300px;
 }
@@ -272,9 +280,16 @@ legend{
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
+    color:black;
 }
 .form-control.perso{
     border: 1px solid;
+}
+.nom-equipe{
+    color: black;
+}
+.nom-entraineur{
+    margin-bottom: 10px;
 }
 #contact_message{
     height:241px;
@@ -284,6 +299,10 @@ legend{
 }
 .erreur{
     margin-top: 25px;
+}
+.error{
+    color:red;
+    float: left;
 }
 .footer{
     margin-top:50px;
