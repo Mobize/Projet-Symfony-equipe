@@ -3,6 +3,16 @@ services:
         public: false
         autowire: true
         autoconfigure: true
+
+    #Twig\Extensions\ArrayExtension: ~
+    #Twig\Extensions\DateExtension: ~
+    #Twig\Extensions\IntlExtension: ~
+    #Twig\Extensions\TextExtension: ~
+services:
+    _defaults:
+        public: false
+        autowire: true
+        autoconfigure: true
         
         # Activation de l'extension Twig intl
 services:
