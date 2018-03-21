@@ -67,14 +67,7 @@ class Club
      * @var string 
      */
     private $logo;
-
-    /**
-     * @ORM\Column(nullable=true)
-     * @Assert\Image()
-     * @var string 
-     */
-    private $photoStade;
-    
+  
     /**
      * @ORM\Column(length=255, type="string",nullable=true)
      * @var string 
@@ -207,19 +200,11 @@ class Club
         return $this->couleurs;
     }
 
-    public function getPhotoStade() {
-        return $this->photoStade;
-    }
-
     public function setCouleurs($couleurs) {
         $this->couleurs = $couleurs;
         return $this;
     }
 
-    public function setPhotoStade($photoStade) {
-        $this->photoStade = $photoStade;
-        return $this;
-    }
     public function getSigle() {
         return $this->sigle;
     }

@@ -42,7 +42,6 @@ class EquipeController extends Controller
                 $IdDerniereSaisonClub,
                 false);
 
-        $nbEquipesExt = count($listEquipesExt);
         
         $nbEquipesExt = count($listEquipesExt);
                 
