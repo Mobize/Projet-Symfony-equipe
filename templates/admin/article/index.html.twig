@@ -24,7 +24,7 @@
                     </div>
                 </div>      
             {% else %}
-            <h1>Gestion des articles pour la saison {{ NomderniereSaisonClub.nom }}</h1>
+            <h1>Gestion des articles pour la saison {{ NomderniereSaisonClub.nom }}<a class="btn btn-primary pull-right" href="{{path('app_admin_article_edit')}}"><i class="fa fa-plus"></i> Ajouter un article</a></h1>
             <hr>
                         {# Affichage du comptage d'équipes si déjà 1 équipe créée #}
             <small>Nb d'articles : {{ nbArticles }}</small>
@@ -69,7 +69,7 @@
                     </tr>
                 {% endfor %}  
             </table>
-                <div class="text-center"><a class="btn btn-primary" href="{{path('app_admin_article_edit')}}">Ajouter un article</a></div>
+               
             {% endif %}
         </div>
     </div> 

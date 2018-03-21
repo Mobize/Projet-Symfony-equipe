@@ -93,16 +93,25 @@ class JoueurType extends AbstractType
                         ]
                     ]
             )               
-            ->add(
+            /*->add(
                     'dateNaissance',
                     BirthdayType::class,
                     [
                         'label' => 'Date de naissance',
                         'format'=> 'dd MM yyyy',
                     ]
-                ) 
-                
-                
+                )*/
+            ->add('dateNaissance', 
+                    BirthdayType::class, 
+                    array(
+                                            'label' => 'Date de naissance',
+                          'widget' => 'single_text',
+                          'attr' => [
+                                'class' => 'perso'
+                          ]      
+                )
+            )
+
             ->add(
                     'genre',
                     ChoiceType::class, array
