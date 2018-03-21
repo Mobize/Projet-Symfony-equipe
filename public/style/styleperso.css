@@ -122,9 +122,6 @@ legend{
 .erreur{
     margin-top: 25px;
 }
-.footer{
-    margin-top:50px;
-}
 
 
 
@@ -157,6 +154,12 @@ legend{
     display: none;
 }
 
+/*Page inscription */
+
+#btn_enregistrer{
+    margin-bottom: 13px;
+}
+
 
 /* ------------Surcharge footer--------------------*/
 
@@ -164,14 +167,8 @@ legend{
     min-height: 300px;
 }
 
-.footer{
-    background: url("../images/herbe-verte-artificielle.jpg");
-}
-
-
-.blocOpaque { /* Astuce de création d'un bloc à 60% opaque à l'image de fond */
-  height:100%;
-  background-color:rgba(0,0,255,0.10);
+footer {
+    background: black;
 }
 
 .w3layouts_footer_grid h2 span, .w3layouts_footer_grid h3 span{
@@ -193,7 +190,7 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
 }
 
 .f-bg-w3l {
-    background: #747d8c;
+    background: black;
     padding: 5em 0;
 }
 
@@ -316,9 +313,7 @@ legend{
     color:red;
     float: left;
 }
-.footer{
-    margin-top:50px;
-}
+
 
 
 
@@ -536,9 +531,7 @@ legend{
 .erreur{
     margin-top: 25px;
 }
-.footer{
-    margin-top:50px;
-}
+
 
 
 
@@ -574,7 +567,7 @@ legend{
 }
 
 .footer{
-    background: #747d8c;
+    background: black;
 }
 
 
@@ -601,10 +594,7 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
   color:#c8d6e5;
 }
 
-.f-bg-w3l {
-    background: #747d8c;
-    padding: 5em;
-}
+
 
 .hauteur_min {
     min-height: 500px;
@@ -716,9 +706,7 @@ legend{
 .erreur{
     margin-top: 25px;
 }
-.footer{
-    margin-top:50px;
-}
+
 
 
 .div_btn_filtrage {
