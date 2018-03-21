@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Saison;
 use App\Entity\Equipe;
-use App\Entity\Saison;
 use App\Form\EquipeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;

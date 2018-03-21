@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Saison;
 use App\Entity\Equipe;
 use App\Entity\Saison;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
