@@ -13,6 +13,7 @@
         "symfony/flex": "^1.0",
         "symfony/form": "^3.4",
         "symfony/framework-bundle": "^3.4",
+        "symfony/intl": "^3.4",
         "symfony/lts": "^3",
         "symfony/monolog-bundle": "^3.1",
         "symfony/orm-pack": "*",
@@ -23,7 +24,8 @@
         "symfony/validator": "^3.4",
         "symfony/web-link": "^3.4",
         "symfony/webpack-encore-pack": "*",
-        "symfony/yaml": "^3.4"
+        "symfony/yaml": "^3.4",
+        "twig/extensions": "^1.5"
     },
     "require-dev": {
         "symfony/browser-kit": "^3.4",

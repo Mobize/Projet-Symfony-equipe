@@ -13,6 +13,97 @@ and open the template in the editor.
 }
 }
 
+.logo_fff{
+    width:10%;
+}
+.feedback-img-info p.domicile{
+    color:blue;
+}
+.feedback-img-info h5{
+    color: black;
+}
+.feedback-img-info p{
+    color:red;
+}
+.agileits-feedback-grids{
+     background: rgba(153, 188, 89, 0.24);
+     border-radius: 10px;
+}
+.index_admin{
+        color: #99bc59;
+        font-size: 4em;
+}
+.fleche_bas{
+    font-size:4em;
+    color:white;
+}
+.clr2{
+    min-height: 308px;
+}
+.clr3{
+    max-height: 308px;
+}
+.liste{
+    list-style: none;
+    color: white;
+}
+.lien_accueil{
+    color: #a8f644;
+}
+.lien_accueil:hover{
+    color:white;
+}
+.banner-text h2{
+    margin-top: -120px;
+}
+.alert{
+    font-size: 1em;
+}
+.bouton{
+    margin-top: 25px;
+}
+h1{
+    font-size: 22px;
+}
+legend{
+    font-size: 18px;
+    color : dodgerblue;
+}
+
+
+.nom_club{
+    color: white;
+}
+.btn-info{
+
+    margin-top: -23px;
+    border-color: white;
+    background-color: #11162759;
+}
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9 mars 2018, 15:34:20
+    Author     : Etudiant
+*/
+@media (max-width: 991px){
+.navbar-nav > li {
+    margin: 0 1.3em;
+}
+}
+
+.feedback-top{
+    background-color: rgba(8, 90, 242, 0.65);
+    position: ;
+}
+
+.feedback-top:after{
+    border-top: 9px solid rgba(8, 90, 242, 0.65);
+}
+
 #actions{
     width: 18% !important;
 }
@@ -26,6 +117,7 @@ and open the template in the editor.
     border-radius: 10px;
     padding: 10px;
     box-shadow: 1px 1px 8px black;
+    background-color: #fff;
 }
 .feedback-img-info{
     width: 100%;
@@ -81,60 +173,10 @@ legend{
     color : dodgerblue;
 }
 
->>>>>>> 8985aeeca6e4232567aa9fb0b5d4bb4ec7695569
-.nom_club{
-    color: white;
-}
-.btn-info{
-
-    margin-top: -23px;
-    border-color: white;
-    background-color: #11162759;
-}
-
-    margin-top: -14px;
-    border-color: white;
-    background-color: #11162759;
-}
-.btn-info:hover{
-    background: black !important;
-    border: 1px solid white;
-}
-.bouton_club a:hover{
-    color:white;
-}
-
-.banner-text.agileinfo{
-    padding: 15em 0;
-}
 .hauteur_min{
     min-height: 500px;
-}
-.utilisateur{
-    color:white;
-}
-.connecte{
-    color:white;
-}
-.navbar-inverse{
-    margin-bottom: 0;
-}
-.header{
-    padding: 5em 0 5em;
-}
-.header-nav ul.nav.navbar-nav{
-    margin-top: 2em;
-}
-.titre{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-.form-control.perso{
-    border: 1px solid;
-}
-#contact_message{
-    height:241px;
+    margin:0;
+}   
 }
 .carte{
     height:300px;
@@ -149,7 +191,7 @@ legend{
 
 
 
-/*-----Partie rencontres calendrier par équipe route provisoire "@/rencontres"" --------------*/
+
 
 @media (min-width: 996px){
 .creer_saison{
@@ -157,13 +199,8 @@ legend{
 }
 }
 
-/*-----Partie rencontres calendrierpar équipe route provisoire "@/rencontres"" --------------*/
+/*-----Partie rencontres calendrier par équipe route provisoire "@/rencontres/fiche --------------*/
 
-
-/* Léger décalage bouton d'affichage victoires nuls défaites */
-.resultat_rencontres_btn {
-    margin-left: 15px;
-}
 
 
 /* div cachant les boutons */
@@ -219,7 +256,7 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
 
 .hauteur_min {
     min-height: 500px;
-    background: #f1f2f6;
+    background: #fff;
 }
  
 /* Fin surcharge footer */
@@ -330,12 +367,6 @@ legend{
 }
 
 
-
-/* Léger décalage bouton d'affichage victoires nuls défaites */
-.resultat_rencontres_btn {
-    margin-left: 15px;
-}
-
 .div_btn_filtrage {
     display: none;
     margin-top: 6px;
@@ -350,3 +381,35 @@ h1, h2, h3, h4, h5, h6 {
 .feedback-img-info h5 {
     color: white;
 }
+
+/*mise en forme jumbotron*/
+.container-fluid .jumbotron {
+    padding-top: 60px;
+    padding-right: 60px;
+    padding-left: 60px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
