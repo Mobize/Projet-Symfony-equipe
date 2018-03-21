@@ -91,10 +91,10 @@ class StaffController extends Controller
                 } else {
                     // getData sur une checkbox = true si cochée, false sinon
                     if ($form->has('remove_image') && $form->get('remove_image')->getData()) {
-                        $article->setImage(null);
+                        $staff->setImage(null);
                         unlink($this->getParameter('upload_dir') . '/' . $originalImage);
                     } else {
-                        $article->setImage($originalImage);
+                        $staff->setImage($originalImage);
                     }
                 }            
 

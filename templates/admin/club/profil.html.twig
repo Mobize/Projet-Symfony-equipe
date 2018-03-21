@@ -22,7 +22,7 @@
                 <p class="text-center">*Pour bénéficier de toutes fonctionnalités du site:</p>
                 <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_edit') }}" role="button">Créer ma première saison</a></p></div>
                 <hr>
-
+            {% else %}    
                 <h2>Profil Club</h2>
                 <hr>
                 <div class="col-md-4">
@@ -60,6 +60,7 @@
                     </div>
                 </div> 
         {% endfor %}
+        {% endif %}
         </div>
     </div>    
 </div>            
