@@ -42,4 +42,16 @@ class RencontreRepository extends ServiceEntityRepository
         $resultat=$connection->query($sql);
         return $resultat->fetchAll();
     }
+    
+    
+    /*     public function ArticlesSaisonClub($club,$saison)
+    {
+        $connection=$this->getEntityManager()->getConnection();
+        $statement = $connection->prepare("SELECT art.id as id_art, art.*, ren.* FROM article ART INNER JOIN rencontre REN ON REN.ID = ART.rencontre_id INNER JOIN saison SAI ON SAI.ID = ART.saison_id WHERE ART.club_id=:club_id AND ART.saison_id=:saison_id");
+        $statement->bindValue('club_id', $club,PDO::PARAM_INT);
+        $statement->bindValue('saison_id', PDO::PARAM_INT);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        return $results;
+    } */
 }

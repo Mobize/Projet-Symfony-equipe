@@ -58,7 +58,7 @@
                             <td align="center"><button class=" btn btn-danger resultat_rencontres_btn btn_def " disabled>D</button></td>
                         {% endif %}
                          <td>{{ rencontre.lieu}}</td>
-                         <td><a href="{{path('app_rencontre_index') }}" target="_blank">Fiche détaillée</a></td>
+                         <td><a href="{{path('app_rencontre_index',{id:rencontre.id}) }}">Fiche détaillée</a></td>
                         
                         
                         
