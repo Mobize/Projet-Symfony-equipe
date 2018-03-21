@@ -13,42 +13,34 @@
 
 {% block title %}Match du 11 juin 2017{% endblock %}
 
+
 {% block content %}
+{# FIL D'ARIANE #}
 <ol class="breadcrumb">
-  <li>{#{{ saison.nom }}#}Saison 2017/2018</li>
-  <li>{#{{  }}#}U8</li>
-  <li>Rencontres</li>
-  <li>Match du 11 juin 2017</li>
+  <li>Saison {{ NomderniereSaisonClub.nom }}</li>
+  <li>Rencontre du {{ rencontre.date|date('d/m/Y') }}</li>
 </ol>
- <h3>Les équipes en compétition</h3>
- <div>
-    <h4>Club</h4>
-        <h5>Joueurs convoqués</h5>
-            <ol>
-               <li>Joueur</li>
-               <li>Joueur</li>
-               <li>Joueur</li>
-               <li>(...)</li>
-            </ol> 
- </div>
-<h3>Lieu de la rencontre </h3>
-<h4>{{ rencontre.lieu }}</h4>
-<div class="row">
-     <div id="googleMap"></div>
-     
-      
-      {% block javascript %}
+  
+ {# GOOGLEMAP #}  
+ Lieu de la rencontre : <strong>{{ rencontre.lieu }}</strong>
+<div style="width:700px;height:400px;" class="center-block"  id="googleMap"></div>
+    
+{% endblock %}
+
+{% block javascripts %}
           {{ parent() }}
-          <script src="https://maps.googleapis.com/maps/api/js?&language=fr&key=AIzaSyBMDN2M-7uqCr4qvWrqpgD9IoklMh3bYQE
-    "></script>
+          <script src="https://maps.googleapis.com/maps/api/js?language=fr&key=AIzaSyBgsboaphCBp3sd_l3emIumeJiXQbvC7S0"></script>
     <script>
        var geocoder;
-    var map;   
-    function TrouverADR(adresse)
+    var map;
+    var address= '{{ rencontre.lieu }}';
+    /*
+    function TrouverADR()
     {
         geocoder = new google.maps.Geocoder();
         geocoder.geocode( { "address": adresse}, function(results, status) {
-        
+        console.log(status);
+        console.log(google.maps.GeocoderStatus.OK);
         if (status == google.maps.GeocoderStatus.OK) {
 
                 
@@ -74,15 +66,39 @@
                     
             }  );
         }
-          
-    </script>
-    <script>
-         var adresse= '{{ rencontre.lieu }}';
-         TrouverADR(adresse);
-    </script>
-    {% endblock  %}
- <h3>Covoiturage</h3>
-    <textarea class="form-control" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam maximus felis quis volutpat posuere. Suspendisse non sem pretium diam mattis tempus. Nunc urna metus, venenatis ac blandit at, maximus sit amet odio. Integer id tempor nibh. Vivamus nec nulla et lorem vestibulum tincidunt. Donec sit amet nibh ligula. </textarea>
+           
 
-<a href="{#{{ path('app_article_edit', {id:rencontre.id}) }}"#}" class="btn btn-primary">Aller aux résultats</a>
-{% endblock %}
+         
+         //TrouverADR(adresse);
+*/
+
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var mapOptions = {
+      zoom: 8,
+      center: latlng
+    }
+    map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+  }
+
+initialize();
+
+  function codeAddress() {
+    //var address = document.getElementById('address').value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+  codeAddress();
+  
+    </script>    
+    {% endblock  %}

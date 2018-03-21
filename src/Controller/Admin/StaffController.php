@@ -26,6 +26,15 @@ class StaffController extends Controller
         //on recup ts les matchs
         $staffs = $repository->findAll();
         
+        /*if(!is_null($this->getUser())){
+            //récup staff du club
+            $staffClubRepository = $this->getDoctrine()->getRepository(Staff::class);
+            $staffs = $staffClubRepository->StaffDuClub($this->getUser()->getClub()->getId());
+        } else {
+            $staffs ='';
+        } */  
+        dump($staffs);
+        
         return $this->render('admin/staff/index.html.twig', [
             'staffs' => $staffs
         ]);

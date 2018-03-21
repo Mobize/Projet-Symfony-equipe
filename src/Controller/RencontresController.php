@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Saison;
 use App\Entity\Club;
 use App\Entity\Rencontre;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,6 +26,11 @@ class RencontresController extends Controller
         // recup des rencontres
         $rencontres = $repository->findAll();
         
+       //Récupération du nom de la dernière saison enregistrée pour le club
+        $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
+        $NomderniereSaisonClub = $SaisonClubRepository->findNomLatestSaison($this->getUser()->getClub()->getId());
+        $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId()); 
+        
        /* $Clubrepository = $this->getDoctrine()->getRepository(Club::class);
         //recup des clubs
         $clubs = $Clubrepository->findAll();
@@ -47,6 +53,7 @@ class RencontresController extends Controller
      return $this->render('rencontres/index.html.twig',
          [
             'rencontres' => $rencontres,
+            'NomderniereSaisonClub' => $NomderniereSaisonClub
            // 'clubs' => $clubs
          ]);
     
