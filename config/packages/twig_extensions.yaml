@@ -3,6 +3,14 @@ services:
         public: false
         autowire: true
         autoconfigure: true
+        
+        # Activation de l'extension Twig intl
+services:
+ 
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
 
     #Twig\Extensions\ArrayExtension: ~
     #Twig\Extensions\DateExtension: ~
