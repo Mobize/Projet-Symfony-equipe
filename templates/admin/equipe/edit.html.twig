@@ -37,7 +37,7 @@
                 <img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" width="100px">
             {% endif %} 
         </p>
-
+             {{ form_row(form.staff) }}
             <div class="form-btn-group">
                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Enregistrer</button>
                 <a href="{{ path('app_admin_equipe_index') }}" class="btn btn-default"><i class="fa fa-angle-left"></i> Retour</a>

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -75,13 +76,22 @@ class Equipe
      * @ORM\JoinColumn(nullable=false)
      * @var Staff 
      */
-     private $staff;    
+     private $staff;
      
+     /**
+      *
+      * @ORM\OneToMany(targetEntity="Joueur", mappedBy="equipe")
+      * @var ArrayCollection
+      */
+     private $joueurs;
+
+
      //---------------------------------------------------------------------------
      
     //pour l'enregistrement automatique de la date de création de l'enregistrement
     public function __construct()
     {
+        $this->joueurs = new ArrayCollection();
         $this->createdAt = new \DateTime();
     }
     
@@ -163,5 +173,9 @@ class Equipe
         return $this;
     }
 
+    public function hasJoueurs()
+    {
+        return 0 != $this->joueurs->count();
+    }
 
 }
