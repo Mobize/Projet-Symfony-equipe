@@ -32,10 +32,10 @@
             
             {# affichage des champs de score que si edit #}
             {# A FAIRE #}
-            
+            {% if form.vars.data.id %}
                 {{ form_row(form.equipe1Score) }}
                 {{ form_row(form.equipe2Score) }}
-            
+            {% endif %}
             
             <div class="form-btn-group">
                 <a href="{{ path('app_admin_rencontre_index') }}" class="btn btn-default pull-right"><i class="fa fa-angle-left"></i> Retour</a>

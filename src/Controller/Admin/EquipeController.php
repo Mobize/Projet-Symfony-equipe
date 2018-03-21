@@ -40,10 +40,7 @@ class EquipeController extends Controller
                 $this->getUser()->getClub()->getId(),
                 $IdDerniereSaisonClub,
                 false);
-        dump($this->getUser()->getClub()->getId());
-        dump($IdDerniereSaisonClub);
-        
-        
+
         $nbEquipesExt = count($listEquipesExt);
         
         if(!is_null($this->getUser())){
@@ -51,7 +48,6 @@ class EquipeController extends Controller
             $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
             $nbsaison = count($saisons);
             
-            //dump($nbsaison);
         } else {
             $nbsaison = 0;
         }
