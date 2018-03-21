@@ -37,27 +37,12 @@ and open the template in the editor.
 .logo_fff{
     width:10%;
 }
-.feedback-info{
-    margin: 1em !important;
-    border: 1px solid grey;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 1px 1px 8px black;
-    background-color: #fff;
-}
+
 .feedback-img-info{
     width: 100%;
+    float: none;
 }
-.feedback-img-info h5{
-    color: black;
-}
-.feedback-img-info p{
-    color:red;
-}
-.agileits-feedback-grids{
-     background: rgba(17, 18, 16, 0.13);
-     border-radius: 10px;
-}
+
 .index_admin{
         color: #99bc59;
         font-size: 4em;
@@ -320,14 +305,16 @@ legend{
     margin-top: 6px;
 }
 /*modif des titres en blanc pour visibilité*/
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h6 {
     margin: 0;
     font-family: 'Josefin Sans', sans-serif;
-    color: white;
+   
 }
+
 
 .feedback-img-info h5 {
     color: white;
+    margin-left: 3em;
 }
 
 /*mise en forme jumbotron*/
@@ -358,9 +345,7 @@ and open the template in the editor.
 .feedback-img-info p.domicile{
     color:blue;
 }
-.feedback-img-info h5{
-    color: black;
-}
+
 .feedback-img-info p{
     color:red;
 }
@@ -452,21 +437,12 @@ and open the template in the editor.
 }
 .feedback-info{
     margin: 1em !important;
-    border: 1px solid grey;
     border-radius: 10px;
     padding: 10px;
     box-shadow: 1px 1px 8px black;
-    background-color: #747d8c;
+  
 }
-.feedback-img-info{
-    width: 100%;
-}
-.feedback-img-info h5{
-    color: black;
-}
-.feedback-img-info p{
-    color:red;
-}
+
 .agileits-feedback-grids{
      background: rgba(17, 18, 16, 0.13);
      border-radius: 10px;
@@ -717,10 +693,6 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
-.feedback-img-info h5 {
-    color: white;
-}
-
 /*mise en forme jumbotron*/
 .container-fluid .jumbotron {
     padding-top: 60px;
@@ -737,26 +709,5 @@ h1, h2, h3, h4, h5, h6 {
     font-size:30px;
                       
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
