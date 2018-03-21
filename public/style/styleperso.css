@@ -441,12 +441,12 @@ and open the template in the editor.
 }
 
 .feedback-top{
-    background-color: rgba(8, 90, 242, 0.65);
-    position: ;
+    background: #4c5056;
+    
 }
 
 .feedback-top:after{
-    border-top: 9px solid rgba(8, 90, 242, 0.65);
+    border-top: 9px solid ;
 }
 
 #actions{
@@ -462,7 +462,7 @@ and open the template in the editor.
     border-radius: 10px;
     padding: 10px;
     box-shadow: 1px 1px 8px black;
-    background-color: #fff;
+    background-color: #747d8c;
 }
 .feedback-img-info{
     width: 100%;
@@ -522,7 +522,7 @@ legend{
     min-height: 500px;
     margin:0;
 }   
-}
+
 .carte{
     height:300px;
 }
@@ -567,7 +567,7 @@ legend{
 }
 
 .footer{
-    background: url("../images/herbe-verte-artificielle.jpg");
+    background: #747d8c;
 }
 
 
@@ -596,7 +596,7 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
 
 .f-bg-w3l {
     background: #747d8c;
-    padding: 5em 0;
+    padding: 5em;
 }
 
 .hauteur_min {
@@ -734,7 +734,15 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 60px;
     text-align: center;
 }
+#googleMap iframe{
+    max-width:250px;
+    height:250px;
+}
 
+.wthree_head_section p{
+    font-size:30px;
+                      
+}
 
 
 

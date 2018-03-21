@@ -81,7 +81,7 @@ class StaffController extends Controller
                         $this->getParameter('upload_dir'),
                         $filename
                     );
-                    
+          
                     $staff->setImage($filename);
                     
                     // suppression de l'ancienne image en modification
@@ -98,7 +98,7 @@ class StaffController extends Controller
                     }
                 }            
 
-                
+             
                 //prepare l'enregistrement en bdd
                 $em->persist($staff);
                 //fait l'enregistrement en bdd
