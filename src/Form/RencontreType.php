@@ -98,8 +98,8 @@ class RencontreType extends AbstractType
                     [
                         'label' => 'Lieu de la rencontre',
                          'attr' => [
-                            'class' => 'perso'
-                        ]             
+                            'class' => 'perso',
+                        ]
                     ]
                 )
             ;
