@@ -13,6 +13,88 @@ and open the template in the editor.
 }
 }
 
+.logo_fff{
+    width:10%;
+}
+.feedback-img-info p.domicile{
+    color:blue;
+}
+.feedback-img-info h5{
+    color: black;
+}
+.feedback-img-info p{
+    color:red;
+}
+.agileits-feedback-grids{
+     background: rgba(153, 188, 89, 0.24);
+     border-radius: 10px;
+}
+.index_admin{
+        color: #99bc59;
+        font-size: 4em;
+}
+.fleche_bas{
+    font-size:4em;
+    color:white;
+}
+.clr2{
+    min-height: 308px;
+}
+.clr3{
+    max-height: 308px;
+}
+.liste{
+    list-style: none;
+    color: white;
+}
+.lien_accueil{
+    color: #a8f644;
+}
+.lien_accueil:hover{
+    color:white;
+}
+.banner-text h2{
+    margin-top: -120px;
+}
+.alert{
+    font-size: 1em;
+}
+.bouton{
+    margin-top: 25px;
+}
+h1{
+    font-size: 22px;
+}
+legend{
+    font-size: 18px;
+    color : dodgerblue;
+}
+
+
+.nom_club{
+    color: white;
+}
+.btn-info{
+
+    margin-top: -23px;
+    border-color: white;
+    background-color: #11162759;
+}
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9 mars 2018, 15:34:20
+    Author     : Etudiant
+*/
+@media (max-width: 991px){
+.navbar-nav > li {
+    margin: 0 1.3em;
+}
+}
+
 .feedback-top{
     background-color: rgba(8, 90, 242, 0.65);
     position: ;
@@ -109,7 +191,7 @@ legend{
 
 
 
-/*-----Partie rencontres calendrier par équipe route provisoire "@/rencontres"" --------------*/
+
 
 @media (min-width: 996px){
 .creer_saison{
@@ -117,13 +199,8 @@ legend{
 }
 }
 
-/*-----Partie rencontres calendrierpar équipe route provisoire "@/rencontres"" --------------*/
+/*-----Partie rencontres calendrier par équipe route provisoire "@/rencontres/fiche --------------*/
 
-
-/* Léger décalage bouton d'affichage victoires nuls défaites */
-.resultat_rencontres_btn {
-    margin-left: 15px;
-}
 
 
 /* div cachant les boutons */
@@ -290,12 +367,6 @@ legend{
 }
 
 
-
-/* Léger décalage bouton d'affichage victoires nuls défaites */
-.resultat_rencontres_btn {
-    margin-left: 15px;
-}
-
 .div_btn_filtrage {
     display: none;
     margin-top: 6px;
@@ -318,3 +389,27 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 60px;
     text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

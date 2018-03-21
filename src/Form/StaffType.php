@@ -39,7 +39,7 @@ class StaffType extends AbstractType
                 'fonction',
                 ChoiceType::class, array
                 (
-                    'label'=>"Type d'équipe",
+                    'label'=>"Fonction :",
                     'choices'=>array (
                     'Dirigeant' => 1,
                     'Entraineur' => 2),

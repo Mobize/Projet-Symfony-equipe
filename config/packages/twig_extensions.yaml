@@ -12,6 +12,7 @@ services:
         tags:
             - { name: twig.extension }
 
+
     #Twig\Extensions\ArrayExtension: ~
     #Twig\Extensions\DateExtension: ~
     #Twig\Extensions\IntlExtension: ~
