@@ -191,7 +191,7 @@ legend{
 
 
 
-/*-----Partie rencontres calendrier par équipe route provisoire "@/rencontres"" --------------*/
+
 
 @media (min-width: 996px){
 .creer_saison{
@@ -199,13 +199,8 @@ legend{
 }
 }
 
-/*-----Partie rencontres calendrierpar équipe route provisoire "@/rencontres"" --------------*/
+/*-----Partie rencontres calendrier par équipe route provisoire "@/rencontres/fiche --------------*/
 
-
-/* Léger décalage bouton d'affichage victoires nuls défaites */
-.resultat_rencontres_btn {
-    margin-left: 15px;
-}
 
 
 /* div cachant les boutons */
@@ -371,12 +366,6 @@ legend{
     margin-top:50px;
 }
 
-
-
-/* Léger décalage bouton d'affichage victoires nuls défaites */
-.resultat_rencontres_btn {
-    margin-left: 15px;
-}
 
 .div_btn_filtrage {
     display: none;
