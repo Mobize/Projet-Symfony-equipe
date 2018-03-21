@@ -15,27 +15,7 @@ class BasicUserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-                 /*->add(
-                    'lastname',
-                    TextType::class,
-                    [
-                        'label' => 'Nom',
-                        'attr' => [
-                            'class' => 'perso'
-                        ]
-                    ]
-                )
-                ->add(
-                    'firstname',
-                    TextType::class,
-                    [
-                        'label' => 'Prénom',
-                        'attr' => [
-                            'class' => 'perso'
-                        ]
-                    ]
-                ) */             
+        $builder        
                 ->add(
                     'email',
                      EmailType::class,

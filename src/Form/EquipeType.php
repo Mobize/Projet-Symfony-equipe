@@ -60,7 +60,7 @@ class EquipeType extends AbstractType
             ->add('staff',
                   EntityType::class,
                   [
-                      'label' => "Associé à l'entraineur",
+                      'label' => "Associée à l'entraîneur",
                       'class' => Staff::class,
                       'query_builder' => function (EntityRepository $er) use ($club) {
                             return $er->createQueryBuilder('e')
@@ -73,7 +73,7 @@ class EquipeType extends AbstractType
                       //nom du champ qui s'affiche dans les <option>
                       'choice_label' => 'nom',
                       //1ère option vide
-                      'placeholder' => 'Choisissez une équipe du club',
+                      'placeholder' => 'Choisissez un entraîneur',
                        'attr' => [
                             'class' => 'perso'
                         ]             

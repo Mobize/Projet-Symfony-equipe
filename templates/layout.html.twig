@@ -124,7 +124,7 @@
                                                                                     <li><a href="{{ path('app_admin_equipe_index') }}" data-hover="Gestion Equipes">Gestion Equipes</a></li>
                                                                                     <li><a href="{{ path('app_admin_joueur_index') }}" data-hover="Gestion Joueurs">Gestion Joueurs</a></li>
                                                                                     <li><a href="{{ path('app_admin_rencontre_index') }}" data-hover="Gestion Rencontres">Gestion Rencontres</a></li>
-                                                                                    <li><a href="{{ path('app_admin_article_index') }}" data-hover="Gestion Article">Gestion Article</a></li>
+                                                                                    <li><a href="{{ path('app_admin_article_index') }}" data-hover="Gestion Articles">Gestion Articles</a></li>
 										</ul>
                                                                             </li> 
                                                                                         
@@ -648,13 +648,11 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJRfFoccdx5kcRzwFbt
 	<script>
 		$(document).ready(function () {
 			$("#owl-demo").owlCarousel({
-
 				autoPlay: 3000, //Set AutoPlay to 3 seconds
 				autoPlay: true,
 				items: 3,
 				itemsDesktop: [991, 2],
 				itemsDesktopSmall: [414, 4]
-
 			});
 		}); 
 	</script>
@@ -698,4 +696,11 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJRfFoccdx5kcRzwFbt
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/cookiechoices.js') }}"></script>
+ 
+    
+    <!--<script src="js/cookiechoices.js"></script><script>document.addEventListener('DOMContentLoaded', function(event){cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', 'http://www.teamup.com/mentions-legales/');});</script>-->
+ <script src="js/cookiechoices.js"></script><script>document.addEventListener('DOMContentLoaded', function(event){cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', 'http://www.teamup.com/mentions-legales/');});</script>
+
+
 {% endblock %}
