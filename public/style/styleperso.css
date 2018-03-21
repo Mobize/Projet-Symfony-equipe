@@ -7,6 +7,8 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
+
+
 .agileits-feedback-grids{
     background:transparent !important;
     height:300px;
@@ -24,11 +26,7 @@ and open the template in the editor.
 .thumbnail{
     min-height:160px;
 }
-#formcache
-{
-    display:none;
-    
-}
+
 @media (max-width: 991px){
 .navbar-nav > li {
     margin: 0 1.3em;
@@ -76,6 +74,8 @@ and open the template in the editor.
 .index_admin{
         color: #99bc59;
         font-size: 4em;
+        margin-top: 25px;
+        margin-bottom: 15px;
 }
 .fleche_bas{
     font-size:4em;
@@ -331,7 +331,8 @@ legend{
     display: none;
     margin-top: 6px;
 }
-/*modif des titres en blanc pour visibilité*/
+
+modif des titres en blanc pour visibilité
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-family: 'Josefin Sans', sans-serif;
@@ -700,9 +701,9 @@ legend{
 }
 .titre{
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 36px;
     text-align: center;
-    color: black;
+    font-size: 2em
 }
 .form-control.perso{
     border: 1px solid;
@@ -725,12 +726,12 @@ legend{
     display: none;
     margin-top: 6px;
 }
-/*modif des titres en blanc pour visibilité*/
+/*modif des titres en blanc pour visibilité
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-family: 'Josefin Sans', sans-serif;
     color: white;
-}
+}*/
 /*
 .feedback-img-info h5 {
     color: white;

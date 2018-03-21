@@ -28,15 +28,7 @@
             {{ form_row(form.equipe1) }}
             {{ form_row(form.equipe2) }}
             {{ form_row(form.domicile) }}
-            
-                
-            <div class="form-group" id="formcache" >
             {{ form_row(form.lieu) }}
-            </div>
-            
-                
-                
-            
             {# affichage des champs de score que si edit #}
             {# A FAIRE #}
             {% if form.vars.data.id %}
@@ -57,7 +49,7 @@
 {% block javascripts %}
     {{ parent() }} 
     
-        <script language="javascript" type="text/javascript">
+        {# <script language="javascript" type="text/javascript">
 		 document.getElementById("rencontre_domicile_1").onclick = function(){
                      document.getElementById("formcache").style.display = "block";
                      } ;
@@ -69,7 +61,7 @@
             document.getElementById("rencontre_domicile_0").onclick = function(){
                      document.getElementById("formcache").style.display = "none";
                  };
-        </script>
+        </script> #}
 
   
 {% endblock %}    

@@ -37,9 +37,16 @@ class IndexController extends Controller
             $nbsaison = 0;
         }
         
-        $RencontreRepository = $this->getDoctrine()->getRepository(Rencontre::class);
-        $rencontres= $RencontreRepository->afficheLesRencontres();
+        //$RencontreRepository = $this->getDoctrine()->getRepository(Rencontre::class);
+        //$rencontres= $RencontreRepository->afficheLesRencontres();
         
+        
+        if($this->getUser()){
+            $RencontreRepository = $this->getDoctrine()->getRepository(Rencontre::class);
+            $rencontres = $RencontreRepository->afficheLesRencontres2($this->getUser()->getClub()->getId());
+       } else {
+            $rencontres ='';
+       }
        
         return $this->render(
                 'index/index.html.twig',

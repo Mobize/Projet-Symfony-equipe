@@ -54,7 +54,7 @@
 										</ul>
 									</li> #}
                                                                         {#<li><a href="{{ path('app_apropos_index') }}" data-hover="A propos">A propos</a></li>#}
-									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contactez-nous</a></li>
+									<li><a href="{{ path('app_contact_add') }}" data-hover="Contactez-nous">Contactez-nous</a></li>
 									
 								</ul>  
 								<div class="clearfix"> </div>	
@@ -514,7 +514,7 @@ carrer -->
                     
                     <div class='col-md-6 col-md-offset-3'>  
                         
-                        <h2 class="text-center titre index_admin">Prochaines rencontres <img src="{{ asset('images/logos/fff.png') }}" class="logo_fff" alt=""></h2>  
+                        <h2 class="text-center index_admin">Prochaines rencontres <img src="{{ asset('images/logos/fff.png') }}" class="logo_fff" alt=""></h2>  
                          
                         <div class="agileits-feedback-grids">
 					<div id="owl-demo" class="owl-carousel owl-theme">
@@ -526,7 +526,9 @@ carrer -->
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
+										 <img src="{{ asset ('upload/' ~ rencontre.img_eq1) }}" width="200px" alt="logo club">
+                                                                                 
+                                                                                 <span><img src="{{ asset ('upload/' ~ rencontre.img_eq2) }}" width="200px" alt="logo club"></span>
 									</div>
 									<div class="feedback-img-info">
 										<p><strong>{{ rencontre.date|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</strong></p>
