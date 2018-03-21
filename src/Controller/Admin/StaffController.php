@@ -81,7 +81,7 @@ class StaffController extends Controller
                         $this->getParameter('upload_dir'),
                         $filename
                     );
-                    
+          
                     $staff->setImage($filename);
                     
                     // suppression de l'ancienne image en modification
@@ -91,14 +91,14 @@ class StaffController extends Controller
                 } else {
                     // getData sur une checkbox = true si cochée, false sinon
                     if ($form->has('remove_image') && $form->get('remove_image')->getData()) {
-                        $article->setImage(null);
+                        $staff->setImage(null);
                         unlink($this->getParameter('upload_dir') . '/' . $originalImage);
                     } else {
-                        $article->setImage($originalImage);
+                        $staff->setImage($originalImage);
                     }
                 }            
 
-                
+             
                 //prepare l'enregistrement en bdd
                 $em->persist($staff);
                 //fait l'enregistrement en bdd
