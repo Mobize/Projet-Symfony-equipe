@@ -407,8 +407,9 @@ and open the template in the editor.
 .bouton{
     margin-top: 25px;
 }
-h1{
+h1,h2{
     font-size: 22px;
+        color: #000;
 }
 legend{
     font-size: 18px;
@@ -655,6 +656,7 @@ and open the template in the editor.
 }
 h1{
     font-size: 22px;
+    color: #000;
 }
 legend{
     font-size: 18px;
@@ -694,6 +696,7 @@ legend{
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
+    color: black;
 }
 .form-control.perso{
     border: 1px solid;

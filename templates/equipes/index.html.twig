@@ -32,7 +32,13 @@
                     <div class="caption text-center">
                         <h3 class="nom-equipe">{{ equipe.nom }}</h3>
                         <div class="thumbnail">
-                            <img src="{{ asset('upload/' ~ equipe.image) }}" class="img-responsive">
+                            
+                            {% if equipe.image is not null %}
+                                <img src="{{ asset('upload/' ~ equipe.image) }}" class="img-responsive">
+                            {% else %}
+                                <img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" class="img-responsive">   
+                            {% endif %}
+
                         </div>
                     </div>
                         <p class="nom-entraineur">Nom de l'entraineur: <span style="color:dodgerblue">{{ equipe.staff.prenom }} {{ equipe.staff.nom }}</span></p> 
