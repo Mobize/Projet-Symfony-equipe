@@ -24,7 +24,7 @@
 						<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
 					</div>
 					<div class="header-nav"><!-- header-three --> 	
-						<nav class="navbar navbar-default">
+						<nav class="navbar navbar-default nav_non_connecte">
 							<div class="navbar-header">
 								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 									<span class="sr-only">Toggle navigation</span>
@@ -79,7 +79,7 @@
                                 <img src="{{ logo team up }}" width="200px">
                             </div>  
                         {% endif %}#} 
-			<h1><a href="{{ path('app_index_index') }}">{{ app.user.club.nom }}</a></h1> 
+                        <h1><span class="team_up_titre"></span><a href="{{ path('app_index_index') }}">{{ app.user.club.nom }}</a></h1> 
                        
                        
                         

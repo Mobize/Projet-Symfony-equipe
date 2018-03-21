@@ -7,6 +7,12 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
+.team_up_titre{
+    font-size:0.3em;
+}
+.nav_non_connecte{
+  margin-top: 52px;
+}
 .thumbnail{
     min-height:160px;
 }
