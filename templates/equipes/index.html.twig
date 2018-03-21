@@ -32,11 +32,16 @@
                     <div class="caption text-center">
                         <h3>{{ equipe.nom }}</h3>
                         <div class="thumbnail">
-                            <img src="{{ asset('upload/' ~ equipe.image) }}" class="img-responsive">
+                            
+                            {% if equipe.image is not null %}
+                                <img src="{{ asset('upload/' ~ equipe.image) }}" class="img-responsive">
+                            {% else %}
+                                <img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" class="img-responsive">   
+                            {% endif %}
+
                         </div>
                     </div>
                         <p>Nom de l'entraineur: <span style="color:dodgerblue">{{ equipe.staff.nom }}</span></p>
-                        <p>Nombre de joueurs: <span style="color:dodgerblue">A faire</span></p>
                         <span class=""><a href="{{ path('app_ficheequipe_index', {id: equipe.id}) }}" class="btn btn-primary" role="button">Fiche Equipe</a></span>
                         <span class="pull-right"><a href="{{ path('app_rencontres_index', {id: equipe.id}) }}" class="btn btn-primary" role="button">Rencontres</a></span>{#<a href="#" class="btn btn-default" role="button">Button</a></p>#}
                 </div>

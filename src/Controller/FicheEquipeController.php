@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Saison;
 use App\Entity\Joueur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,13 +19,19 @@ class FicheEquipeController extends Controller
      */
     public function index(Request $request,$id)
     {
+        //Récupération du nom de la dernière saison enregistrée pour le club
+        $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
+        $NomderniereSaisonClub = $SaisonClubRepository->findNomLatestSaison($this->getUser()->getClub()->getId());
+        $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
+        
         $em= $this->getDoctrine()->getManager();
         
         $joueurs = $em->getRepository(Joueur::class )->findAll();
         
         return $this->render('fiche_equipe/index.html.twig', [
             
-            'joueurs' => $joueurs    
+            'joueurs' => $joueurs,
+            'NomderniereSaisonClub' => $NomderniereSaisonClub,
         ]);
     }
 }
