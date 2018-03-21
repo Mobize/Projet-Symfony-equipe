@@ -30,7 +30,7 @@
             <div class="col-md-3"> 
                 <div class="thumbnail">
                     <div class="caption text-center">
-                        <h3>{{ equipe.nom }}</h3>
+                        <h3 class="nom-equipe">{{ equipe.nom }}</h3>
                         <div class="thumbnail">
                             
                             {% if equipe.image is not null %}
@@ -41,7 +41,7 @@
 
                         </div>
                     </div>
-                        <p>Nom de l'entraineur: <span style="color:dodgerblue">{{ equipe.staff.nom }}</span></p>
+                        <p class="nom-entraineur">Nom de l'entraineur: <span style="color:dodgerblue">{{ equipe.staff.prenom }} {{ equipe.staff.nom }}</span></p> 
                         <span class=""><a href="{{ path('app_ficheequipe_index', {id: equipe.id}) }}" class="btn btn-primary" role="button">Fiche Equipe</a></span>
                         <span class="pull-right"><a href="{{ path('app_rencontres_index', {id: equipe.id}) }}" class="btn btn-primary" role="button">Rencontres</a></span>{#<a href="#" class="btn btn-default" role="button">Button</a></p>#}
                 </div>

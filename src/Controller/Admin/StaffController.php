@@ -81,7 +81,7 @@ class StaffController extends Controller
                         $this->getParameter('upload_dir'),
                         $filename
                     );
-                    
+          
                     $staff->setImage($filename);
                     
                     // suppression de l'ancienne image en modification
@@ -98,14 +98,14 @@ class StaffController extends Controller
                     }
                 }            
 
-                
+             
                 //prepare l'enregistrement en bdd
                 $em->persist($staff);
                 //fait l'enregistrement en bdd
                 $em->flush();
                 
                 //Ajout du message flash
-                $this->addFlash('success', 'Le membre du staff a été enregistré');
+                $this->addFlash('success', 'Le membre du staff a été enregistré, vous devez à present lui attribuer une équipe');
                 //redirection vers la liste
                 return $this->redirectToRoute('app_admin_staff_index');                
             } else {
