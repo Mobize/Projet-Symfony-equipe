@@ -7,8 +7,8 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
-#googleMap{
-    height:250px;
+.bouton_inscription{
+    margin-bottom:20px;
 }
 .logo1{
     height:20px;
@@ -748,9 +748,12 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 60px;
     text-align: center;
 }
-#googleMap iframe{
-    max-width:250px;
+.iframe{
     height:250px;
+}
+#googleMap{
+    max-width:250px;
+    height:250px !important;
 }
 
 .wthree_head_section p{
