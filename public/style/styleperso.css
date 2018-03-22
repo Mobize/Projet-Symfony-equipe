@@ -932,7 +932,7 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
 }
 
 .f-bg-w3l {
-    background: #747d8c;
+    background: black;
     padding: 5em 0;
 }
 
@@ -1303,14 +1303,10 @@ legend{
 }
 
 .footer{
-    background: #747d8c;
+    background: black;
 }
 
 
-.blocOpaque { /* Astuce de création d'un bloc à 60% opaque à l'image de fond */
-  height:100%;
-  background-color:rgba(0,0,255,0.10);
-}
 
 .w3layouts_footer_grid h2 span, .w3layouts_footer_grid h3 span{
         color: #1dd1a1;
@@ -1330,10 +1326,6 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
   color:#c8d6e5;
 }
 
-.f-bg-w3l {
-    background: #747d8c;
-    padding: 5em;
-}
 
 .hauteur_min {
     min-height: 500px;
