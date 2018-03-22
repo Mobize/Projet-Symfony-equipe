@@ -18,7 +18,10 @@
         
         {% if(nbsaisons is defined and nbsaisons == false) %}
         <div class="col-md-7 col-md-offset-2 creer_saison">        
-                <div class="text-center"><h2>Créez votre première saison</h2></div>
+                <div class="text-center">
+                    <h2 class="titre">Créez votre première saison*</h2>
+                    <p>*Afin de profiter de toutes les fonctionnalités du site</p>
+                </div>
                 <hr>
                 <div class="text-center bouton"><p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_edit') }}" role="button">Créer</a></p></div>
         </div>   
