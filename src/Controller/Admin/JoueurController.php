@@ -24,25 +24,29 @@ class JoueurController extends Controller
     public function index()
     {
         
-        //Récupération du nom de la dernière saison enregistrée pour le club
-       $SaisonClubRepository = $this->getDoctrine()->getRepository(Saison::class);
-        $NomderniereSaisonClub = $SaisonClubRepository->findNomLatestSaison($this->getUser()->getClub()->getId());
-        $IdDerniereSaisonClub = $SaisonClubRepository->findIdLatestSaison($this->getUser()->getClub()->getId());
-
-        $repository = $this->getDoctrine()->getRepository(Joueur::class);
-         //on recup ts les joueurs
-        $joueurs = $repository->findAll();
-        
-       if(!is_null($this->getUser())){
-           $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
-           $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
-           $nbsaison = count($saisons);
-            
-            dump($nbsaison);
+        //Récupération infos saison
+        if(!is_null($this->getUser())){
+            $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
+            $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
+            $NomderniereSaisonClub = $saisonRepository->findNomLatestSaison($this->getUser()->getClub()->getId());
+            $nbsaison = count($saisons);    
+           
         } else {
+            
             $nbsaison = 0;
         }
-             
+        
+         //on recup ts les joueurs
+        //$joueurs = $repository->findAll();
+        
+        //Récup infos joueurs de la saison du club de l'user connecté
+
+            $saisons = 1;
+            $JoueurRepository = $this->getDoctrine()->getRepository(Joueur::class);
+            $joueurs = $JoueurRepository->JoueursSaisonClub($this->getUser()->getClub()->getId(),$saisons);
+
+
+       
         return $this->render('admin/joueur/index.html.twig', [
            'joueurs' => $joueurs,
             'nbsaisons' => $nbsaison,

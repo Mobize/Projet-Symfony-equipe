@@ -21,19 +21,26 @@ class RencontreController extends Controller
         {
         $repository = $this->getDoctrine()->getRepository(Rencontre::class);
         
-        //on recup ts les matchs
-        $rencontres = $repository->findAll();
-        
         if(!is_null($this->getUser())){
             $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
             $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
-            $nbsaison = count($saisons);
-            
-            //dump($nbsaison);
+            $nbsaison = count($saisons);    
+           
         } else {
             $nbsaison = 0;
         }
-      
+          
+        //on recup toutes les rencontres
+        //$rencontres = $repository->findAll();
+        
+        //on recup toutes les rencontres de la saison du club
+        if($this->getUser()){
+            $RencontreRepository = $this->getDoctrine()->getRepository(Rencontre::class);
+            $rencontres = $RencontreRepository->afficheLesRencontres3($this->getUser()->getClub()->getId(),$saisons);
+       } else {
+            $rencontres ='';
+       }
+       
         return $this->render(
             'admin/rencontre/index.html.twig', [
             'rencontres' => $rencontres,

@@ -115,7 +115,7 @@ class ClubType extends AbstractType
         // si il y a une image enregistrée en bdd
         if (!is_null($options['data']->getLogo())) {
             $builder->add(
-                    'remove_logo',
+                    'remove_image',
                     CheckboxType::class,
                     [
                         'label' => "Supprimer l'illustration",
