@@ -21,7 +21,7 @@
 			<div class="header">
 				<div class="container">  
 					<div class="header-mdl agileits-logo"><!-- header-two --> 
-                                            <img src="{{  asset('images/logos/TUblanc.png') }}"  class="logo">
+                                            <img src="{{  asset('images/logos/logoR.png') }}"  class="logo">
 					</div>
 					<div class="header-nav"><!-- header-three --> 	
 						<nav class="navbar navbar-default nav_non_connecte">
@@ -78,14 +78,18 @@
                             <div>
                                 <img src="{{ logo team up }}" width="200px">
                             </div>  
-                        {% endif %}#} 
-                        <h1><span class="team_up_titre"></span><a href="{{ path('app_index_index') }}">{{ app.user.club.nom }}</a></h1> 
+                        {% endif %}#}
+                <div class="row">        
+                    <div id="logoAccueil"><!-- header-two --> 
+                        <img src="{{  asset('images/logos/logoR.png') }}"  class="logo">
+                    </div> 
+                </div>
+                        <h1><span class="team_up_titre"></span><img src="{{app.user.club.logo }}"><a href="{{ path('app_index_index') }}">{{ app.user.club.nom }}</a></h1> 
                        
                        
                         
                        
-                        <h3 class="connecte">Bonjour</h3>
-                        <h3>{{ app.user.fullname }}</h3>
+                        <h3 class="connecte">Bonjour {{ app.user.fullname }}</h3>
                     </div>
 			<!-- header -->
 			<div class="header">
@@ -517,7 +521,7 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-                                                                    <p><p> {{ rencontre.equipe_domicile }} <strong>VS</strong> {{ rencontre.equipe_exterieur }}</p></p>
+                                                                    <p> {{ rencontre.equipe_domicile }} <strong> VS </strong> {{ rencontre.equipe_exterieur }}</p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
@@ -527,7 +531,7 @@ carrer -->
 									</div>
 									<div class="feedback-img-info">
 										<p><strong>{{ rencontre.date|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</strong></p>
-                                                                                <p class="domicile">Lieu :{{ rencontre.lieu }}</p>
+                                                                                <p class="domicile">{{ rencontre.lieu }}</p>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
