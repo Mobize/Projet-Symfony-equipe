@@ -21,7 +21,7 @@
 			<div class="header">
 				<div class="container">  
 					<div class="header-mdl agileits-logo"><!-- header-two --> 
-						<h1><a href="{{ path('app_index_index') }}">Team Up</a></h1> 
+                                            <img src="{{  asset('images/logos/TUblanc.png') }}"  class="logo">
 					</div>
 					<div class="header-nav"><!-- header-three --> 	
 						<nav class="navbar navbar-default nav_non_connecte">
@@ -54,7 +54,7 @@
 										</ul>
 									</li> #}
                                                                         {#<li><a href="{{ path('app_apropos_index') }}" data-hover="A propos">A propos</a></li>#}
-									<li><a href="{{ path('app_contact_add') }}" data-hover="Contact">Contactez-nous</a></li>
+									<li><a href="{{ path('app_contact_add') }}" data-hover="Contactez-nous">Contactez-nous</a></li>
 									
 								</ul>  
 								<div class="clearfix"> </div>	
@@ -134,7 +134,7 @@
                                                                         
                                                                                        
                                                                                         <li>
-                                                                                            <a href="{{ path('app_security_logout') }}" data-hover="Deconnexion">Deconnexion</a>
+                                                                                            <a href="{{ path('app_security_logout') }}" data-hover="Deconnexion">Déconnexion</a>
                                                                                         </li>
                                                                             
                                                                         
@@ -333,11 +333,10 @@ carrer -->
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
+										 <img src="{{asset('images/logos/Bourges-Football-logo.jpg') }}" width="150px" alt="logo club">
 									</div>
 									<div class="feedback-img-info">
-										<h5>CLUB 1</h5>
-                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
+										<h5>CLUB DE BOURGES</h5>            
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -350,11 +349,27 @@ carrer -->
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										 <img src="{{ asset('images/logos')}}" width="150px" alt="logo club">
+										 <img src="{{ asset('images/logos/redstar.png')}}" width="150px" alt="logo club">
 									</div>
 									<div class="feedback-img-info">
-										<h5>CLUB 2</h5>
-                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
+										<h5>REDSTAR FC</h5>
+                                                                         </div> 
+									
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="feedback-info">
+								<div class="feedback-top">
+                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
+								</div>
+								<div class="feedback-grids">
+									<div class="feedback-img">
+										 <img src="{{ asset('images/logos/stade-lavallois.png')}}" width="150px" alt="logo club">
+									</div>
+									<div class="feedback-img-info">
+										<h5>LE STADE LAVALLOIS</h5>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -367,11 +382,10 @@ carrer -->
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
+										  <img src="{{ asset('images/logos/toulouse_fc_logo.png')}}" width="150px" alt="logo club">
 									</div>
 									<div class="feedback-img-info">
-										<h5>CLUB 3</h5>
-                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
+										<h5>TOULOUSE-FC</h5>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -384,11 +398,10 @@ carrer -->
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
+										 <img src="{{ asset('images/logos/CRJ.png')}}" width="150px" alt="logo club">
 									</div>
 									<div class="feedback-img-info">
-										<h5>CLUB 4</h5>
-                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
+										<h5>CERGY FOOTBALL CLUB</h5>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -401,28 +414,10 @@ carrer -->
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
+										 <img src="{{ asset('images/logos/psg_logo_totalisateur.png')}}" width="150px" alt="logo club">
 									</div>
 									<div class="feedback-img-info">
-										<h5>CLUB 5</h5>
-                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feedback-info">
-								<div class="feedback-top">
-                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
-								</div>
-								<div class="feedback-grids">
-									<div class="feedback-img">
-										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
-									</div>
-									<div class="feedback-img-info">
-										<h5>CLUB 6</h5>
-                                                                                <p>{#{{ app.user.fullname }}#}[Nom du gérant du club]</p>
+										<h5>PARIS-SAINT-GERMAIN</h5>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -514,7 +509,7 @@ carrer -->
                     
                     <div class='col-md-6 col-md-offset-3'>  
                         
-                        <h2 class="text-center titre index_admin">Prochaines rencontres <img src="{{ asset('images/logos/fff.png') }}" class="logo_fff" alt=""></h2>  
+                        <h2 class="text-center index_admin">Prochaines rencontres <img src="{{ asset('images/logos/fff.png') }}" class="logo_fff" alt=""></h2>  
                          
                         <div class="agileits-feedback-grids">
 					<div id="owl-demo" class="owl-carousel owl-theme">
@@ -526,7 +521,9 @@ carrer -->
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										 <img src="{#{{ asset('upload/' ~ club.logo) }}#}" width="200px" alt="logo club">
+										 <img src="{{ asset ('upload/' ~ rencontre.img_eq1) }}" width="200px" alt="logo club">
+                                                                                 
+                                                                                 <span><img src="{{ asset ('upload/' ~ rencontre.img_eq2) }}" width="200px" alt="logo club"></span>
 									</div>
 									<div class="feedback-img-info">
 										<p><strong>{{ rencontre.date|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</strong></p>
@@ -604,17 +601,14 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJRfFoccdx5kcRzwFbt
 				</div>
                                 
 				<div class="col-md-4 w3layouts_footer_grid">
-					<h3>Derniers <span>matchs</span></h3>
+					<h3>Nos <span>partenaires</span></h3>
 					   <ul class="con_inner_text midimg">
-						<li><a href="#"><img src="images/g5.jpg" alt="" class="img-responsive" /></a></li>
-					    <li><a href="#"><img src="images/g6.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/g7.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/g8.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/g9.jpg" alt="" class="img-responsive" /></a></li>
-					    <li><a href="#"><img src="images/g10.jpg" alt="" class="img-responsive" /></a></li>
-						<!-- images supprimées pour la mise en forme
-                                                    <li><a href="#"><img src="images/g12.jpg" alt="" class="img-responsive" /></a></li>
-						<li><a href="#"><img src="images/g11.jpg" alt="" class="img-responsive" /></a></li>-->
+						<li><img src="{{ asset('images/logos/sport.jpg')}}" alt="sport" class="img-responsive" /></li>
+						<li><img src="{{ asset('images/logos/Boulanger.png')}}" alt="sport" class="img-responsive" /></li>
+						<li><img src="{{ asset('images/logos/casa.png')}}" alt="sport" class="img-responsive" /></li>
+					
+						<!-- images supprimées
+                                            -->
 				     </ul>
 					
 				</div>

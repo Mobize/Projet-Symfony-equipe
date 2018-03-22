@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Staff;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use PDO;
 
 /**
  * @method Staff|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,6 +20,17 @@ class StaffRepository extends ServiceEntityRepository
         parent::__construct($registry, Staff::class);
     }
 
+    
+    public function StaffDuClub($club)
+    {
+        $connection=$this->getEntityManager()->getConnection();
+        $statement = $connection->prepare("SELECT * FROM Staff WHERE club_id=:club_id");
+        $statement->bindValue('club_id', $club,PDO::PARAM_INT);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        return $results;
+    } 
+    
     /*
     public function findBySomething($value)
     {
