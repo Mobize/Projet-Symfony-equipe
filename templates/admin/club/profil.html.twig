@@ -28,7 +28,7 @@
                 <div class="col-md-12">
                 <div class="row">
                 
-                    {% for club in clubs %}
+                   
                 <div class="row">
                     <div class="col-md-6">
                         <table class="table table-striped table-bordered table-hover">
@@ -52,19 +52,23 @@
                     </div>
                     <div class="col-md-6">
                         <div class="well">
-                        {% if club.logo is not null %}
-                          <img src="{{ asset('upload/'~club.logo) }}" width="100px">
-                        {% endif %}
+                            <div class="thumbnail"> 
+                                {% if club.logo is not null %}
+                                    <img src="{{ asset('upload/'~club.logo) }}" width="100px">
+                                {% else %}
+                                    <img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" width="100px">
+                                {% endif %}
+                            </div>
                     </div>
                     </div>    
                 </div>
 
-               <a type="button" href="{{ path('app_admin_club_edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Modifier</a>
+              
         </div> 
 
 
 
-        {% endfor %}
+       
         {% endif %}
         </div>
     </div>    

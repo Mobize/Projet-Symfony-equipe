@@ -60,7 +60,8 @@ class Club
      * @ORM\Column(length=6, type="string",nullable=true)
      * @var string 
      */
-    private $sigle;    
+    private $sigle; 
+    
     /**
      * @ORM\Column(nullable=true)
      * @Assert\Image()

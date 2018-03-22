@@ -47,7 +47,8 @@ class ClubController extends Controller
     /**
      * @Route("/edit", defaults={"id":null})
      */
-    public function edit(Request $request,$id)
+
+        public function edit(Request $request,$id)
     {
         $id = $this->getUser()->getClub()->getId();
         
@@ -112,7 +113,6 @@ class ClubController extends Controller
                         $club->setImage($originalImageLogo);
                     }
                 }
-
                 $em->persist($club);
                 //fait l'enregistrement en bdd
                 $em->flush();
@@ -164,10 +164,7 @@ class ClubController extends Controller
      */
     public function profil()
     {
-        $repository = $this->getDoctrine()->getRepository(Club::class);
-
-        $clubs = $repository->findall();
-        
+         
         if(!is_null($this->getUser())){
             $saisonRepository = $this->getDoctrine()->getRepository(Saison::class);
             $saisons = $saisonRepository->listSaisonClub($this->getUser()->getClub()->getId());
@@ -177,12 +174,15 @@ class ClubController extends Controller
         } else {
             $nbsaison = 0;
         }
-        
+
+        $club = $this->getDoctrine()->getRepository(Club::class )->find($this->getUser()->getClub()->getId());
         $nomClub = $this->getUser()->getClub()->getNom();
+        $idClub = $this->getUser()->getClub()->getId();
+      
         
         return $this->render('admin/club/profil.html.twig', 
                  [
-                     'clubs' => $clubs,
+                     'club' => $club,
                      'nomClub' => $nomClub,
                      'nbsaisons' => $nbsaison
                      

@@ -11,20 +11,50 @@
 {% block index %}{# Vide pour ne pas afficher l'image en grande taille #}
 {% endblock %}
 
-{% block title %}Match du 11 juin 2017{% endblock %}
+{% block title %}Fiche rencontre{% endblock %}
 
 
 {% block content %}
 {# FIL D'ARIANE #}
-<ol class="breadcrumb">
-  <li>Saison {{ NomderniereSaisonClub.nom }}</li>
-  <li>Rencontre du {{ rencontre.date|date('d/m/Y') }}</li>
-</ol>
-  
- {# GOOGLEMAP #}  
- Lieu de la rencontre : <strong>{{ rencontre.lieu }}</strong>
-<div style="width:700px;height:400px;" class="center-block"  id="googleMap"></div>
+    <ol class="breadcrumb">
+      <li>Saison {{ NomderniereSaisonClub.nom }}</li>
+      <li>Rencontre du {{ rencontre.date|date('d/m/Y') }}</li>
+    </ol>
     
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="titre">Géolocalisation du lieu de la rencontre</h2>
+                <hr>
+                <small>Lieu de la rencontre : <strong>{{ rencontre.lieu }}</strong></small>
+                 {# GOOGLEMAP #}  
+               <div style="width:100%;height:400px;" class="center-block"  id="googleMap"></div>
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+                <h2 class="titre">Articles de la rencontre</h2>
+                <hr>
+                {% for article in articles %}
+                    <div style="margin-bottom:10px;">
+                        <strong>{{ article.title }}</strong>
+                        <hr>
+                        
+                        <div class="row">                   
+                            <div style="float:left;margin: 5px" class="img-thumbnail">
+                            {% if article.image is not null %}
+                                    <img src="{{ asset('upload/' ~ article.image) }}" width="100px">
+                                {% else %}
+                                    <img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" heigth="75px" width="75px" class="img-responsive">
+                                {% endif %}
+                            </div>
+                            
+                            {{ article.content }}
+                        </div>
+                 {% endfor %}
+            </div>
+        </div>
+        </div> <!-- fin row -->
+</div> <!-- fin container -->
+  
 {% endblock %}
 
 {% block javascripts %}
