@@ -50,7 +50,17 @@ class ArticleRepository extends ServiceEntityRepository
         $results = $statement->fetchAll();
         return $results;
     } 
-     
+
+       public function ArticlesRencontreSaisonClub($rencontre)
+    {
+        $connection=$this->getEntityManager()->getConnection();
+        $statement = $connection->prepare("SELECT art.id as id_art, art.*, ren.* FROM article ART INNER JOIN rencontre REN ON REN.ID = ART.rencontre_id INNER JOIN saison SAI ON SAI.ID = ART.saison_id WHERE ART.rencontre_id=:rencontre_id");
+        $statement->bindValue('rencontre_id', $rencontre,PDO::PARAM_INT);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        return $results;
+    } 
+    
     /*public function ArticlesRencontreSaisonClub($club,$saison,$rencontre=null)
     {
         return $this->createQueryBuilder('a')

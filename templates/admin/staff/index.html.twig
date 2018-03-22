@@ -30,29 +30,29 @@
                         <th>Photo</th>
                         <th>Actions</th>
                     </tr>
-                    {% for staff in staffs %}
+                    {% for membre in membres %}
                         <tr>
-                            <td>{{ staff.id }}</td>
-                            <td>{{ staff.createdAt|date('d/m/Y h:i:s')}}</td>
-                            <td>{% if staff.updatedAt is not null %}{{ staff.updatedAt|date('d/m/Y h:i:s') }}{% endif %}</td>
-                            <td>{{ staff.prenom}}</td>
-                            <td>{{ staff.nom}}</td>
-                            {% if staff.fonction == 1 %}
+                            <td>{{ membre.id }}</td>
+                            <td>{{ membre.created_at|date('d/m/Y h:i:s')}}</td>
+                            <td>{% if membre.updated_at is not null %}{{ staff.updated_at|date('d/m/Y h:i:s') }}{% endif %}</td>
+                            <td>{{ membre.prenom}}</td>
+                            <td>{{ membre.nom}}</td>
+                            {% if membre.fonction == 1 %}
                                 <td>Dirigeant</td>
                             {% else %}
                                 <td>Entraineur</td>
                             {% endif %} 
 
-                            {% if staff.image is not null %}
-                                <td align="center"><img src="{{ asset('upload/' ~ staff.image) }}" width="100px"></td> 
+                            {% if membre.image is not null %}
+                                <td align="center"><img src="{{ asset('upload/' ~ membre.image) }}" width="100px"></td> 
                             {% else %}
                                 <td align="center"><img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" heigth="75px" width="75px" class="img-responsive"></td>
                             {% endif %} 
 
                             <td>
-                                <a href="{{ path('app_admin_staff_edit', {id: staff.id}) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Modifier</a>
-                                <a href="{{ path('app_admin_staff_delete', {id: staff.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Supprimer</a>
-                                <a href="{{ path('app_admin_equipe_index', {id: staff.id}) }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Ajoutez une équipe</a>
+                                <a href="{{ path('app_admin_staff_edit', {id: membre.id}) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Modifier</a>
+                                <a href="{{ path('app_admin_staff_delete', {id: membre.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Supprimer</a>
+                                <a href="{{ path('app_admin_equipe_index', {id: membre.id}) }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Ajoutez une équipe</a>
                             </td>  
                         </tr>
                     {% else %}

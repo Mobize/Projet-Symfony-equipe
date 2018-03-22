@@ -116,10 +116,11 @@ class JoueurType extends AbstractType
                     'genre',
                     ChoiceType::class, array
                     (
-                        'label'=>"Vous êtes",
+                        'label'=>"Sexe",
                         'choices'=>array (
-                        'Une femme' => 'F',
-                        'Un homme' => 'H'
+                        'Un homme' => 'H',
+                        'Une femme' => 'F'
+                        
                       
                          )
                     )                      

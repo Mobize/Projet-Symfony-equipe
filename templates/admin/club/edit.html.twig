@@ -36,12 +36,17 @@
             {{ form_row(form.telephoneBureau) }}
 
             {{ form_row(form.logo) }}
-             {% if form.vars.value.logo is not null %}
-                <p>Image actuelle : <img src="{{ asset('upload/' ~ form.vars.value.logo.filename) }}" width="100px"></p>
-                {{ form_row(form.remove_logo) }}
-            {% endif %}
+             <p>Actuellement : 
+            {% if form.vars.value.logo is not null %}
+                <img src="{{ asset('upload/' ~ form.vars.value.logo.filename) }}" width="250px"> 
+                {{ form_row(form.remove_image) }}
+            {% else %}
+                <img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" width="100px">
+            {% endif %} 
+            </p>
+             
 
-            <div class="form-btn-group">
+            <div class="form-btn-group pull-right">
                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Enregistrer</button>
                 <a href="{{ path('app_admin_club_index') }}" class="btn btn-default"><i class="fa fa-angle-left"></i> Retour</a>
             </div>

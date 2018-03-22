@@ -15,10 +15,10 @@
 {% block content %}
 <div class="container-fluid"> 
     <div class="row">  
-        <div class="col-md-8 col-md-offset-2">       
+        <div class="col-md-8 col-md-offset-1">       
             {% if(nbsaisons is defined and nbsaisons == false) %}
                 <div class="jumbotron">
-                    <h2>Pour accéder à la gestion de vos joueurs, <br>vous devez d'abord créer une saison</h2>
+                    <h2 class="titre">Pour accéder à la gestion de vos joueurs, <br>vous devez d'abord créer une saison</h2>
                            
                     <div class="text-center bouton">
                         <p><a class="btn btn-success btn-lg" href="{{ path('app_admin_saison_index') }}" role="button">Créer ma 1ère saison</a></p>
@@ -39,7 +39,6 @@
                     <th>Ville</th>
                     <th>N° de tél.</th>
                     <th>N° de tél. autre contact</th>
-                    <th>Courriel</th>
                     <th>Date de naissance</th>
                     <th>Sexe</th>
                     <th>Photo d'identité</th>
@@ -58,18 +57,18 @@
                         <td>{{ joueur.tel2}}</td>
                         <td style="color:dodgerblue">Courriel</td>
 
-                        <td>{{ joueur.dateNaissance|date('d/m/Y')}}</td>
+                        <td>{{ joueur.date_naissance|date('d/m/Y')}}</td>
                         <td>{{ joueur.genre}}</td>
                         <td>
                             {% if joueur.image is not null %}
-                                <img src="{{ asset('upload/'~joueur.image) }}" width="100px">
+                                <img src="{{ asset('upload/'~joueur.image) }}" width="80px" height="100px">
                             {% else %}
-                                <img src="{{ asset('upload/'~joueur.image) }}" width="100px">
+                                <img src="{{ asset('upload/'~joueur.image) }}" width="80px" height="100px">
                             {% endif %}
                          </td>
                         <td>
                             {% if joueur.certificat is not null %}
-                            <a href="{{ asset('upload/'~joueur.certificat) }}">pdf</a>
+                            <a href="{{ asset('upload/'~joueur.certificat) }} " target="blank">pdf</a>
                             {% endif %}
                          </td>
                           <td>  

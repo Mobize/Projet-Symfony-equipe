@@ -333,7 +333,7 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
+                                                                    <p> "Super site ! <br> C.Ronaldo" </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
@@ -349,7 +349,7 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
+                                                                    <p> "Très pratique pour la gestion de votre Club"<br> A. Jacquet </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
@@ -366,7 +366,7 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
+                                                                    <p> " Je recommande ! " <br>M. Dessailly </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
@@ -382,7 +382,7 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
+                                                                    <p> " Très beau site, fonctionne à merveille !"<br> L.Messi </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
@@ -398,7 +398,7 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
+                                                                    <p> " Utile et gratuit pour gérer son club sans être un "pro" d'internet ! "<br> M.Platini </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
@@ -414,7 +414,7 @@ carrer -->
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
-                                                                    <p> "Sed semper leo metus, a lacinia eros semper at. Etiam sodales orci sit amet vehicula pellentesque." </p>
+                                                                    <p> " Site très simple à utiliser et très fonctionnel, je recomande."<br> U.Emery  </p>
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
@@ -514,10 +514,13 @@ carrer -->
                     <div class='col-md-6 col-md-offset-3'>  
                         
                         <h2 class="text-center index_admin">Prochaines rencontres <img src="{{ asset('images/logos/fff.png') }}" class="logo_fff" alt=""></h2>  
-                         
+                        
                         <div class="agileits-feedback-grids">
 					<div id="owl-demo" class="owl-carousel owl-theme">
                                             {% for rencontre in rencontres %}
+                                                {% if rencontre == false %}
+                                                    <p>essai</p>
+                                                {% endif %}
 						<div class="item">
 							<div class="feedback-info">
 								<div class="feedback-top">
@@ -572,8 +575,8 @@ carrer -->
 		<div class="col-md-4 w3layouts_footer_grid">
 					<h2>Comment <span>nous joindre</span></h2>
 					    <ul class="con_inner_text">
-							<li><span class="fa fa-map-marker" aria-hidden="true"></span>74 avenue Denfert-Rochereau <label> 75014 PARIS</label></li>
-							<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
+							<li><span class="fa fa-map-marker" aria-hidden="true"></span>82 avenue Denfert-Rochereau <label> 75014 PARIS</label></li>
+							<li><span class="fa fa-envelope-o" aria-hidden="true"></span> <a href="mailto:info@example.com">info@teamup.fr</a></li>
 							<li><span class="fa fa-phone" aria-hidden="true"></span> (+33)1 34 56 75 67</li>
 						</ul>
 
@@ -608,9 +611,9 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJRfFoccdx5kcRzwFbt
 				<div class="col-md-4 w3layouts_footer_grid">
 					<h3>Nos <span>partenaires</span></h3>
 					   <ul class="con_inner_text midimg">
-						<li><img src="{{ asset('images/logos/sport.jpg')}}" alt="sport" class="img-responsive" /></li>
-						<li><img src="{{ asset('images/logos/Boulanger.png')}}" alt="sport" class="img-responsive" /></li>
-						<li><img src="{{ asset('images/logos/casa.png')}}" alt="sport" class="img-responsive" /></li>
+						<li><img src="{{ asset('images/logos/ca.png')}}" alt="sport" class="img-responsive" /></li>
+						<li><img src="{{ asset('images/logos/edf.png')}}" alt="sport" class="img-responsive" /></li>
+						<li><img src="{{ asset('images/logos/vw.png')}}" alt="sport" class="img-responsive" /></li>
 					
 						<!-- images supprimées
                                             -->
@@ -622,7 +625,7 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJRfFoccdx5kcRzwFbt
                                       </div> <!-- fin container -->
 			</div> <!-- fin bloc opaque -->
                                         
-			<p class="copyright">© 2018 Team Up. Tous droits réservés | Conçu par <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+			<p class="copyright">© 2018 Team Up. Tous droits réservés </p>
 	</div>
 	<!-- //footer -->
 {% endblock %}
@@ -676,11 +679,7 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJRfFoccdx5kcRzwFbt
 			
 		});
 	</script>
-      <script type="text/javascript">
-    $(window).on('load',function(){
-        $('#exampleModalCenter').modal('show');
-    });
-</script>
+
 	<!-- //smooth-scrolling-of-move-up -->  
 	<!-- Bootstrap core JavaScript
     ================================================== -->

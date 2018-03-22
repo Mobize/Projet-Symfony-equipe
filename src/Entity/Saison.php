@@ -36,12 +36,14 @@ class Saison
     
      /**
      *@ORM\Column(type="date")
+     *@Assert\NotBlank(message="Ce champ ne doit pas etre vide")
      * @var \Datetime
      */
     private $dateDebut;
  
      /**
      *@ORM\Column(type="date")
+     *@Assert\NotBlank(message="Ce champ ne doit pas etre vide")
      * @var \Datetime
      */
     private $datefin;   

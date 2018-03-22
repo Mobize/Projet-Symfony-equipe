@@ -53,7 +53,9 @@
                            <td>{{ article.content }}</td>
                            <td>
                                {% if article.image is not null %}
-                                   <img src="{{ asset('upload/' ~ article.image) }}" width="100px">
+                                   <img src="{{ asset('upload/' ~ article.image) }}" width="100px">                         
+                               {% else %}     
+                                   <img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" width="100px"> 
                                {% endif %}  
                            </td>
                             <td>
