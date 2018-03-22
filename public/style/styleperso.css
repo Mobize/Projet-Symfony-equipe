@@ -12,6 +12,7 @@ and open the template in the editor.
 }
 .logo1{
     height:20px;
+    color:white;
 }
 #logoAccueil{
     padding: 20px;
@@ -36,7 +37,7 @@ feedback-img-info p {
 .agileits-logo h1 a{
     font-size: 2.3em;
     margin-bottom: 15px;
-    color: yellow;
+    color: white;
     text-transform: uppercase;
         font-size: 0.7em;
 }
