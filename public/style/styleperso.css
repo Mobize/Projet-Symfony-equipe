@@ -7,7 +7,12 @@ and open the template in the editor.
     Created on : 9 mars 2018, 15:34:20
     Author     : Etudiant
 */
-
+#googleMap{
+    height:250px;
+}
+.logo1{
+    height:20px;
+}
 #logoAccueil{
     padding: 20px;
     float: left;
@@ -33,7 +38,7 @@ feedback-img-info p {
     margin-bottom: 15px;
     color: yellow;
     text-transform: uppercase;
-    font-size: 40px;
+        font-size: 0.7em;
 }
 
 .agileits-feedback-grids{
@@ -1442,10 +1447,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 60px;
     text-align: center;
 }
-#googleMap iframe{
-    max-width:250px;
-    height:250px;
-}
+
 
 .wthree_head_section p{
     font-size:30px;
@@ -2187,10 +2189,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 60px;
     text-align: center;
 }
-#googleMap iframe{
-    max-width:250px;
-    height:250px;
-}
+
 
 .wthree_head_section p{
     font-size:30px;
@@ -2890,10 +2889,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 60px;
     text-align: center;
 }
-#googleMap iframe{
-    max-width:250px;
-    height:250px;
-}
+
 
 .wthree_head_section p{
     font-size:30px;

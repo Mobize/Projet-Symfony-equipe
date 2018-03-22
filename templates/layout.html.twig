@@ -81,10 +81,10 @@
                         {% endif %}#}
                 <div class="row">        
                     <div id="logoAccueil"><!-- header-two --> 
-                        <img src="{{  asset('images/logos/logoR.png') }}"  class="logo">
+                        
                     </div> 
                 </div>
-                        <h1><span class="team_up_titre"></span><img src="{{app.user.club.logo }}"><a href="{{ path('app_index_index') }}">{{ app.user.club.nom }}</a></h1> 
+                        <h1><span class="team_up_titre"><img src="{{  asset('images/logos/logoR.png') }}"  class="logo1"></span><a href="{{ path('app_index_index') }}">{{ app.user.club.nom }}</a></h1> 
                        
                        
                         
@@ -601,7 +601,7 @@ carrer -->
 					<h2>Nous <span>Localiser</span></h2>
 					<div id="googleMap">
                                             <iframe 
-src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJRfFoccdx5kcRzwFbtgxZ9W0&key=AIzaSyA36Dl1IY15pGKwU_G95EHjlud2jySUfNg"></iframe> 
+src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJRfFoccdx5kcRzwFbtgxZ9W0&key=AIzaSyA36Dl1IY15pGKwU_G95EHjlud2jySUfNg" id="googleMap"></iframe> 
                                        
 					</div>
                                     <div class="clearfix"> </div>
