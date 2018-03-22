@@ -45,7 +45,7 @@ class IndexController extends Controller
             $RencontreRepository = $this->getDoctrine()->getRepository(Rencontre::class);
             $rencontres = $RencontreRepository->afficheLesRencontres2($this->getUser()->getClub()->getId());
        } else {
-            $rencontres ='';
+            $rencontres = FALSE;
        }
        
         return $this->render(

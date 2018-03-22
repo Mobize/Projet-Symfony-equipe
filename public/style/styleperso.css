@@ -122,9 +122,7 @@ legend{
 .erreur{
     margin-top: 25px;
 }
-.footer{
-    margin-top:50px;
-}
+
 
 
 
@@ -164,15 +162,10 @@ legend{
     min-height: 300px;
 }
 
-.footer{
-    background: url("../images/herbe-verte-artificielle.jpg");
-}
 
 
-.blocOpaque { /* Astuce de création d'un bloc à 60% opaque à l'image de fond */
-  height:100%;
-  background-color:rgba(0,0,255,0.10);
-}
+
+
 
 .w3layouts_footer_grid h2 span, .w3layouts_footer_grid h3 span{
         color: #1dd1a1;
@@ -192,10 +185,6 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
   color:#c8d6e5;
 }
 
-.f-bg-w3l {
-    background: #747d8c;
-    padding: 5em 0;
-}
 
 .hauteur_min {
     min-height: 500px;
@@ -244,6 +233,8 @@ and open the template in the editor.
 }
 .banner-text h2{
     margin-top: -120px;
+    font-weight: 200;
+    font-size: 60px;
 }
 .alert{
     font-size: 1em;
@@ -316,9 +307,7 @@ legend{
     color:red;
     float: left;
 }
-.footer{
-    margin-top:50px;
-}
+
 
 
 
@@ -537,9 +526,6 @@ legend{
 .erreur{
     margin-top: 25px;
 }
-.footer{
-    margin-top:50px;
-}
 
 
 
@@ -574,15 +560,10 @@ legend{
     min-height: 300px;
 }
 
-.footer{
-    background: #747d8c;
-}
 
 
-.blocOpaque { /* Astuce de création d'un bloc à 60% opaque à l'image de fond */
-  height:100%;
-  background-color:rgba(0,0,255,0.10);
-}
+
+
 
 .w3layouts_footer_grid h2 span, .w3layouts_footer_grid h3 span{
         color: #1dd1a1;
@@ -602,10 +583,7 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
   color:#c8d6e5;
 }
 
-.f-bg-w3l {
-    background: #747d8c;
-    padding: 5em;
-}
+
 
 .hauteur_min {
     min-height: 500px;
@@ -717,9 +695,7 @@ legend{
 .erreur{
     margin-top: 25px;
 }
-.footer{
-    margin-top:50px;
-}
+
 
 
 .div_btn_filtrage {
@@ -830,10 +806,6 @@ and open the template in the editor.
     color:white;
 }
 /* blocs page accueil inscrivez-vous*/
-.clr1,.clr2,.clr3 {
-    min-height: 400px;
-    max-height: 450px;
-}
 
 .liste{
     list-style: none;
@@ -872,9 +844,6 @@ legend{
 }
 .erreur{
     margin-top: 25px;
-}
-.footer{
-    margin-top:50px;
 }
 
 
@@ -915,15 +884,10 @@ legend{
     min-height: 300px;
 }
 
-.footer{
-    background: url("../images/herbe-verte-artificielle.jpg");
-}
 
 
-.blocOpaque { /* Astuce de création d'un bloc à 60% opaque à l'image de fond */
-  height:100%;
-  background-color:rgba(0,0,255,0.10);
-}
+
+
 
 .w3layouts_footer_grid h2 span, .w3layouts_footer_grid h3 span{
         color: #1dd1a1;
@@ -943,10 +907,7 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
   color:#c8d6e5;
 }
 
-.f-bg-w3l {
-    background: #747d8c;
-    padding: 5em 0;
-}
+
 
 .hauteur_min {
     min-height: 500px;
@@ -1067,9 +1028,7 @@ legend{
     color:red;
     float: left;
 }
-.footer{
-    margin-top:50px;
-}
+
 
 
 
@@ -1139,9 +1098,7 @@ and open the template in the editor.
     font-size:4em;
     color:white;
 }
-.clr2{
-    min-height: 308px;
-}
+
 .clr3{
     max-height: 308px;
 }
@@ -1234,10 +1191,7 @@ and open the template in the editor.
     color:white;
 }
 /* blocs page accueil inscrivez-vous*/
-.clr1,.clr2,.clr3 {
-    min-height: 400px;
-    max-height: 450px;
-}
+
 
 .liste{
     list-style: none;
@@ -1277,9 +1231,7 @@ legend{
 .erreur{
     margin-top: 25px;
 }
-.footer{
-    margin-top:50px;
-}
+
 
 
 
@@ -1314,15 +1266,10 @@ legend{
     min-height: 300px;
 }
 
-.footer{
-    background: #747d8c;
-}
 
 
-.blocOpaque { /* Astuce de création d'un bloc à 60% opaque à l'image de fond */
-  height:100%;
-  background-color:rgba(0,0,255,0.10);
-}
+
+
 
 .w3layouts_footer_grid h2 span, .w3layouts_footer_grid h3 span{
         color: #1dd1a1;
@@ -1343,7 +1290,7 @@ ul.con_inner_text li,ul.con_inner_text li label, ul.con_inner_text li a{
 }
 
 .f-bg-w3l {
-    background: #747d8c;
+    height:300px;
     padding: 5em;
 }
 
@@ -1455,9 +1402,7 @@ legend{
 .erreur{
     margin-top: 25px;
 }
-.footer{
-    margin-top:50px;
-}
+
 
 
 .div_btn_filtrage {

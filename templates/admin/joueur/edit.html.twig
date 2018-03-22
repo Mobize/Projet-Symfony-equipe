@@ -43,6 +43,13 @@
                 <fieldset>
                 <legend>Document(s) administratifs()</legend>
                 {{ form_row(form.image) }}
+                <p>Actuellement : 
+                {% if form.vars.value.image is not null %}
+                    <img src="{{ asset('upload/' ~ form.vars.value.image.filename) }}" width="100px"> 
+                {% else %}
+                    <img src="{{ asset('upload/front_equipes_imgDefaut/img2.png') }}" width="100px">
+                {% endif %} 
+             </p>
                 {{ form_row(form.certificat) }}
                 </fieldset>
 
