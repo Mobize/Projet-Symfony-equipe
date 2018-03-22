@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Rencontre;
 use App\Entity\Saison;
 use App\Form\SaisonType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
