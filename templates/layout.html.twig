@@ -324,32 +324,37 @@
                 <div class="hauteur_min">   
                     <div class='col-md-6 col-md-offset-3'>  
                         <h2 class="text-center index_admin">Prochaines rencontres <img src="{{ asset('images/logos/fff.png') }}" class="logo_fff" alt=""></h2>  
+                        {% if rencontres == false %}
+                        <div class="col-md-6 col-md-offset-3">
+                            <h2 class="text-center alert alert-info">Vos rencontres s'afficheront ici</h2>
+                        </div>    
+                        {% else %}
                         <div class="agileits-feedback-grids">
 					<div id="owl-demo" class="owl-carousel owl-theme">
-                                            {% for rencontre in rencontres %}
-                                                {% if rencontre == false %}
-                                                    <p>essai</p>
-                                                {% endif %}
-						<div class="item">
-							<div class="feedback-info">
-								<div class="feedback-top">
-                                                                    <p> {{ rencontre.equipe_domicile }} <strong> VS </strong> {{ rencontre.equipe_exterieur }}</p>
-								</div>
-								<div class="feedback-grids">
-									<div class="feedback-img">
-										 <img src="{{ asset ('upload/' ~ rencontre.img_eq1) }}" width="200px" alt="logo club">
-                                                                                 
-                                                                                 <span><img src="{{ asset ('upload/' ~ rencontre.img_eq2) }}" width="200px" alt="logo club"></span>
-									</div>
-									<div class="feedback-img-info">
-										<p><strong>{{ rencontre.date|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</strong></p>
-                                                                                <p class="domicile">{{ rencontre.lieu }}</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-                                               {% endfor %}                             
+                                            
+                                                {% for rencontre in rencontres %}
+
+                                                    <div class="item">
+                                                            <div class="feedback-info">
+                                                                    <div class="feedback-top">
+                                                                        <p> {{ rencontre.equipe_domicile }} <strong> VS </strong> {{ rencontre.equipe_exterieur }}</p>
+                                                                    </div>
+                                                                    <div class="feedback-grids">
+                                                                            <div class="feedback-img">
+                                                                                     <img src="{{ asset ('upload/' ~ rencontre.img_eq1) }}" width="200px" alt="logo club">
+
+                                                                                     <span><img src="{{ asset ('upload/' ~ rencontre.img_eq2) }}" width="200px" alt="logo club"></span>
+                                                                            </div>
+                                                                            <div class="feedback-img-info">
+                                                                                    <p><strong>{{ rencontre.date|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</strong></p>
+                                                                                    <p class="domicile">{{ rencontre.lieu }}</p>
+                                                                            </div>
+                                                                            <div class="clearfix"> </div>
+                                                                    </div>
+                                                            </div>
+                                                    </div>
+                                                {% endfor %}   
+                        {% endif %}                 
 					</div>
 			</div> 
                     </div>   
